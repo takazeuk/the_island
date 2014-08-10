@@ -25,8 +25,8 @@ public class joueurs {
         this.nom = nom;
         this.couleur = couleur;
         this.deplacement=3;
-        Vector<tuiles> cartesEnMain= new Vector<tuiles>();
-        Vector<explorateurs> membres= new Vector<explorateurs>();
+        this.cartesEnMain= new Vector<tuiles>();
+        this.membres= new Vector<explorateurs>();
     }
     
     //test jo  

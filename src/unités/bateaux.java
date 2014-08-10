@@ -17,7 +17,7 @@ public class bateaux extends unités {
 
     public bateaux(int x, int y) {
         super(x, y);
-        Vector<explorateurs> marins= new Vector<>();
+        this.marins= new Vector<>();
     }
  
 }
