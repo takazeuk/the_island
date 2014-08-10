@@ -6,8 +6,11 @@
 
 package main;
 
-import terrain.newpackage.tuiles;
 import partie.newpackage.partie;
+import java.util.Vector;
+import joueurs.joueurs;
+import terrain.newpackage.tuiles;
+import unités.newpackage.unités;
 
 /**
  *
@@ -20,22 +23,7 @@ public class The_island {
      */
     public static void main(String[] args) {
         
-        partie partie = new partie();
-        
-        int cpt=0;
-        
-        for (int i = 0; i < 16; i++) {
-            
-            for (int j = 0; j < 13; j++) {
-                tuiles tuiles= new tuiles(i, j, 0, 0);
-                //partie.carte.add(tuiles);
-                System.out.println("tuiles générés"+tuiles.x+""+tuiles.y);
-                /* pour calculer le nombre de tuile*/cpt++;
-            }
-            
-        }
-        
-        System.out.println(cpt);
-    }
-    
+        partie partie = new partie("toto");
+  
+    }   
 }
