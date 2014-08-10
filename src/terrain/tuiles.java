@@ -4,21 +4,27 @@
  * and open the template in the editor.
  */
 
-package unités.newpackage;
+package terrain;
 
 /**
  *
  * @author Takazeuk
  */
-public class unités {
-    public boolean enjeu;
+public class tuiles {
     public int x;
     public int y;
+    public int type;
+    public int pouvoir;
 
-    public unités(int x, int y) {
-        this.enjeu = true;
+    public tuiles(int x, int y, int type, int pouvoir) {
         this.x = x;
         this.y = y;
+        this.type = type;
+        this.pouvoir = pouvoir;
     }
-       
+
+   public static void action()
+   {
+
+   }
 }

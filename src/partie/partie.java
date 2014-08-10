@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package partie.newpackage;
+package partie;
 
 import java.util.Vector;
 import joueurs.joueurs;
-import terrain.newpackage.tuiles;
-import unités.newpackage.unités;
+import terrain.tuiles;
+import unités.unités;
 
 /**
  *
@@ -20,7 +20,7 @@ public class partie {
     public Vector<tuiles> carte;
     public Vector<unités> population;
 
-    public partie(String s) {
+    public partie(int nbJoueur) {
         Vector<joueurs> participant= new Vector<joueurs>();
         Vector<tuiles> carte= new Vector<tuiles>();
         Vector<unités> population= new Vector<unités>();
@@ -65,5 +65,8 @@ public class partie {
         {
            System.out.println(carte.get(k).x+" "+ carte.get(k).y+" ");
         }*/
+        
+        //on prépare le nombre de joueur
+        
     }    
 }

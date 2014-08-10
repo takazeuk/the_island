@@ -6,11 +6,12 @@
 
 package main;
 
-import partie.newpackage.partie;
+import java.util.Scanner;
 import java.util.Vector;
 import joueurs.joueurs;
-import terrain.newpackage.tuiles;
-import unités.newpackage.unités;
+import partie.partie;
+import terrain.tuiles;
+import unités.unités;
 
 /**
  *
@@ -22,8 +23,19 @@ public class The_island {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Scanner clavier= new Scanner(System.in);
+        System.out.println("Combien de participants ? (4 maximums)");
+        int nb= clavier.nextInt();
         
-        partie partie = new partie("toto");
+        if(nb <= 4)
+        {
+           partie partie = new partie(nb); 
+        }
+        else
+        {
+            System.out.println("nombre de joueurs trop grand");
+        }
+        
   
     }   
 }

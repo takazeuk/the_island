@@ -7,8 +7,8 @@
 package joueurs;
 
 import java.util.Vector;
-import terrain.newpackage.tuiles;
-import unités.newpackage.explorateurs;
+import terrain.tuiles;
+import unités.explorateurs;
 
 /**
  *
