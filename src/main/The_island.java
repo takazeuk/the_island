@@ -24,18 +24,21 @@ public class The_island {
      */
     public static void main(String[] args) {
         Scanner clavier= new Scanner(System.in);
-        System.out.println("Combien de participants ? (4 maximums)");
-        int nb= clavier.nextInt();
-        
-        if(nb <= 4)
+        int nb;
+   
+        do
         {
-           partie partie = new partie(nb); 
+            System.out.println("Combien de participants ? (4 maximums)");
+            nb= clavier.nextInt();
+            if(nb <= 4)
+            {
+               partie partie = new partie(nb); 
+            }
+            else
+            {
+                System.out.println("nombre de joueurs trop grand");
+            }
         }
-        else
-        {
-            System.out.println("nombre de joueurs trop grand");
-        }
-        
-  
+        while(nb > 4);
     }   
 }
