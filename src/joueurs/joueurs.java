@@ -27,6 +27,7 @@ public class joueurs {
         this.deplacement=3;
         Vector<tuiles> cartesEnMain= new Vector<tuiles>();
         Vector<explorateurs> membres= new Vector<explorateurs>();
+        //test jo
     }
     
     
