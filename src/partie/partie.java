@@ -21,13 +21,14 @@ public class partie {
     public Vector<unités> population;
 
     public partie(int nbJoueur) {
-        Vector<joueurs> participant= new Vector<joueurs>();
-        Vector<tuiles> carte= new Vector<tuiles>();
-        Vector<unités> population= new Vector<unités>();
+        this.participant= new Vector<joueurs>();
+        this.carte= new Vector<tuiles>();
+        this.population= new Vector<unités>();
         
         //construction de la carte
         int compt=0;
-        int j;      
+        int j;             
+        //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
             {
@@ -61,10 +62,10 @@ public class partie {
             }
             compt++;
         }
-        /*for (int k=0; k<133; k++)
+        for (int k=0; k<133; k++)
         {
-           System.out.println(carte.get(k).x+" "+ carte.get(k).y+" ");
-        }*/
+           System.out.println(this.carte.get(k).x+" "+ carte.get(k).y+" ");
+        }
         
         //on prépare le nombre de joueur
         
