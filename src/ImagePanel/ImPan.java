@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import terrain.tuiles;
 
 /**
  *
@@ -21,16 +22,18 @@ import javax.swing.JPanel;
  */
 public class ImPan extends JPanel{
     public BufferedImage m_image;
-    int k, j;
-    public ImPan(int x, int y) throws IOException
+    public int k, j;
+    public tuiles terrain;
+    
+    public ImPan(int x, int y, tuiles envoye) throws IOException
     {
         super();
        
            k = x;
            j = y;
+           terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/exal.png"));
-       
-       
+               
     }
     
     @Override public void paintComponent(Graphics g)
