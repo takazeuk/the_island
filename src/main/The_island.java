@@ -26,7 +26,7 @@ public class The_island {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
-        /*Scanner clavier= new Scanner(System.in);
+        Scanner clavier= new Scanner(System.in);
         int nb;
    
         do
@@ -42,8 +42,8 @@ public class The_island {
                 System.out.println("nombre de joueurs trop grand");
             }
         }
-        while(nb > 4);*/
-        /*Int mine = new Int();
+        while(nb > 4);
+        Int mine = new Int();
         mine.setLayout(null);
         int i=0;
         int j=0;
@@ -164,7 +164,7 @@ public class The_island {
             lenouv.setLocation(150+i*60,j*45);
         }
         mine.setSize(800, 800);
-        mine.setVisible(true);*/
+        mine.setVisible(true);
         
     }   
 }
