@@ -10,7 +10,7 @@ package unités;
  *
  * @author Takazeuk
  */
-public class explorateurs extends unités {
+public class explorateurs extends unites {
     public int points;
     public boolean nageur;
 

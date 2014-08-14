@@ -10,12 +10,12 @@ package unités;
  *
  * @author Takazeuk
  */
-public class unités {
+public class unites {
     public boolean enjeu;
     public int x;
     public int y;
 
-    public unités(int x, int y) {
+    public unites(int x, int y) {
         this.enjeu = true;
         this.x = x;
         this.y = y;

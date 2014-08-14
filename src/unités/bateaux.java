@@ -12,7 +12,7 @@ import java.util.Vector;
  *
  * @author Takazeuk
  */
-public class bateaux extends unités {
+public class bateaux extends unites {
     public Vector<explorateurs> marins;
 
     public bateaux(int x, int y) {

@@ -13,7 +13,7 @@ import java.util.Vector;
 import joueurs.joueurs;
 import terrain.tuiles;
 import unités.explorateurs;
-import unités.unités;
+import unités.unites;
 
 /**
  *
@@ -22,12 +22,12 @@ import unités.unités;
 public class partie {
     public Vector<joueurs> participant;
     public Vector<tuiles> carte;
-    public Vector<unités> population;
+    public Vector<unites> population;
 
     public partie() throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
-        this.population= new Vector<unités>();      
+        this.population= new Vector<unites>();      
     }
     
     //fonction pour créer le plateau de jeu avec les tuiles
@@ -59,8 +59,7 @@ public class partie {
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
                         lenouv.setLocation(250+j*60,100+compt*45);
-                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
-                        
+                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
                 break;
                 case 1: case 3: case 9: case 11:
@@ -139,8 +138,7 @@ public class partie {
                     }
             }
             compt++;
-        }
-        
+        }       
         mine.setSize(950, 850);
         mine.setVisible(true);
     }
@@ -180,5 +178,14 @@ public class partie {
               break;
             }  
         }    
+    }
+    
+    public void pouvoir(int numeroPouvoir)
+    {
+        switch(numeroPouvoir)
+        {
+            case 0:
+                
+        }
     }
 }

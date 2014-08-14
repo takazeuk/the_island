@@ -6,6 +6,12 @@
 
 package terrain;
 
+import java.util.Vector;
+import unités.bateaux;
+import unités.explorateurs;
+import unités.monstres;
+import unités.unites;
+
 /**
  *
  * @author Takazeuk
@@ -15,12 +21,16 @@ public class tuiles {
     public int y;
     public int type;
     public int pouvoir;
+    public Vector<explorateurs> explorateurs;
+    public Vector<bateaux> bateaux;
+    public Vector<monstres> monstres;
 
     public tuiles(int x, int y, int type, int pouvoir) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.pouvoir = pouvoir;
+        this.bateaux= new Vector<bateaux>();
     }
 
    public static void action()

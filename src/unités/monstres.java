@@ -6,11 +6,13 @@
 
 package unités;
 
+import terrain.tuiles;
+
 /**
  *
  * @author Takazeuk
  */
-public class monstres extends unités {
+public class monstres extends unites {
     public String nom;
     public int deplacement;
     public int type;
@@ -21,9 +23,22 @@ public class monstres extends unités {
         this.deplacement = deplacement;
         this.type = type;
     }
-     
-    public static void attaque(int type)
+    
+    //fonction pour l'attaque des requins, des baleines, des serpents de mer
+    public static void attaque(tuiles cible, monstres predateur)
     {
-        
+        if ((predateur.type==0)||(predateur.type==2)) {
+            for(explorateurs victime: cible.explorateurs)
+            {
+                cible.explorateurs.remove(victime);
+            }
+        }
+        if ((predateur.type==0)||(predateur.type==2))
+        {
+            for(bateaux navire: cible.bateaux)
+            {
+                cible.bateaux.remove(navire);
+            }
+        }
     }
 }
