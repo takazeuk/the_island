@@ -11,13 +11,11 @@ package unités;
  * @author Takazeuk
  */
 public class explorateurs extends unités {
-    public int joueur;
     public int points;
     public boolean nageur;
 
-    public explorateurs(int joueur, int points, int x, int y) {
+    public explorateurs(int points, int x, int y) {
         super(x, y);
-        this.joueur = joueur;
         this.points = points;
         boolean nageur = false;
     }

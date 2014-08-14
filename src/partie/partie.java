@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.Vector;
 import joueurs.joueurs;
 import terrain.tuiles;
+import unités.explorateurs;
 import unités.unités;
 
 /**
@@ -23,10 +24,15 @@ public class partie {
     public Vector<tuiles> carte;
     public Vector<unités> population;
 
-    public partie(int nbJoueur) throws IOException {
+    public partie() throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
-        this.population= new Vector<unités>();
+        this.population= new Vector<unités>();      
+    }
+    
+    //fonction pour créer le plateau de jeu avec les tuiles
+    public void creationPlateau() throws IOException
+    {
         Int mine = new Int();
         mine.setLayout(null);
         
@@ -137,8 +143,42 @@ public class partie {
         
         mine.setSize(950, 850);
         mine.setVisible(true);
+    }
+      
+    //création des explorateurs
+    public void creationExplorateur(joueurs joueurCree)
+    {
+        explorateurs survivant;
         
-        //on prépare le nombre de joueur
-        
-    }    
+        for(int compt=0; compt<10; compt++)
+        {
+            switch(compt)
+            {
+              case 0: case 1: case 2:
+                  survivant= new explorateurs(1, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+              case 3: case 4:
+                  survivant= new explorateurs(2, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+              case 5: case 6:
+                  survivant= new explorateurs(3, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+              case 7:
+                  survivant= new explorateurs(4, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+              case 8:
+                  survivant= new explorateurs(5, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+              case 9:
+                  survivant= new explorateurs(6, 0, 0);
+                  joueurCree.membres.add(survivant);
+              break;
+            }  
+        }    
+    }
 }
