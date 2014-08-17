@@ -10,6 +10,7 @@ package ImagePanel;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -25,27 +26,34 @@ public class ImPan extends JPanel{
     public int k, j;
     public tuiles terrain;
     
-    public ImPan(int x, int y, tuiles envoye) throws IOException
+    public ImPan(tuiles envoye) throws IOException
     {
         super();
        
-           k = x;
-           j = y;
+           k = envoye.x;
+           j = envoye.y;
            terrain = envoye;
-           m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
-           
-          /* if(terrain.type==1)
-           {
-                m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
-           }
-           else if(terrain.type==2)
-           {
-                m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
-           }
-           else if(terrain.type==3)
-           {
-                m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
-           }*/
+           m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
+    }
+    
+    public void choixImage(tuiles terrain) throws IOException
+    {
+          if(terrain.type==0)
+          {
+            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));           
+          }               
+          else if(terrain.type==1)
+          {
+              m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+          }
+          else if(terrain.type==2)
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/foret.jpg"));
+          }
+          else
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
+          }  
     }
     
     @Override public void paintComponent(Graphics g)

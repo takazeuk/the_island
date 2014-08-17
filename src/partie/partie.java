@@ -26,11 +26,13 @@ public class partie {
     public Vector<joueurs> participant;
     public Vector<tuiles> carte;
     public Vector<unites> population;
+    public Vector<ImPan> imageTuile;
 
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
         this.population= new Vector<unites>();
+        this.imageTuile= new Vector<ImPan>();
     }
     
     //fonction pour créer le plateau de jeu avec les tuiles
@@ -57,7 +59,8 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(0, 0, terrain);
+                        ImPan lenouv = new ImPan(terrain);
+                        imageTuile.add(lenouv);
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
@@ -83,7 +86,8 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(0, 0, terrain);
+                        ImPan lenouv = new ImPan(terrain);
+                        imageTuile.add(lenouv);
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
@@ -113,7 +117,8 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(0, 0, terrain);
+                        ImPan lenouv = new ImPan(terrain);
+                        imageTuile.add(lenouv);
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
@@ -132,7 +137,8 @@ public class partie {
                         
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(0, 0, terrain);
+                        ImPan lenouv = new ImPan(terrain);
+                        imageTuile.add(lenouv);
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
@@ -144,6 +150,15 @@ public class partie {
         }
         this.creationIle();
         this.miseEnPlaceMonstre();
+        
+        for (ImPan image : imageTuile) {
+            for (tuiles imageTuile : carte) {
+                if ((image.j==imageTuile.y)&&(image.k==imageTuile.x)) {
+                    image.choixImage(imageTuile);
+                }
+            }           
+        }
+        
         
         mine.setSize(950, 850);
         mine.setVisible(true);
@@ -222,6 +237,7 @@ public class partie {
         }
   
     }
+    
     
     //création des explorateurs
     public void creationExplorateur(joueurs joueurCree)
