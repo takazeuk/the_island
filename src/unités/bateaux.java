@@ -13,7 +13,7 @@ import java.util.Vector;
  * @author Takazeuk
  */
 public class bateaux extends unites {
-    public Vector<explorateurs> marins;
+    public Vector<explorateurs> marins= new Vector<explorateurs>();
 
     public bateaux(int x, int y) {
         super(x, y);

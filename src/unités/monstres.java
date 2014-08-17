@@ -25,7 +25,7 @@ public class monstres extends unites {
     }
     
     //fonction pour l'attaque des requins, des baleines, des serpents de mer
-    public static void attaque(tuiles cible, monstres predateur)
+    public void attaque(tuiles cible, monstres predateur)
     {
         if ((predateur.type==0)||(predateur.type==2)) {
             for(explorateurs victime: cible.explorateurs)

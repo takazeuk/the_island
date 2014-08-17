@@ -45,7 +45,7 @@ public class The_island {
         while(nb > 4);
         
         //on crée la classe partie pour accèder à nos fonctions de jeu
-        partie partie = new partie();
+        partie partie = new partie(nb);
         
         //on crée nos joueurs
         for(int i=0; i<nb; i++)

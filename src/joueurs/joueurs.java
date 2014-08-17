@@ -20,6 +20,7 @@ public class joueurs {
     public int deplacement;
     public Vector<tuiles> cartesEnMain;
     public Vector<explorateurs> membres;
+    public int pointVictoire;
 
     public joueurs(String nom, int couleur) {
         this.nom = nom;
@@ -27,6 +28,7 @@ public class joueurs {
         this.deplacement=3;
         this.cartesEnMain= new Vector<tuiles>();
         this.membres= new Vector<explorateurs>();
+        this.pointVictoire=0;
     }
     
     //test jo  

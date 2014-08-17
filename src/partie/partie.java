@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.Vector;
 import joueurs.joueurs;
 import terrain.tuiles;
+import unités.bateaux;
 import unités.explorateurs;
 import unités.monstres;
 import unités.unites;
@@ -26,10 +27,10 @@ public class partie {
     public Vector<tuiles> carte;
     public Vector<unites> population;
 
-    public partie() throws IOException {
+    public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
-        this.population= new Vector<unites>();      
+        this.population= new Vector<unites>();
     }
     
     //fonction pour créer le plateau de jeu avec les tuiles
@@ -203,13 +204,44 @@ public class partie {
         this.population.add(plateaumonstres5);
     }
     
-    public void pouvoir(int numeroPouvoir)
+    public void pouvoirImmediat(tuiles pouvoirJoueur)
     {
-        switch(numeroPouvoir)
+        monstres apparition;
+        switch(pouvoirJoueur.pouvoir)
         {
-            case 0:
-                
+            case 0: case 1:
+                if (pouvoirJoueur.pouvoir==0) {
+                    apparition= new monstres("Requin",2,0,pouvoirJoueur.x,pouvoirJoueur.y);
+                }
+                else
+                {
+                   apparition= new monstres("Baleine",3,1,pouvoirJoueur.x,pouvoirJoueur.y); 
+                }               
+                pouvoirJoueur.monstres.add(apparition);
+                apparition.attaque(pouvoirJoueur, apparition);
+            break;
+            case 2:
+                bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
+            break;
+            case 3: //tourbillon à faire plus tard
+            break;
+            case 4: //fin du jeu à faire plus tard
+                //on compte les points pour chacun des Joueurs
+                for (joueurs challenger : participant) {
+                    finDePartie(challenger);
+                }
+            break;                              
         }
+    }
+    
+    public void pouvoirEnMain(tuiles pouvoirJoueur)
+    {
+        
+    }
+    
+    public void pouvoirDefense(tuiles pouvoirJoueur)
+    {
+        
     }
     
     //phase de deploiement des explorateurs des joueurs
@@ -240,5 +272,18 @@ public class partie {
         Random r = new Random();
         int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
         return valeur;
+    }
+    
+    public void finDePartie(joueurs joueurPoint)
+    {
+        //fin de partie, on va compter les rescapé en les stockant dans un vecteur et enuiste on compte les point
+        Vector<explorateurs> survivants= new Vector<explorateurs>();
+        
+        for (explorateurs valeurPion : survivants) {           
+            if (joueurPoint.membres.contains(valeurPion)) {
+                joueurPoint.pointVictoire= joueurPoint.pointVictoire + valeurPion.points;
+            }
+        }
+        
     }
 }
