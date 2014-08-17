@@ -32,8 +32,20 @@ public class ImPan extends JPanel{
            k = x;
            j = y;
            terrain = envoye;
-           m_image = ImageIO.read(getClass().getResource("/images/exal.png"));
-               
+           m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+           
+          /* if(terrain.type==1)
+           {
+                m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+           }
+           else if(terrain.type==2)
+           {
+                m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
+           }
+           else if(terrain.type==3)
+           {
+                m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
+           }*/
     }
     
     @Override public void paintComponent(Graphics g)
