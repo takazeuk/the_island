@@ -142,13 +142,87 @@ public class partie {
             }
             compt++;
         }
-        
+        this.creationIle();
         this.miseEnPlaceMonstre();
         
         mine.setSize(950, 850);
         mine.setVisible(true);
     }
-      
+     
+    //création de l'ile
+    public void creationIle()
+    {
+        for (tuiles ile : carte) {
+            if (ile.y==3) {
+                if ((ile.x==5)||(ile.x==7)) {
+                   ile.type=1;
+                }
+                else if((ile.x==6)||(ile.x==8))
+                {
+                    ile.type=2;
+                }
+            }
+            else if(ile.y==4){
+               if ((ile.x==7)||(ile.x==9)) {
+                   ile.type=1;
+               }
+               else if (ile.x==5) {
+                   ile.type=2;
+               }
+               else if ((ile.x==6)||(ile.x==8)) {
+                   ile.type=3;
+               }
+            }
+            else if(ile.y==5){
+               if ((ile.x==4)||(ile.x==7)||(ile.x==8)) {
+                   ile.type=1;
+               }
+               else if ((ile.x==5)||(ile.x==6)||(ile.x==9)||(ile.x==10)||(ile.x==11)) {
+                   ile.type=2;
+               }
+            }
+            else if(ile.y==6){
+               if ((ile.x==5)||(ile.x==10)||(ile.x==11)) {
+                   ile.type=1;
+               }
+               else if ((ile.x==6)||(ile.x==7)||(ile.x==9)) {
+                   ile.type=3;
+               }
+            }
+            else if(ile.y==7){
+               if ((ile.x==5)||(ile.x==9)||(ile.x==12)) {
+                   ile.type=1;
+               }
+               else if ((ile.x==6)||(ile.x==7)||(ile.x==8)||(ile.x==10)) {
+                   ile.type=2;
+               }
+               else if ((ile.x==11)) {
+                   ile.type=3;
+               }
+            }
+            else if(ile.y==8){
+               if ((ile.x==9)) {
+                   ile.type=1;
+               }
+               else if ((ile.x==7)||(ile.x==11)) {
+                   ile.type=2;
+               }
+               else if ((ile.x==8)||(ile.x==10)) {
+                   ile.type=3;
+               }
+            }
+            else if(ile.y==9){
+               if ((ile.x==8)||(ile.x==11)) {
+                   ile.type=1;
+               }
+               else if ((ile.x==9)||(ile.x==10)) {
+                   ile.type=2;
+               }
+            }
+        }
+  
+    }
+    
     //création des explorateurs
     public void creationExplorateur(joueurs joueurCree)
     {
