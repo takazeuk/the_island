@@ -33,7 +33,7 @@ public class monstres extends unites {
                 cible.explorateurs.remove(victime);
             }
         }
-        if ((predateur.type==0)||(predateur.type==2))
+        if ((predateur.type==1)||(predateur.type==2))
         {
             for(bateaux navire: cible.bateaux)
             {

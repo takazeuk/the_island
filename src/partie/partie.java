@@ -218,11 +218,11 @@ public class partie {
     }
     
     //phase de déplacement des unités
-    public void deplacementUnite(joueurs tourJoueur)
+    /*public void deplacementUnite(joueurs tourJoueur)
     {
         System.out.println("Joueur "+(i+1)+" ,quel sera votre nom?");
             nom= clavier.next();
-    }
+    }*/
     
     //lance de dée de la créature
     public int deeCreature()
