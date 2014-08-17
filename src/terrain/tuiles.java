@@ -30,7 +30,9 @@ public class tuiles {
         this.y = y;
         this.type = type;
         this.pouvoir = pouvoir;
+        this.explorateurs= new Vector<explorateurs>();
         this.bateaux= new Vector<bateaux>();
+        this.monstres= new Vector<monstres>();       
     }
 
    public static void action()

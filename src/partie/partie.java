@@ -9,6 +9,7 @@ package partie;
 import ImagePanel.ImPan;
 import UI.Int;
 import java.io.IOException;
+import java.util.Random;
 import java.util.Vector;
 import joueurs.joueurs;
 import terrain.tuiles;
@@ -141,21 +142,8 @@ public class partie {
             compt++;
         }
         
-        //mise en place des premiers monstres du début de partie
-        monstres plateaumonstres1= new monstres("Serpent de mer", 1, 2, 1, 1);
-        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 2, 9, 2);
-        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 2, 5, 6);
-        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 2, 10, 10);
-        monstres plateaumonstres5= new monstres("Serpent de mer", 1, 2, 15, 11);
+        this.miseEnPlaceMonstre();
         
-        //ajout des monstres au vecteur unité de partie
-        this.population.add(plateaumonstres1);
-        this.population.add(plateaumonstres2);
-        this.population.add(plateaumonstres3);
-        this.population.add(plateaumonstres4);
-        this.population.add(plateaumonstres5);
-        
-
         mine.setSize(950, 850);
         mine.setVisible(true);
     }
@@ -197,9 +185,22 @@ public class partie {
         }    
     }
     
+    //creation des premeirs monstres sur le plateau
     public void miseEnPlaceMonstre()
     {
+        //mise en place des premiers monstres du début de partie
+        monstres plateaumonstres1= new monstres("Serpent de mer", 1, 2, 1, 1);
+        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 2, 9, 2);
+        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 2, 5, 6);
+        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 2, 10, 10);
+        monstres plateaumonstres5= new monstres("Serpent de mer", 1, 2, 15, 11);
         
+        //ajout des monstres au vecteur unité de partie
+        this.population.add(plateaumonstres1);
+        this.population.add(plateaumonstres2);
+        this.population.add(plateaumonstres3);
+        this.population.add(plateaumonstres4);
+        this.population.add(plateaumonstres5);
     }
     
     public void pouvoir(int numeroPouvoir)
@@ -212,22 +213,32 @@ public class partie {
     }
     
     //phase de deploiement des explorateurs des joueurs
-    public void deploiement(joueurs tourJoueur)
+    public boolean deploiement(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi)
     {
-        
+        if ((choisi.type==0)||(choisi.explorateurs.size()!=0)) {
+            return false;
+        }
+        else
+        {
+            //il faudra 
+            choisi.explorateurs.add(pionschoisi);
+            return true;
+        }
     }
     
     //phase de déplacement des unités
     /*public void deplacementUnite(joueurs tourJoueur)
     {
-        System.out.println("Joueur "+(i+1)+" ,quel sera votre nom?");
-            nom= clavier.next();
+        
     }*/
     
     //lance de dée de la créature
     public int deeCreature()
     {
-        int val=0;
-        return val;
+        int valeurMin=0;
+        int valeurMax= 2;
+        Random r = new Random();
+        int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
+        return valeur;
     }
 }
