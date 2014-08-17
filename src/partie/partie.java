@@ -210,4 +210,24 @@ public class partie {
                 
         }
     }
+    
+    //phase de deploiement des explorateurs des joueurs
+    public void deploiement(joueurs tourJoueur)
+    {
+        
+    }
+    
+    //phase de déplacement des unités
+    public void deplacementUnite(joueurs tourJoueur)
+    {
+        System.out.println("Joueur "+(i+1)+" ,quel sera votre nom?");
+            nom= clavier.next();
+    }
+    
+    //lance de dée de la créature
+    public int deeCreature()
+    {
+        int val=0;
+        return val;
+    }
 }
