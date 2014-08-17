@@ -20,5 +20,16 @@ public class unites {
         this.x = x;
         this.y = y;
     }
+    
+    public boolean deplacement(int x, int y)
+    {
+        int coorduniteX= this.x;
+        int coorduniteY= this.y;
+        
+        if (((x==coorduniteX)&&(y==coorduniteY-1))||((x==coorduniteX)&&(y==coorduniteY+1))||((x==coorduniteX+1)&&(y==coorduniteY))||((x==coorduniteX-1)&&(y==coorduniteY))||((x==coorduniteX-1)&&(y==coorduniteY-1))||((x==coorduniteX+1)&&(y==coorduniteY+1))) {
+            return true;
+        }
+        return false;        
+    }
        
 }

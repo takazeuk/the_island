@@ -13,6 +13,7 @@ import java.util.Vector;
 import joueurs.joueurs;
 import terrain.tuiles;
 import unités.explorateurs;
+import unités.monstres;
 import unités.unites;
 
 /**
@@ -138,7 +139,23 @@ public class partie {
                     }
             }
             compt++;
-        }       
+        }
+        
+        //mise en place des premiers monstres du début de partie
+        monstres plateaumonstres1= new monstres("Serpent de mer", 1, 2, 1, 1);
+        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 2, 9, 2);
+        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 2, 5, 6);
+        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 2, 10, 10);
+        monstres plateaumonstres5= new monstres("Serpent de mer", 1, 2, 15, 11);
+        
+        //ajout des monstres au vecteur unité de partie
+        this.population.add(plateaumonstres1);
+        this.population.add(plateaumonstres2);
+        this.population.add(plateaumonstres3);
+        this.population.add(plateaumonstres4);
+        this.population.add(plateaumonstres5);
+        
+
         mine.setSize(950, 850);
         mine.setVisible(true);
     }
@@ -178,6 +195,11 @@ public class partie {
               break;
             }  
         }    
+    }
+    
+    public void miseEnPlaceMonstre()
+    {
+        
     }
     
     public void pouvoir(int numeroPouvoir)
