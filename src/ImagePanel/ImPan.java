@@ -33,12 +33,12 @@ public class ImPan extends JPanel{
            k = envoye.x;
            j = envoye.y;
            terrain = envoye;
-           m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
+           m_image = ImageIO.read(getClass().getResource("/images/exal.png"));
     }
     
     public void choixImage(tuiles terrain) throws IOException
     {
-          if(terrain.type==0)
+          /*if(terrain.type==0)
           {
             m_image = ImageIO.read(getClass().getResource("/images/eau.png"));           
           }               
@@ -53,11 +53,11 @@ public class ImPan extends JPanel{
           else
           {
              m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
-          }  
+          }  */
     }
     
     @Override public void paintComponent(Graphics g)
     {
-        g.drawImage(m_image, 0, 0, 60, 60, null);
+        g.drawImage(m_image, 0, 0, 80, 80, null);
     }
 }

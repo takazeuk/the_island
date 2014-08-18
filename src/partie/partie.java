@@ -12,6 +12,8 @@ import java.awt.Dimension;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import joueurs.joueurs;
 import terrain.tuiles;
 import unités.bateaux;
@@ -48,6 +50,9 @@ public class partie {
         int compt=0;
         int j;       
         int cordy;
+        JPanel legros = new JPanel();
+        legros.setLayout(null);
+        JScrollPane Scroll;
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
@@ -64,10 +69,11 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(60, 60);
+                        lenouv.setSize(80, 80);
                         lenouv.setVisible(true);
-                        mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 210) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
+                        legros.add(lenouv);
+                        lenouv.setLocation((largeur/2 - 210) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
                 break;
@@ -91,10 +97,12 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(60, 60);
+                        lenouv.setSize(80, 80);
                         lenouv.setVisible(true);
-                        mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 300) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
+                        legros.add(lenouv);
+                        //mine.getContentPane().add(lenouv);
+                        lenouv.setLocation((largeur/2 - 300) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -122,10 +130,10 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(60, 60);
+                        lenouv.setSize(80, 80);
                         lenouv.setVisible(true);
-                        mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 330)+j*60,(hauteur/2 -(285+(45/2)))+compt*45);
+                        legros.add(lenouv);
+                        lenouv.setLocation((largeur/2 - 330)+j*80,(hauteur/2 -(285+(65/2)))+compt*65);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -142,10 +150,10 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(60, 60);
+                        lenouv.setSize(80, 80);
                         lenouv.setVisible(true);
-                        mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 360) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
+                        legros.add(lenouv);
+                        lenouv.setLocation((largeur/2 - 360) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
@@ -161,8 +169,15 @@ public class partie {
                 }
             }           
         }
+        Scroll = new JScrollPane(legros);
+        Scroll.setMinimumSize(new Dimension(200, 200));
+        Scroll.setVisible(true);
         
+        legros.setBounds(0, 0, largeur, hauteur);
         
+        //mine.getContentPane().add(legros);
+        mine.getContentPane().add(Scroll);
+        legros.setVisible(true);
         mine.setSize(largeur, hauteur);
         mine.setVisible(true);
     }
