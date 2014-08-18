@@ -62,6 +62,11 @@ public class ImPan extends JPanel{
           }  
     }
     
+    public void placeUnité(tuiles terrain) throws IOException
+    {
+        
+    }
+    
     
     @Override public void paintComponent(Graphics g)
     {

@@ -72,7 +72,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 420) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((400) +j*120,(hauteur/2 -330)+compt*90);
                         //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
@@ -101,7 +101,7 @@ public class partie {
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         //mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 600) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((220) +j*120,(hauteur/2 -330)+compt*90);
                         //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
@@ -133,7 +133,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 660)+j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((160)+j*120,(hauteur/2 -330)+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -153,7 +153,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 720) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((100) +j*120,(hauteur/2 -330)+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
@@ -173,9 +173,9 @@ public class partie {
         Scroll.add(legros);
         Scroll.setMinimumSize(new Dimension(200, 200));
         Scroll.setVisible(true);*/
-        Scroll = new JScrollPane(legros);
-        legros.setPreferredSize(new Dimension(largeur*2,hauteur*2));
-        Scroll.setBounds(0, 0, largeur-10,hauteur-10);
+        Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        legros.setPreferredSize(new Dimension(2200,1500));
+        Scroll.setBounds(largeur/4, hauteur/4, largeur/2, hauteur/2);
         //legros.setBounds(0, 0, largeur, hauteur);
         
         mine.getContentPane().add(Scroll);
