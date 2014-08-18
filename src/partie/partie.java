@@ -8,6 +8,7 @@ package partie;
 
 import ImagePanel.ImPan;
 import UI.Int;
+import java.awt.Dimension;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
@@ -34,7 +35,9 @@ public class partie {
         this.population= new Vector<unites>();
         this.imageTuile= new Vector<ImPan>();
     }
-    
+    Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+    int hauteur = (int)tailleEcran.getHeight();
+    int largeur = (int)tailleEcran.getWidth();
     //fonction pour créer le plateau de jeu avec les tuiles
     public void creationPlateau() throws IOException
     {
@@ -64,7 +67,7 @@ public class partie {
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
-                        lenouv.setLocation(250+j*60,100+compt*45);
+                        lenouv.setLocation((largeur/2 - 210) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
                 break;
@@ -91,7 +94,7 @@ public class partie {
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
-                        lenouv.setLocation(160+j*60,100+compt*45);
+                        lenouv.setLocation((largeur/2 - 300) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -122,7 +125,7 @@ public class partie {
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
-                        lenouv.setLocation(130+j*60,100+compt*45);
+                        lenouv.setLocation((largeur/2 - 330)+j*60,(hauteur/2 -(285+(45/2)))+compt*45);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -142,7 +145,7 @@ public class partie {
                         lenouv.setSize(60, 60);
                         lenouv.setVisible(true);
                         mine.getContentPane().add(lenouv);
-                        lenouv.setLocation(100+j*60,100+compt*45);
+                        lenouv.setLocation((largeur/2 - 360) +j*60,(hauteur/2 -(285+(45/2)))+compt*45);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
@@ -160,7 +163,7 @@ public class partie {
         }
         
         
-        mine.setSize(950, 850);
+        mine.setSize(largeur, hauteur);
         mine.setVisible(true);
     }
      

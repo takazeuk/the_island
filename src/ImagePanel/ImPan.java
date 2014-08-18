@@ -58,6 +58,6 @@ public class ImPan extends JPanel{
     
     @Override public void paintComponent(Graphics g)
     {
-        g.drawImage(m_image, k, j, 60, 60, null);
+        g.drawImage(m_image, 0, 0, 60, 60, null);
     }
 }
