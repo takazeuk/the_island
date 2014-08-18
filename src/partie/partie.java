@@ -174,7 +174,7 @@ public class partie {
         Scroll.setMinimumSize(new Dimension(200, 200));
         Scroll.setVisible(true);*/
         Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        legros.setPreferredSize(new Dimension(1600,1500));
+        legros.setPreferredSize(new Dimension(1600,1300));
         Scroll.setBounds(largeur/8, hauteur/8, 6*largeur/8, 6*hauteur/8);
         //legros.setBounds(0, 0, largeur, hauteur);
         
