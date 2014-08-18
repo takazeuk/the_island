@@ -69,10 +69,10 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(80, 80);
+                        lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 210) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        lenouv.setLocation((largeur/2 - 420) +j*120,(hauteur/2 -330)+compt*90);
                         //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
@@ -97,11 +97,11 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(80, 80);
+                        lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         //mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((largeur/2 - 300) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        lenouv.setLocation((largeur/2 - 600) +j*120,(hauteur/2 -330)+compt*90);
                         //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
@@ -130,10 +130,10 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(80, 80);
+                        lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 330)+j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        lenouv.setLocation((largeur/2 - 660)+j*120,(hauteur/2 -330)+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -150,10 +150,10 @@ public class partie {
                         carte.add(terrain);
                         ImPan lenouv = new ImPan(terrain);
                         imageTuile.add(lenouv);
-                        lenouv.setSize(80, 80);
+                        lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((largeur/2 - 360) +j*80,(hauteur/2 -(285+(65/2)))+compt*65);
+                        lenouv.setLocation((largeur/2 - 720) +j*120,(hauteur/2 -330)+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
@@ -169,14 +169,17 @@ public class partie {
                 }
             }           
         }
-        Scroll = new JScrollPane(legros);
+        /*Scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        Scroll.add(legros);
         Scroll.setMinimumSize(new Dimension(200, 200));
-        Scroll.setVisible(true);
+        Scroll.setVisible(true);*/
+        Scroll = new JScrollPane(legros);
+        legros.setPreferredSize(new Dimension(largeur*2,hauteur*2));
+        Scroll.setBounds(0, 0, largeur-10,hauteur-10);
+        //legros.setBounds(0, 0, largeur, hauteur);
         
-        legros.setBounds(0, 0, largeur, hauteur);
-        
-        //mine.getContentPane().add(legros);
         mine.getContentPane().add(Scroll);
+       // mine.getContentPane().add(Scroll);
         legros.setVisible(true);
         mine.setSize(largeur, hauteur);
         mine.setVisible(true);
