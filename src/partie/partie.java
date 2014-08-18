@@ -72,7 +72,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((400) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((400) +j*120,50+compt*90);
                         //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
@@ -101,7 +101,7 @@ public class partie {
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         //mine.getContentPane().add(lenouv);
-                        lenouv.setLocation((220) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((220) +j*120,50+compt*90);
                         //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
@@ -133,7 +133,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((160)+j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((160)+j*120,50+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
@@ -153,7 +153,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((100) +j*120,(hauteur/2 -330)+compt*90);
+                        lenouv.setLocation((100) +j*120,50+compt*90);
                         System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
