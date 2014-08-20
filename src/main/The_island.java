@@ -6,7 +6,7 @@
 
 package main;
 
-import ImagePanel.ImPan;
+import ImagePanel.GrosPanel;
 import MessageBox.Interaction;
 import UI.Int;
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class The_island {
     public static void main(String[] args) throws IOException {
         
         
-        Scanner clavier= new Scanner(System.in);
+        //Scanner clavier= new Scanner(System.in);
         int nb;
         String nom;
    
@@ -67,6 +67,7 @@ public class The_island {
                 
         //on crée le plateau de jeu
         partie.creationPlateau();
+        partie.miseEnPlaceDesPetitPanel();
         
         
     }   

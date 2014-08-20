@@ -21,12 +21,14 @@ import terrain.tuiles;
  *
  * @author Jonathan
  */
-public class ImPan extends JPanel{
+public class GrosPanel extends JPanel{
     public BufferedImage m_image, m_monstres;
     public int k, j;
     public tuiles terrain;
-    boolean b;
-    public ImPan(tuiles envoye) throws IOException
+    public boolean b;
+    public Vector <PetitPanel> affichageUnite;
+    //public int nb;
+    public GrosPanel(tuiles envoye) throws IOException
     {
         super();
        
@@ -34,8 +36,15 @@ public class ImPan extends JPanel{
            j = envoye.y;
            terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
+           affichageUnite = new Vector<PetitPanel>();
     }
     
+    /*public ImPan(int numJoueur)throws IOException
+    {
+        super();
+        nb = numJoueur;
+        m_image = ImageIO.read(getClass().getResource("/images/pawn_256.png"));
+    }*/
     public void choixImage(tuiles terrain) throws IOException
     {
           
@@ -71,7 +80,7 @@ public class ImPan extends JPanel{
     @Override public void paintComponent(Graphics g)
     {
         g.drawImage(m_image, 0, 0, 120, 120, null);
-        if(b)
+        /*if(b)
         {
             g.fillOval(55, 55,5, 5);
             g.fillOval(30, 20,5, 5);
@@ -80,7 +89,7 @@ public class ImPan extends JPanel{
             g.fillOval(85, 85,5, 5);
             g.fillOval(15, 55,5, 5);
             g.fillOval(95, 55,5, 5);
-        }
+        }*/
         
     }
 }

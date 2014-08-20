@@ -6,9 +6,13 @@
 
 package partie;
 
-import ImagePanel.ImPan;
+import ImagePanel.GrosPanel;
+import ImagePanel.PetitPanel;
 import UI.Int;
+import java.awt.Component;
 import java.awt.Dimension;
+import static java.awt.PageAttributes.MediaType.C;
+import java.awt.Panel;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
@@ -29,21 +33,23 @@ public class partie {
     public Vector<joueurs> participant;
     public Vector<tuiles> carte;
     public Vector<unites> population;
-    public Vector<ImPan> imageTuile;
-
+    public Vector<GrosPanel> imageTuile;
+    public Int mine;
+    public JScrollPane Scroll;
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
         this.population= new Vector<unites>();
-        this.imageTuile= new Vector<ImPan>();
+        this.imageTuile= new Vector<GrosPanel>();
     }
+    
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     int hauteur = (int)tailleEcran.getHeight();
     int largeur = (int)tailleEcran.getWidth();
     //fonction pour créer le plateau de jeu avec les tuiles
     public void creationPlateau() throws IOException
     {
-        Int mine = new Int();
+         mine = new Int();
         mine.setLayout(null);
         
         //construction de la carte
@@ -52,7 +58,7 @@ public class partie {
         int cordy;
         JPanel legros = new JPanel();
         legros.setLayout(null);
-        JScrollPane Scroll;
+        
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
@@ -67,7 +73,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -95,7 +101,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -128,7 +134,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -148,7 +154,7 @@ public class partie {
                         
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        ImPan lenouv = new ImPan(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -162,7 +168,7 @@ public class partie {
         this.creationIle();
         this.miseEnPlaceMonstre();
         
-        for (ImPan image : imageTuile) {
+        for (GrosPanel image : imageTuile) {
             for (tuiles imageTuile : carte) {
                 if ((image.j==imageTuile.y)&&(image.k==imageTuile.x)) {
                     image.choixImage(imageTuile);
@@ -184,7 +190,79 @@ public class partie {
         mine.setSize(largeur, hauteur);
         mine.setVisible(true);
     }
-     
+    public void miseEnPlaceDesPetitPanel() throws IOException
+    {
+        for (Component LesPanels : Scroll.getComponents()) 
+        {
+            System.out.println("1er for");
+            if(LesPanels instanceof GrosPanel)
+            {
+                System.out.println("le premier if du premier for");
+                GrosPanel panel = (GrosPanel) LesPanels;
+                for (int i = 0; i < 7; i++) 
+                {
+                    System.out.println("le deuxieme for");
+                    PetitPanel unite = null;
+                    if(i==0)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(45, 45);
+                        System.out.println("1er if");
+                        
+                    }
+                    else if(i==1)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(20, 10);
+                        System.out.println("2eme if");
+                    }
+                    else if(i==2)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(75, 15);
+                        System.out.println("3eme if");
+                    }
+                    else if(i==3)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(15, 75);
+                        System.out.println("4eme if");
+                    }
+                    else if(i==4)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(75, 75);
+                        System.out.println("5eme if");
+                    }
+                    else if(i==5)
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(5, 45);
+                        System.out.println("6eme if");
+                    }
+                    else
+                    {
+                        unite = new PetitPanel();
+                        unite.setLocation(85, 45);
+                        System.out.println("7eme if");
+                    }
+                    panel.add(unite);
+                    panel.affichageUnite.add(unite);
+                    
+                }
+            }
+            
+        }
+        GrosPanel truc = null;
+        if(truc instanceof GrosPanel)
+        {
+            truc =(GrosPanel) Scroll.getComponent(3);
+        }
+        for (PetitPanel trucbis : truc.affichageUnite) {
+            System.out.println(" "+trucbis.numeroJoueur);
+        }
+        
+    }
     //création de l'ile
     public void creationIle()
     {
