@@ -337,6 +337,39 @@ public class partie {
   
     }
     
+    public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer){
+        
+        if (cible.explorateurs.size()!=4) {
+            cible.explorateurs.add(uniteDeplacer);
+            return true;
+        }
+        return false;
+        //messagebox de refus du déplacement
+    }
+    
+    public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer){
+        
+        if (cible.monstres.size()!=4) {
+            for (monstres monstrePresent : cible.monstres) {
+                if (monstreDeplacer.type==monstrePresent.type) {
+                    return false;
+                }
+            }   
+            cible.monstres.add(monstreDeplacer);
+            return true;
+        }
+        return false;
+        //messagebox de refus du déplacement     
+    }
+    
+    public boolean ajoutBateauTuile(tuiles cible, bateaux bateauDeplacer){
+        if (cible.bateaux.size()==1) {
+            return false;
+            //messagebox de refus du déplacement
+        }
+        cible.bateaux.add(bateauDeplacer);
+        return true;
+    }
     
     //création des explorateurs
     public void creationExplorateur(joueurs joueurCree)
