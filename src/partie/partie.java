@@ -38,6 +38,7 @@ public class partie {
     public Int mine;
     public JScrollPane Scroll;
     JPanel legros = new JPanel();
+    
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
@@ -84,7 +85,7 @@ public class partie {
                         legros.add(lenouv);
                         lenouv.setLocation((400) +j*120,50+compt*90);
                         //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
-                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
+                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
                     }
                 break;
                 case 1: case 3: case 9: case 11:
@@ -106,6 +107,8 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain);
+                        lenouv.setLayout(null);
+                        miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -113,7 +116,7 @@ public class partie {
                         //mine.getContentPane().add(lenouv);
                         lenouv.setLocation((220) +j*120,50+compt*90);
                         //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
-                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
+                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
                 case 2: case 4: case 6: case 8: case 10:
@@ -139,12 +142,14 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain);
+                        lenouv.setLayout(null);
+                        miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         lenouv.setLocation((160)+j*120,50+compt*90);
-                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
+                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
                 case 5: case 7:
@@ -159,12 +164,14 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain);
+                        lenouv.setLayout(null);
+                        miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         lenouv.setLocation((100) +j*120,50+compt*90);
-                        System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
+                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
             compt++;
@@ -208,75 +215,64 @@ public class partie {
                 GrosPanel panel = (GrosPanel) LesPanels;*/
                 for (int i = 0; i < 7; i++) 
                 {
-                    System.out.println("le deuxieme for");
-                    PetitPanel unite = new PetitPanel();
+                    PetitPanel unite;
                     if(i==0)
                     {
                         
                         //unite.setSize(10, 10);
                         //unite.setLocation(45, 45);
-                        
+                        unite = new PetitPanel(6);
                         tuile.add(unite);
                         unite.setBounds(57, 55, 10, 10);
-                        //unite.setBounds(60, 60, 10, 10);
-                        
-                        
-                        System.out.println("1er if");
-                        
+                        //unite.setBounds(60, 60, 10, 10);                       
                     }
                     else if(i==1)
                     {
-                        unite = new PetitPanel();
+                       unite = new PetitPanel(0);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 20, 10, 10);
                         //unite.setLocation(20, 10);
-                        System.out.println("2eme if");
                     }
                     else if(i==2)
                     {
-                        unite = new PetitPanel();
+                        unite = new PetitPanel(5);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 20, 10, 10);
                         //unite.setLocation(75, 15);
-                        System.out.println("3eme if");
                     }
                     else if(i==3)
                     {
-                        unite = new PetitPanel();
+                        unite = new PetitPanel(2);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 90, 10, 10);
                         //unite.setLocation(15, 75);
-                        System.out.println("4eme if");
                     }
                     else if(i==4)
                     {
-                        unite = new PetitPanel();
+                        unite = new PetitPanel(3);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 90, 10, 10);
                         //unite.setLocation(75, 75);
-                        System.out.println("5eme if");
                     }
                     else if(i==5)
                     {
-                        unite = new PetitPanel();
+                        unite = new PetitPanel(1);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(10, 55, 10, 10);
                         //unite.setLocation(5, 45);
-                        System.out.println("6eme if");
                     }
                     else
                     {
-                        unite = new PetitPanel();
+                        unite = new PetitPanel(4);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(100, 55, 10, 10);
                         //unite.setLocation(85, 45);
-                        System.out.println("7eme if");
                     }
                     tuile.affichageUnite.add(unite);
                     
@@ -374,96 +370,12 @@ public class partie {
             }
         }
   
-    }
+    }   
     
-    public void essai() throws IOException
-    {
-        mine = new Int();
-        mine.setLayout(null);
-        tuiles terrain= new tuiles(40, 40, 0, 0);
-        GrosPanel essaiPanel = new GrosPanel(terrain);
-        essaiPanel.setLayout(null);
-        essaiPanel.setSize(120, 120);
-        mine.add(essaiPanel);
-        essaiPanel.setVisible(true);
-        for (int i = 0; i < 7; i++) 
-                {
-                    //System.out.println("le deuxieme for");
-                    PetitPanel unite = null;
-                    if(i==0)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(10, 10);
-                        essaiPanel.add(unite);
-                        unite.setBounds(45, 45, 10, 10);
-                        //unite.setLocation(45, 45);
-                        System.out.println("1er if");
-                        
-                    }
-                    else if(i==1)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(20, 20, 10, 10);
-                        //unite.setLocation(20, 10);
-                        System.out.println("2eme if");
-                    }
-                    else if(i==2)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(75, 15, 10, 10);
-                        //unite.setLocation(75, 15);
-                        System.out.println("3eme if");
-                    }
-                    else if(i==3)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(15, 75, 10, 10);
-                        //unite.setLocation(15, 75);
-                        System.out.println("4eme if");
-                    }
-                    else if(i==4)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(75, 75, 10, 10);
-                        //unite.setLocation(75, 75);
-                        System.out.println("5eme if");
-                    }
-                    else if(i==5)
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(5, 45, 10, 10);
-                        //unite.setLocation(5, 45);
-                        System.out.println("6eme if");
-                    }
-                    else
-                    {
-                        unite = new PetitPanel();
-                        //unite.setSize(15, 15);
-                        essaiPanel.add(unite);
-                        unite.setBounds(85, 45, 10, 10);
-                        //unite.setLocation(85, 45);
-                        System.out.println("7eme if");
-                    }
-                    //essaiPanel.affichageUnite.add(unite);
-                    
-                
-           mine.setVisible(true);
-        }
-    }
-    
-    public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer){
+    public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer) throws IOException{
         
-        if (cible.explorateurs.size()!=4) {
+        if (cible.explorateurs.size()!=3) {
+            affichageExplorateurs(cible, uniteDeplacer);
             cible.explorateurs.add(uniteDeplacer);
             return true;
         }
@@ -505,27 +417,27 @@ public class partie {
             switch(compt)
             {
               case 0: case 1: case 2:
-                  survivant= new explorateurs(1, 0, 0);
+                  survivant= new explorateurs(1, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
               case 3: case 4:
-                  survivant= new explorateurs(2, 0, 0);
+                  survivant= new explorateurs(2, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
               case 5: case 6:
-                  survivant= new explorateurs(3, 0, 0);
+                  survivant= new explorateurs(3, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
               case 7:
-                  survivant= new explorateurs(4, 0, 0);
+                  survivant= new explorateurs(4, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
               case 8:
-                  survivant= new explorateurs(5, 0, 0);
+                  survivant= new explorateurs(5, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
               case 9:
-                  survivant= new explorateurs(6, 0, 0);
+                  survivant= new explorateurs(6, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
             }  
@@ -630,6 +542,31 @@ public class partie {
                 joueurPoint.pointVictoire= joueurPoint.pointVictoire + valeurPion.points;
             }
         }
+        
+    }
+
+    private void affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
+            
+        for (Component temp  : legros.getComponents()) {
+            
+            if(temp instanceof GrosPanel)
+            {
+                
+                GrosPanel territoire = (GrosPanel) temp;
+                
+                if (territoire.terrain==cible) {
+                    
+                    for (int i = 0; i < 2; i++) {
+                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        if (territoire.affichageUnite.get(i).numeroJoueur==4) {
+                            territoire.affichageUnite.get(i).numeroJoueur= uniteDeplacer.proprietaire;
+                            territoire.affichageUnite.get(i).choixImage();
+                        }
+                    }
+                }
+            }
+        }
+        
         
     }
 }
