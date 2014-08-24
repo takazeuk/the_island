@@ -22,7 +22,7 @@ public class PetitPanel extends JPanel{
     public PetitPanel() throws IOException
     {
         numeroJoueur = 4;
-        this.setSize(20, 20);
+        this.setSize(10, 10);
         m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
         this.setVisible(true);
     }

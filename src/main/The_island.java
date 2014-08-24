@@ -67,9 +67,10 @@ public class The_island {
         }
                 
         //on crée le plateau de jeu
+        //
         partie.creationPlateau();
-        partie.miseEnPlaceDesPetitPanel();
-        
+        //partie.miseEnPlaceDesPetitPanel();
+        //partie.essai();
         
         
     }   

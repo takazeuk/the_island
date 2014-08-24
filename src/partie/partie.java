@@ -9,6 +9,7 @@ package partie;
 import ImagePanel.GrosPanel;
 import ImagePanel.PetitPanel;
 import UI.Int;
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import static java.awt.PageAttributes.MediaType.C;
@@ -75,6 +76,8 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain);
+                        lenouv.setLayout(null);
+                        miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
@@ -180,7 +183,9 @@ public class partie {
         Scroll.add(legros);
         Scroll.setMinimumSize(new Dimension(200, 200));
         Scroll.setVisible(true);*/
+        //miseEnPlaceDesPetitPanel();
         Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
         legros.setPreferredSize(new Dimension(1600,1300));
         Scroll.setBounds(largeur/8, hauteur/8, 6*largeur/8, 6*hauteur/8);
         //legros.setBounds(0, 0, largeur, hauteur);
@@ -191,87 +196,97 @@ public class partie {
         mine.setSize(largeur, hauteur);
         mine.setVisible(true);
     }
-    public void miseEnPlaceDesPetitPanel() throws IOException
+    public void miseEnPlaceDesPetitPanel(GrosPanel tuile) throws IOException
     {
-        for (Component LesPanels : legros.getComponents()) 
+        
+        /*for (Component LesPanels : legros.getComponents()) 
         {
             System.out.println("1er for"+LesPanels.getClass().getName());
             if(LesPanels instanceof GrosPanel)
             {
                 System.out.println("le premier if du premier for");
-                GrosPanel panel = (GrosPanel) LesPanels;
-                /*for (int i = 0; i < 7; i++) 
-                {*/
+                GrosPanel panel = (GrosPanel) LesPanels;*/
+                for (int i = 0; i < 7; i++) 
+                {
                     System.out.println("le deuxieme for");
-                    PetitPanel unite = null;
-                    /*if(i==0)
-                    {*/
-                        unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        unite.setLocation(45, 45);
+                    PetitPanel unite = new PetitPanel();
+                    if(i==0)
+                    {
+                        
+                        //unite.setSize(10, 10);
+                        //unite.setLocation(45, 45);
+                        
+                        tuile.add(unite);
+                        unite.setBounds(57, 55, 10, 10);
+                        //unite.setBounds(60, 60, 10, 10);
+                        
+                        
                         System.out.println("1er if");
                         
-                    /*}
+                    }
                     else if(i==1)
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        
-                        unite.setLocation(20, 10);
+                       // unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(32, 20, 10, 10);
+                        //unite.setLocation(20, 10);
                         System.out.println("2eme if");
                     }
                     else if(i==2)
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        
-                        unite.setLocation(75, 15);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(80, 20, 10, 10);
+                        //unite.setLocation(75, 15);
                         System.out.println("3eme if");
                     }
                     else if(i==3)
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        unite.setLocation(15, 75);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(32, 90, 10, 10);
+                        //unite.setLocation(15, 75);
                         System.out.println("4eme if");
                     }
                     else if(i==4)
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        unite.setLocation(75, 75);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(80, 90, 10, 10);
+                        //unite.setLocation(75, 75);
                         System.out.println("5eme if");
                     }
                     else if(i==5)
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        unite.setLocation(5, 45);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(10, 55, 10, 10);
+                        //unite.setLocation(5, 45);
                         System.out.println("6eme if");
                     }
                     else
                     {
                         unite = new PetitPanel();
-                        unite.setSize(15, 15);
-                        panel.add(unite);
-                        unite.setLocation(85, 45);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(100, 55, 10, 10);
+                        //unite.setLocation(85, 45);
                         System.out.println("7eme if");
                     }
-                    panel.affichageUnite.add(unite);
+                    tuile.affichageUnite.add(unite);
                     
                 
                         
-                        }*/
+                }
             }
             
-        }
-        Component c = legros.getComponent(3);
+        
+        /*Component c = legros.getComponent(3);
         System.out.println(" "+c.getClass().getName());
         GrosPanel g = (GrosPanel) c;
         System.out.println(" "+g.affichageUnite);
@@ -281,12 +296,12 @@ public class partie {
             truc =(GrosPanel) legros.getComponent(3);
         }
         System.out.println(""+truc.affichageUnite);*/
-        for (PetitPanel trucbis : g.affichageUnite) {
+        /*for (PetitPanel trucbis : g.affichageUnite) {
             
             System.out.println(" "+trucbis.numeroJoueur);
         }/**/
         
-    }
+    
     //création de l'ile
     public void creationIle()
     {
@@ -359,6 +374,91 @@ public class partie {
             }
         }
   
+    }
+    
+    public void essai() throws IOException
+    {
+        mine = new Int();
+        mine.setLayout(null);
+        tuiles terrain= new tuiles(40, 40, 0, 0);
+        GrosPanel essaiPanel = new GrosPanel(terrain);
+        essaiPanel.setLayout(null);
+        essaiPanel.setSize(120, 120);
+        mine.add(essaiPanel);
+        essaiPanel.setVisible(true);
+        for (int i = 0; i < 7; i++) 
+                {
+                    //System.out.println("le deuxieme for");
+                    PetitPanel unite = null;
+                    if(i==0)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(10, 10);
+                        essaiPanel.add(unite);
+                        unite.setBounds(45, 45, 10, 10);
+                        //unite.setLocation(45, 45);
+                        System.out.println("1er if");
+                        
+                    }
+                    else if(i==1)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(20, 20, 10, 10);
+                        //unite.setLocation(20, 10);
+                        System.out.println("2eme if");
+                    }
+                    else if(i==2)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(75, 15, 10, 10);
+                        //unite.setLocation(75, 15);
+                        System.out.println("3eme if");
+                    }
+                    else if(i==3)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(15, 75, 10, 10);
+                        //unite.setLocation(15, 75);
+                        System.out.println("4eme if");
+                    }
+                    else if(i==4)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(75, 75, 10, 10);
+                        //unite.setLocation(75, 75);
+                        System.out.println("5eme if");
+                    }
+                    else if(i==5)
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(5, 45, 10, 10);
+                        //unite.setLocation(5, 45);
+                        System.out.println("6eme if");
+                    }
+                    else
+                    {
+                        unite = new PetitPanel();
+                        //unite.setSize(15, 15);
+                        essaiPanel.add(unite);
+                        unite.setBounds(85, 45, 10, 10);
+                        //unite.setLocation(85, 45);
+                        System.out.println("7eme if");
+                    }
+                    //essaiPanel.affichageUnite.add(unite);
+                    
+                
+           mine.setVisible(true);
+        }
     }
     
     public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer){
