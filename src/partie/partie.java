@@ -36,6 +36,7 @@ public class partie {
     public Vector<GrosPanel> imageTuile;
     public Int mine;
     public JScrollPane Scroll;
+    JPanel legros = new JPanel();
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
@@ -49,14 +50,14 @@ public class partie {
     //fonction pour créer le plateau de jeu avec les tuiles
     public void creationPlateau() throws IOException
     {
-         mine = new Int();
+        mine = new Int();
         mine.setLayout(null);
         
         //construction de la carte
         int compt=0;
         int j;       
         int cordy;
-        JPanel legros = new JPanel();
+        
         legros.setLayout(null);
         
         //transformer en boucle for
@@ -192,75 +193,98 @@ public class partie {
     }
     public void miseEnPlaceDesPetitPanel() throws IOException
     {
-        for (Component LesPanels : Scroll.getComponents()) 
+        for (Component LesPanels : legros.getComponents()) 
         {
-            System.out.println("1er for");
+            System.out.println("1er for"+LesPanels.getClass().getName());
             if(LesPanels instanceof GrosPanel)
             {
                 System.out.println("le premier if du premier for");
                 GrosPanel panel = (GrosPanel) LesPanels;
-                for (int i = 0; i < 7; i++) 
-                {
+                /*for (int i = 0; i < 7; i++) 
+                {*/
                     System.out.println("le deuxieme for");
                     PetitPanel unite = null;
-                    if(i==0)
-                    {
+                    /*if(i==0)
+                    {*/
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
                         unite.setLocation(45, 45);
                         System.out.println("1er if");
                         
-                    }
+                    /*}
                     else if(i==1)
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
+                        
                         unite.setLocation(20, 10);
                         System.out.println("2eme if");
                     }
                     else if(i==2)
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
+                        
                         unite.setLocation(75, 15);
                         System.out.println("3eme if");
                     }
                     else if(i==3)
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
                         unite.setLocation(15, 75);
                         System.out.println("4eme if");
                     }
                     else if(i==4)
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
                         unite.setLocation(75, 75);
                         System.out.println("5eme if");
                     }
                     else if(i==5)
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
                         unite.setLocation(5, 45);
                         System.out.println("6eme if");
                     }
                     else
                     {
                         unite = new PetitPanel();
+                        unite.setSize(15, 15);
+                        panel.add(unite);
                         unite.setLocation(85, 45);
                         System.out.println("7eme if");
                     }
-                    panel.add(unite);
                     panel.affichageUnite.add(unite);
                     
-                }
+                
+                        
+                        }*/
             }
             
         }
-        GrosPanel truc = null;
+        Component c = legros.getComponent(3);
+        System.out.println(" "+c.getClass().getName());
+        GrosPanel g = (GrosPanel) c;
+        System.out.println(" "+g.affichageUnite);
+        /*GrosPanel truc = (GrosPanel)legros;
         if(truc instanceof GrosPanel)
         {
-            truc =(GrosPanel) Scroll.getComponent(3);
+            truc =(GrosPanel) legros.getComponent(3);
         }
-        for (PetitPanel trucbis : truc.affichageUnite) {
+        System.out.println(""+truc.affichageUnite);*/
+        for (PetitPanel trucbis : g.affichageUnite) {
+            
             System.out.println(" "+trucbis.numeroJoueur);
-        }
+        }/**/
         
     }
     //création de l'ile

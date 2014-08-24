@@ -71,6 +71,9 @@ public class GrosPanel extends JPanel{
           }  
     }
     
+    
+    
+    
     public void placeUnité(tuiles terrain) throws IOException
     {
         
@@ -90,6 +93,5 @@ public class GrosPanel extends JPanel{
             g.fillOval(15, 55,5, 5);
             g.fillOval(95, 55,5, 5);
         }*/
-        
     }
 }

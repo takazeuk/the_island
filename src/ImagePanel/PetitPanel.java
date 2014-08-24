@@ -23,11 +23,11 @@ public class PetitPanel extends JPanel{
     {
         numeroJoueur = 4;
         this.setSize(20, 20);
-        m_image = ImageIO.read(getClass().getResource("/images/pawn_256.png"));
+        m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
         this.setVisible(true);
     }
     @Override public void paintComponent(Graphics g)
     {
-        g.drawImage(m_image, 0, 0, 15, 15, null);
+        g.drawImage(m_image, 0, 0, 10, 10, null);
     }
 }

@@ -19,6 +19,7 @@ import terrain.tuiles;
 import unités.unites;
 
 /**
+ * 
  *
  * @author TakazeukJo
  */
@@ -68,6 +69,7 @@ public class The_island {
         //on crée le plateau de jeu
         partie.creationPlateau();
         partie.miseEnPlaceDesPetitPanel();
+        
         
         
     }   
