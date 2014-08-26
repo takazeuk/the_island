@@ -7,6 +7,7 @@
 package ImagePanel;
 
 import MessageBox.Interaction;
+import static MessageBox.Interaction.messageJoueur;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
@@ -17,10 +18,22 @@ import java.util.Vector;
  */
 public class Moustener extends MouseAdapter
 {
- @Override 
- public void mouseClicked(MouseEvent e) 
+    int x;
+    int y;
+    
+    public Moustener(GrosPanel P)
     {
-	int nb = Interaction.demandeChoix("Quel unité voulez-vous déplacer?");
+        x = P.j;
+        y = P.k;
     }
+    
+    @Override
+    public void mouseClicked(MouseEvent e) 
+    {
+        
+	messageJoueur(""+x+" "+y);
+    }
+    
+    
 		
 }

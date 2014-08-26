@@ -43,4 +43,7 @@ public class Interaction {
         return JOptionPane.showInputDialog(s);
     }
     
+    public static void messageJoueur(String s) {
+        JOptionPane.showMessageDialog(null, s);
+    }
 }

@@ -31,7 +31,7 @@ public class GrosPanel extends JPanel implements ActionListener{
     public tuiles terrain;
     public boolean b;
     public Vector <PetitPanel> affichageUnite;
-    
+    public Moustener clicDuPanel;
 
     //public int nb;
     public GrosPanel(tuiles envoye) throws IOException
@@ -43,7 +43,8 @@ public class GrosPanel extends JPanel implements ActionListener{
            terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
            affichageUnite = new Vector<PetitPanel>();
-           this.addMouseListener(new Moustener());
+           clicDuPanel = new Moustener(this);
+           this.addMouseListener(clicDuPanel);
     }
     
     /*public ImPan(int numJoueur)throws IOException
