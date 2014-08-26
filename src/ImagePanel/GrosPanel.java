@@ -43,11 +43,7 @@ public class GrosPanel extends JPanel implements ActionListener{
            terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
            affichageUnite = new Vector<PetitPanel>();
-           this.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				int nb = Interaction.demandeChoix("Quel unité voulez-vous déplacer?", affichageUnite);
-			}
-		});
+           this.addMouseListener(new Moustener());
     }
     
     /*public ImPan(int numJoueur)throws IOException
