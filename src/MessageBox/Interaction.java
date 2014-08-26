@@ -20,12 +20,11 @@ public class Interaction {
     }
 
     public static int demandeChoix(String s, Object[] tab) {
-        return JOptionPane.showOptionDialog(
+        return (int) JOptionPane.showInputDialog(
                 null,
                 s,
-                "",
+                "titre",
                 JOptionPane.OK_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
                 null,
                 tab,
                 tab[tab.length-1]
@@ -37,6 +36,7 @@ public class Interaction {
     }
 
     public static int demandeChoix(String s) {
+        
         return Integer.parseInt(JOptionPane.showInputDialog(s));
    }
     public static String demandeChaine(String s) {

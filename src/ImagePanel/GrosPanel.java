@@ -7,26 +7,32 @@
 package ImagePanel;
 
 
+import MessageBox.Interaction;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Vector;
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import terrain.tuiles;
+
 
 /**
  *
  * @author Jonathan
  */
-public class GrosPanel extends JPanel{
+public class GrosPanel extends JPanel implements ActionListener{
     public BufferedImage m_image, m_monstres;
     public int k, j;
     public tuiles terrain;
     public boolean b;
     public Vector <PetitPanel> affichageUnite;
+    
+
     //public int nb;
     public GrosPanel(tuiles envoye) throws IOException
     {
@@ -37,6 +43,11 @@ public class GrosPanel extends JPanel{
            terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
            affichageUnite = new Vector<PetitPanel>();
+           this.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				int nb = Interaction.demandeChoix("Quel unité voulez-vous déplacer?", affichageUnite);
+			}
+		});
     }
     
     /*public ImPan(int numJoueur)throws IOException
@@ -70,8 +81,17 @@ public class GrosPanel extends JPanel{
              b = false;
           }  
     }
+    public void actionPerformed(ActionEvent e)
+    {
+        System.out.println("J'ai cliqué!");
+        int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
+    }
     
-    
+    public void mouseClicked(MouseEvent e)
+    {
+        System.out.println("J'ai cliqué!");
+        int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
+    }
     
     
     public void placeUnité(tuiles terrain) throws IOException
@@ -94,4 +114,13 @@ public class GrosPanel extends JPanel{
             g.fillOval(95, 55,5, 5);
         }*/
     }
+    
+
+    
+    
+    /**
+     *
+     * @param
+     */
+    
 }

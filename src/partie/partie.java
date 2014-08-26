@@ -77,6 +77,7 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain);
+                        
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
