@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.util.Vector;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import partie.partie;
 import terrain.tuiles;
 
 
@@ -32,9 +33,10 @@ public class GrosPanel extends JPanel implements ActionListener{
     public boolean b;
     public Vector <PetitPanel> affichageUnite;
     public Moustener clicDuPanel;
+    public partie partieEnCours;
 
     //public int nb;
-    public GrosPanel(tuiles envoye) throws IOException
+    public GrosPanel(tuiles envoye, partie partie) throws IOException
     {
         super();
        
@@ -43,8 +45,10 @@ public class GrosPanel extends JPanel implements ActionListener{
            terrain = envoye;
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
            affichageUnite = new Vector<PetitPanel>();
-           clicDuPanel = new Moustener(this);
+           this.partieEnCours= partie;
+           clicDuPanel = new Moustener(this, this.partieEnCours);
            this.addMouseListener(clicDuPanel);
+           
     }
     
     /*public ImPan(int numJoueur)throws IOException
@@ -76,7 +80,8 @@ public class GrosPanel extends JPanel implements ActionListener{
           {
              m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
              b = false;
-          }  
+          }
+          repaint();
     }
     public void actionPerformed(ActionEvent e)
     {

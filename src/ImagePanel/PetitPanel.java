@@ -47,6 +47,7 @@ public class PetitPanel extends JPanel{
           {
              m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
           }
+          repaint();
     }
     
     public void choixImageMonstre() throws IOException
@@ -63,6 +64,7 @@ public class PetitPanel extends JPanel{
           {
              m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
           }
+          repaint();
     }
     
     public void choixImageBateau() throws IOException
@@ -70,7 +72,8 @@ public class PetitPanel extends JPanel{
           if(this.numeroUnite==7)
           {
              m_image = ImageIO.read(getClass().getResource("/images/barque"));
-          }               
+          }
+          repaint();
     }
     @Override public void paintComponent(Graphics g)
     {

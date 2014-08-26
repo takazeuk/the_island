@@ -8,6 +8,7 @@ package main;
 
 import ImagePanel.GrosPanel;
 import MessageBox.Interaction;
+import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
 import java.io.IOException;
 import java.util.Scanner;
@@ -65,6 +66,7 @@ public class The_island {
             //System.out.println("Joueur "+(i+1)+" ,quel sera votre nom?");
             // nom= clavier.next();
             joueurs participant= new joueurs(nom, i);
+            partie.participant.add(participant);
             partie.creationExplorateur(participant);
         }
                 
@@ -75,9 +77,17 @@ public class The_island {
         partie.miseEnPlaceMonstre();
         
         //partie déploiement des pions par les joueurs
-        for (joueurs joue : partie.participant) {
-            Interaction.affiche(joue.nom+" ,où souhaitez vous placer votre premier pion?");
+        messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
+        String phrase= ""+partie.participant.size();
+
+        messageJoueur(partie.participant.get(0).nom+" , vous devez placer un pion sur l'ile, sur une case non occupé par un autre joueur");
+        
+        while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
+            //on bloque le code tant que tous les pions n'ont pas été placés.
         }
+        
+        
+            
         
         
         

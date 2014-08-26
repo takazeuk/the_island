@@ -8,6 +8,7 @@ package partie;
 
 import ImagePanel.GrosPanel;
 import ImagePanel.PetitPanel;
+import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -76,7 +77,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        GrosPanel lenouv = new GrosPanel(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain, this);
                         
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
@@ -107,7 +108,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        GrosPanel lenouv = new GrosPanel(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain, this);
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -142,7 +143,7 @@ public class partie {
                         }
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        GrosPanel lenouv = new GrosPanel(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain, this);
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -164,7 +165,7 @@ public class partie {
                         
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
-                        GrosPanel lenouv = new GrosPanel(terrain);
+                        GrosPanel lenouv = new GrosPanel(terrain, this);
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -445,7 +446,8 @@ public class partie {
                   joueurCree.membres.add(survivant);
               break;
             }  
-        }    
+        }
+        joueurCree.membresDeploiement=joueurCree.membres;
     }
     
     //creation des premeirs monstres sur le plateau
@@ -513,19 +515,26 @@ public class partie {
     }
     
     //phase de deploiement des explorateurs des joueurs
-    public boolean deploiement(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi)
+    public boolean deploiement(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi) throws IOException
     {
-        if ((choisi.type==0)||(choisi.explorateurs.size()!=0)) {
+        if ((choisi.type==0)||(choisi.explorateurs.size()>0)) {
+            if(choisi.type==0){
+                messageJoueur("Vous ne pouvez pas mettre un explorateur sur une case d'eau lors de la phase de déploiement");
+            }
+            else{               
+                messageJoueur(choisi.explorateurs.size()+"Vous ne pouvez pas mettre un pion sur cette case car il y a déjà un explorateur");
+            }
             return false;
         }
         else
         {
             //il faudra 
             choisi.explorateurs.add(pionschoisi);
+            affichageExplorateurs(choisi, pionschoisi);
             return true;
         }
     }
-    
+       
     //phase de déplacement des unités
     /*public void deplacementUnite(joueurs tourJoueur)
     {
