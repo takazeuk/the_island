@@ -296,7 +296,7 @@ public class partie {
         System.out.println(""+truc.affichageUnite);*/
         /*for (PetitPanel trucbis : g.affichageUnite) {
             
-            System.out.println(" "+trucbis.numeroJoueur);
+            System.out.println(" "+trucbis.numeroUnite);
         }/**/
         
     
@@ -385,14 +385,15 @@ public class partie {
         //messagebox de refus du déplacement
     }
     
-    public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer){
+    public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer) throws IOException{
         
         if (cible.monstres.size()!=4) {
             for (monstres monstrePresent : cible.monstres) {
                 if (monstreDeplacer.type==monstrePresent.type) {
                     return false;
                 }
-            }   
+            }
+            affichageMonstre(cible, monstreDeplacer);
             cible.monstres.add(monstreDeplacer);
             return true;
         }
@@ -447,7 +448,7 @@ public class partie {
     }
     
     //creation des premeirs monstres sur le plateau
-    public void miseEnPlaceMonstre()
+    public void miseEnPlaceMonstre() throws IOException
     {
         //mise en place des premiers monstres du début de partie
         monstres plateaumonstres1= new monstres("Serpent de mer", 1, 2, 1, 1);
@@ -462,6 +463,12 @@ public class partie {
         this.population.add(plateaumonstres3);
         this.population.add(plateaumonstres4);
         this.population.add(plateaumonstres5);
+        
+        this.ajoutMonstresTuile(this.carte.get(7), plateaumonstres1);
+        this.ajoutMonstresTuile(this.carte.get(27), plateaumonstres2);
+        this.ajoutMonstresTuile(this.carte.get(66), plateaumonstres3);
+        this.ajoutMonstresTuile(this.carte.get(105), plateaumonstres4);
+        this.ajoutMonstresTuile(this.carte.get(125), plateaumonstres5);
     }
     
     public void pouvoirImmediat(tuiles pouvoirJoueur)
@@ -559,19 +566,77 @@ public class partie {
                 if (territoire.terrain==cible) {
                     
                     for (int i = 0; i < 3; i++) {
-                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
                         
-                        if (territoire.affichageUnite.get(i).numeroJoueur==4) {
-                            territoire.affichageUnite.get(i).numeroJoueur= uniteDeplacer.proprietaire;
-                            territoire.affichageUnite.get(i).choixImage();
+                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
+                            
+                            territoire.affichageUnite.get(i).numeroUnite= uniteDeplacer.proprietaire;
+                            territoire.affichageUnite.get(i).choixImageExplorateur();
                             return true;
+                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
                         }
                     }
                 }
             }
         }
         return false;
-        
-        
     }
+        
+        private boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
+        
+        for (Component temp  : legros.getComponents()) {
+            
+            if(temp instanceof GrosPanel)
+            {
+                
+                GrosPanel territoire = (GrosPanel) temp;
+                
+                if (territoire.terrain==cible) {
+                    
+                    for (int i = 3; i < 6; i++) {
+                        
+                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
+                            
+                            territoire.affichageUnite.get(i).numeroUnite= monstreDeplacer.type;
+                            territoire.affichageUnite.get(i).choixImageMonstre();
+                            return true;
+                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+        
+        /*private boolean affichageBateau(tuiles cible, bateaux bateauDeplacer) throws IOException {
+           
+        for (Component temp  : legros.getComponents()) {
+            
+            if(temp instanceof GrosPanel)
+            {
+                
+                GrosPanel territoire = (GrosPanel) temp;
+                
+                if (territoire.terrain==cible) {
+                    
+                    for (int i = 0; i < 3; i++) {
+                        
+                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
+                            
+                            territoire.affichageUnite.get(i).numeroUnite= uniteDeplacer.proprietaire;
+                            territoire.affichageUnite.get(i).choixImageExplorateur();
+                            return true;
+                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }*/
+        
+        
 }

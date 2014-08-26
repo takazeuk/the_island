@@ -18,39 +18,59 @@ import javax.swing.JPanel;
  */
 public class PetitPanel extends JPanel{
     public BufferedImage m_image;
-    public int numeroJoueur;
+    public int numeroUnite;
     public int numeroPetitPanel;
             
     public PetitPanel(int numero) throws IOException
     {
-        numeroJoueur = 4;
+        numeroUnite = 4;
         numeroPetitPanel = numero;
         this.setSize(10, 10);
         this.setVisible(true);
     }
     
-    public void choixImage() throws IOException
+    public void choixImageExplorateur() throws IOException
     {          
-          if(this.numeroJoueur==0)
+          if(this.numeroUnite==0)
           {
              m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
           }               
-          else if(this.numeroJoueur==1)
+          else if(this.numeroUnite==1)
           {
              m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
           }
-          else if(this.numeroJoueur==2)
+          else if(this.numeroUnite==2)
           {
              m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
           }
-          else if (this.numeroJoueur==3)
+          else if (this.numeroUnite==3)
           {
              m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
           }
-          else
+    }
+    
+    public void choixImageMonstre() throws IOException
+    {          
+          if(this.numeroUnite==0)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));  
+             m_image = ImageIO.read(getClass().getResource("/images/requin.jpe"));
+          }               
+          else if(this.numeroUnite==1)
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
           }
+          else if(this.numeroUnite==2)
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
+          }
+    }
+    
+    public void choixImageBateau() throws IOException
+    {          
+          if(this.numeroUnite==7)
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/barque"));
+          }               
     }
     @Override public void paintComponent(Graphics g)
     {

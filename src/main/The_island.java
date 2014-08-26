@@ -17,6 +17,7 @@ import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
 import unités.explorateurs;
+import unités.monstres;
 import unités.unites;
 
 /**
@@ -68,14 +69,27 @@ public class The_island {
         }
                 
         //on crée le plateau de jeu
-        //
         partie.creationPlateau();
+        
+        //on met en place les monstres de départ
+        partie.miseEnPlaceMonstre();
+        
+        //partie déploiement des pions par les joueurs
+        for (joueurs joue : partie.participant) {
+            Interaction.affiche(joue.nom+" ,où souhaitez vous placer votre premier pion?");
+        }
+        
+        
+        
+        
+        
+        /*
         //partie.miseEnPlaceDesPetitPanel();
         //partie.essai();
         explorateurs test = new explorateurs(10, 2, 3, 0);
         //partie.carte.get(6).explorateurs.add(test);
-        partie.ajoutEplorateursTuile(partie.carte.get(6), test);
-        
+        partie.ajoutEplorateursTuile(partie.carte.get(132), test);
+        */      
     }   
 }
 
