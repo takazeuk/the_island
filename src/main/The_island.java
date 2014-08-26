@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
+import unités.explorateurs;
 import unités.unites;
 
 /**
@@ -71,7 +72,9 @@ public class The_island {
         partie.creationPlateau();
         //partie.miseEnPlaceDesPetitPanel();
         //partie.essai();
-        
+        explorateurs test = new explorateurs(10, 2, 3, 0);
+        //partie.carte.get(6).explorateurs.add(test);
+        partie.ajoutEplorateursTuile(partie.carte.get(6), test);
         
     }   
 }

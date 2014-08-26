@@ -24,7 +24,7 @@ public class Interaction {
                 null,
                 s,
                 "",
-                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.OK_OPTION,
                 JOptionPane.QUESTION_MESSAGE,
                 null,
                 tab,

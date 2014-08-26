@@ -218,31 +218,22 @@ public class partie {
                     PetitPanel unite;
                     if(i==0)
                     {
-                        
-                        //unite.setSize(10, 10);
-                        //unite.setLocation(45, 45);
-                        unite = new PetitPanel(6);
-                        tuile.add(unite);
-                        unite.setBounds(57, 55, 10, 10);
-                        //unite.setBounds(60, 60, 10, 10);                       
-                    }
-                    else if(i==1)
-                    {
                        unite = new PetitPanel(0);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 20, 10, 10);
-                        //unite.setLocation(20, 10);
+                        //unite.setLocation(20, 10); 
+                                               
                     }
-                    else if(i==2)
+                    else if(i==1)
                     {
-                        unite = new PetitPanel(5);
+                       unite = new PetitPanel(1);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(80, 20, 10, 10);
-                        //unite.setLocation(75, 15);
+                        unite.setBounds(10, 55, 10, 10);
+                        //unite.setLocation(5, 45);
                     }
-                    else if(i==3)
+                    else if(i==2)
                     {
                         unite = new PetitPanel(2);
                         //unite.setSize(15, 15);
@@ -250,7 +241,7 @@ public class partie {
                         unite.setBounds(32, 90, 10, 10);
                         //unite.setLocation(15, 75);
                     }
-                    else if(i==4)
+                    else if(i==3)
                     {
                         unite = new PetitPanel(3);
                         //unite.setSize(15, 15);
@@ -258,21 +249,32 @@ public class partie {
                         unite.setBounds(80, 90, 10, 10);
                         //unite.setLocation(75, 75);
                     }
-                    else if(i==5)
-                    {
-                        unite = new PetitPanel(1);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(10, 55, 10, 10);
-                        //unite.setLocation(5, 45);
-                    }
-                    else
+                    else if(i==4)
                     {
                         unite = new PetitPanel(4);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(100, 55, 10, 10);
                         //unite.setLocation(85, 45);
+                    }
+                    else if(i==5)
+                    {
+                        unite = new PetitPanel(5);
+                        //unite.setSize(15, 15);
+                        tuile.add(unite);
+                        unite.setBounds(80, 20, 10, 10);
+                        //unite.setLocation(75, 15);
+                    }
+                    else
+                    {
+                        //unite.setSize(10, 10);
+                        //unite.setLocation(45, 45);
+                        unite = new PetitPanel(6);
+                        tuile.add(unite);
+                        unite.setBounds(57, 55, 10, 10);
+                        //unite.setBounds(60, 60, 10, 10);
+                        
+                        
                     }
                     tuile.affichageUnite.add(unite);
                     
@@ -545,8 +547,8 @@ public class partie {
         
     }
 
-    private void affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
-            
+    private boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
+           
         for (Component temp  : legros.getComponents()) {
             
             if(temp instanceof GrosPanel)
@@ -556,16 +558,19 @@ public class partie {
                 
                 if (territoire.terrain==cible) {
                     
-                    for (int i = 0; i < 2; i++) {
+                    for (int i = 0; i < 3; i++) {
                         //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        
                         if (territoire.affichageUnite.get(i).numeroJoueur==4) {
                             territoire.affichageUnite.get(i).numeroJoueur= uniteDeplacer.proprietaire;
                             territoire.affichageUnite.get(i).choixImage();
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
         
         
     }
