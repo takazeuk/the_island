@@ -494,6 +494,7 @@ public class partie {
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
             break;
             case 3: //tourbillon à faire plus tard
+                pouvoir4DeLaTuile(pouvoirJoueur);
             break;
             case 4: //fin du jeu à faire plus tard
                 //on compte les points pour chacun des Joueurs
@@ -504,9 +505,74 @@ public class partie {
         }
     }
     
-    public void pouvoirEnMain(tuiles pouvoirJoueur)
+    public boolean pouvoirEnMain(tuiles pouvoirJoueur, tuiles cible, joueurs j)
     {
+        monstres deplacer;
         
+        switch(pouvoirJoueur.pouvoir)
+        {
+            case 5:
+                for (explorateurs nageurs : pouvoirJoueur.explorateurs) {
+                    if(nageurs.proprietaire==j.couleur)
+                    {
+                        if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            break;
+                
+            case 6:
+                
+            break;
+                
+            case 7: 
+                if(cible.type==0)
+                {
+                    deplacer = new monstres("Serpent de mer", 1, 2, cible.x, cible.y);
+                    for (monstres serpentDeMer : pouvoirJoueur.monstres) {
+                        if(serpentDeMer.type==2)
+                        {
+                            pouvoirJoueur.monstres.remove(serpentDeMer);
+                        }
+                        
+                    }
+                    return true;
+                }
+            break;
+                
+            case 8: 
+                if(cible.type==0)
+                {
+                    deplacer = new monstres("Requin", 2, 1, cible.x, cible.y);
+                    for (monstres Requin : pouvoirJoueur.monstres) {
+                        if(Requin.type==0)
+                        {
+                            pouvoirJoueur.monstres.remove(Requin);
+                        }
+                        
+                    }
+                    return true;
+                }
+            break;
+                
+            case 9:
+                if(cible.type==0)
+                {
+                    deplacer = new monstres("Baleine", 3, 1, cible.x, cible.y);
+                    for (monstres Baleine : pouvoirJoueur.monstres) {
+                        if(Baleine.type==1)
+                        {
+                            pouvoirJoueur.monstres.remove(Baleine);
+                        }
+                        
+                    }
+                    return true;
+                }
+            break;                              
+        }
+        return false;
     }
     
     public void pouvoirDefense(tuiles pouvoirJoueur)
@@ -619,7 +685,72 @@ public class partie {
         }
         return false;
     }
-        
+    
+    public boolean autoriserDeplacementPouvoirTuile(tuiles depart, tuiles arrive)
+    {
+        if(depart.x==arrive.x)
+        {
+            if(arrive.y==depart.y-1 || arrive.y==depart.y-2 || arrive.y==depart.y-3)
+            {
+                return true;
+            }
+            else if(arrive.y==depart.y+1 || arrive.y==depart.y+2 || arrive.y==depart.y+3)
+            {
+                return true;
+            }
+        }
+        else if(depart.y==arrive.y)
+        {
+            if(arrive.x==depart.x-1 || arrive.x==depart.x-2 || arrive.x==depart.x-3)
+            {
+                return true;
+            }
+            else if(arrive.x==depart.x+1 || arrive.x==depart.x+2 || arrive.x==depart.x+3)
+            {
+                return true;
+            }
+        }
+        else if((depart.x-1 == arrive.x && depart.y-1 == arrive.y) || (depart.x-2 == arrive.x && depart.y-2 == arrive.y) || (depart.x-3 == arrive.x && depart.y-3 == arrive.y))
+        {
+            return true;
+        }
+        else if((depart.x+1 == arrive.x && depart.y+1 == arrive.y) || (depart.x+2 == arrive.x && depart.y+2 == arrive.y) || (depart.x+3 == arrive.x && depart.y+3 == arrive.y))
+        {
+            return true;
+        }
+        return false;
+    }
+    
+    public void pouvoir4DeLaTuile(tuiles pouvoirJoueur)
+    {
+        GrosPanel lePanel;
+        for (Component laTuile : legros.getComponents()) {
+            if(laTuile instanceof GrosPanel)
+            {
+                lePanel = (GrosPanel) laTuile;
+                if((lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y) 
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y-1)
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y+1)
+                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y-1)
+                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y)
+                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y+1)
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y)
+                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y))
+                {
+                    for (explorateurs exploRetirer : lePanel.terrain.explorateurs) {
+                    lePanel.terrain.explorateurs.remove(exploRetirer);
+                    }
+                    for (monstres monstRetirer : lePanel.terrain.monstres) {
+                    lePanel.terrain.monstres.remove(monstRetirer);
+                    }
+                    for (bateaux bateauRetirer : lePanel.terrain.bateaux) {
+                    lePanel.terrain.monstres.remove(bateauRetirer);
+                    }
+                }
+                    
+            }
+        }
+    }
         /*private boolean affichageBateau(tuiles cible, bateaux bateauDeplacer) throws IOException {
            
         for (Component temp  : legros.getComponents()) {
