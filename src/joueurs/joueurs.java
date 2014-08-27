@@ -21,6 +21,7 @@ public class joueurs {
     public Vector<tuiles> cartesEnMain;
     public Vector<explorateurs> membres;
     public Vector<explorateurs> membresDeploiement;
+    public int bateauxDeploiement=2;
     public int pointVictoire;
 
     public joueurs(String nom, int couleur) {

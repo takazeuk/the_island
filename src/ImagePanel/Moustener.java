@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
+import unités.bateaux;
 
 /**
  *
@@ -26,9 +27,7 @@ public class Moustener extends MouseAdapter
 {
     int x;
     int y;
-    int flagAction=0;
     GrosPanel selctionPanel;
-    int numJoueur= 0;
     partie partieEnCours;
     
     public Moustener(GrosPanel p, partie part)
@@ -42,33 +41,56 @@ public class Moustener extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        switch(flagAction)
-        {
-            case 0:
-            {
-                int CompteurPion=0;
-                boolean placementValide = false;
-                tuiles placement;
-                
-                joueurs joueur= partieEnCours.participant.get(numJoueur);
-                placement= selctionPanel.terrain;
-                
-            try {
-                placementValide=partieEnCours.deploiement(joueur, joueur.membresDeploiement.get(CompteurPion), placement);
-            } catch (IOException ex) {
-                Logger.getLogger(Moustener.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                if (placementValide) {
-                   numJoueur++;
-                    if (numJoueur==partieEnCours.participant.size()) {
-                        numJoueur=0;
-                        CompteurPion++;
-                    }
-                    messageJoueur(partieEnCours.participant.get(numJoueur).nom+" , vous devez placer un pion sur l'ile, sur une case non occupé par un autre joueur");
-                }
+        boolean placementValide = false;
+        tuiles placement;               
+        joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
+        placement= selctionPanel.terrain;
+        
 
+            if(partieEnCours.flagAction==0){               
+                try {
+                placementValide=partieEnCours.deploiementExplorateurs(joueur, joueur.membresDeploiement.get(0), placement);
+                } catch (IOException ex) {
+                Logger.getLogger(Moustener.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (placementValide) {
+                   joueur.membresDeploiement.remove(0);
+                   partieEnCours.tourJoueur++;
+                    if (partieEnCours.tourJoueur==partieEnCours.participant.size()) {
+                        partieEnCours.tourJoueur=0;
+                    }
+                    
+                    if (joueur.membresDeploiement.size()!=0) {
+                       messageJoueur(partieEnCours.flagAction+""+partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un explorateur");
+                    }
+                    else
+                    {
+                        partieEnCours.flagAction=1;
+                    }                   
+                }
             }
+            if(partieEnCours.flagAction==1){               
+                try {
+                placementValide=partieEnCours.deploiementBateaux(selctionPanel.terrain);
+                } catch (IOException ex) {
+                Logger.getLogger(Moustener.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 
-        }
+                if (placementValide) {
+                   joueur.bateauxDeploiement--;
+                   partieEnCours.tourJoueur++;
+                    if (partieEnCours.tourJoueur==partieEnCours.participant.size()) {
+                        partieEnCours.tourJoueur=0;
+                    }
+                    
+                    if (partieEnCours.participant.get(partieEnCours.participant.size()-1).bateauxDeploiement!=0) {
+                       messageJoueur(partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un bateau");
+                    }
+                    else
+                    {
+                        partieEnCours.flagAction=2;
+                    } 
+                }
+            }              
     }		
 }

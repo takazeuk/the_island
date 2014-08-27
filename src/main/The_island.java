@@ -77,16 +77,17 @@ public class The_island {
         partie.miseEnPlaceMonstre();
         
         //partie déploiement des pions par les joueurs
-        messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
-        String phrase= ""+partie.participant.size();
-
-        messageJoueur(partie.participant.get(0).nom+" , vous devez placer un pion sur l'ile, sur une case non occupé par un autre joueur");
-        
+        /*messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
+        messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur");       
         while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
             //on bloque le code tant que tous les pions n'ont pas été placés.
+        }*/
+        
+        messageJoueur("phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux");
+        messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un bateau sur une case d'eau non occupée et voisine à une case terrain");
+        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
+            //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
-        
-        
             
         
         

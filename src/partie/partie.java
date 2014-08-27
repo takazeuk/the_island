@@ -38,6 +38,10 @@ public class partie {
     public Vector<GrosPanel> imageTuile;
     public Int mine;
     public JScrollPane Scroll;
+    //nous permet de passer au joueur suivant
+    public int tourJoueur=0;
+    //nous permet de donner une action différentes à notre clic
+    public int flagAction=1;
     JPanel legros = new JPanel();
     
     public partie(int nombreJoueur) throws IOException {
@@ -531,6 +535,7 @@ public class partie {
                 if(cible.type==0)
                 {
                     deplacer = new monstres("Serpent de mer", 1, 2, cible.x, cible.y);
+                    cible.monstres.add(deplacer);
                     for (monstres serpentDeMer : pouvoirJoueur.monstres) {
                         if(serpentDeMer.type==2)
                         {
@@ -546,6 +551,7 @@ public class partie {
                 if(cible.type==0)
                 {
                     deplacer = new monstres("Requin", 2, 1, cible.x, cible.y);
+                    cible.monstres.add(deplacer);
                     for (monstres Requin : pouvoirJoueur.monstres) {
                         if(Requin.type==0)
                         {
@@ -561,6 +567,7 @@ public class partie {
                 if(cible.type==0)
                 {
                     deplacer = new monstres("Baleine", 3, 1, cible.x, cible.y);
+                    cible.monstres.add(deplacer);
                     for (monstres Baleine : pouvoirJoueur.monstres) {
                         if(Baleine.type==1)
                         {
@@ -580,8 +587,8 @@ public class partie {
         
     }
     
-    //phase de deploiement des explorateurs des joueurs
-    public boolean deploiement(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi) throws IOException
+    //phase de deploiementExplorateurs des explorateurs des joueurs
+    public boolean deploiementExplorateurs(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi) throws IOException
     {
         if ((choisi.type==0)||(choisi.explorateurs.size()>0)) {
             if(choisi.type==0){
@@ -599,6 +606,37 @@ public class partie {
             affichageExplorateurs(choisi, pionschoisi);
             return true;
         }
+    }
+    
+    public boolean deploiementBateaux(tuiles choisi) throws IOException
+    {
+        tuiles adjacente;
+        int FlagType=0;
+        for (tuiles tuilesCarte : carte) {
+           if (((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y+1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y+1))) {
+               adjacente= tuilesCarte;
+               if (adjacente.type!=0) {
+                   FlagType=1;
+               }
+           }
+                if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)) {
+                    bateaux bateauxPlacement= new bateaux(0,0);
+                    choisi.bateaux.add(bateauxPlacement);
+                    for (Component temp  : legros.getComponents()) {
+            
+                        if(temp instanceof GrosPanel)
+                        {               
+                            GrosPanel territoire = (GrosPanel) temp;
+                            if (territoire.terrain==choisi) {
+                                territoire.affichageUnite.get(6).choixImageBateau();
+                            }
+                        }
+                    }
+                    return true;
+                }
+                FlagType=0;
+        }         
+        return false;
     }
        
     //phase de déplacement des unités
@@ -658,7 +696,7 @@ public class partie {
         return false;
     }
         
-        private boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
+    private boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
         
         for (Component temp  : legros.getComponents()) {
             
@@ -685,6 +723,36 @@ public class partie {
         }
         return false;
     }
+    
+    /*private boolean affichageBateaux(tuiles cible, monstres monstreDeplacer) throws IOException{
+        
+        for (Component temp  : legros.getComponents()) {
+            
+            if(temp instanceof GrosPanel)
+            {
+                
+                GrosPanel territoire = (GrosPanel) temp;
+                
+                if (territoire.terrain==cible) {
+                    
+                    for (int i = 3; i < 6; i++) {
+                        
+                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
+                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
+                            
+                            territoire.affichageUnite.get(i).numeroUnite= monstreDeplacer.type;
+                            territoire.affichageUnite.get(i).choixImageMonstre();
+                            return true;
+                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }*/
+        
+    
     
     public boolean autoriserDeplacementPouvoirTuile(tuiles depart, tuiles arrive)
     {
