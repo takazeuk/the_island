@@ -52,11 +52,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 partieEnCours.panelExplorateur = selctionPanel;
                 partieEnCours.panelExplorateur.numeroUnite = 4;
-                try {
-                    partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
-                } catch (IOException ex) {
-                    Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                
 
                 messageJoueur("explorateur séléctionné");
             }

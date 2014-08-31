@@ -111,6 +111,11 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     else
                     {
+                        try {
+                            partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
+                        } catch (IOException ex) {
+                            Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                         partieEnCours.flagDeplacement=0;
                         partieEnCours.flagAction=2;
                         partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
