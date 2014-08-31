@@ -45,7 +45,7 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==0)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
           }               
           else if(this.numeroUnite==1)
           {
@@ -53,11 +53,7 @@ public class PetitPanel extends JPanel{
           }
           else if(this.numeroUnite==2)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
-          }
-          else if (this.numeroUnite==3)
-          {
-             m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
           }
           repaint();
     }
@@ -66,7 +62,7 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==0)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/requin.jpe"));
+             m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
           }               
           else if(this.numeroUnite==1)
           {
@@ -114,6 +110,7 @@ public class PetitPanel extends JPanel{
         repaint();
     }
 
+    
     
     @Override public void paintComponent(Graphics g)
     {
