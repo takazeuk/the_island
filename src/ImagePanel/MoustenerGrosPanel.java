@@ -46,6 +46,7 @@ public class MoustenerGrosPanel extends MouseAdapter
         joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
         placement= selctionPanel.terrain;
         
+        
 
             if(partieEnCours.flagAction==0){               
                 try {
@@ -94,6 +95,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 }
             }
             if (partieEnCours.flagAction==3) {
+                System.out.println("je rentre dans la phase 3"+partieEnCours.exploDeplace.deplacement(placement));
                 boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
                 if (testDeplacement) {
                     placement.explorateurs.add(partieEnCours.exploDeplace);
@@ -111,6 +113,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     {
                         partieEnCours.flagDeplacement=0;
                         partieEnCours.flagAction=2;
+                        partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                         messageJoueur("votre explorateur a été déplacé"); 
                         //blabal
                     }

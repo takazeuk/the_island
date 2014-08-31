@@ -43,7 +43,8 @@ public class partie {
     //nous permet de donner une action différentes à notre clic
     public int flagAction=0;
     //nous permet de stocket le pion explorateur que l'on déplace
-    public explorateurs exploDeplace= new explorateurs(0,0,0,4);
+    public explorateurs exploDeplace;
+    public GrosPanel origineExplorateur;
     //flag de déplacement
     public int flagDeplacement=0;
     
@@ -71,10 +72,6 @@ public class partie {
         int cordy;
         
         legros.setLayout(null);
-        PetitPanel nouveau = new PetitPanel(2, null);
-        nouveau.numeroUnite=7;
-        nouveau.choixImageBateau();
-        mine.add(nouveau);
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
@@ -232,7 +229,7 @@ public class partie {
                     PetitPanel unite;
                     if(i==0)
                     {
-                       unite = new PetitPanel(0, tuile);
+                       unite = new PetitPanel(0, tuile, this);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 20, 20, 20);
@@ -241,7 +238,7 @@ public class partie {
                     }
                     else if(i==1)
                     {
-                       unite = new PetitPanel(1, tuile);
+                       unite = new PetitPanel(1, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(10, 55, 20, 20);
@@ -249,7 +246,7 @@ public class partie {
                     }
                     else if(i==2)
                     {
-                        unite = new PetitPanel(2, tuile);
+                        unite = new PetitPanel(2, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 90, 20, 20);
@@ -257,7 +254,7 @@ public class partie {
                     }
                     else if(i==3)
                     {
-                        unite = new PetitPanel(3, tuile);
+                        unite = new PetitPanel(3, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 90, 20, 20);
@@ -265,7 +262,7 @@ public class partie {
                     }
                     else if(i==4)
                     {
-                        unite = new PetitPanel(4, tuile);
+                        unite = new PetitPanel(4, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(100, 55, 20, 20);
@@ -273,7 +270,7 @@ public class partie {
                     }
                     else if(i==5)
                     {
-                        unite = new PetitPanel(5, tuile);
+                        unite = new PetitPanel(5, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 20, 20, 20);
@@ -283,7 +280,7 @@ public class partie {
                     {
                         //unite.setSize(10, 10);
                         //unite.setLocation(45, 45);
-                        unite = new PetitPanel(6, tuile);
+                        unite = new PetitPanel(6, tuile, this);
                         tuile.add(unite);
                         unite.setBounds(57, 55, 20, 20);
                         //unite.setBounds(60, 60, 10, 10);
@@ -611,6 +608,8 @@ public class partie {
         {
             //il faudra 
             choisi.explorateurs.add(pionschoisi);
+            pionschoisi.x=choisi.x;
+            pionschoisi.y=choisi.y;
             affichageExplorateurs(choisi, pionschoisi);
             return true;
         }

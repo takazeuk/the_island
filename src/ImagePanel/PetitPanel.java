@@ -27,12 +27,13 @@ public class PetitPanel extends JPanel{
     public MoustenerPetitPanel clicDuPetitPanel;
     public partie partieEnCours;
             
-    public PetitPanel(int numero, GrosPanel envoye) throws IOException
+    public PetitPanel(int numero, GrosPanel envoye, partie p) throws IOException
     {
         numeroUnite = 4;
         numeroPetitPanel = numero;
         conteneur= envoye;
-        this.setSize(10, 10);
+        partieEnCours= p;
+        this.setSize(20, 20);
         this.setVisible(true);
         clicDuPetitPanel = new MoustenerPetitPanel(this, this.partieEnCours);
         this.addMouseListener(clicDuPetitPanel);
@@ -86,7 +87,7 @@ public class PetitPanel extends JPanel{
     }
     @Override public void paintComponent(Graphics g)
     {
-        g.drawImage(m_image, 0, 0, 10, 10, null);
+        g.drawImage(m_image, 0, 0, 20, 20, null);
     }
 
     

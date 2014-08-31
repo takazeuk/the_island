@@ -30,6 +30,12 @@ public class MoustenerPetitPanel extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
+        System.out.println("grospanelDoitGererEvent  ="+grospanelDoitGereEvent());
+        if (grospanelDoitGereEvent()) {
+            System.out.println("je rentre dans grospanelDoitGererEvent ");
+            selctionPanel.conteneur.clicDuPanel.mouseClicked(e);
+            return;
+        }
         messageJoueur(partieEnCours.flagAction+"clicPtitPanel");
         if (partieEnCours.flagAction==2) {
         
@@ -40,6 +46,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
                 partieEnCours.flagDeplacement=1;
                 partieEnCours.flagAction=3;
+                partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 messageJoueur("explorateur séléctionné");
             }
             else if (this.selctionPanel.numeroUnite==6) {
@@ -50,5 +57,9 @@ public class MoustenerPetitPanel extends MouseAdapter
               messageJoueur("vous ne pouvez pas sélectionner cette unité");
             }        
         }		
+    }
+
+    private boolean grospanelDoitGereEvent() {
+       return partieEnCours.flagAction != 2; 
     }
 }
