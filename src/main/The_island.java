@@ -75,6 +75,11 @@ public class The_island {
         
         //on met en place les monstres de départ
         partie.miseEnPlaceMonstre();
+        int i=0;
+        for (tuiles tuile : partie.carte) {
+            System.out.println("case n"+i+" x= " +tuile.x+" y= "+tuile.y+" type= "+tuile.type+"" );
+            i++;
+        }
         
         
         //partie déploiement des pions par les joueurs
