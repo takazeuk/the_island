@@ -19,7 +19,7 @@ import partie.partie;
  *
  * @author Jonathan
  */
-public class PetitPanel extends JPanel{
+public class PetitPanel extends JPanel implements ActionListener{
     public BufferedImage m_image;
     public int numeroUnite;
     public int numeroPetitPanel;
@@ -89,5 +89,8 @@ public class PetitPanel extends JPanel{
         g.drawImage(m_image, 0, 0, 10, 10, null);
     }
 
-    
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

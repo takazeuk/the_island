@@ -26,7 +26,7 @@ import terrain.tuiles;
  *
  * @author Jonathan
  */
-public class GrosPanel extends JPanel{
+public class GrosPanel extends JPanel implements ActionListener{
     public BufferedImage m_image, m_monstres;
     public int k, j;
     public tuiles terrain;
@@ -83,7 +83,17 @@ public class GrosPanel extends JPanel{
           }
           repaint();
     }
+    public void actionPerformed(ActionEvent e)
+    {
+        System.out.println("J'ai cliqué!");
+        int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
+    }
     
+    public void mouseClicked(MouseEvent e)
+    {
+        System.out.println("J'ai cliqué!");
+        int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
+    }
     
     
     public void placeUnité(tuiles terrain) throws IOException
