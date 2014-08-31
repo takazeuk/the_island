@@ -633,7 +633,6 @@ public class partie {
                         {               
                             GrosPanel territoire = (GrosPanel) temp;
                             if (territoire.terrain==choisi) {
-                                territoire.affichageUnite.get(6).numeroUnite=7;
                                 territoire.affichageUnite.get(6).choixImageBateau();
                             }
                         }

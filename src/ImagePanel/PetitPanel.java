@@ -72,11 +72,10 @@ public class PetitPanel extends JPanel{
     
     public void choixImageBateau() throws IOException
     {          
-          if(this.numeroUnite==7)
-          {
-             m_image = ImageIO.read(getClass().getResource("/images/barque.jpe"));
-          }
-          repaint();
+      
+        m_image = ImageIO.read(getClass().getResource("/images/barque.jpe"));
+    
+        repaint();
     }
     @Override public void paintComponent(Graphics g)
     {
