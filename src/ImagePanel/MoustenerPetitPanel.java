@@ -40,6 +40,7 @@ public class MoustenerPetitPanel extends MouseAdapter
             return;
         }
         messageJoueur(partieEnCours.flagAction+"clicPtitPanel");
+        
         if (partieEnCours.flagAction==2) {
         
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);

@@ -107,7 +107,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     
                     if (placementValide==false) {
                         placement.explorateurs.remove(partieEnCours.exploDeplace);
-                        messageJoueur("vous ne pouvez pas faire ce déplacement");
+                        messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case");
                     }
                     else
                     {
@@ -116,12 +116,23 @@ public class MoustenerGrosPanel extends MouseAdapter
                         } catch (IOException ex) {
                             Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                        partieEnCours.exploDeplace.x= placement.x;
+                        partieEnCours.exploDeplace.y= placement.y;
+                        
+                        //on remet le flag déplacement à 0
                         partieEnCours.flagDeplacement=0;
+                        
+                        //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
                         partieEnCours.flagAction=2;
+                        
                         partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                         messageJoueur("votre explorateur a été déplacé"); 
-                        //blabal
                     }
+                }
+                else
+                {
+                  messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente");   
                 }
             }
     }		
