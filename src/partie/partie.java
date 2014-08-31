@@ -15,6 +15,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import static java.awt.PageAttributes.MediaType.C;
 import java.awt.Panel;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Vector;
@@ -60,6 +61,7 @@ public class partie {
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
     int hauteur = (int)tailleEcran.getHeight();
     int largeur = (int)tailleEcran.getWidth();
+    
     //fonction pour créer le plateau de jeu avec les tuiles
     public void creationPlateau() throws IOException
     {
@@ -206,6 +208,7 @@ public class partie {
         
         legros.setPreferredSize(new Dimension(1600,1300));
         Scroll.setBounds(largeur/8, hauteur/8, 6*largeur/8, 6*hauteur/8);
+        
         //legros.setBounds(0, 0, largeur, hauteur);
         
         mine.getContentPane().add(Scroll);

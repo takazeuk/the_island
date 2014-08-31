@@ -41,7 +41,8 @@ public class GrosPanel extends JPanel{
            k = envoye.x;
            j = envoye.y;
            terrain = envoye;
-           m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
+           //m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
+           this.setOpaque(false);
            affichageUnite = new Vector<PetitPanel>();
            this.partieEnCours= partie;
            clicDuPanel = new MoustenerGrosPanel(this, this.partieEnCours);
@@ -60,8 +61,7 @@ public class GrosPanel extends JPanel{
           
           if(terrain.type==0)
           {
-            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
-            m_monstres = ImageIO.read(getClass().getResource("/images/SDM.png"));
+            m_image = ImageIO.read(getClass().getResource("/images/Eau-vide.png"));
             b = true;
           }               
           else if(terrain.type==1)

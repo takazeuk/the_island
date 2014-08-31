@@ -37,6 +37,7 @@ public class PetitPanel extends JPanel{
         this.setVisible(true);
         clicDuPetitPanel = new MoustenerPetitPanel(this, this.partieEnCours);
         this.addMouseListener(clicDuPetitPanel);
+        this.setOpaque(false);
         //il faut mettre un déactivé que l'on active que lorsqu'il y a une unité
     }
     
@@ -48,7 +49,7 @@ public class PetitPanel extends JPanel{
           }               
           else if(this.numeroUnite==1)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Vert.png"));
           }
           else if(this.numeroUnite==2)
           {
