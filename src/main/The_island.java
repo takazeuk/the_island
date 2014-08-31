@@ -85,11 +85,12 @@ public class The_island {
         }*/
         
         //partie déploiement des bateaux par les joueurs
-        messageJoueur("phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux");
+        /*messageJoueur("phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux");
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un bateau sur une case d'eau non occupée et voisine à une case terrain");
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
-        }
+        }*/
+        
         
         //partie déplacement des explorateurs/bateaux
         messageJoueur("phase de deplacement: choisissez un bateaux ou un de vos explorateurs à déplacer");

@@ -74,7 +74,7 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==7)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/barque"));
+             m_image = ImageIO.read(getClass().getResource("/images/barque.jpe"));
           }
           repaint();
     }
