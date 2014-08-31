@@ -88,6 +88,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     else
                     {
+                        messageJoueur("placement bateau terminé");
                         partieEnCours.flagAction=2;
                     } 
                 }
@@ -108,7 +109,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     else
                     {
-                        messageJoueur("votre explorateur a été déplacé");
+                        partieEnCours.flagDeplacement=0;
+                        partieEnCours.flagAction=2;
+                        messageJoueur("votre explorateur a été déplacé");                       
                     }
                 }
             }

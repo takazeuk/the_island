@@ -30,6 +30,7 @@ public class MoustenerPetitPanel extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
+        messageJoueur(partieEnCours.flagAction+"clicPtitPanel");
         if (partieEnCours.flagAction==2) {
         
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
