@@ -111,7 +111,8 @@ public class MoustenerGrosPanel extends MouseAdapter
                     {
                         partieEnCours.flagDeplacement=0;
                         partieEnCours.flagAction=2;
-                        messageJoueur("votre explorateur a été déplacé");                       
+                        messageJoueur("votre explorateur a été déplacé"); 
+                        //blabal
                     }
                 }
             }
