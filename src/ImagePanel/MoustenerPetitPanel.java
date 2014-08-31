@@ -31,20 +31,23 @@ public class MoustenerPetitPanel extends MouseAdapter
     public void mouseClicked(MouseEvent e) 
     {
         if (partieEnCours.flagAction==2) {
-           boolean valide=false;
         
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
-            messageJoueur("petit panel cliquert");
+            
             //test pour l'explorateur
             if (this.selctionPanel.numeroUnite==joueur.couleur) {
                 partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
                 partieEnCours.flagDeplacement=1;
-                valide=true;
+                partieEnCours.flagAction=3;
+                messageJoueur("explorateur séléctionné");
             }
             else if (this.selctionPanel.numeroUnite==6) {
                 //test du bateau mais pas encore fait
-                valide=true;
-            } 
+            }
+            else
+            {
+              messageJoueur("vous ne pouvez pas sélectionner cette unité");
+            }
         }
         
     }		

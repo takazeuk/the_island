@@ -11,8 +11,6 @@ import MessageBox.Interaction;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Vector;
@@ -88,14 +86,7 @@ public class GrosPanel extends JPanel implements ActionListener{
         System.out.println("J'ai cliqué!");
         int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
     }
-    
-    public void mouseClicked(MouseEvent e)
-    {
-        System.out.println("J'ai cliqué!");
-        int nb = Interaction.demandeChoix("Combien de participants à la partie ? (4 maximums)");
-    }
-    
-    
+       
     public void placeUnité(tuiles terrain) throws IOException
     {
         

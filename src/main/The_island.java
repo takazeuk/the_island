@@ -93,12 +93,11 @@ public class The_island {
         
         
         //partie déplacement des explorateurs/bateaux
-        messageJoueur("phase de deplacement: choisissez un bateaux ou un de vos explorateurs à déplacer");
-        messageJoueur("selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");    
+        messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");   
         while(partie.flagDeplacement!=1){
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }
-        messageJoueur("selectionnez une tuile de destination");
+        messageJoueur("selectionnez maintenant une case de destination");
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }

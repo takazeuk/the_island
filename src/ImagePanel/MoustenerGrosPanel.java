@@ -93,13 +93,22 @@ public class MoustenerGrosPanel extends MouseAdapter
                 }
             }
             if (partieEnCours.flagAction==3) {
-                boolean testDeplacement=partieEnCours.exploDeplace.deplacement(selctionPanel.terrain);
+                boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
                 if (testDeplacement) {
                     placement.explorateurs.add(partieEnCours.exploDeplace);
                     try {
-                        partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                        placementValide=partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
                     } catch (IOException ex) {
                         Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    if (placementValide==false) {
+                        placement.explorateurs.remove(partieEnCours.exploDeplace);
+                        messageJoueur("vous ne pouvez pas faire ce déplacement");
+                    }
+                    else
+                    {
+                        messageJoueur("votre explorateur a été déplacé");
                     }
                 }
             }
