@@ -6,6 +6,8 @@
 
 package unités;
 
+import terrain.tuiles;
+
 /**
  *
  * @author Takazeuk
@@ -21,8 +23,10 @@ public class unites {
         this.y = y;
     }
     
-    public boolean deplacement(int x, int y)
+    public boolean deplacement(tuiles choisi)
     {
+        int x= choisi.x;
+        int y= choisi.y;
         int coorduniteX= this.x;
         int coorduniteY= this.y;
         

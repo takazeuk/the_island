@@ -32,7 +32,7 @@ public class GrosPanel extends JPanel implements ActionListener{
     public tuiles terrain;
     public boolean b;
     public Vector <PetitPanel> affichageUnite;
-    public Moustener clicDuPanel;
+    public MoustenerGrosPanel clicDuPanel;
     public partie partieEnCours;
 
     //public int nb;
@@ -46,7 +46,7 @@ public class GrosPanel extends JPanel implements ActionListener{
            m_image = ImageIO.read(getClass().getResource("/images/eau.png"));
            affichageUnite = new Vector<PetitPanel>();
            this.partieEnCours= partie;
-           clicDuPanel = new Moustener(this, this.partieEnCours);
+           clicDuPanel = new MoustenerGrosPanel(this, this.partieEnCours);
            this.addMouseListener(clicDuPanel);
            
     }

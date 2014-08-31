@@ -76,22 +76,31 @@ public class The_island {
         //on met en place les monstres de départ
         partie.miseEnPlaceMonstre();
         
+        /*
         //partie déploiement des pions par les joueurs
-        /*messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
+        messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur");       
         while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
             //on bloque le code tant que tous les pions n'ont pas été placés.
         }*/
         
+        //partie déploiement des bateaux par les joueurs
         messageJoueur("phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux");
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un bateau sur une case d'eau non occupée et voisine à une case terrain");
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
-            
         
-        
-        
+        //partie déplacement des explorateurs/bateaux
+        messageJoueur("phase de deplacement: choisissez un bateaux ou un de vos explorateurs à déplacer");
+        messageJoueur("selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");    
+        while(partie.flagDeplacement!=1){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
+        messageJoueur("selectionnez une tuile de destination");
+        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
         
         
         /*

@@ -42,6 +42,11 @@ public class partie {
     public int tourJoueur=0;
     //nous permet de donner une action différentes à notre clic
     public int flagAction=1;
+    //nous permet de stocket le pion explorateur que l'on déplace
+    public explorateurs exploDeplace= new explorateurs(0,0,0,4);
+    //flag de déplacement
+    public int flagDeplacement=0;
+    
     JPanel legros = new JPanel();
     
     public partie(int nombreJoueur) throws IOException {
@@ -224,7 +229,7 @@ public class partie {
                     PetitPanel unite;
                     if(i==0)
                     {
-                       unite = new PetitPanel(0);
+                       unite = new PetitPanel(0, tuile);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 20, 10, 10);
@@ -233,7 +238,7 @@ public class partie {
                     }
                     else if(i==1)
                     {
-                       unite = new PetitPanel(1);
+                       unite = new PetitPanel(1, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(10, 55, 10, 10);
@@ -241,7 +246,7 @@ public class partie {
                     }
                     else if(i==2)
                     {
-                        unite = new PetitPanel(2);
+                        unite = new PetitPanel(2, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(32, 90, 10, 10);
@@ -249,7 +254,7 @@ public class partie {
                     }
                     else if(i==3)
                     {
-                        unite = new PetitPanel(3);
+                        unite = new PetitPanel(3, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 90, 10, 10);
@@ -257,7 +262,7 @@ public class partie {
                     }
                     else if(i==4)
                     {
-                        unite = new PetitPanel(4);
+                        unite = new PetitPanel(4, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(100, 55, 10, 10);
@@ -265,7 +270,7 @@ public class partie {
                     }
                     else if(i==5)
                     {
-                        unite = new PetitPanel(5);
+                        unite = new PetitPanel(5, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(80, 20, 10, 10);
@@ -275,7 +280,7 @@ public class partie {
                     {
                         //unite.setSize(10, 10);
                         //unite.setLocation(45, 45);
-                        unite = new PetitPanel(6);
+                        unite = new PetitPanel(6, tuile);
                         tuile.add(unite);
                         unite.setBounds(57, 55, 10, 10);
                         //unite.setBounds(60, 60, 10, 10);
@@ -393,7 +398,7 @@ public class partie {
     
     public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer) throws IOException{
         
-        if (cible.monstres.size()!=4) {
+        if (cible.monstres.size()<3) {
             for (monstres monstrePresent : cible.monstres) {
                 if (monstreDeplacer.type==monstrePresent.type) {
                     return false;
@@ -619,7 +624,7 @@ public class partie {
                    FlagType=1;
                }
            }
-                if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)) {
+                if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)&&(choisi.monstres.size()==0)) {
                     bateaux bateauxPlacement= new bateaux(0,0);
                     choisi.bateaux.add(bateauxPlacement);
                     for (Component temp  : legros.getComponents()) {
@@ -668,7 +673,7 @@ public class partie {
         
     }
 
-    private boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
+    public boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
            
         for (Component temp  : legros.getComponents()) {
             
@@ -814,38 +819,9 @@ public class partie {
                     for (bateaux bateauRetirer : lePanel.terrain.bateaux) {
                     lePanel.terrain.monstres.remove(bateauRetirer);
                     }
-                }
-                    
+                }                    
             }
         }
     }
-        /*private boolean affichageBateau(tuiles cible, bateaux bateauDeplacer) throws IOException {
-           
-        for (Component temp  : legros.getComponents()) {
-            
-            if(temp instanceof GrosPanel)
-            {
-                
-                GrosPanel territoire = (GrosPanel) temp;
-                
-                if (territoire.terrain==cible) {
-                    
-                    for (int i = 0; i < 3; i++) {
-                        
-                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
-                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
-                            
-                            territoire.affichageUnite.get(i).numeroUnite= uniteDeplacer.proprietaire;
-                            territoire.affichageUnite.get(i).choixImageExplorateur();
-                            return true;
-                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }*/
-        
         
 }

@@ -23,14 +23,14 @@ import unités.bateaux;
  *
  * @author Jonathan
  */
-public class Moustener extends MouseAdapter
+public class MoustenerGrosPanel extends MouseAdapter
 {
     int x;
     int y;
     GrosPanel selctionPanel;
     partie partieEnCours;
     
-    public Moustener(GrosPanel p, partie part)
+    public MoustenerGrosPanel(GrosPanel p, partie part)
     {
         x = p.j;
         y = p.k;
@@ -51,7 +51,7 @@ public class Moustener extends MouseAdapter
                 try {
                 placementValide=partieEnCours.deploiementExplorateurs(joueur, joueur.membresDeploiement.get(0), placement);
                 } catch (IOException ex) {
-                Logger.getLogger(Moustener.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 if (placementValide) {
                    joueur.membresDeploiement.remove(0);
@@ -60,7 +60,7 @@ public class Moustener extends MouseAdapter
                         partieEnCours.tourJoueur=0;
                     }
                     
-                    if (joueur.membresDeploiement.size()!=0) {
+                    if (partieEnCours.participant.get(partieEnCours.tourJoueur).membresDeploiement.size()!=0) {
                        messageJoueur(partieEnCours.flagAction+""+partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un explorateur");
                     }
                     else
@@ -73,7 +73,7 @@ public class Moustener extends MouseAdapter
                 try {
                 placementValide=partieEnCours.deploiementBateaux(selctionPanel.terrain);
                 } catch (IOException ex) {
-                Logger.getLogger(Moustener.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 
                 if (placementValide) {
@@ -83,7 +83,7 @@ public class Moustener extends MouseAdapter
                         partieEnCours.tourJoueur=0;
                     }
                     
-                    if (partieEnCours.participant.get(partieEnCours.participant.size()-1).bateauxDeploiement!=0) {
+                    if (partieEnCours.participant.get(partieEnCours.tourJoueur).bateauxDeploiement!=0) {
                        messageJoueur(partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un bateau");
                     }
                     else
@@ -91,6 +91,17 @@ public class Moustener extends MouseAdapter
                         partieEnCours.flagAction=2;
                     } 
                 }
-            }              
+            }
+            if (partieEnCours.flagAction==2) {
+                boolean testDeplacement=partieEnCours.exploDeplace.deplacement(selctionPanel.terrain);
+                if (testDeplacement) {
+                    placement.explorateurs.add(partieEnCours.exploDeplace);
+                    try {
+                        partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                    } catch (IOException ex) {
+                        Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
     }		
 }

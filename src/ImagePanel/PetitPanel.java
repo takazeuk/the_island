@@ -20,13 +20,16 @@ public class PetitPanel extends JPanel{
     public BufferedImage m_image;
     public int numeroUnite;
     public int numeroPetitPanel;
+    public GrosPanel conteneur;
             
-    public PetitPanel(int numero) throws IOException
+    public PetitPanel(int numero, GrosPanel envoye) throws IOException
     {
         numeroUnite = 4;
         numeroPetitPanel = numero;
+        conteneur= envoye;
         this.setSize(10, 10);
         this.setVisible(true);
+        //il faut mettre un déactivé que l'on active que lorsqu'il y a une unité
     }
     
     public void choixImageExplorateur() throws IOException
