@@ -71,7 +71,10 @@ public class partie {
         int cordy;
         
         legros.setLayout(null);
-        
+        PetitPanel nouveau = new PetitPanel(2, null);
+        nouveau.numeroUnite=7;
+        nouveau.choixImageBateau();
+        mine.add(nouveau);
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
@@ -232,7 +235,7 @@ public class partie {
                        unite = new PetitPanel(0, tuile);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(32, 20, 10, 10);
+                        unite.setBounds(32, 20, 20, 20);
                         //unite.setLocation(20, 10); 
                                                
                     }
@@ -241,7 +244,7 @@ public class partie {
                        unite = new PetitPanel(1, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(10, 55, 10, 10);
+                        unite.setBounds(10, 55, 20, 20);
                         //unite.setLocation(5, 45);
                     }
                     else if(i==2)
@@ -249,7 +252,7 @@ public class partie {
                         unite = new PetitPanel(2, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(32, 90, 10, 10);
+                        unite.setBounds(32, 90, 20, 20);
                         //unite.setLocation(15, 75);
                     }
                     else if(i==3)
@@ -257,7 +260,7 @@ public class partie {
                         unite = new PetitPanel(3, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(80, 90, 10, 10);
+                        unite.setBounds(80, 90, 20, 20);
                         //unite.setLocation(75, 75);
                     }
                     else if(i==4)
@@ -265,7 +268,7 @@ public class partie {
                         unite = new PetitPanel(4, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(100, 55, 10, 10);
+                        unite.setBounds(100, 55, 20, 20);
                         //unite.setLocation(85, 45);
                     }
                     else if(i==5)
@@ -273,7 +276,7 @@ public class partie {
                         unite = new PetitPanel(5, tuile);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(80, 20, 10, 10);
+                        unite.setBounds(80, 20, 20, 20);
                         //unite.setLocation(75, 15);
                     }
                     else
@@ -282,7 +285,7 @@ public class partie {
                         //unite.setLocation(45, 45);
                         unite = new PetitPanel(6, tuile);
                         tuile.add(unite);
-                        unite.setBounds(57, 55, 10, 10);
+                        unite.setBounds(57, 55, 20, 20);
                         //unite.setBounds(60, 60, 10, 10);
                         
                         
