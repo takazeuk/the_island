@@ -7,6 +7,7 @@
 package partie;
 
 import ImagePanel.GrosPanel;
+import ImagePanel.ImagePanel;
 import ImagePanel.PetitPanel;
 import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
@@ -50,7 +51,7 @@ public class partie {
     //flag de déplacement
     public int flagDeplacement=0;
     
-    JPanel legros = new JPanel();
+    JPanel legros = new ImagePanel("/images/Board.png");
     
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
@@ -220,6 +221,8 @@ public class partie {
     }
     public void miseEnPlaceDesPetitPanel(GrosPanel tuile) throws IOException
     {
+        int longueur = 30;
+        int hauteur = 30;
         
         /*for (Component LesPanels : legros.getComponents()) 
         {
@@ -236,7 +239,7 @@ public class partie {
                        unite = new PetitPanel(0, tuile, this);
                        // unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(32, 20, 20, 20);
+                        unite.setBounds(32, 20, 30, 30);
                         //unite.setLocation(20, 10); 
                                                
                     }
@@ -245,7 +248,7 @@ public class partie {
                        unite = new PetitPanel(1, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(10, 55, 20, 20);
+                        unite.setBounds(10, 55, hauteur, longueur);
                         //unite.setLocation(5, 45);
                     }
                     else if(i==2)
@@ -253,7 +256,7 @@ public class partie {
                         unite = new PetitPanel(2, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(32, 90, 20, 20);
+                        unite.setBounds(32, 90, hauteur, longueur);
                         //unite.setLocation(15, 75);
                     }
                     else if(i==3)
@@ -261,7 +264,7 @@ public class partie {
                         unite = new PetitPanel(3, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(80, 90, 20, 20);
+                        unite.setBounds(80, 90, hauteur, longueur);
                         //unite.setLocation(75, 75);
                     }
                     else if(i==4)
@@ -269,7 +272,7 @@ public class partie {
                         unite = new PetitPanel(4, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(100, 55, 20, 20);
+                        unite.setBounds(100, 55, hauteur, longueur);
                         //unite.setLocation(85, 45);
                     }
                     else if(i==5)
@@ -277,7 +280,7 @@ public class partie {
                         unite = new PetitPanel(5, tuile, this);
                         //unite.setSize(15, 15);
                         tuile.add(unite);
-                        unite.setBounds(80, 20, 20, 20);
+                        unite.setBounds(80, 20, hauteur, longueur);
                         //unite.setLocation(75, 15);
                     }
                     else
@@ -286,15 +289,13 @@ public class partie {
                         //unite.setLocation(45, 45);
                         unite = new PetitPanel(6, tuile, this);
                         tuile.add(unite);
-                        unite.setBounds(57, 55, 20, 20);
+                        unite.setBounds(57, 55, hauteur, longueur);
                         //unite.setBounds(60, 60, 10, 10);
                         
                         
                     }
                     tuile.affichageUnite.add(unite);
-                    
-                
-                        
+                       
                 }
             }
             

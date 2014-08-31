@@ -33,7 +33,7 @@ public class PetitPanel extends JPanel{
         numeroPetitPanel = numero;
         conteneur= envoye;
         partieEnCours= p;
-        this.setSize(20, 20);
+        this.setSize(30, 30);
         this.setVisible(true);
         clicDuPetitPanel = new MoustenerPetitPanel(this, this.partieEnCours);
         this.addMouseListener(clicDuPetitPanel);
@@ -45,7 +45,7 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==0)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
           }               
           else if(this.numeroUnite==1)
           {
@@ -117,7 +117,7 @@ public class PetitPanel extends JPanel{
     
     @Override public void paintComponent(Graphics g)
     {
-        g.drawImage(m_image, 0, 0, 20, 20, null);
+        g.drawImage(m_image, 0, 0, 30, 30, null);
     }
 
     
