@@ -71,7 +71,10 @@ public class partie {
         int cordy;
         
         legros.setLayout(null);
-        
+        PetitPanel nouveau = new PetitPanel(2, null);
+        nouveau.numeroUnite=7;
+        nouveau.choixImageBateau();
+        mine.add(nouveau);
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
