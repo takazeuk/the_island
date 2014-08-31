@@ -6,6 +6,7 @@
 
 package ImagePanel;
 
+import static MessageBox.Interaction.messageJoueur;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import joueurs.joueurs;
@@ -29,18 +30,22 @@ public class MoustenerPetitPanel extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        boolean valide=false;
+        if (partieEnCours.flagAction==2) {
+           boolean valide=false;
         
-        joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
-        //test pour l'explorateur
-        if (this.selctionPanel.numeroUnite==joueur.couleur) {
-            partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
-            partieEnCours.flagDeplacement=1;
-            valide=true;
+            joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
+            messageJoueur("petit panel cliquert");
+            //test pour l'explorateur
+            if (this.selctionPanel.numeroUnite==joueur.couleur) {
+                partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
+                partieEnCours.flagDeplacement=1;
+                valide=true;
+            }
+            else if (this.selctionPanel.numeroUnite==6) {
+                //test du bateau mais pas encore fait
+                valide=true;
+            } 
         }
-        else if (this.selctionPanel.numeroUnite==6) {
-            //test du bateau mais pas encore fait
-            valide=true;
-        }
+        
     }		
 }

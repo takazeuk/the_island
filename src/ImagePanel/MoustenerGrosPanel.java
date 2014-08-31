@@ -92,7 +92,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     } 
                 }
             }
-            if (partieEnCours.flagAction==2) {
+            if (partieEnCours.flagAction==3) {
                 boolean testDeplacement=partieEnCours.exploDeplace.deplacement(selctionPanel.terrain);
                 if (testDeplacement) {
                     placement.explorateurs.add(partieEnCours.exploDeplace);

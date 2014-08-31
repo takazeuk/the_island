@@ -41,7 +41,7 @@ public class partie {
     //nous permet de passer au joueur suivant
     public int tourJoueur=0;
     //nous permet de donner une action différentes à notre clic
-    public int flagAction=1;
+    public int flagAction=0;
     //nous permet de stocket le pion explorateur que l'on déplace
     public explorateurs exploDeplace= new explorateurs(0,0,0,4);
     //flag de déplacement
