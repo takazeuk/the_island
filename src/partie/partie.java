@@ -46,6 +46,7 @@ public class partie {
     //nous permet de stocket le pion explorateur que l'on déplace
     public explorateurs exploDeplace;
     public GrosPanel origineExplorateur;
+    public PetitPanel panelExplorateur;
     //flag de déplacement
     public int flagDeplacement=0;
     

@@ -9,6 +9,9 @@ package ImagePanel;
 import static MessageBox.Interaction.messageJoueur;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import joueurs.joueurs;
 import partie.partie;
 
@@ -47,6 +50,14 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.flagDeplacement=1;
                 partieEnCours.flagAction=3;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                partieEnCours.panelExplorateur = selctionPanel;
+                partieEnCours.panelExplorateur.numeroUnite = 4;
+                try {
+                    partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
+                } catch (IOException ex) {
+                    Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 messageJoueur("explorateur séléctionné");
             }
             else if (this.selctionPanel.numeroUnite==6) {

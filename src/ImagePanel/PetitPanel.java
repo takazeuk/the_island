@@ -86,6 +86,35 @@ public class PetitPanel extends JPanel{
     
         repaint();
     }
+    
+    public void refresh(PetitPanel p) throws IOException
+    {
+        if(p.numeroUnite==0)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+        }               
+        else if(p.numeroUnite==1)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+        }
+        else if(p.numeroUnite==2)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
+        }
+        else if (p.numeroUnite==3)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
+        }
+        else
+        {
+            m_image = null;
+        }
+        
+        
+        repaint();
+    }
+
+    
     @Override public void paintComponent(Graphics g)
     {
         g.drawImage(m_image, 0, 0, 20, 20, null);
