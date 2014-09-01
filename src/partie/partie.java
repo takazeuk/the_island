@@ -44,13 +44,19 @@ public class partie {
     public int tourJoueur=0;
     //nous permet de donner une action différentes à notre clic
     public int flagAction=0;
-    //nous permet de stocket le pion explorateur que l'on déplace
+    //nous permet de stocker le pion explorateur que l'on déplace
     public explorateurs exploDeplace;
+    //nous permet de stocker le pion bateau que l'on déplace
+    public bateaux bateauDeplace;
+    //nous permet de stocker le pion monstre que l'on déplace
+    public monstres monstreDeplace;
+    //nous permet de stocker le grosPanel d'origine du déplacement
     public GrosPanel origineExplorateur;
+    //nous permet de stocker le petitPanel d'origine du déplacement
     public PetitPanel panelExplorateur;
     //flag de déplacement
     public int flagDeplacement=0;
-    
+    //GrosPanel contenant tout le plateau
     JPanel legros = new ImagePanel("/images/Board.png");
     
     public partie(int nombreJoueur) throws IOException {

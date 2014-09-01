@@ -58,7 +58,9 @@ public class MoustenerPetitPanel extends MouseAdapter
                 messageJoueur("explorateur séléctionné");
             }
             else if (this.selctionPanel.numeroUnite==6) {
-                //test du bateau mais pas encore fait
+                if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.tourJoueur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
+                    
+                }
             }
             else
             {
@@ -66,7 +68,8 @@ public class MoustenerPetitPanel extends MouseAdapter
             }        
         }		
     }
-
+    
+    //permet de ne pas prendre en compte le petitPanel quand le joueur doit cliquer sur le grosPanel
     private boolean grospanelDoitGereEvent() {
        return partieEnCours.flagAction != 2; 
     }
