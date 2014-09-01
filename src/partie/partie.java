@@ -531,7 +531,7 @@ public class partie {
             case 2:
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
             break;
-            case 3: //tourbillon à faire plus tard
+            case 3: //tourbillon fini
                 pouvoir4DeLaTuile(pouvoirJoueur);
             break;
             case 4: //fin du jeu à faire plus tard
@@ -555,6 +555,8 @@ public class partie {
                     {
                         if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
                         {
+                            cible.explorateurs.add(nageurs);
+                            pouvoirJoueur.explorateurs.remove(nageurs);
                             return true;
                         }
                     }
@@ -562,7 +564,19 @@ public class partie {
             break;
                 
             case 6:
-                
+                for(bateaux tousLesBateaux : pouvoirJoueur.bateaux)
+                {
+                    if(tousLesBateaux.proprietaire==j.couleur)
+                    {
+                        if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
+                        {
+                            cible.bateaux.add(tousLesBateaux);
+                            pouvoirJoueur.bateaux.remove(tousLesBateaux);
+                            return true;
+                        }
+                    }
+                }
+                    
             break;
                 
             case 7: 
