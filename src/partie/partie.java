@@ -739,6 +739,19 @@ public class partie {
         choixMonstre= valeur;
     }
     
+    public String typeMonstre(int type){
+        if (type==0) {
+            return "Requin";
+        }
+        else if(type==1){
+            return "Baleine";
+        }
+        else
+        {
+            return "Serpent de mer";
+        }
+    }
+    
     public void finDePartie(joueurs joueurPoint)
     {
         //fin de partie, on va compter les rescapé en les stockant dans un vecteur et enuiste on compte les point

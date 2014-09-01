@@ -76,6 +76,7 @@ public class MoustenerPetitPanel extends MouseAdapter
         }
         
         if (partieEnCours.flagAction==5) {
+            System.out.println("je suis dans le déplacement des monstres");
             if (partieEnCours.choixMonstre!=selctionPanel.numeroUnite) {
                 messageJoueur("vous ne pouvez pas sélectionner cette unité");
             }
@@ -98,6 +99,9 @@ public class MoustenerPetitPanel extends MouseAdapter
     
     //permet de ne pas prendre en compte le petitPanel quand le joueur doit cliquer sur le grosPanel
     private boolean grospanelDoitGereEvent() {
-       return partieEnCours.flagAction != 2; 
+        if ((partieEnCours.flagAction != 2)&&(partieEnCours.flagAction != 5)) {
+            return true;
+        }
+        return false;
     }
 }

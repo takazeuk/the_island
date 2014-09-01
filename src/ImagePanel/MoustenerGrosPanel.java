@@ -97,7 +97,7 @@ public class MoustenerGrosPanel extends MouseAdapter
             }
             if (partieEnCours.flagAction==3) {
                 
-                System.out.println("je rentre dans la phase 3"+partieEnCours.bateauDeplace.deplacement(placement));
+                System.out.println("je rentre dans la phase 3");
                 
                 //on fait le test du cas où ce serait un bateau qui doit être déplacé
                 if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
@@ -126,11 +126,12 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on remet le flag déplacement à 0
                             partieEnCours.flagDeplacement=0;
 
-                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
+                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
                             partieEnCours.flagAction=2;
 
                             partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
-                            messageJoueur("le bateau a été déplacé"); 
+                            partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                            messageJoueur("le bateau a été déplacé"+partieEnCours.flagAction); 
                         }
                         else
                         {
@@ -167,7 +168,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on remet le flag déplacement à 0
                             partieEnCours.flagDeplacement=0;
 
-                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
+                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
                             partieEnCours.flagAction=2;
 
                             partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
@@ -178,7 +179,8 @@ public class MoustenerGrosPanel extends MouseAdapter
                             {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
-                            messageJoueur("votre explorateur a été déplacé"); 
+                            partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                            messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction); 
                         }
                         else
                         {
@@ -194,7 +196,7 @@ public class MoustenerGrosPanel extends MouseAdapter
             }
             if (partieEnCours.flagAction==6) {
                 int flag=0;
-                boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
+                boolean testDeplacement=partieEnCours.monstreDeplace.deplacement(placement);
                 if (testDeplacement){
                     if (placement.type==0) {
                         for (monstres monstre : placement.monstres) {
@@ -218,10 +220,10 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on remet le flag déplacement à 0
                             partieEnCours.flagDeplacement=0;
 
-                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
-                            partieEnCours.flagAction=2;
+                            //on repasse flag action à 5 pour réactiver les clics sur les petitsPanels
+                            partieEnCours.flagAction=5;
 
-                            partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.exploDeplace);
+                            partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
                             try 
                             {
                                 partieEnCours.panelRefresh.refreshexplorateurs();

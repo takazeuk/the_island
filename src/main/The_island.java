@@ -77,6 +77,17 @@ public class The_island {
         
         //on met en place les monstres de départ
         partie.miseEnPlaceMonstre();
+        
+        //phase de test à enlever
+        monstres plateaumonstres9= new monstres("requin", 1, 0, 1, 2);
+        monstres plateaumonstres10= new monstres("baleine", 1, 1, 1, 3);
+        partie.population.add(plateaumonstres9);
+        partie.population.add(plateaumonstres10);
+        
+        partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres9);
+        partie.ajoutMonstresTuile(partie.carte.get(11), plateaumonstres10);
+        //
+        
         int i=0;
         for (tuiles tuile : partie.carte) {
             System.out.println("case n"+i+" x= " +tuile.x+" y= "+tuile.y+" type= "+tuile.type+"" );
@@ -105,13 +116,23 @@ public class The_island {
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }
         messageJoueur("selectionnez maintenant une case de destination");
-        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
+        //penser à remettre nb-1 dans le get!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while(partie.participant.get(0).deplacement!=0){
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }
         
         //partie de lancé de dés
+        partie.flagAction=5;
         partie.deeCreature();
-        
+        messageJoueur("vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)); 
+        messageJoueur("phase de monstre: "+partie.participant.get(partie.tourJoueur).nom+" selectionner un monstre correspondant au lancé de dé");   
+        while(partie.flagDeplacement!=1){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
+        messageJoueur("selectionnez maintenant une case de destination");
+        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
         /*
         //partie.miseEnPlaceDesPetitPanel();
         //partie.essai();
