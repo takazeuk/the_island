@@ -293,6 +293,7 @@ public class partie {
                         
                     }
                     tuile.affichageUnite.add(unite);
+                    //commentaire
                        
                 }
             }
