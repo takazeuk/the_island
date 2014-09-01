@@ -58,7 +58,9 @@ public class MoustenerPetitPanel extends MouseAdapter
                 messageJoueur("explorateur séléctionné");
             }
             else if (this.selctionPanel.numeroUnite==6) {
+                System.out.println("je suis bien sur un bateau");
                 if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.tourJoueur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
+                    System.out.println("je suis rentré dans le déplacement bateau");
                     partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
                     partieEnCours.flagDeplacement=1;
                     partieEnCours.flagAction=3;

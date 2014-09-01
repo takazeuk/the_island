@@ -240,10 +240,7 @@ public class partie {
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(22, 15, 30, 30);
-                        //unite.setLocation(20, 10);
-                        explorateurs e1 = new explorateurs(0, 0, 0, 0);
-                        unite.numeroUnite = 0;
-                        unite.choixImageExplorateur(); 
+                        //unite.setLocation(20, 10); 
                     }
                     else if(i==1)
                     {
@@ -252,9 +249,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(7, 45, hauteur, longueur);
                         //unite.setLocation(5, 45);
-                        explorateurs e2 = new explorateurs(0, 0, 0, 0);
-                        unite.numeroUnite = 1;
-                        unite.choixImageExplorateur();
                     }
                     else if(i==2)
                     {
@@ -263,9 +257,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(22, 77, hauteur, longueur);
                         //unite.setLocation(15, 75);
-                        explorateurs e3 = new explorateurs(0, 0, 0, 0);
-                        unite.numeroUnite = 2;
-                        unite.choixImageExplorateur();
                     }
                     else if(i==3)
                     {
@@ -274,9 +265,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(70, 80, hauteur, longueur);
                         //unite.setLocation(75, 75);
-                        monstres m1 = new monstres(null, 2, 0, 0, 0);
-                        unite.numeroUnite = 0;
-                        unite.choixImageMonstre();
                     }
                     else if(i==4)
                     {
@@ -285,9 +273,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(90, 45, hauteur, longueur);
                         //unite.setLocation(85, 45);
-                        monstres m2 = new monstres(null, 2, 1, 0, 0);
-                        unite.numeroUnite = 1;
-                        unite.choixImageMonstre();
                     }
                     else if(i==5)
                     {
@@ -296,9 +281,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(70, 10, hauteur, longueur);
                         //unite.setLocation(75, 15);
-                        monstres m3 = new monstres(null, 2, 2, 0, 0);
-                        unite.numeroUnite = 2;
-                        unite.choixImageMonstre();
                     }
                     else
                     {
@@ -308,8 +290,6 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(47, 45, hauteur, longueur);
                         //unite.setBounds(60, 60, 10, 10);
-                        bateaux b = new bateaux(0, 0);
-                        unite.choixImageBateau();
                         
                     }
                     tuile.affichageUnite.add(unite);
