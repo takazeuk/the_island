@@ -694,6 +694,7 @@ public class partie {
         tuiles adjacente;
         int FlagType=0;
         for (tuiles tuilesCarte : carte) {
+            //on regarde s'il y a une tuile adjecente de terre autour de l'endroit où on veut mettre le bateau
            if (((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y+1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y+1))) {
                adjacente= tuilesCarte;
                if (adjacente.type!=0) {
@@ -701,7 +702,7 @@ public class partie {
                }
            }
                 if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)&&(choisi.monstres.size()==0)) {
-                    bateaux bateauxPlacement= new bateaux(0,0);
+                    bateaux bateauxPlacement= new bateaux(choisi.x,choisi.y);
                     choisi.bateaux.add(bateauxPlacement);
                     for (Component temp  : legros.getComponents()) {
             

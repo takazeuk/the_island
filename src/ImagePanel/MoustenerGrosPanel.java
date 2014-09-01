@@ -102,7 +102,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 if (partieEnCours.panelExplorateur.numeroPetitPanel==6) {
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
-                    if (testDeplacement) {
+                    if ((testDeplacement)&&(placement.type==0)) {
                         //on regarde s'il n'y a pas déjà un autre bateau                      
                         if (placement.bateaux.size()==0) {
                             //on ajoute le bateau au vecteur
@@ -165,7 +165,14 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
                             partieEnCours.flagAction=2;
 
-                            partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
+                            partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
+                            try 
+                            {
+                                partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
+                            } catch (IOException ex) 
+                            {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             messageJoueur("votre explorateur a été déplacé"); 
                         }
                         else
