@@ -511,18 +511,17 @@ public class partie {
                 }               
                 pouvoirJoueur.monstres.add(apparition);
                 affichageMonstre(pouvoirJoueur, apparition);
-                /*
-                */
+                
                 apparition.attaque(pouvoirJoueur, apparition);
                 GrosPanel chercher;
                 for (Component lesGros: legros.getComponents())
                 {
                     if(lesGros instanceof GrosPanel)
-                    {
-                        messageJoueur("On est entrer dans le for des gros panels");
-                        chercher = (GrosPanel) lesGros;
+                    {   
+                        chercher = (GrosPanel) lesGros;                       
                         if((chercher.k == pouvoirJoueur.x) && (chercher.j == pouvoirJoueur.y))
                         {
+                            messageJoueur(chercher.k +"   "+pouvoirJoueur.x+"    "+ "       "+chercher.j+"     "+pouvoirJoueur.y);
                             messageJoueur("j'utilise la fonction aucunExplorateur et refresh image");
                             chercher.AucunExplorateur();
                             chercher.refreshImage();

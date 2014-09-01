@@ -8,6 +8,7 @@ package unités;
 
 import ImagePanel.GrosPanel;
 import java.awt.Component;
+import javafx.beans.binding.Bindings;
 import terrain.tuiles;
 
 /**
@@ -30,17 +31,11 @@ public class monstres extends unites {
     public void attaque(tuiles cible, monstres predateur)
     {
         if ((predateur.type==5)||(predateur.type==7)) {
-            for(explorateurs victime: cible.explorateurs)
-            {
-                cible.explorateurs.remove(victime);
-            }
+            cible.explorateurs.clear();
         }
         if ((predateur.type==6)||(predateur.type==7))
         {
-            for(bateaux navire: cible.bateaux)
-            {
-                cible.bateaux.remove(navire);
-            }
+            cible.bateaux.clear();
         }
         
         
