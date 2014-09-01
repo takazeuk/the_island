@@ -50,6 +50,8 @@ public class partie {
     public PetitPanel panelRefresh;
     //flag de déplacement
     public int flagDeplacement=0;
+    //choix du monstre à déplacer
+    public int choixMonstre;
     //GrosPanel contenant tout le plateau
     JPanel legros = new ImagePanel("/images/Board.png");
     
@@ -728,13 +730,13 @@ public class partie {
     }*/
     
     //lance de dée de la créature
-    public int deeCreature()
+    public deeCreature()
     {
         int valeurMin=0;
         int valeurMax= 2;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
-        return valeur;
+        ChoixMonstre= valeur;
     }
     
     public void finDePartie(joueurs joueurPoint)
