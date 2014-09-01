@@ -59,7 +59,11 @@ public class MoustenerPetitPanel extends MouseAdapter
             }
             else if (this.selctionPanel.numeroUnite==6) {
                 if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.tourJoueur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
-                    
+                    partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
+                    partieEnCours.flagDeplacement=1;
+                    partieEnCours.flagAction=3;
+                    partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                    partieEnCours.panelExplorateur = selctionPanel;                    
                 }
             }
             else
