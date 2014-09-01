@@ -87,6 +87,11 @@ public class GrosPanel extends JPanel{
         
     }
     
+    public void refreshImage() throws IOException
+    {
+        this.m_image = ImageIO.read(getClass().getResource("/images/Eau-vide.png"));
+        repaint();
+    }
     
     @Override public void paintComponent(Graphics g)
     {
