@@ -106,7 +106,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                         //on regarde s'il n'y a pas déjà un autre bateau
                         if (placement.bateaux.size()==0) {
                             placement.bateaux.add(partieEnCours.bateauDeplace);
-                            partieEnCoursplacement, null)
+                            //partieEnCoursplacement, null)
                         }
                         else
                         {
@@ -121,11 +121,11 @@ public class MoustenerGrosPanel extends MouseAdapter
                     
                     
                         placement.bateaux.add(partieEnCours.bateauDeplace);
-                        try {
+                        /*try {
                             //placementValide=partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
                         } catch (IOException ex) {
                             Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        }*/
 
                         if (placementValide==false) {
                             placement.explorateurs.remove(partieEnCours.exploDeplace);
