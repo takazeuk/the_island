@@ -780,7 +780,7 @@ public class partie {
         return false;
     }
         
-    private boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
+    public boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
         
         for (Component temp  : legros.getComponents()) {
             
@@ -892,6 +892,68 @@ public class partie {
                 }                    
             }
         }
+    }
+    
+    public boolean retirerTuile(tuiles cible, joueurs j)
+    {
+        boolean eauAdjacente =false;
+        boolean encoreDuSable = false;
+        boolean encoreDesForet = false;
+        GrosPanel rechercher;
+        
+        for(Component lesGros: legros.getComponents())
+        {
+            if(lesGros instanceof GrosPanel)
+            {
+                rechercher = (GrosPanel) lesGros;
+                // savoir s'il y a toujours des tuile de sable
+                if(rechercher.terrain.type==1)
+                {
+                    encoreDuSable = true;
+                }
+                // savoir s'il y a toujours des tuile de foret
+                if(rechercher.terrain.type==1)
+                {
+                    encoreDesForet = true;
+                }
+                //savoir si il y a une tuile d'eau adjacente à la tuile retirer
+                if(rechercher.terrain.tuileAdjacenteEau(cible))
+                {
+                    eauAdjacente = true;
+                }
+            }
+            
+        }
+        
+        if(eauAdjacente)
+        {
+            if(encoreDuSable)
+            {
+                if(cible.type==1)
+                {
+                    j.cartesEnMain.add(cible);
+                    
+                    return true;
+                }
+            }
+            else if (encoreDesForet)
+            {
+                if(cible.type==2)
+                {
+                    j.cartesEnMain.add(cible);
+                    return true;
+                }
+            }
+            else
+            {
+                if(cible.type==3)
+                {
+                    j.cartesEnMain.add(cible);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
         
 }
