@@ -730,13 +730,13 @@ public class partie {
     }*/
     
     //lance de dée de la créature
-    public deeCreature()
+    public void deeCreature()
     {
         int valeurMin=0;
         int valeurMax= 2;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
-        ChoixMonstre= valeur;
+        choixMonstre= valeur;
     }
     
     public void finDePartie(joueurs joueurPoint)
