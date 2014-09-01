@@ -894,7 +894,7 @@ public class partie {
         }
     }
     
-    public boolean retirerTuile(tuiles cible, joueurs j)
+    public boolean retirerTuile(tuiles cible, joueurs j) throws IOException
     {
         boolean eauAdjacente =false;
         boolean encoreDuSable = false;
@@ -932,7 +932,7 @@ public class partie {
                 if(cible.type==1)
                 {
                     j.cartesEnMain.add(cible);
-                    
+                    refreshTuile(cible);
                     return true;
                 }
             }
@@ -941,6 +941,7 @@ public class partie {
                 if(cible.type==2)
                 {
                     j.cartesEnMain.add(cible);
+                    refreshTuile(cible);
                     return true;
                 }
             }
@@ -949,11 +950,28 @@ public class partie {
                 if(cible.type==3)
                 {
                     j.cartesEnMain.add(cible);
+                    refreshTuile(cible);
                     return true;
                 }
             }
         }
         return false;
+    }
+    
+    public void refreshTuile (tuiles cible) throws IOException
+    {
+        GrosPanel chercher;
+        for (Component lesGros: legros.getComponents())
+        {
+            if(lesGros instanceof GrosPanel)
+            {
+                chercher = (GrosPanel) lesGros;
+                if((chercher.k == cible.x) && (chercher.j == cible.y))
+                {
+                    chercher.refreshImage();
+                }
+            }
+        }
     }
         
 }
