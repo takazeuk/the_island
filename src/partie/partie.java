@@ -240,7 +240,8 @@ public class partie {
                        // unite.setSize(15, 15);
                         tuile.add(unite);
                         unite.setBounds(22, 15, 30, 30);
-                        //unite.setLocation(20, 10); 
+                        //unite.setLocation(20, 10);
+                         
                     }
                     else if(i==1)
                     {
@@ -249,6 +250,7 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(7, 45, hauteur, longueur);
                         //unite.setLocation(5, 45);
+                        
                     }
                     else if(i==2)
                     {
@@ -257,6 +259,7 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(22, 77, hauteur, longueur);
                         //unite.setLocation(15, 75);
+                        
                     }
                     else if(i==3)
                     {
@@ -265,6 +268,7 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(70, 80, hauteur, longueur);
                         //unite.setLocation(75, 75);
+                        
                     }
                     else if(i==4)
                     {
@@ -273,7 +277,7 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(90, 45, hauteur, longueur);
                         //unite.setLocation(85, 45);
-                    }
+                                            }
                     else if(i==5)
                     {
                         unite = new PetitPanel(5, tuile, this);
@@ -281,6 +285,7 @@ public class partie {
                         tuile.add(unite);
                         unite.setBounds(70, 10, hauteur, longueur);
                         //unite.setLocation(75, 15);
+                        
                     }
                     else
                     {
@@ -291,9 +296,9 @@ public class partie {
                         unite.setBounds(47, 45, hauteur, longueur);
                         //unite.setBounds(60, 60, 10, 10);
                         
+                        
                     }
                     tuile.affichageUnite.add(unite);
-                    //commentaire
                        
                 }
             }
@@ -540,7 +545,7 @@ public class partie {
             case 6:
                 for(bateaux tousLesBateaux : pouvoirJoueur.bateaux)
                 {
-                    if(tousLesBateaux.proprietaire==j.couleur)
+                    if(tousLesBateaux.proprietaire==j.couleur || tousLesBateaux.proprietaire == 4)
                     {
                         if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
                         {
