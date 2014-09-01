@@ -437,7 +437,7 @@ public class partie {
     {
         explorateurs survivant;
         
-        for(int compt=0; compt<10; compt++)
+        for(int compt=0; compt<3; compt++)
         {
             switch(compt)
             {
@@ -445,7 +445,7 @@ public class partie {
                   survivant= new explorateurs(1, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
-              case 3: case 4:
+              /*case 3: case 4:
                   survivant= new explorateurs(2, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
@@ -464,7 +464,9 @@ public class partie {
               case 9:
                   survivant= new explorateurs(6, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
-              break;
+              break;*/
+                  
+                  
             }  
         }
         joueurCree.membresDeploiement=joueurCree.membres;
