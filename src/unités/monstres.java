@@ -6,6 +6,8 @@
 
 package unités;
 
+import ImagePanel.GrosPanel;
+import java.awt.Component;
 import terrain.tuiles;
 
 /**
@@ -40,5 +42,8 @@ public class monstres extends unites {
                 cible.bateaux.remove(navire);
             }
         }
+        
+        
+            
     }
 }

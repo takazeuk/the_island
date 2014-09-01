@@ -40,15 +40,5 @@ public class tuiles {
 
    }
    
-   public boolean tuileAdjacenteEau(tuiles cible)
-   {
-       if (((x==cible.x)&&(y==cible.y-1))||((x==cible.x)&&(y==cible.y+1))||((x==cible.x+1)&&(y==cible.y))||((x==cible.x-1)&&(y==cible.y))||((x==cible.x-1)&&(y==cible.y-1))||((x==cible.x+1)&&(y==cible.y+1)))
-       {
-           if(cible.type==0)
-           {
-               return true;
-           }
-       }
-       return false;
-   }
+   
 }

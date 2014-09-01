@@ -53,7 +53,7 @@ public class partie {
     //choix du monstre à déplacer
     public int choixMonstre;
     //GrosPanel contenant tout le plateau
-    JPanel legros = new ImagePanel("/images/Board.png");
+    public JPanel legros = new ImagePanel("/images/Board.png");
     
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
@@ -496,7 +496,7 @@ public class partie {
         this.ajoutMonstresTuile(this.carte.get(125), plateaumonstres5);
     }
     
-    public void pouvoirImmediat(tuiles pouvoirJoueur)
+    public void pouvoirImmediat(tuiles pouvoirJoueur) throws IOException
     {
         monstres apparition;
         switch(pouvoirJoueur.pouvoir)
@@ -510,7 +510,27 @@ public class partie {
                    apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y); 
                 }               
                 pouvoirJoueur.monstres.add(apparition);
+                affichageMonstre(pouvoirJoueur, apparition);
+                /*
+                */
                 apparition.attaque(pouvoirJoueur, apparition);
+                GrosPanel chercher;
+                for (Component lesGros: legros.getComponents())
+                {
+                    if(lesGros instanceof GrosPanel)
+                    {
+                        messageJoueur("On est entrer dans le for des gros panels");
+                        chercher = (GrosPanel) lesGros;
+                        if((chercher.k == pouvoirJoueur.x) && (chercher.j == pouvoirJoueur.y))
+                        {
+                            messageJoueur("j'utilise la fonction aucunExplorateur et refresh image");
+                            chercher.AucunExplorateur();
+                            chercher.refreshImage();
+                        }
+                    }
+
+                }
+                
             break;
             case 2:
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
@@ -909,7 +929,7 @@ public class partie {
         }
     }
     
-    public boolean retirerTuile(tuiles cible, joueurs j) throws IOException
+    public boolean retirerTuile(tuiles cible) throws IOException
     {
         boolean eauAdjacente =false;
         boolean encoreDuSable = false;
@@ -932,7 +952,7 @@ public class partie {
                     encoreDesForet = true;
                 }
                 //savoir si il y a une tuile d'eau adjacente à la tuile retirer
-                if(rechercher.terrain.tuileAdjacenteEau(cible))
+                if(rechercher.tuileAdjacenteEau(cible))
                 {
                     eauAdjacente = true;
                 }
@@ -946,8 +966,8 @@ public class partie {
             {
                 if(cible.type==1)
                 {
-                    j.cartesEnMain.add(cible);
-                    refreshTuile(cible);
+                    /*j.cartesEnMain.add(cible);
+                    refreshTuile(cible);*/
                     return true;
                 }
             }
@@ -955,8 +975,8 @@ public class partie {
             {
                 if(cible.type==2)
                 {
-                    j.cartesEnMain.add(cible);
-                    refreshTuile(cible);
+                    /*j.cartesEnMain.add(cible);
+                    refreshTuile(cible);*/
                     return true;
                 }
             }
@@ -964,12 +984,13 @@ public class partie {
             {
                 if(cible.type==3)
                 {
-                    j.cartesEnMain.add(cible);
-                    refreshTuile(cible);
+                    /*j.cartesEnMain.add(cible);
+                    refreshTuile(cible);*/
                     return true;
                 }
             }
         }
+        messageJoueur("  "+encoreDesForet+"  "+encoreDuSable+"  "+eauAdjacente);
         return false;
     }
     
@@ -984,8 +1005,10 @@ public class partie {
                 if((chercher.k == cible.x) && (chercher.j == cible.y))
                 {
                     chercher.refreshImage();
+                    
                 }
             }
+            
         }
     }
         

@@ -141,7 +141,11 @@ public class The_island {
                 //on bloque le joueur tant qu'il n'a pas fait tout ses déplacements
             }
             messageJoueur("vous avez effectué tout vos déplacements");
-            
+            partie.flagAction = 4;
+            while(partie.flagAction == 4)
+            {
+                
+            }
             //partie de lancé de dés
             partie.flagAction=5;
             partie.deeCreature();

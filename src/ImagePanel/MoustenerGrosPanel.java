@@ -8,6 +8,7 @@ package ImagePanel;
 
 import MessageBox.Interaction;
 import static MessageBox.Interaction.messageJoueur;
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -194,6 +195,33 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                 }               
             }
+            if (partieEnCours.flagAction==4) {
+            try {
+                messageJoueur("On est bien dans la phase 4   "+placement.pouvoir+" "+partieEnCours.retirerTuile(placement));
+            } catch (IOException ex) {
+                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                if((placement.pouvoir>=0) && (placement.pouvoir<5))
+                {
+                    messageJoueur("On est rentrer dans lepouvoir 0");
+                    try {
+                        if(partieEnCours.retirerTuile(placement))
+                        {
+                            messageJoueur("J'ai selectionner ma tuile");
+                            placement.type = 0;
+                            try {
+                                selctionPanel.refreshImage();
+                            } catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            partieEnCours.pouvoirImmediat(placement);
+                        }
+                    } catch (IOException ex) {
+                        Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+            
             if (partieEnCours.flagAction==6) {
                 int flag=0;
                 boolean testDeplacement=partieEnCours.monstreDeplace.deplacement(placement);

@@ -8,6 +8,7 @@ package ImagePanel;
 
 
 import MessageBox.Interaction;
+import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import partie.partie;
 import terrain.tuiles;
+import unités.unites;
 
 
 /**
@@ -108,7 +110,39 @@ public class GrosPanel extends JPanel{
         }*/
     }
     
-
+    public boolean tuileAdjacenteEau(tuiles cible)
+    {
+       if (((k==cible.x)&&(j==cible.y-1))||((k==cible.x)&&(j==cible.y+1))||((k==cible.x+1)&&(j==cible.y))||((k==cible.x-1)&&(j==cible.y))||((k==cible.x-1)&&(j==cible.y-1))||((k==cible.x+1)&&(j==cible.y+1)))
+       {
+           if(terrain.type==0)
+           {
+               return true;
+           }
+       }
+       return false;
+    }
+    
+    
+    public void AucunExplorateur() throws IOException
+    {
+        MessageBox.Interaction.messageJoueur("Je suis rentrer dans aucunExplorateur");
+        if(this.terrain.explorateurs.size()==0)
+        {
+            MessageBox.Interaction.messageJoueur(""+this.terrain.explorateurs.size());
+            for (PetitPanel petitPanel: affichageUnite)
+            {
+                if(petitPanel.numeroUnite==0 ||petitPanel.numeroUnite==1 || petitPanel.numeroUnite==2 || petitPanel.numeroUnite==3)
+                {
+                    MessageBox.Interaction.messageJoueur("Je passe les numeroUnite a 4");
+                    petitPanel.numeroUnite=4;
+                    petitPanel.refreshexplorateurs();
+                }
+            }
+            
+        }
+    }
+    
+                    
     
     
     /**

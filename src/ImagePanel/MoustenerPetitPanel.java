@@ -43,6 +43,7 @@ public class MoustenerPetitPanel extends MouseAdapter
         
         if (partieEnCours.flagAction==2) {
         
+            
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
             
             //test pour l'explorateur
