@@ -556,7 +556,6 @@ public class partie {
                         if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
                         {
                             cible.explorateurs.add(nageurs);
-                            pouvoirJoueur.explorateurs.remove(nageurs);
                             return true;
                         }
                     }
@@ -571,7 +570,6 @@ public class partie {
                         if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
                         {
                             cible.bateaux.add(tousLesBateaux);
-                            pouvoirJoueur.bateaux.remove(tousLesBateaux);
                             return true;
                         }
                     }
@@ -630,9 +628,18 @@ public class partie {
         return false;
     }
     
-    public void pouvoirDefense(tuiles pouvoirJoueur)
+    public boolean pouvoirDefense(tuiles pouvoirJoueur, tuiles cible)
     {
+        monstres deplacer;
         
+        switch(pouvoirJoueur.pouvoir)
+        {
+            case 10:
+                
+                
+            break;
+        }
+        return false;
     }
     
     //phase de deploiementExplorateurs des explorateurs des joueurs
