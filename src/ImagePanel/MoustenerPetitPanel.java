@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import joueurs.joueurs;
 import partie.partie;
+import unités.monstres;
 
 /**
  *
@@ -72,7 +73,27 @@ public class MoustenerPetitPanel extends MouseAdapter
             {
               messageJoueur("vous ne pouvez pas sélectionner cette unité");
             }        
-        }		
+        }
+        
+        if (partieEnCours.flagAction==5) {
+            if (partieEnCours.choixMonstre!=selctionPanel.numeroUnite) {
+                messageJoueur("vous ne pouvez pas sélectionner cette unité");
+            }
+            else
+            {
+                //on cherche dans le vecteur monstre celui qui correspond à celui que l'on peut déplacer
+                for (monstres monstre : selctionPanel.conteneur.terrain.monstres) {
+                    if (partieEnCours.choixMonstre==monstre.type) {
+                        partieEnCours.monstreDeplace= monstre;
+                    }
+                }
+                partieEnCours.flagAction=6;
+                partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                partieEnCours.panelRefresh = selctionPanel;
+                partieEnCours.panelRefresh.numeroUnite = 4;
+                messageJoueur("monstre séléctionné");
+            }
+        }
     }
     
     //permet de ne pas prendre en compte le petitPanel quand le joueur doit cliquer sur le grosPanel

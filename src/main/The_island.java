@@ -31,13 +31,15 @@ public class The_island {
     /**
      * @param args the command line arguments
      */
+    public int choixCreature=0;
+    
     public static void main(String[] args) throws IOException {
         
         
         //Scanner clavier= new Scanner(System.in);
         int nb;
         String nom;
-   
+         
         //lancement de la partie avec la demande du nombre de joueur. On vérifie que le nombre de joueur ne dépasse pas 4
         do
         {
@@ -107,6 +109,8 @@ public class The_island {
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }
         
+        //partie de lancé de dés
+        partie.deeCreature();
         
         /*
         //partie.miseEnPlaceDesPetitPanel();

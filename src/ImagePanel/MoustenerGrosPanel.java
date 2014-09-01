@@ -18,6 +18,7 @@ import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
 import unités.bateaux;
+import unités.monstres;
 
 /**
  *
@@ -96,7 +97,7 @@ public class MoustenerGrosPanel extends MouseAdapter
             }
             if (partieEnCours.flagAction==3) {
                 
-                System.out.println("je rentre dans la phase 3"+partieEnCours.exploDeplace.deplacement(placement));
+                System.out.println("je rentre dans la phase 3"+partieEnCours.bateauDeplace.deplacement(placement));
                 
                 //on fait le test du cas où ce serait un bateau qui doit être déplacé
                 if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
@@ -190,6 +191,48 @@ public class MoustenerGrosPanel extends MouseAdapter
                         messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
                     }
                 }               
+            }
+            if (partieEnCours.flagAction==6) {
+                int flag=0;
+                boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
+                if (testDeplacement){
+                    if (placement.type==0) {
+                        for (monstres monstre : placement.monstres) {
+                            if (monstre.type==partieEnCours.choixMonstre) {
+                                messageJoueur("vous ne pouvez pas vous déplacer sur cette case, elle possède déjà un monstre de ce type");
+                                flag=1;
+                            }
+                        }
+                        if (flag==0) {
+                            placement.monstres.add(partieEnCours.monstreDeplace);
+                            try {
+                                partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
+                            } 
+                            catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                            partieEnCours.monstreDeplace.x= placement.x;
+                            partieEnCours.monstreDeplace.y= placement.y;
+
+                            //on remet le flag déplacement à 0
+                            partieEnCours.flagDeplacement=0;
+
+                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
+                            partieEnCours.flagAction=2;
+
+                            partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.exploDeplace);
+                            try 
+                            {
+                                partieEnCours.panelRefresh.refreshexplorateurs();
+                            } catch (IOException ex) 
+                            {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
+                    }
+                }
+            
             }
     }		
 }
