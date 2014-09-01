@@ -99,7 +99,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 System.out.println("je rentre dans la phase 3"+partieEnCours.exploDeplace.deplacement(placement));
                 
                 //on fait le test du cas où ce serait un bateau qui doit être déplacé
-                if (partieEnCours.panelExplorateur.numeroPetitPanel==6) {
+                if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
                     if ((testDeplacement)&&(placement.type==0)) {
@@ -117,7 +117,11 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                             partieEnCours.bateauDeplace.x= placement.x;
                             partieEnCours.bateauDeplace.y= placement.y;
-
+                            try {
+                                partieEnCours.panelRefresh.refreshBateau();
+                            } catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
                             //on remet le flag déplacement à 0
                             partieEnCours.flagDeplacement=0;
 
@@ -168,7 +172,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                             partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                             try 
                             {
-                                partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
+                                partieEnCours.panelRefresh.refreshexplorateurs();
                             } catch (IOException ex) 
                             {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);

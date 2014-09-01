@@ -83,21 +83,21 @@ public class PetitPanel extends JPanel{
         repaint();
     }
     
-    public void refresh(PetitPanel p) throws IOException
+    public void refreshexplorateurs() throws IOException
     {
-        if(p.numeroUnite==0)
+        if(this.numeroUnite==0)
         {
             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
         }               
-        else if(p.numeroUnite==1)
+        else if(this.numeroUnite==1)
         {
             m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
         }
-        else if(p.numeroUnite==2)
+        else if(this.numeroUnite==2)
         {
             m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
         }
-        else if (p.numeroUnite==3)
+        else if (this.numeroUnite==3)
         {
             m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
         }
@@ -109,8 +109,38 @@ public class PetitPanel extends JPanel{
         
         repaint();
     }
-
     
+    public void refreshMonstres() throws IOException
+    {
+        if(this.numeroUnite==0)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
+        }               
+        else if(this.numeroUnite==1)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
+        }
+        else if(this.numeroUnite==2)
+        {
+            m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
+        }
+        
+        else
+        {
+            m_image = null;
+        }
+        
+        
+        repaint();
+    }
+
+    public void refreshBateau() throws IOException
+    {
+        
+        m_image = null;
+    
+        repaint();
+    }
     
     @Override public void paintComponent(Graphics g)
     {

@@ -51,8 +51,8 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.flagDeplacement=1;
                 partieEnCours.flagAction=3;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                partieEnCours.panelExplorateur = selctionPanel;
-                partieEnCours.panelExplorateur.numeroUnite = 4;
+                partieEnCours.panelRefresh = selctionPanel;
+                partieEnCours.panelRefresh.numeroUnite = 4;
                 
 
                 messageJoueur("explorateur séléctionné");
@@ -65,7 +65,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                     partieEnCours.flagDeplacement=1;
                     partieEnCours.flagAction=3;
                     partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                    partieEnCours.panelExplorateur = selctionPanel;                    
+                    partieEnCours.panelRefresh = selctionPanel;                    
                 }
             }
             else

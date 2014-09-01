@@ -47,7 +47,7 @@ public class partie {
     //nous permet de stocker le grosPanel d'origine du déplacement
     public GrosPanel origineExplorateur;
     //nous permet de stocker le petitPanel d'origine du déplacement
-    public PetitPanel panelExplorateur;
+    public PetitPanel panelRefresh;
     //flag de déplacement
     public int flagDeplacement=0;
     //GrosPanel contenant tout le plateau
