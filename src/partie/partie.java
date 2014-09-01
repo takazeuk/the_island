@@ -676,6 +676,7 @@ public class partie {
                 }
             break;
         }
+        // jo the best
         return false;
     }
     
