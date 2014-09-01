@@ -474,11 +474,11 @@ public class partie {
     public void miseEnPlaceMonstre() throws IOException
     {
         //mise en place des premiers monstres du début de partie
-        monstres plateaumonstres1= new monstres("Serpent de mer", 1, 2, 1, 1);
-        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 2, 9, 2);
-        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 2, 5, 6);
-        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 2, 10, 10);
-        monstres plateaumonstres5= new monstres("Serpent de mer", 1, 2, 15, 11);
+        monstres plateaumonstres1= new monstres("Serpent de mer", 1, 7, 1, 1);
+        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 7, 9, 2);
+        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 7, 5, 6);
+        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 7, 10, 10);
+        monstres plateaumonstres5= new monstres("Serpent de mer", 1, 7, 15, 11);
         
         //ajout des monstres au vecteur unité de partie
         this.population.add(plateaumonstres1);
@@ -501,11 +501,11 @@ public class partie {
         {
             case 0: case 1:
                 if (pouvoirJoueur.pouvoir==0) {
-                    apparition= new monstres("Requin",2,0,pouvoirJoueur.x,pouvoirJoueur.y);
+                    apparition= new monstres("Requin",2,5,pouvoirJoueur.x,pouvoirJoueur.y);
                 }
                 else
                 {
-                   apparition= new monstres("Baleine",3,1,pouvoirJoueur.x,pouvoirJoueur.y); 
+                   apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y); 
                 }               
                 pouvoirJoueur.monstres.add(apparition);
                 apparition.attaque(pouvoirJoueur, apparition);
@@ -562,7 +562,7 @@ public class partie {
             case 7: 
                 if(cible.type==0)
                 {
-                    deplacer = new monstres("Serpent de mer", 1, 2, cible.x, cible.y);
+                    deplacer = new monstres("Serpent de mer", 1, 7, cible.x, cible.y);
                     cible.monstres.add(deplacer);
                     for (monstres serpentDeMer : pouvoirJoueur.monstres) {
                         if(serpentDeMer.type==2)
@@ -578,7 +578,7 @@ public class partie {
             case 8: 
                 if(cible.type==0)
                 {
-                    deplacer = new monstres("Requin", 2, 1, cible.x, cible.y);
+                    deplacer = new monstres("Requin", 2, 5, cible.x, cible.y);
                     cible.monstres.add(deplacer);
                     for (monstres Requin : pouvoirJoueur.monstres) {
                         if(Requin.type==0)
@@ -594,7 +594,7 @@ public class partie {
             case 9:
                 if(cible.type==0)
                 {
-                    deplacer = new monstres("Baleine", 3, 1, cible.x, cible.y);
+                    deplacer = new monstres("Baleine", 3, 6, cible.x, cible.y);
                     cible.monstres.add(deplacer);
                     for (monstres Baleine : pouvoirJoueur.monstres) {
                         if(Baleine.type==1)
@@ -732,18 +732,18 @@ public class partie {
     //lance de dée de la créature
     public void deeCreature()
     {
-        int valeurMin=0;
-        int valeurMax= 2;
+        int valeurMin=5;
+        int valeurMax= 7;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
         choixMonstre= valeur;
     }
     
     public String typeMonstre(int type){
-        if (type==0) {
+        if (type==5) {
             return "Requin";
         }
-        else if(type==1){
+        else if(type==6){
             return "Baleine";
         }
         else

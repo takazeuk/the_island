@@ -27,13 +27,13 @@ public class monstres extends unites {
     //fonction pour l'attaque des requins, des baleines, des serpents de mer
     public void attaque(tuiles cible, monstres predateur)
     {
-        if ((predateur.type==0)||(predateur.type==2)) {
+        if ((predateur.type==5)||(predateur.type==7)) {
             for(explorateurs victime: cible.explorateurs)
             {
                 cible.explorateurs.remove(victime);
             }
         }
-        if ((predateur.type==1)||(predateur.type==2))
+        if ((predateur.type==6)||(predateur.type==7))
         {
             for(bateaux navire: cible.bateaux)
             {

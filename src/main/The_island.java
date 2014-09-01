@@ -79,8 +79,8 @@ public class The_island {
         partie.miseEnPlaceMonstre();
         
         //phase de test à enlever
-        monstres plateaumonstres9= new monstres("requin", 1, 0, 1, 2);
-        monstres plateaumonstres10= new monstres("baleine", 1, 1, 1, 3);
+        monstres plateaumonstres9= new monstres("requin", 1, 5, 4, 1);
+        monstres plateaumonstres10= new monstres("baleine", 1, 6, 5, 1);
         partie.population.add(plateaumonstres9);
         partie.population.add(plateaumonstres10);
         
@@ -109,7 +109,7 @@ public class The_island {
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
         
-        
+        /*
         //partie déplacement des explorateurs/bateaux
         messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");   
         while(partie.flagDeplacement!=1){
@@ -132,14 +132,25 @@ public class The_island {
         messageJoueur("selectionnez maintenant une case de destination");
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
-        }
-        /*
-        //partie.miseEnPlaceDesPetitPanel();
-        //partie.essai();
-        explorateurs test = new explorateurs(10, 2, 3, 0);
-        //partie.carte.get(6).explorateurs.add(test);
-        partie.ajoutEplorateursTuile(partie.carte.get(132), test);
-        */      
+        }*/
+        
+        //while (true) {
+            
+            messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");
+            while (partie.participant.get(partie.tourJoueur).deplacement!=0) {                
+                //on bloque le joueur tant qu'il n'a pas fait tout ses déplacements
+            }
+            messageJoueur("vous avez effectué tout vos déplacements");
+            
+            //partie de lancé de dés
+            partie.flagAction=5;
+            partie.deeCreature();
+            messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
+            while (partie.monstreDeplace.deplacement!=0) {                
+                //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
+            }
+            messageJoueur("vous ne pouvez plus déplacer votre monstre");
+        //}
     }   
 }
 

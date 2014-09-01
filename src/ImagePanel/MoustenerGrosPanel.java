@@ -224,6 +224,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                             partieEnCours.flagAction=5;
 
                             partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
+                            partieEnCours.monstreDeplace.deplacement--;
+                            messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
+                            
                             try 
                             {
                                 partieEnCours.panelRefresh.refreshexplorateurs();

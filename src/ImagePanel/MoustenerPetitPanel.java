@@ -40,7 +40,6 @@ public class MoustenerPetitPanel extends MouseAdapter
             selctionPanel.conteneur.clicDuPanel.mouseClicked(e);
             return;
         }
-        messageJoueur(partieEnCours.flagAction+"clicPtitPanel");
         
         if (partieEnCours.flagAction==2) {
         
@@ -55,18 +54,17 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.panelRefresh = selctionPanel;
                 partieEnCours.panelRefresh.numeroUnite = 4;
                 
-
-                messageJoueur("explorateur séléctionné");
+                messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
             }
             else if (this.selctionPanel.numeroPetitPanel==6) {
-                System.out.println("je suis bien sur un bateau");
                 if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.tourJoueur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
-                    System.out.println("je suis rentré dans le déplacement bateau");
                     partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
                     partieEnCours.flagDeplacement=1;
                     partieEnCours.flagAction=3;
                     partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                    partieEnCours.panelRefresh = selctionPanel;                    
+                    partieEnCours.panelRefresh = selctionPanel;
+                    
+                    messageJoueur("bateau séléctionné, selectionné maintenant une case de destination");
                 }
             }
             else
@@ -76,23 +74,24 @@ public class MoustenerPetitPanel extends MouseAdapter
         }
         
         if (partieEnCours.flagAction==5) {
-            System.out.println("je suis dans le déplacement des monstres");
             if (partieEnCours.choixMonstre!=selctionPanel.numeroUnite) {
                 messageJoueur("vous ne pouvez pas sélectionner cette unité");
             }
             else
             {
                 //on cherche dans le vecteur monstre celui qui correspond à celui que l'on peut déplacer
-                for (monstres monstre : selctionPanel.conteneur.terrain.monstres) {
-                    if (partieEnCours.choixMonstre==monstre.type) {
+                if (selctionPanel.numeroUnite==partieEnCours.choixMonstre) {
+                    for (monstres monstre : selctionPanel.conteneur.terrain.monstres) {
+                        if (monstre.type==partieEnCours.choixMonstre) {
                         partieEnCours.monstreDeplace= monstre;
+                        }
                     }
                 }
                 partieEnCours.flagAction=6;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 partieEnCours.panelRefresh = selctionPanel;
                 partieEnCours.panelRefresh.numeroUnite = 4;
-                messageJoueur("monstre séléctionné");
+                messageJoueur("monstre séléctionné, selectionné maintenant une case de destination");
             }
         }
     }

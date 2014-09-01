@@ -60,15 +60,15 @@ public class PetitPanel extends JPanel{
     
     public void choixImageMonstre() throws IOException
     {          
-          if(this.numeroUnite==0)
+          if(this.numeroUnite==5)
           {
              m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
           }               
-          else if(this.numeroUnite==1)
+          else if(this.numeroUnite==6)
           {
              m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
           }
-          else if(this.numeroUnite==2)
+          else if(this.numeroUnite==7)
           {
              m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
           }
@@ -112,15 +112,15 @@ public class PetitPanel extends JPanel{
     
     public void refreshMonstres() throws IOException
     {
-        if(this.numeroUnite==0)
+        if(this.numeroUnite==5)
         {
             m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
         }               
-        else if(this.numeroUnite==1)
+        else if(this.numeroUnite==6)
         {
             m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
         }
-        else if(this.numeroUnite==2)
+        else if(this.numeroUnite==7)
         {
             m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
         }
