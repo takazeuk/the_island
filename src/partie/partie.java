@@ -622,15 +622,58 @@ public class partie {
         return false;
     }
     
-    public boolean pouvoirDefense(tuiles pouvoirJoueur, tuiles cible)
+    public boolean pouvoirDefense(tuiles pouvoirJoueur, tuiles cible, joueurs j)
     {
-        monstres deplacer;
+        boolean flag = false;
         
         switch(pouvoirJoueur.pouvoir)
         {
+            
             case 10:
                 
+                for(explorateurs pions: cible.explorateurs)
+                {
+                    if(pions.proprietaire == j.couleur)
+                    {
+                        flag = true;
+                    }
+                }
                 
+                if(flag)
+                {
+                    for(monstres creature: cible.monstres)
+                    {
+                        if(creature.deplacement==2)
+                        {
+                            cible.monstres.remove(creature);
+                            return true;
+                        }
+                    }
+                }
+                
+            break;
+                
+            case 11:
+                
+                for(bateaux barques: cible.bateaux)
+                {
+                    if(barques.proprietaire == j.couleur)
+                    {
+                        flag = true;
+                    }
+                }
+                
+                if(flag)
+                {
+                    for(monstres creature: cible.monstres)
+                    {
+                        if(creature.deplacement==2)
+                        {
+                            cible.monstres.remove(creature);
+                            return true;
+                        }
+                    }
+                }
             break;
         }
         return false;
