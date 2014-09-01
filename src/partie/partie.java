@@ -818,7 +818,7 @@ public class partie {
         return false;
     }
 
-    public boolean affichageBateaux(tuiles cible, monstres monstreDeplacer) throws IOException{
+    public boolean affichageBateaux(tuiles cible, bateaux bateauDeplacer ) throws IOException{
         
         for (Component temp  : legros.getComponents()) {
             
@@ -828,17 +828,11 @@ public class partie {
                 GrosPanel territoire = (GrosPanel) temp;
                 
                 if (territoire.terrain==cible) {
-                                           
-                        //on regarde si l'emplacement est égale à 0
-                        if (cible.bateaux.size()==0) {
-                            
-                            territoire.affichageUnite.get(0).numeroUnite= monstreDeplacer.type;
-                            territoire.affichageUnite.get(0).choixImageBateau();
-                            return true;
-                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
-                        }
-                }
-            }
+                                                                    
+                    territoire.affichageUnite.get(6).choixImageBateau();
+                    return true;                        
+                }               
+            }           
         }
         return false;
     }

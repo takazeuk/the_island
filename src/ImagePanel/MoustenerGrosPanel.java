@@ -103,41 +103,17 @@ public class MoustenerGrosPanel extends MouseAdapter
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
                     if (testDeplacement) {
-                        //on regarde s'il n'y a pas déjà un autre bateau
+                        //on regarde s'il n'y a pas déjà un autre bateau                      
                         if (placement.bateaux.size()==0) {
+                            //on ajoute le bateau au vecteur
                             placement.bateaux.add(partieEnCours.bateauDeplace);
-                            //partieEnCoursplacement, null)
-                        }
-                        else
-                        {
-                           messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case"); 
-                        }
-                        
-                    }
-                    else
-                    {
-                        messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
-                    }
-                    
-                    
-                        placement.bateaux.add(partieEnCours.bateauDeplace);
-                        /*try {
-                            //placementValide=partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
-                        } catch (IOException ex) {
-                            Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }*/
-
-                        if (placementValide==false) {
-                            placement.explorateurs.remove(partieEnCours.exploDeplace);
-                            messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case");
-                        }
-                        else
-                        {
                             try {
-                                partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
-                            } catch (IOException ex) {
-                                Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
+                            } 
+                            catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            
                             //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                             partieEnCours.bateauDeplace.x= placement.x;
                             partieEnCours.bateauDeplace.y= placement.y;
@@ -151,30 +127,34 @@ public class MoustenerGrosPanel extends MouseAdapter
                             partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
                             messageJoueur("le bateau a été déplacé"); 
                         }
+                        else
+                        {
+                           messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case"); 
+                        }
+                        
+                    }
+                    else
+                    {
+                        messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
+                    }       
                 }
                 //si ce n'est pas un bateau , c'est un explorateur
                 else
                 {
+                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
                     if (testDeplacement) {
-                        placement.explorateurs.add(partieEnCours.exploDeplace);
-                        try {
-                            placementValide=partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
-                        } catch (IOException ex) {
-                            Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                        if (placementValide==false) {
-                            placement.explorateurs.remove(partieEnCours.exploDeplace);
-                            messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case");
-                        }
-                        else
-                        {
+                        //on regarde s'il n'y a pas déjà un autre bateau                        
+                        if (placement.explorateurs.size()<3) {
+                            //on ajoute l'explorateur au vecteur
+                            placement.explorateurs.add(partieEnCours.exploDeplace);
                             try {
-                                partieEnCours.panelExplorateur.refresh(partieEnCours.panelExplorateur);
-                            } catch (IOException ex) {
-                                Logger.getLogger(MoustenerPetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                            } 
+                            catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            
                             //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                             partieEnCours.exploDeplace.x= placement.x;
                             partieEnCours.exploDeplace.y= placement.y;
@@ -185,13 +165,18 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels
                             partieEnCours.flagAction=2;
 
-                            partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
+                            partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
                             messageJoueur("votre explorateur a été déplacé"); 
                         }
+                        else
+                        {
+                           messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case"); 
+                        }
+                        
                     }
                     else
                     {
-                      messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente");   
+                        messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
                     }
                 }               
             }
