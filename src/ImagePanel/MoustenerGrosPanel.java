@@ -21,6 +21,7 @@ import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
 import unités.bateaux;
+import unités.explorateurs;
 import unités.monstres;
 
 /**
@@ -98,7 +99,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 }
             }
             if (partieEnCours.flagAction==3) {
-                
+                boolean flagDeplacementbateau = true;
                 System.out.println("je rentre dans la phase 3");
                 
                 //on fait le test du cas où ce serait un bateau qui doit être déplacé
@@ -106,40 +107,62 @@ public class MoustenerGrosPanel extends MouseAdapter
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
                     if ((testDeplacement)&&(placement.type==0)) {
-                        //on regarde s'il n'y a pas déjà un autre bateau                      
-                        if (placement.bateaux.size()==0) {
+                        //on regarde s'il n'y a pas déjà un autre bateau
+                        if(partieEnCours.bateauDeplace.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur || partieEnCours.bateauDeplace.proprietaire==4)
+                        {
+                            if(partieEnCours.bateauDeplace.proprietaire==4 && partieEnCours.bateauDeplace.marins.size()>0)
+                            {
+                                flagDeplacementbateau = false;
+                                for (explorateurs explo : partieEnCours.bateauDeplace.marins) {
+                                    if(explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)
+                                    {
+                                        flagDeplacementbateau = true;
+                                    }
+                                }
+                            }
+                            if(flagDeplacementbateau)
+                            {
+                                messageJoueur("Vous pouvez déplacer le bateau");
+                                if (placement.bateaux.size()==0) {
                             //on ajoute le bateau au vecteur
-                            placement.bateaux.add(partieEnCours.bateauDeplace);
-                            partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
-                            try {
-                                partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
-                            } 
-                            catch (IOException ex) {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            
-                            //on donnes les coordonnées x y de la tuile de destination à l'explorateur
-                            partieEnCours.bateauDeplace.x= placement.x;
-                            partieEnCours.bateauDeplace.y= placement.y;
-                            try {
-                                partieEnCours.panelRefresh.refreshBateau();
-                            } catch (IOException ex) {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            //on remet le flag déplacement à 0
-                            partieEnCours.flagDeplacement=0;
+                                placement.bateaux.add(partieEnCours.bateauDeplace);
+                                partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
+                                try {
+                                    partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
+                                } 
+                                catch (IOException ex) {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
 
-                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
-                            partieEnCours.flagAction=2;
+                                //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                                partieEnCours.bateauDeplace.x= placement.x;
+                                partieEnCours.bateauDeplace.y= placement.y;
+                                try {
+                                    partieEnCours.panelRefresh.refreshBateau();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                //on remet le flag déplacement à 0
+                                partieEnCours.flagDeplacement=0;
 
-                            partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
-                            partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
-                            messageJoueur("le bateau a été déplacé"+partieEnCours.flagAction); 
+                                //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
+                                partieEnCours.flagAction=2;
+
+                                partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
+                                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                messageJoueur("le bateau a été déplacé"+partieEnCours.flagAction); 
+                                }
+                                else
+                                {
+                                   messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case"); 
+                                }
+                            }
                         }
                         else
                         {
-                           messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case"); 
+                            messageJoueur("Vous n'etes pas propriétaire de ce bateau donc vous ne pouvez pas le déplacer");
                         }
+                        
                         
                     }
                     else
@@ -170,6 +193,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 }
                                 partieEnCours.flagAction=2;
                                 partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                selctionPanel.gestionDesProprioBateau();
                             }
                         }
                     }
@@ -194,6 +218,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     {
                                         placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
                                         messageJoueur("L'explorateur est bien monter sur le bateau");
+                                        selctionPanel.gestionDesProprioBateau();
                                     }
                                     else
                                     {
