@@ -946,7 +946,7 @@ public class partie {
                     encoreDuSable = true;
                 }
                 // savoir s'il y a toujours des tuile de foret
-                if(rechercher.terrain.type==1)
+                if(rechercher.terrain.type==2)
                 {
                     encoreDesForet = true;
                 }
@@ -967,7 +967,7 @@ public class partie {
                 {
                     /*j.cartesEnMain.add(cible);
                     refreshTuile(cible);*/
-                    return true;
+                    return true;            
                 }
             }
             else if (encoreDesForet)
