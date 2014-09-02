@@ -11,6 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import partie.partie;
@@ -53,11 +55,11 @@ public class PetitPanel extends JPanel{
           }
           else if(this.numeroUnite==2)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rose.png"));
           }
           else if(this.numeroUnite==3)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Jaune.png"));
           }
           else
           {
@@ -74,11 +76,11 @@ public class PetitPanel extends JPanel{
           }               
           else if(this.numeroUnite==6)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
+             m_image = ImageIO.read(getClass().getResource("/images/Baleine.png"));
           }
           else if(this.numeroUnite==7)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
+             m_image = ImageIO.read(getClass().getResource("/images/SerpentDeMer.png"));
           }
           else
           {
@@ -90,7 +92,7 @@ public class PetitPanel extends JPanel{
     public void choixImageBateau() throws IOException
     {          
       
-        m_image = ImageIO.read(getClass().getResource("/images/barque.jpe"));
+        m_image = ImageIO.read(getClass().getResource("/images/Barque.png"));
     
         repaint();
     }
@@ -106,6 +108,12 @@ public class PetitPanel extends JPanel{
     @Override public void paintComponent(Graphics g)
     {
         g.drawImage(m_image, 0, 0, 30, 30, null);
+        //mettre les pions sur le bateau grâce à cela
+        /*try {
+            g
+        } catch (IOException ex) {
+            Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
     }
 
     
