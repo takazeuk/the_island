@@ -6,6 +6,7 @@
 
 package terrain;
 
+import ImagePanel.GrosPanel;
 import java.util.Vector;
 import unités.bateaux;
 import unités.explorateurs;
@@ -24,6 +25,7 @@ public class tuiles {
     public Vector<explorateurs> explorateurs;
     public Vector<bateaux> bateaux;
     public Vector<monstres> monstres;
+    public GrosPanel panelLien;
 
     public tuiles(int x, int y, int type, int pouvoir) {
         this.x = x;
@@ -32,7 +34,7 @@ public class tuiles {
         this.pouvoir = pouvoir;
         this.explorateurs= new Vector<explorateurs>();
         this.bateaux= new Vector<bateaux>();
-        this.monstres= new Vector<monstres>();       
+        this.monstres= new Vector<monstres>();
     }
 
    public static void action()

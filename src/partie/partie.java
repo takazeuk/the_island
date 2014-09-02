@@ -96,7 +96,7 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
-                        
+                        terrain.panelLien= lenouv;
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -127,6 +127,7 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
+                        terrain.panelLien= lenouv;
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -162,6 +163,7 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
+                        terrain.panelLien= lenouv;
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -184,6 +186,7 @@ public class partie {
                         tuiles terrain= new tuiles(cordy, compt, 0, 0);
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
+                        terrain.panelLien= lenouv;
                         lenouv.setLayout(null);
                         miseEnPlaceDesPetitPanel(lenouv);
                         imageTuile.add(lenouv);
@@ -206,6 +209,7 @@ public class partie {
                 }
             }           
         }
+       
         /*Scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         Scroll.add(legros);
         Scroll.setMinimumSize(new Dimension(200, 200));
@@ -409,8 +413,10 @@ public class partie {
     public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer) throws IOException{
         
         if (cible.explorateurs.size()!=3) {
-            affichageExplorateurs(cible, uniteDeplacer);
+            
+            //affichageExplorateurs(cible, uniteDeplacer);
             cible.explorateurs.add(uniteDeplacer);
+            affichageUniteTuile(cible);
             return true;
         }
         return false;
@@ -425,20 +431,23 @@ public class partie {
                     return false;
                 }
             }
-            affichageMonstre(cible, monstreDeplacer);
+            
+            //affichageMonstre(cible, monstreDeplacer);
             cible.monstres.add(monstreDeplacer);
+            affichageUniteTuile(cible);
             return true;
         }
         return false;
         //messagebox de refus du déplacement     
     }
     
-    public boolean ajoutBateauTuile(tuiles cible, bateaux bateauDeplacer){
+    public boolean ajoutBateauTuile(tuiles cible, bateaux bateauDeplacer) throws IOException{
         if (cible.bateaux.size()==1) {
             return false;
             //messagebox de refus du déplacement
         }
         cible.bateaux.add(bateauDeplacer);
+        affichageUniteTuile(cible);
         return true;
     }
     
@@ -520,7 +529,8 @@ public class partie {
                    apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y); 
                 }               
                 pouvoirJoueur.monstres.add(apparition);
-                affichageMonstre(pouvoirJoueur, apparition);
+                affichageUniteTuile(pouvoirJoueur);
+                //affichageMonstre(pouvoirJoueur, apparition);
                 
                 apparition.attaque(pouvoirJoueur);
                 GrosPanel chercher;
@@ -544,7 +554,8 @@ public class partie {
             case 2:
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
                 pouvoirJoueur.bateaux.add(newbateau);
-                affichageBateaux(pouvoirJoueur, newbateau);
+                affichageUniteTuile(pouvoirJoueur);
+                //affichageBateaux(pouvoirJoueur, newbateau);
             break;
             case 3: //tourbillon fini
                 pouvoir4DeLaTuile(pouvoirJoueur);
@@ -725,7 +736,9 @@ public class partie {
             choisi.explorateurs.add(pionschoisi);
             pionschoisi.x=choisi.x;
             pionschoisi.y=choisi.y;
-            affichageExplorateurs(choisi, pionschoisi);
+            this.affichageUniteTuile(choisi);
+            //choisi.panelLien.refreshGrosPanel();
+            //affichageExplorateurs(choisi, pionschoisi);
             return true;
         }
     }
@@ -751,7 +764,8 @@ public class partie {
                         {               
                             GrosPanel territoire = (GrosPanel) temp;
                             if (territoire.terrain==choisi) {
-                                territoire.affichageUnite.get(6).choixImageBateau();
+                                this.affichageUniteTuile(choisi);
+                                //territoire.affichageUnite.get(6).choixImageBateau();
                             }
                         }
                     }
@@ -804,7 +818,7 @@ public class partie {
         
     }
 
-    public boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
+    /*public boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
            
         for (Component temp  : legros.getComponents()) {
             
@@ -830,11 +844,55 @@ public class partie {
             }
         }
         return false;
-    }
+    }*/
     
-    //public void affichageExplorateurs2()
+    public void affichageUniteTuile(tuiles cible) throws IOException{
         
-    public boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
+        for (int i = 0; i < 3; i++) {
+            if (cible.explorateurs.size()>i) {
+               cible.panelLien.affichageUnite.get(i).numeroUnite= cible.explorateurs.get(i).proprietaire;
+                messageJoueur(""+cible.panelLien.affichageUnite.get(i).numeroUnite);
+            }
+            else{
+               cible.panelLien.affichageUnite.get(i).numeroUnite=4; 
+            } 
+            cible.panelLien.affichageUnite.get(i).choixImageExplorateur();
+        }
+        
+        int i=3;
+        if (cible.monstres.size()!=0) {
+            
+            for (monstres monstre : cible.monstres) {
+                if (cible.monstres.get(i-3)!=null) {
+                   cible.panelLien.affichageUnite.get(i).numeroUnite=monstre.type;                  
+                }
+                else
+                {
+                  cible.panelLien.affichageUnite.get(i).numeroUnite=4;
+                }
+                cible.panelLien.affichageUnite.get(i).choixImageMonstre();
+                i++;
+            }
+        }
+        else
+        {
+            for (int j = 3 ; j < 6 ; j++) {
+                cible.panelLien.affichageUnite.get(j).numeroUnite=4;
+                cible.panelLien.affichageUnite.get(j).choixImageMonstre();       
+            }
+        }
+        
+        if (cible.bateaux.size()!=0) {
+            cible.panelLien.affichageUnite.get(6).choixImageBateau();
+        }
+        else
+        {
+            cible.panelLien.affichageUnite.get(6).refreshBateau();
+        }
+                
+    }
+        
+    /*public boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
         
         for (Component temp  : legros.getComponents()) {
             
@@ -879,7 +937,7 @@ public class partie {
             }           
         }
         return false;
-    }
+    }*/
 
     
     
