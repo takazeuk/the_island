@@ -552,6 +552,7 @@ public class partie {
         
         switch(pouvoirJoueur.pouvoir)
         {
+            //pouvoir des déplacements dauphins
             case 5:
                 for (explorateurs nageurs : pouvoirJoueur.explorateurs) {
                     if(nageurs.proprietaire==j.couleur)
@@ -564,7 +565,8 @@ public class partie {
                     }
                 }
             break;
-                
+            
+            //pouvoir des déplacement bateaux
             case 6:
                 for(bateaux tousLesBateaux : pouvoirJoueur.bateaux)
                 {
@@ -579,7 +581,8 @@ public class partie {
                 }
                     
             break;
-                
+            
+            //pouvoir des déplacements de serpent de mer
             case 7: 
                 if(cible.type==0)
                 {
@@ -595,7 +598,8 @@ public class partie {
                     return true;
                 }
             break;
-                
+            
+            //pouvoir de déplacement de requin
             case 8: 
                 if(cible.type==0)
                 {
@@ -611,7 +615,8 @@ public class partie {
                     return true;
                 }
             break;
-                
+            
+            //pouvoir de déplacement de la baleine
             case 9:
                 if(cible.type==0)
                 {
@@ -637,7 +642,7 @@ public class partie {
         
         switch(pouvoirJoueur.pouvoir)
         {
-            
+            //pouvoir de protection contre les requins
             case 10:
                 
                 for(explorateurs pions: cible.explorateurs)
@@ -661,7 +666,8 @@ public class partie {
                 }
                 
             break;
-                
+            
+            //pouvoir de protection contre les baleines
             case 11:
                 
                 for(bateaux barques: cible.bateaux)
