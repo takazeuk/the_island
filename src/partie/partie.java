@@ -1053,6 +1053,8 @@ public class partie {
            tuileConstruction.add(tuile);
         }
     }
+    
+    
            
 }
 

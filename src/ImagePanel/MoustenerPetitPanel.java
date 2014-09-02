@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import joueurs.joueurs;
 import partie.partie;
+import unités.explorateurs;
 import unités.monstres;
 
 /**
@@ -43,7 +44,7 @@ public class MoustenerPetitPanel extends MouseAdapter
         
         if (partieEnCours.flagAction==2) {
         
-            
+            boolean flagDeplacementbateau = true;
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
             
             //test pour l'explorateur
@@ -58,15 +59,38 @@ public class MoustenerPetitPanel extends MouseAdapter
                 messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
             }
             else if (this.selctionPanel.numeroPetitPanel==6) {
-                if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.tourJoueur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
-                    partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
-                    partieEnCours.flagDeplacement=1;
-                    partieEnCours.flagAction=3;
-                    partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                    partieEnCours.panelRefresh = selctionPanel;
-                    
-                    messageJoueur("bateau séléctionné, selectionné maintenant une case de destination");
+                if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
+                    if(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4 && selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
+                    {
+                             flagDeplacementbateau = false;
+                                for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
+                                    if(explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)
+                                    {
+                                        flagDeplacementbateau = true;
+                                    }
+                                }   
+                    }
+                    if(flagDeplacementbateau)
+                    {
+                        messageJoueur("Vous ppouvez déplacer ce bateau");
+                        partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
+                        partieEnCours.flagDeplacement=1;
+                        partieEnCours.flagAction=3;
+                        partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                        partieEnCours.panelRefresh = selctionPanel;
+
+                        messageJoueur("bateau séléctionné, selectionné maintenant une case de destination");
+                    }
+                    else
+                    {
+                        messageJoueur("Vous n'etes pas propriétaire de ce bateau");
+                    }
                 }
+                else
+                {
+                    messageJoueur("Vous n'etes pas propriétaire de ce bateau");
+                }
+                
             }
             else
             {
