@@ -105,7 +105,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
-                    if ((testDeplacement)&&(placement.type==0)) {
+                    if ((testDeplacement)&&(placement.type==0)&& ((placement.explorateurs.size()+partieEnCours.bateauDeplace.marins.size())<3)) {
                         //on regarde s'il n'y a pas déjà un autre bateau
                         
                                 if (placement.bateaux.size()==0) {
@@ -155,7 +155,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     {
                         if(selctionPanel.terrain.bateaux.size()==1)
                         {
-                            if(partieEnCours.exploDeplace.nageur)
+                            if((selctionPanel.terrain.bateaux.size()==1) && ((selctionPanel.terrain.bateaux.get(0).marins.size()+selctionPanel.terrain.explorateurs.size())<3) )
                             {
                                 placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
                                 messageJoueur("L'explorateur est bien monter sur le bateau");
@@ -186,7 +186,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                         {
                             //partieEnCours.panelRefresh.numeroUnite = 4;
                             //on regarde s'il n'y a pas déjà un autre bateau                        
-                            if (placement.explorateurs.size()<3) {
+                            if ((placement.explorateurs.size() + placement.bateaux.size())<3) {
                                 //on ajoute l'explorateur au vecteur
                                 placement.explorateurs.add(partieEnCours.exploDeplace);
                                 partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
