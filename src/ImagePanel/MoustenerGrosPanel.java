@@ -109,6 +109,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                         if (placement.bateaux.size()==0) {
                             //on ajoute le bateau au vecteur
                             placement.bateaux.add(partieEnCours.bateauDeplace);
+                            partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
                             try {
                                 partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
                             } 
