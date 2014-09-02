@@ -258,32 +258,24 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                 }               
             }
-            if (partieEnCours.flagAction==4) {
-            try {
-                messageJoueur("On est bien dans la phase 4   "+placement.pouvoir+" "+partieEnCours.retirerTuile(placement));
-            } catch (IOException ex) {
-                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                if((placement.pouvoir>=0) && (placement.pouvoir<5))
-                {
-                    messageJoueur("On est rentrer dans lepouvoir 0");
+            
+            if (partieEnCours.flagAction == 4) {
+                messageJoueur(""+placement.pouvoir);
+            try {               
+                if (partieEnCours.retirerTuile(placement)) { 
+                    placement.type = 0;
+                    partieEnCours.flagAction=5;
                     try {
-                        if(partieEnCours.retirerTuile(placement))
-                        {
-                            messageJoueur("J'ai selectionner ma tuile");
-                            placement.type = 0;
-                            try {
-                                selctionPanel.refreshImage();
-                            } catch (IOException ex) {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            partieEnCours.pouvoirImmediat(placement);
-                        }
+                        selctionPanel.refreshImage();
                     } catch (IOException ex) {
                         Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                }
+                    partieEnCours.pouvoirImmediat(placement);
+                }               
+            } catch (IOException ex) {
+                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
             
             if (partieEnCours.flagAction==6) {
                 int flag=0;
@@ -315,7 +307,20 @@ public class MoustenerGrosPanel extends MouseAdapter
                             partieEnCours.flagAction=5;
 
                             partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
+                            
+                            //on modifie le déplacement
                             partieEnCours.monstreDeplace.deplacement--;
+                            
+                            //on fait la fonction attaque
+                            partieEnCours.monstreDeplace.attaque(placement);
+                            
+                            //on refresh les images de la case
+                            try {
+                                selctionPanel.refreshGrosPanel();
+                            } catch (IOException ex) {
+                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
                             messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
                             
                             try 

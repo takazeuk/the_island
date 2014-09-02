@@ -79,8 +79,8 @@ public class The_island {
         partie.miseEnPlaceMonstre();
         
         //phase de test à enlever
-        monstres plateaumonstres9= new monstres("requin", 1, 5, 4, 1);
-        monstres plateaumonstres10= new monstres("baleine", 1, 6, 5, 1);
+        monstres plateaumonstres9= new monstres("requin", 2, 5, 4, 1);
+        monstres plateaumonstres10= new monstres("baleine", 3, 6, 5, 1);
         partie.population.add(plateaumonstres9);
         partie.population.add(plateaumonstres10);
         
@@ -141,19 +141,21 @@ public class The_island {
                 //on bloque le joueur tant qu'il n'a pas fait tout ses déplacements
             }
             messageJoueur("vous avez effectué tout vos déplacements");
+            messageJoueur("vous devez retirer une tuile terrain");
+            //on met le flagAction sur 4 pour passer à la phase retirer tuile terrain
             partie.flagAction = 4;
             while(partie.flagAction == 4)
             {
                 
             }
             //partie de lancé de dés
-            partie.flagAction=5;
             partie.deeCreature();
             messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
             while ((partie.monstreDeplace==null)||(partie.monstreDeplace.deplacement!=0)){
                 //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
             }
             messageJoueur("vous ne pouvez plus déplacer votre monstre");
+            partie.flagAction = 7;
         //}
     }   
 }

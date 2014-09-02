@@ -522,7 +522,7 @@ public class partie {
                 pouvoirJoueur.monstres.add(apparition);
                 affichageMonstre(pouvoirJoueur, apparition);
                 
-                apparition.attaque(pouvoirJoueur, apparition);
+                apparition.attaque(pouvoirJoueur);
                 GrosPanel chercher;
                 for (Component lesGros: legros.getComponents())
                 {
@@ -831,6 +831,8 @@ public class partie {
         }
         return false;
     }
+    
+    //public void affichageExplorateurs2()
         
     public boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
         
@@ -981,33 +983,42 @@ public class partie {
         {
             if(encoreDuSable)
             {
-                if(cible.type==1)
+                if(cible.type!=1)
                 {
-                    /*j.cartesEnMain.add(cible);
-                    refreshTuile(cible);*/
-                    return true;            
+                    messageJoueur("vous devez d'abord retirer les cases sable");
+                }
+                else
+                {
+                   return true; 
                 }
             }
             else if (encoreDesForet)
             {
-                if(cible.type==2)
+                if(cible.type!=2)
                 {
-                    /*j.cartesEnMain.add(cible);
-                    refreshTuile(cible);*/
-                    return true;
+                    messageJoueur("vous devez d'abord retirer les cases forêts");
+                }
+                else
+                {
+                   return true; 
                 }
             }
             else
             {
-                if(cible.type==3)
+                if(cible.type!=3)
                 {
-                    /*j.cartesEnMain.add(cible);
-                    refreshTuile(cible);*/
-                    return true;
+                    messageJoueur("vous ne pouvez pas retirer une case d'eau");
+                }
+                else
+                {
+                   return true; 
                 }
             }
         }
-        messageJoueur("  "+encoreDesForet+"  "+encoreDuSable+"  "+eauAdjacente);
+        else
+        {
+            messageJoueur("vous ne pouvez pas cliquer sur cette case car il n'y a pas de case d'eau adjacente");
+        }
         return false;
     }
     

@@ -170,6 +170,14 @@ public class GrosPanel extends JPanel{
         }
     }
     
+     public void refreshGrosPanel() throws IOException{
+         for (PetitPanel image : this.affichageUnite) {            
+             image.refreshexplorateurs();
+             image.refreshMonstres();
+             image.refreshBateau();            
+         }
+     }
+    
                     
     
     
