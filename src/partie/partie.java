@@ -756,7 +756,7 @@ public class partie {
         int valeurMin=5;
         int valeurMax= 7;
         Random r = new Random();
-        int valeur = valeurMin + r.nextInt(valeurMax - valeurMin);
+        int valeur = valeurMin + r.nextInt((valeurMax+1) - valeurMin);
         choixMonstre= valeur;
     }
     
