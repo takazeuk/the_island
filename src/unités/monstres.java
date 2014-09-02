@@ -31,11 +31,17 @@ public class monstres extends unites {
     public void attaque(tuiles cible, monstres predateur)
     {
         if ((predateur.type==5)||(predateur.type==7)) {
-            cible.explorateurs.clear();
+            if (cible.explorateurs.size()!=0) {
+                cible.explorateurs.clear();
+                this.deplacement=0;
+            }                      
         }
         if ((predateur.type==6)||(predateur.type==7))
         {
-            cible.bateaux.clear();
+            if ((cible.bateaux.size()!=0)&&(cible.bateaux.get(0).marins.size()!=0)) {
+                cible.bateaux.clear();
+                this.deplacement=0;
+            }            
         }
         
         
