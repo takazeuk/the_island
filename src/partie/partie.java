@@ -32,6 +32,9 @@ public class partie {
     public Vector<tuiles> carte;
     public Vector<unites> population;
     public Vector<GrosPanel> imageTuile;
+    //vector pour stocker les tuiles et permettre de construire le plateau
+    public Vector<tuiles> tuileConstruction= new Vector<tuiles>();
+    
     public Int mine;
     public JScrollPane Scroll;
     //nous permet de passer au joueur suivant
@@ -320,81 +323,88 @@ public class partie {
             
             System.out.println(" "+trucbis.numeroUnite);
         }/**/
-        
+    
+
     
     //création de l'ile
     public void creationIle()
     {
+        creationTuiles();
+           
         for (tuiles ile : carte) {
             if (ile.y==3) {
-                if ((ile.x==5)||(ile.x==7)) {
-                   ile.type=1;
-                }
-                else if((ile.x==6)||(ile.x==8))
-                {
-                    ile.type=2;
+                if((ile.x>=5)&&(ile.x<=8)) {
+                    randomMap(ile);
                 }
             }
             else if(ile.y==4){
                if ((ile.x==7)||(ile.x==9)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if (ile.x==5) {
-                   ile.type=2;
+                   randomMap(ile);
                }
                else if ((ile.x==6)||(ile.x==8)) {
-                   ile.type=3;
+                   randomMap(ile);
                }
             }
             else if(ile.y==5){
                if ((ile.x==4)||(ile.x==7)||(ile.x==8)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if ((ile.x==5)||(ile.x==6)||(ile.x==9)||(ile.x==10)||(ile.x==11)) {
-                   ile.type=2;
+                   randomMap(ile);
                }
             }
             else if(ile.y==6){
                if ((ile.x==5)||(ile.x==10)||(ile.x==11)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if ((ile.x==6)||(ile.x==7)||(ile.x==9)) {
-                   ile.type=3;
+                   randomMap(ile);
                }
             }
             else if(ile.y==7){
                if ((ile.x==5)||(ile.x==9)||(ile.x==12)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if ((ile.x==6)||(ile.x==7)||(ile.x==8)||(ile.x==10)) {
-                   ile.type=2;
+                   randomMap(ile);
                }
                else if ((ile.x==11)) {
-                   ile.type=3;
+                   randomMap(ile);
                }
             }
             else if(ile.y==8){
                if ((ile.x==9)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if ((ile.x==7)||(ile.x==11)) {
-                   ile.type=2;
+                   randomMap(ile);
                }
                else if ((ile.x==8)||(ile.x==10)) {
-                   ile.type=3;
+                   randomMap(ile);
                }
             }
             else if(ile.y==9){
                if ((ile.x==8)||(ile.x==11)) {
-                   ile.type=1;
+                   randomMap(ile);
                }
                else if ((ile.x==9)||(ile.x==10)) {
-                   ile.type=2;
+                   randomMap(ile);
                }
             }
         }
   
     }   
+    
+    public void randomMap(tuiles aChanger){
+      Random r= new Random();
+      int randomTuile= r.nextInt((int)tuileConstruction.size());
+      aChanger.type=tuileConstruction.get(randomTuile).type;
+      aChanger.pouvoir= tuileConstruction.get(randomTuile).pouvoir;
+      tuileConstruction.remove(tuileConstruction.get(randomTuile));  
+    }
     
     public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer) throws IOException{
         
@@ -1016,6 +1026,31 @@ public class partie {
             
         }
     }
+    
+    public  void creationTuiles()
+    {
         
+        int pouvoirSable[]= {0,0,0,1,1,1,2,5,5,5,6,6,7,8,9,10};
+        for(int valeurPouvoir: pouvoirSable)
+        {
+           tuiles tuile= new tuiles(0,0,1,valeurPouvoir);
+           tuileConstruction.add(tuile);
+        }
+        
+        int pouvoirForet[]= {0,0,1,1,2,2,2,3,3,5,7,8,9,10,11,11};
+        for(int valeurPouvoir: pouvoirForet)
+        {
+           tuiles tuile= new tuiles(0,0,2,valeurPouvoir);
+           tuileConstruction.add(tuile);
+        }
+        
+        int pouvoirMontagne[]= {0,3,3,3,3,4,10,11};
+        for(int valeurPouvoir: pouvoirMontagne)
+        {
+           tuiles tuile= new tuiles(0,0,3,valeurPouvoir);
+           tuileConstruction.add(tuile);
+        }
+    }
+           
 }
 
