@@ -16,6 +16,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import partie.partie;
+import unités.explorateurs;
 
 /**
  *
@@ -105,9 +106,55 @@ public class PetitPanel extends JPanel{
         repaint();
     }
     
+    
+    
     @Override public void paintComponent(Graphics g)
     {
         g.drawImage(m_image, 0, 0, 30, 30, null);
+        if(this.numeroPetitPanel==6 && this.conteneur.terrain.bateaux.size()==1)
+        {
+            if(this.conteneur.terrain.bateaux.get(0).marins.size()>0)
+            {
+                int h = 8;
+                for (explorateurs marins : this.conteneur.terrain.bateaux.get(0).marins) {
+                    if(marins.proprietaire==0)
+                    {
+                        try {
+                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Rouge.png"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    else if(marins.proprietaire==1)
+                    {
+                       try {
+                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Vert.png"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        } 
+                    }
+                    else if(marins.proprietaire==2)
+                    {
+                        try {
+                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Rose.png"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    else if(marins.proprietaire==3)
+                    {
+                        try {
+                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Jaune.png"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                    g.drawImage(m_image, 11, h, 9, 5, null);
+                    h+=6;
+                }
+            }
+        }
+            
         //mettre les pions sur le bateau grâce à cela
         /*try {
             g
