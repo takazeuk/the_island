@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import partie.partie;
 import terrain.tuiles;
+import unités.explorateurs;
 import unités.unites;
 
 
@@ -139,6 +140,33 @@ public class GrosPanel extends JPanel{
                 }
             }
             
+        }
+    }
+    
+    public void gestionDesProprioBateau()
+    {
+        if(this.terrain.bateaux.get(0).marins.size()==3)
+        {
+            if(terrain.bateaux.get(0).marins.get(0).proprietaire==terrain.bateaux.get(0).marins.get(1).proprietaire)
+            {
+                terrain.bateaux.get(0).proprietaire = terrain.bateaux.get(0).marins.get(0).proprietaire;
+            }
+            if(terrain.bateaux.get(0).marins.get(0).proprietaire==terrain.bateaux.get(0).marins.get(2).proprietaire)
+            {
+                terrain.bateaux.get(0).proprietaire = terrain.bateaux.get(0).marins.get(0).proprietaire;
+            }
+            if(terrain.bateaux.get(0).marins.get(1).proprietaire==terrain.bateaux.get(0).marins.get(2).proprietaire)
+            {
+                terrain.bateaux.get(0).proprietaire = terrain.bateaux.get(0).marins.get(1).proprietaire;
+            }
+        }
+        else if (this.terrain.bateaux.get(0).marins.size()==1)
+        {
+            terrain.bateaux.get(0).proprietaire = terrain.bateaux.get(0).marins.get(0).proprietaire;
+        }
+        else
+        {
+            terrain.bateaux.get(0).proprietaire = 4;
         }
     }
     
