@@ -543,6 +543,8 @@ public class partie {
             break;
             case 2:
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
+                pouvoirJoueur.bateaux.add(newbateau);
+                affichageBateaux(pouvoirJoueur, newbateau);
             break;
             case 3: //tourbillon fini
                 pouvoir4DeLaTuile(pouvoirJoueur);
