@@ -55,6 +55,14 @@ public class PetitPanel extends JPanel{
           {
              m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
           }
+          else if(this.numeroUnite==3)
+          {
+             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+          }
+          else
+          {
+             m_image = null; 
+          }
           repaint();
     }
     
@@ -72,6 +80,10 @@ public class PetitPanel extends JPanel{
           {
              m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
           }
+          else
+          {
+              m_image = null;
+          }
           repaint();
     }
     
@@ -83,57 +95,6 @@ public class PetitPanel extends JPanel{
         repaint();
     }
     
-    public void refreshexplorateurs() throws IOException
-    {
-        if(this.numeroUnite==0)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
-        }               
-        else if(this.numeroUnite==1)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
-        }
-        else if(this.numeroUnite==2)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
-        }
-        else if (this.numeroUnite==3)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
-        }
-        else
-        {
-            m_image = null;
-        }
-        
-        
-        repaint();
-    }
-    
-    public void refreshMonstres() throws IOException
-    {
-        if(this.numeroUnite==5)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
-        }               
-        else if(this.numeroUnite==6)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/baleine.jpe"));
-        }
-        else if(this.numeroUnite==7)
-        {
-            m_image = ImageIO.read(getClass().getResource("/images/serpentDeMer.jpe"));
-        }
-        
-        else
-        {
-            m_image = null;
-        }
-        
-        
-        repaint();
-    }
-
     public void refreshBateau() throws IOException
     {
         

@@ -113,7 +113,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 placement.bateaux.add(partieEnCours.bateauDeplace);
                                 partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
                                 try {
-                                    partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                    //partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
                                 } 
                                 catch (IOException ex) {
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -122,11 +124,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                                 partieEnCours.bateauDeplace.x= placement.x;
                                 partieEnCours.bateauDeplace.y= placement.y;
-                                try {
-                                    partieEnCours.panelRefresh.refreshBateau();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                                }
+                                
                                 //on remet le flag déplacement à 0
                                 partieEnCours.flagDeplacement=0;
 
@@ -161,10 +159,13 @@ public class MoustenerGrosPanel extends MouseAdapter
                             {
                                 placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
                                 messageJoueur("L'explorateur est bien monter sur le bateau");
-                                partieEnCours.panelRefresh.numeroUnite = 4;
+                                partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
+                                //partieEnCours.panelRefresh.numeroUnite = 4;
                                 try 
                                 {
-                                    partieEnCours.panelRefresh.refreshexplorateurs();
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                    //partieEnCours.panelRefresh.refreshexplorateurs();
                                 } catch (IOException ex) 
                                 {
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -183,11 +184,13 @@ public class MoustenerGrosPanel extends MouseAdapter
                         }
                         else
                         {
-                            partieEnCours.panelRefresh.numeroUnite = 4;
+                            //partieEnCours.panelRefresh.numeroUnite = 4;
                             //on regarde s'il n'y a pas déjà un autre bateau                        
                             if (placement.explorateurs.size()<3) {
                                 //on ajoute l'explorateur au vecteur
                                 placement.explorateurs.add(partieEnCours.exploDeplace);
+                                partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
+                                
                                 if((placement.bateaux.size()==1) && (!partieEnCours.exploDeplace.nageur))
                                 {
                                     String a = "Voulez-vous monter sur le bateau ?";
@@ -196,12 +199,15 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     {
                                         placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
                                         messageJoueur("L'explorateur est bien monter sur le bateau");
+                                        placement.explorateurs.remove(partieEnCours.exploDeplace);
                                         selctionPanel.gestionDesProprioBateau();
                                     }
                                     else
                                     {
                                         try {
-                                             partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                                            partieEnCours.affichageUniteTuile(placement);
+                                            partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                             //partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
                                         } 
                                         catch (IOException ex) {
                                         Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,7 +217,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 else
                                 {
                                     try {
-                                        partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                                        partieEnCours.affichageUniteTuile(placement);
+                                        partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                        //partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
                                     } 
                                     catch (IOException ex) {
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -236,7 +244,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                                 try 
                                 {
-                                    partieEnCours.panelRefresh.refreshexplorateurs();
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                    //partieEnCours.panelRefresh.refreshexplorateurs();
                                 } catch (IOException ex) 
                                 {
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -290,12 +300,15 @@ public class MoustenerGrosPanel extends MouseAdapter
                         }
                         if (flag==0) {
                             placement.monstres.add(partieEnCours.monstreDeplace);
-                            try {
-                                partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
+                            partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
+                            messageJoueur("tableau monstre: t"+partieEnCours.origineExplorateur.terrain.monstres.size());
+                            /*try {
+                                partieEnCours.affichageUniteTuile(placement);
+                                //partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
                             } 
                             catch (IOException ex) {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            }*/
                             //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                             partieEnCours.monstreDeplace.x= placement.x;
                             partieEnCours.monstreDeplace.y= placement.y;
@@ -305,9 +318,7 @@ public class MoustenerGrosPanel extends MouseAdapter
 
                             //on repasse flag action à 5 pour réactiver les clics sur les petitsPanels
                             partieEnCours.flagAction=5;
-
-                            partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
-                            
+                           
                             //on modifie le déplacement
                             partieEnCours.monstreDeplace.deplacement--;
                             
@@ -316,20 +327,23 @@ public class MoustenerGrosPanel extends MouseAdapter
                             
                             //on refresh les images de la case
                             try {
-                                selctionPanel.refreshGrosPanel();
+                                partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                partieEnCours.affichageUniteTuile(placement);
+                                //selctionPanel.refreshGrosPanel();
                             } catch (IOException ex) {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             
                             messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
                             
-                            try 
+                            /*try 
                             {
-                                partieEnCours.panelRefresh.refreshexplorateurs();
+                                partieEnCours.affichageUniteTuile(placement);
+                                //partieEnCours.panelRefresh.refreshexplorateurs();
                             } catch (IOException ex) 
                             {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+                            }*/
                         }
                     }
                 }

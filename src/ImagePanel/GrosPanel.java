@@ -136,7 +136,7 @@ public class GrosPanel extends JPanel{
                 {
                     MessageBox.Interaction.messageJoueur("Je passe les numeroUnite a 4");
                     petitPanel.numeroUnite=4;
-                    petitPanel.refreshexplorateurs();
+                    petitPanel.choixImageExplorateur();
                 }
             }
             
@@ -172,9 +172,15 @@ public class GrosPanel extends JPanel{
     
      public void refreshGrosPanel() throws IOException{
          for (PetitPanel image : this.affichageUnite) {            
-             image.refreshexplorateurs();
-             image.refreshMonstres();
-             image.refreshBateau();            
+             image.choixImageExplorateur();
+             image.choixImageMonstre();
+             if (this.terrain.bateaux.size()!=0) {
+                image.choixImageBateau();
+             }
+             else
+             {
+                 image.refreshBateau();
+             }
          }
      }
     
