@@ -80,12 +80,14 @@ public class The_island {
         
         //phase de test à enlever
         monstres plateaumonstres9= new monstres("requin", 2, 5, 4, 1);
-        monstres plateaumonstres10= new monstres("baleine", 3, 6, 5, 1);
+        monstres plateaumonstres10= new monstres("baleine", 3, 6, 4, 1);
+        monstres plateaumonstres11= new monstres("hydre", 1, 7, 4, 1);
         partie.population.add(plateaumonstres9);
         partie.population.add(plateaumonstres10);
-        
+        partie.population.add(plateaumonstres11);
         partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres9);
-        partie.ajoutMonstresTuile(partie.carte.get(11), plateaumonstres10);
+        partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres10);
+        partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres11);
         //
         
         int i=0;

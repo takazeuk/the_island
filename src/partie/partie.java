@@ -789,10 +789,10 @@ public class partie {
     //lance de dée de la créature
     public void deeCreature()
     {
-        int valeurMin=5;
+        int valeurMin=7;
         int valeurMax= 7;
         Random r = new Random();
-        int valeur = valeurMin + r.nextInt((valeurMax+1) - valeurMin);
+        int valeur = valeurMin + r.nextInt((valeurMax)+1 - valeurMin);// Remettre +1 a 
         choixMonstre= valeur;
     }
     
@@ -855,7 +855,7 @@ public class partie {
         for (int i = 0; i < 3; i++) {
             if (cible.explorateurs.size()>i) {
                cible.panelLien.affichageUnite.get(i).numeroUnite= cible.explorateurs.get(i).proprietaire;
-                messageJoueur(""+cible.panelLien.affichageUnite.get(i).numeroUnite);
+                //messageJoueur(""+cible.panelLien.affichageUnite.get(i).numeroUnite);
             }
             else{
                cible.panelLien.affichageUnite.get(i).numeroUnite=4; 
@@ -863,7 +863,17 @@ public class partie {
             cible.panelLien.affichageUnite.get(i).choixImageExplorateur();
         }
         
-        int i=3;
+        for (int i = 0; i < 3; i++) {
+            if (cible.monstres.size()>i) {
+               cible.panelLien.affichageUnite.get(i+3).numeroUnite= cible.monstres.get(i).type;
+                //messageJoueur(""+cible.panelLien.affichageUnite.get(i).numeroUnite);
+            }
+            else{
+               cible.panelLien.affichageUnite.get(i+3).numeroUnite=4; 
+            } 
+            cible.panelLien.affichageUnite.get(i+3).choixImageMonstre();
+        }
+        /*int i=3;
         if (cible.monstres.size()!=0) {
             
             for (monstres monstre : cible.monstres) {
@@ -884,7 +894,7 @@ public class partie {
                 cible.panelLien.affichageUnite.get(j).numeroUnite=4;
                 cible.panelLien.affichageUnite.get(j).choixImageMonstre();       
             }
-        }
+        }*/
         
         if (cible.bateaux.size()!=0) {
             cible.panelLien.affichageUnite.get(6).choixImageBateau();

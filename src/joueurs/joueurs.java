@@ -27,7 +27,8 @@ public class joueurs {
     public joueurs(String nom, int couleur) {
         this.nom = nom;
         this.couleur = couleur;
-        this.deplacement=3;
+        // ne pas oublier de remettre le nombre de deplacement à 3
+        this.deplacement=1;
         this.cartesEnMain= new Vector<tuiles>();
         this.membres= new Vector<explorateurs>();
         this.membresDeploiement= new Vector<explorateurs>();

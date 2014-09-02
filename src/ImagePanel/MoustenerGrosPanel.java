@@ -105,7 +105,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
                     //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.bateauDeplace.deplacement(placement);
-                    if ((testDeplacement)&&(placement.type==0)&& ((placement.explorateurs.size()+partieEnCours.bateauDeplace.marins.size())<3)) {
+                    if ((testDeplacement)&&(placement.type==0)&& ((placement.explorateurs.size()+partieEnCours.bateauDeplace.marins.size())<=3)) {
                         //on regarde s'il n'y a pas déjà un autre bateau
                         
                                 if (placement.bateaux.size()==0) {
@@ -124,7 +124,10 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 //on donnes les coordonnées x y de la tuile de destination à l'explorateur
                                 partieEnCours.bateauDeplace.x= placement.x;
                                 partieEnCours.bateauDeplace.y= placement.y;
-                                
+                                for (explorateurs equipage : partieEnCours.bateauDeplace.marins) {
+                                     equipage.x = placement.x;
+                                     equipage.y = placement.y;
+                                }
                                 //on remet le flag déplacement à 0
                                 partieEnCours.flagDeplacement=0;
 
@@ -155,7 +158,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     {
                         if(selctionPanel.terrain.bateaux.size()==1)
                         {
-                            if((selctionPanel.terrain.bateaux.size()==1) && ((selctionPanel.terrain.bateaux.get(0).marins.size()+selctionPanel.terrain.explorateurs.size())<3) )
+                            if(((selctionPanel.terrain.bateaux.get(0).marins.size()+selctionPanel.terrain.explorateurs.size())<3) && (selctionPanel.terrain.bateaux.get(0).marins.size()<3))
                             {
                                 placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
                                 messageJoueur("L'explorateur est bien monter sur le bateau");
@@ -185,13 +188,23 @@ public class MoustenerGrosPanel extends MouseAdapter
                         else
                         {
                             //partieEnCours.panelRefresh.numeroUnite = 4;
-                            //on regarde s'il n'y a pas déjà un autre bateau                        
-                            if ((placement.explorateurs.size() + placement.bateaux.size())<3) {
+                            //on regarde s'il n'y a pas déjà un autre bateau 
+                            //messageJoueur(""+placement.explorateurs.size()+ "   "+placement.bateaux.get(0).marins.size());
+                            int nb = 0; // connaitre le nombre d'explorateur sur la tuile
+                            if(placement.bateaux.size()==1) // s'il ya un bateau il faut additionner le nombre d'explo de la tuile et du bateau
+                            {
+                                nb = placement.explorateurs.size() + placement.bateaux.get(0).marins.size();
+                            }
+                            else // sinon que de la tuile
+                            {
+                                nb = placement.explorateurs.size();
+                            }
+                            if (nb < 3) { //si le nombre d'explo total est inferieur a 3 alors...
                                 //on ajoute l'explorateur au vecteur
                                 placement.explorateurs.add(partieEnCours.exploDeplace);
                                 partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                                 
-                                if((placement.bateaux.size()==1) && (!partieEnCours.exploDeplace.nageur))
+                                if((placement.bateaux.size()==1) && (partieEnCours.exploDeplace.nageur==false))
                                 {
                                     String a = "Voulez-vous monter sur le bateau ?";
                                     int value = monterSurBateau(a);

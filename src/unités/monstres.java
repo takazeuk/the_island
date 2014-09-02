@@ -31,7 +31,7 @@ public class monstres extends unites {
     public boolean attaque(tuiles cible)
     {
         if ((this.type==5)||(this.type==7)) {
-            if (cible.explorateurs.size()!=0) {
+            if (cible.explorateurs.size()!=0 && cible.explorateurs != null) {
                 cible.explorateurs.clear();
                 return true;
             }                      
