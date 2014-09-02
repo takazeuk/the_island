@@ -134,7 +134,7 @@ public class The_island {
             //on bloque le code tant que le joueur n'a pas sélectionné une tuile
         }*/
         
-        //while (true) {
+        while (partie.partieTermine==0) {
             
             messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");
             while (partie.participant.get(partie.tourJoueur).deplacement!=0) {                
@@ -148,14 +148,35 @@ public class The_island {
             {
                 
             }
-            //partie de lancé de dés
+            //partie de lancé de dés pour définir le monstre
             partie.deeCreature();
             messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
-            while ((partie.monstreDeplace==null)||(partie.monstreDeplace.deplacement!=0)){
+            while ((partie.monstreDeplace==null)||(partie.deplacementMonstre!=partie.monstreDeplace.deplacement)){
                 //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
             }
             messageJoueur("vous ne pouvez plus déplacer votre monstre");
-            partie.flagAction = 7;
-        //}
+            
+            //on remet à zéro les capacités de déplacement
+            monstres monstre;
+            for (unites unitetotale : partie.population) {
+                if(unitetotale instanceof monstres){
+                    monstre= (monstres) unitetotale;
+                }
+            }
+            partie.participant.get(partie.tourJoueur).deplacement=3;
+            partie.flagDeplacement=0;
+            partie.deplacementMonstre=0;
+            
+            //on passe au joueur suivant
+            if (partie.tourJoueur==partie.participant.size()-1) {
+                partie.tourJoueur=0;
+            }
+            else
+            {
+              partie.tourJoueur++;  
+            }
+            
+            partie.flagAction = 2;
+        }
     }   
 }

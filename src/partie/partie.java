@@ -55,6 +55,10 @@ public class partie {
     public int flagDeplacement=0;
     //choix du monstre à déplacer
     public int choixMonstre;
+    //nous permet de connaitre le nombre de déplacement fait par le monstre
+    public int deplacementMonstre=0;
+    //flag pour savoir si la partie est terminée
+    public int partieTermine=0;
     //GrosPanel contenant tout le plateau
     public JPanel legros = new ImagePanel("/images/Board.png");
     

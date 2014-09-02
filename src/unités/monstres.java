@@ -28,12 +28,12 @@ public class monstres extends unites {
     }
     
     //fonction pour l'attaque des requins, des baleines, des serpents de mer
-    public void attaque(tuiles cible)
+    public boolean attaque(tuiles cible)
     {
         if ((this.type==5)||(this.type==7)) {
             if (cible.explorateurs.size()!=0) {
                 cible.explorateurs.clear();
-                this.deplacement=0;
+                return true;
             }                      
         }
         if ((this.type==6)||(this.type==7))
@@ -43,11 +43,9 @@ public class monstres extends unites {
                     cible.explorateurs.add(naufragés);
                 }
                 cible.bateaux.clear();
-                this.deplacement=0;
+                return true;
             }            
         }
-        
-        
-            
+        return false;        
     }
 }

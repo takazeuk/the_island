@@ -320,10 +320,12 @@ public class MoustenerGrosPanel extends MouseAdapter
                             partieEnCours.flagAction=5;
                            
                             //on modifie le déplacement
-                            partieEnCours.monstreDeplace.deplacement--;
+                            partieEnCours.deplacementMonstre++;
                             
                             //on fait la fonction attaque
-                            partieEnCours.monstreDeplace.attaque(placement);
+                            if(partieEnCours.monstreDeplace.attaque(placement)){
+                                partieEnCours.deplacementMonstre= partieEnCours.monstreDeplace.deplacement;
+                            }
                             
                             //on refresh les images de la case
                             try {
