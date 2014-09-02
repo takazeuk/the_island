@@ -8,6 +8,7 @@ package ImagePanel;
 
 import MessageBox.Interaction;
 import static MessageBox.Interaction.messageJoueur;
+import static MessageBox.Interaction.monterSurBateau;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -15,6 +16,7 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import joueurs.joueurs;
 import partie.partie;
 import terrain.tuiles;
@@ -31,7 +33,6 @@ public class MoustenerGrosPanel extends MouseAdapter
     int y;
     GrosPanel selctionPanel;
     partie partieEnCours;
-    
     public MoustenerGrosPanel(GrosPanel p, partie part)
     {
         x = p.j;
@@ -151,42 +152,100 @@ public class MoustenerGrosPanel extends MouseAdapter
                 {
                      //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
-                    if (testDeplacement) {
-                        //on regarde s'il n'y a pas déjà un autre bateau                        
-                        if (placement.explorateurs.size()<3) {
-                            //on ajoute l'explorateur au vecteur
-                            placement.explorateurs.add(partieEnCours.exploDeplace);
-                            try {
-                                partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
-                            } 
-                            catch (IOException ex) {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                    if((partieEnCours.exploDeplace.x == selctionPanel.k) && (partieEnCours.exploDeplace.y == selctionPanel.j))
+                    {
+                        if(selctionPanel.terrain.bateaux.size()==1)
+                        {
+                            if(partieEnCours.exploDeplace.nageur)
+                            {
+                                placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
+                                messageJoueur("L'explorateur est bien monter sur le bateau");
+                                partieEnCours.panelRefresh.numeroUnite = 4;
+                                try 
+                                {
+                                    partieEnCours.panelRefresh.refreshexplorateurs();
+                                } catch (IOException ex) 
+                                {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                partieEnCours.flagAction=2;
+                                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
                             }
-                            
-                            //on donnes les coordonnées x y de la tuile de destination à l'explorateur
-                            partieEnCours.exploDeplace.x= placement.x;
-                            partieEnCours.exploDeplace.y= placement.y;
-
-                            //on remet le flag déplacement à 0
-                            partieEnCours.flagDeplacement=0;
-
-                            //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
+                        }
+                    }
+                    else if (testDeplacement) {
+                        if((partieEnCours.exploDeplace.nageur==true) && (placement.type!=0))
+                        {
+                            messageJoueur("Votre pion est un nageur donc vous ne pouvez plus retourner sur une case terrain");
                             partieEnCours.flagAction=2;
-
-                            partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
-                            try 
-                            {
-                                partieEnCours.panelRefresh.refreshexplorateurs();
-                            } catch (IOException ex) 
-                            {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
-                            messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction); 
                         }
                         else
                         {
-                           messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case"); 
+                            partieEnCours.panelRefresh.numeroUnite = 4;
+                            //on regarde s'il n'y a pas déjà un autre bateau                        
+                            if (placement.explorateurs.size()<3) {
+                                //on ajoute l'explorateur au vecteur
+                                placement.explorateurs.add(partieEnCours.exploDeplace);
+                                if((placement.bateaux.size()==1) && (!partieEnCours.exploDeplace.nageur))
+                                {
+                                    String a = "Voulez-vous monter sur le bateau ?";
+                                    int value = monterSurBateau(a);
+                                    if(value == JOptionPane.YES_OPTION)
+                                    {
+                                        placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
+                                        messageJoueur("L'explorateur est bien monter sur le bateau");
+                                    }
+                                    else
+                                    {
+                                        try {
+                                             partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                                        } 
+                                        catch (IOException ex) {
+                                        Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    try {
+                                        partieEnCours.affichageExplorateurs(placement, partieEnCours.exploDeplace);
+                                    } 
+                                    catch (IOException ex) {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                }
+
+
+                                //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                                partieEnCours.exploDeplace.x= placement.x;
+                                partieEnCours.exploDeplace.y= placement.y;
+                                // On attribue le statut de nageur a l'explo dans le cas ou le panel de destination est de type eau
+                                if(placement.type==0)
+                                {
+                                    partieEnCours.exploDeplace.nageur = true;
+                                }
+                                //on remet le flag déplacement à 0
+                                partieEnCours.flagDeplacement=0;
+
+                                //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
+                                partieEnCours.flagAction=2;
+
+                                partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
+                                try 
+                                {
+                                    partieEnCours.panelRefresh.refreshexplorateurs();
+                                } catch (IOException ex) 
+                                {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+                                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction);
+                                
+                            }
+                            else
+                            {
+                               messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case"); 
+                            }
                         }
                         
                     }

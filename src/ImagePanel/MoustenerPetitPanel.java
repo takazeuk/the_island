@@ -53,7 +53,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                 partieEnCours.flagAction=3;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 partieEnCours.panelRefresh = selctionPanel;
-                partieEnCours.panelRefresh.numeroUnite = 4;
+                // je l'ai changé de place!! partieEnCours.panelRefresh.numeroUnite = 4;
                 
                 messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
             }
@@ -70,7 +70,7 @@ public class MoustenerPetitPanel extends MouseAdapter
             }
             else
             {
-              messageJoueur("vous ne pouvez pas sélectionner cette unité");
+              messageJoueur("vous ne pouvez pas sélectionner cette unité"+selctionPanel.numeroUnite);
             }        
         }
         

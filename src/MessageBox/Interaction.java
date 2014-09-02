@@ -30,6 +30,11 @@ public class Interaction {
                 tab[tab.length-1]
         );
     }
+    
+    public static int monterSurBateau(String s)
+    {
+        return (int) JOptionPane.showConfirmDialog(null, s, "Monter?", JOptionPane.YES_NO_OPTION);
+    }
 
     public static int demandeChoix(String s, Vector v) {
         return demandeChoix(s, v.toArray());
@@ -46,4 +51,6 @@ public class Interaction {
     public static void messageJoueur(String s) {
         JOptionPane.showMessageDialog(null, s);
     }
+    
+    
 }
