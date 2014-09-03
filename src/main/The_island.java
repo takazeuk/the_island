@@ -146,6 +146,8 @@ public class The_island {
             messageJoueur("vous devez retirer une tuile terrain");
             //on met le flagAction sur 4 pour passer à la phase retirer tuile terrain
             partie.flagAction = 4;
+            
+            
             while(partie.flagAction == 4)
             {
                 

@@ -46,19 +46,27 @@ public class MoustenerPetitPanel extends MouseAdapter
         
             boolean flagDeplacementbateau = true;
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
-            boolean flag7 = true;
+            partieEnCours.flag7 = 0;
+            if(partieEnCours.flagAction==8)
+            {
+                partieEnCours.flag7 = 2;
+            }
+            if(partieEnCours.flagAction==2)
+            {
+                partieEnCours.flag7 = 3;
+            }
             if(partieEnCours.flagAction==7)
             {
                 if(this.selctionPanel.numeroUnite==joueur.couleur)
                 {
                     if(selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel).nageur == false)
                     {
-                        flag7 = false;
+                        partieEnCours.flag7 = 1;
                     }
                 }
             }
             //test pour l'explorateur
-            if(flag7 == true)
+            if(partieEnCours.flag7 == 1 || partieEnCours.flag7 == 3)
             {
                 if (this.selctionPanel.numeroUnite==joueur.couleur) {
                     partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
@@ -70,7 +78,7 @@ public class MoustenerPetitPanel extends MouseAdapter
 
                     messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
                 }
-                else if (this.selctionPanel.numeroPetitPanel==6) {
+                else if (this.selctionPanel.numeroPetitPanel==6 && (partieEnCours.flag7==3 || partieEnCours.flag7 == 2)) {
                     if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
                         if(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4 && selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
                         {

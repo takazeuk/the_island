@@ -65,6 +65,8 @@ public class partie {
     public boolean reponseJoueur = true;
     // Savoir si on est dans l'utilisation des cartes en main
     public boolean ModePouvoir = false;
+    //savoir dans quel partie du clic on se situe
+    public int flag7;
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
@@ -945,7 +947,7 @@ public class partie {
         return false;
     }
     
-    public void pouvoir4DeLaTuile(tuiles pouvoirJoueur)
+    public void pouvoir4DeLaTuile(tuiles pouvoirJoueur) throws IOException
     {
         GrosPanel lePanel;
         for (Component laTuile : legros.getComponents()) {
@@ -953,25 +955,23 @@ public class partie {
             {
                 lePanel = (GrosPanel) laTuile;
                 if((lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y) 
-                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y-1)
-                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y+1)
-                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y-1)
-                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y)
-                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y+1)
-                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y)
-                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y))
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y-1 && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y+1 && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y-1 && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x-1 && lePanel.terrain.y == pouvoirJoueur.y && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y+1 && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x && lePanel.terrain.y == pouvoirJoueur.y && lePanel.terrain.type==0)
+                        || (lePanel.terrain.x== pouvoirJoueur.x+1 && lePanel.terrain.y == pouvoirJoueur.y) && lePanel.terrain.type==0)
                 {
-                    for (explorateurs exploRetirer : lePanel.terrain.explorateurs) {
-                    lePanel.terrain.explorateurs.remove(exploRetirer);
-                    }
-                    for (monstres monstRetirer : lePanel.terrain.monstres) {
-                    lePanel.terrain.monstres.remove(monstRetirer);
-                    }
-                    for (bateaux bateauRetirer : lePanel.terrain.bateaux) {
-                    lePanel.terrain.monstres.remove(bateauRetirer);
-                    }
+                    
+                    lePanel.terrain.explorateurs.clear();
+                    lePanel.terrain.monstres.clear();
+                    lePanel.terrain.bateaux.clear();
+                    this.affichageUniteTuile(lePanel.terrain);
+                    
                 }                    
             }
+            
         }
     }
     
