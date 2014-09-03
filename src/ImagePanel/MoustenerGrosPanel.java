@@ -301,73 +301,99 @@ public class MoustenerGrosPanel extends MouseAdapter
         }
             
             if (partieEnCours.flagAction==6) {
+                
                 int flag=0;
                 boolean testDeplacement=partieEnCours.monstreDeplace.deplacement(placement);
-                if (testDeplacement){
-                    if (placement.type==0) {
-                        for (monstres monstre : placement.monstres) {
-                            if (monstre.type==partieEnCours.choixMonstre) {
-                                messageJoueur("vous ne pouvez pas vous déplacer sur cette case, elle possède déjà un monstre de ce type");
-                                flag=1;
+                if (partieEnCours.ModePouvoir == false)
+                {
+                    if (testDeplacement){
+
+                        if (placement.type==0) {
+                            for (monstres monstre : placement.monstres) {
+                                if (monstre.type==partieEnCours.choixMonstre) {
+                                    messageJoueur("vous ne pouvez pas vous déplacer sur cette case, elle possède déjà un monstre de ce type");
+                                    flag=1;
+                                }
+                            }
+                            if (flag==0) {
+                                placement.monstres.add(partieEnCours.monstreDeplace);
+                                partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
+                                messageJoueur("tableau monstre: t"+partieEnCours.origineExplorateur.terrain.monstres.size());
+                                /*try {
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    //partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
+                                } 
+                                catch (IOException ex) {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }*/
+                                //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                                partieEnCours.monstreDeplace.x= placement.x;
+                                partieEnCours.monstreDeplace.y= placement.y;
+
+                                //on remet le flag déplacement à 0
+                                partieEnCours.flagDeplacement=0;
+
+
+                                //on modifie le déplacement
+                                partieEnCours.deplacment++;
+
+                                //on fait la fonction attaque
+                                if(partieEnCours.monstreDeplace.attaque(placement)){
+                                    partieEnCours.deplacment= partieEnCours.monstreDeplace.deplacement;
+                                }
+
+                                //on refresh les images de la case
+                                try {
+                                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    //selctionPanel.refreshGrosPanel();
+                                } catch (IOException ex) {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }
+
+                                partieEnCours.origineExplorateur= selctionPanel;
+                                for (int i = 3; i < 6; i++) {
+                                    if (selctionPanel.affichageUnite.get(i).numeroUnite==partieEnCours.monstreDeplace.type) {
+                                        partieEnCours.panelRefresh = selctionPanel.affichageUnite.get(i);
+                                    }
+                                }
+
+                                messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
+
+                                /*try 
+                                {
+                                    partieEnCours.affichageUniteTuile(placement);
+                                    //partieEnCours.panelRefresh.refreshexplorateurs();
+                                } catch (IOException ex) 
+                                {
+                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                }*/
                             }
                         }
-                        if (flag==0) {
+                    }
+
+                }
+                else
+                {
+                    if(placement.type==0)
+                    {
+                        if(placement.bateaux.size()!=1 && placement.explorateurs.size()==0 && placement.monstres.size()==0)
+                        {
                             placement.monstres.add(partieEnCours.monstreDeplace);
                             partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
-                            messageJoueur("tableau monstre: t"+partieEnCours.origineExplorateur.terrain.monstres.size());
-                            /*try {
-                                partieEnCours.affichageUniteTuile(placement);
-                                //partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
-                            } 
-                            catch (IOException ex) {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }*/
-                            //on donnes les coordonnées x y de la tuile de destination à l'explorateur
-                            partieEnCours.monstreDeplace.x= placement.x;
-                            partieEnCours.monstreDeplace.y= placement.y;
-
-                            //on remet le flag déplacement à 0
-                            partieEnCours.flagDeplacement=0;
-
-                                                
-                            //on modifie le déplacement
-                            partieEnCours.deplacementMonstre++;
-                            
-                            //on fait la fonction attaque
-                            if(partieEnCours.monstreDeplace.attaque(placement)){
-                                partieEnCours.deplacementMonstre= partieEnCours.monstreDeplace.deplacement;
-                            }
-                            
-                            //on refresh les images de la case
+                            partieEnCours.monstreDeplace.x = placement.x;
+                            partieEnCours.monstreDeplace.y = placement.y;
                             try {
                                 partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
                                 partieEnCours.affichageUniteTuile(placement);
                                 //selctionPanel.refreshGrosPanel();
                             } catch (IOException ex) {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            
-                            partieEnCours.origineExplorateur= selctionPanel;
-                            for (int i = 3; i < 6; i++) {
-                                if (selctionPanel.affichageUnite.get(i).numeroUnite==partieEnCours.monstreDeplace.type) {
-                                    partieEnCours.panelRefresh = selctionPanel.affichageUnite.get(i);
-                                }
-                            }
-                            
-                            messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
-                            
-                            /*try 
-                            {
-                                partieEnCours.affichageUniteTuile(placement);
-                                //partieEnCours.panelRefresh.refreshexplorateurs();
-                            } catch (IOException ex) 
-                            {
-                                Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            }*/
+                            } 
                         }
                     }
+                    
                 }
-            
             }
     }		
 }

@@ -153,7 +153,7 @@ public class The_island {
             //partie de lancé de dés pour définir le monstre
             partie.deeCreature();
             messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
-            while ((partie.monstreDeplace==null)||(partie.deplacementMonstre!=partie.monstreDeplace.deplacement)){
+            while ((partie.monstreDeplace==null)||(partie.deplacment!=partie.monstreDeplace.deplacement)){
                 //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
             }
             messageJoueur("vous ne pouvez plus déplacer votre monstre");
@@ -167,7 +167,7 @@ public class The_island {
             }
             partie.participant.get(partie.tourJoueur).deplacement=3;
             partie.flagDeplacement=0;
-            partie.deplacementMonstre=0;
+            partie.deplacment=0;
             
             //on passe au joueur suivant
             if (partie.tourJoueur==partie.participant.size()-1) {

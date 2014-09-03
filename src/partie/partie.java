@@ -56,12 +56,15 @@ public class partie {
     //choix du monstre à déplacer
     public int choixMonstre;
     //nous permet de connaitre le nombre de déplacement fait par le monstre
-    public int deplacementMonstre=0;
+    public int deplacment=0;
     //flag pour savoir si la partie est terminée
     public int partieTermine=0;
     //GrosPanel contenant tout le plateau
     public JPanel legros = new ImagePanel("/images/Board.png");
-    
+    //Savoir si le joueur veut toujours deplacer l'unite que la carte lui permet
+    public boolean reponseJoueur = true;
+    // Savoir si on est dans l'utilisation des cartes en main
+    public boolean ModePouvoir = false;
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
@@ -573,94 +576,46 @@ public class partie {
         }
     }
     
-    public boolean pouvoirEnMain(tuiles pouvoirJoueur, tuiles cible, joueurs j)
-    {
-        monstres deplacer;
-        
-        switch(pouvoirJoueur.pouvoir)
+    public void pouvoirEnMainActiver(joueurs j, tuiles cibler)
+    {   
+        if(flagAction==4)
+        {
+            j.cartesEnMain.add(cibler);
+        }
+        switch(cibler.pouvoir)
         {
             //pouvoir des déplacements dauphins
             case 5:
-                for (explorateurs nageurs : pouvoirJoueur.explorateurs) {
-                    if(nageurs.proprietaire==j.couleur)
-                    {
-                        if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
-                        {
-                            cible.explorateurs.add(nageurs);
-                            return true;
-                        }
-                    }
-                }
+                flagAction = 7;
+                
             break;
             
             //pouvoir des déplacement bateaux
             case 6:
-                for(bateaux tousLesBateaux : pouvoirJoueur.bateaux)
-                {
-                    if(tousLesBateaux.proprietaire==j.couleur || tousLesBateaux.proprietaire == 4)
-                    {
-                        if(autoriserDeplacementPouvoirTuile(pouvoirJoueur, cible))
-                        {
-                            cible.bateaux.add(tousLesBateaux);
-                            return true;
-                        }
-                    }
-                }
-                    
+                
+                flagAction = 8;
+                
             break;
             
-            //pouvoir des déplacements de serpent de mer
-            case 7: 
-                if(cible.type==0)
+            //pouvoir des déplacements de serpent de mer, requin et baleine
+            case 7: case 8: case 9:
+                ModePouvoir = true;
+                if(cibler.pouvoir == 7)
                 {
-                    deplacer = new monstres("Serpent de mer", 1, 7, cible.x, cible.y);
-                    cible.monstres.add(deplacer);
-                    for (monstres serpentDeMer : pouvoirJoueur.monstres) {
-                        if(serpentDeMer.type==2)
-                        {
-                            pouvoirJoueur.monstres.remove(serpentDeMer);
-                        }
-                        
-                    }
-                    return true;
+                    choixMonstre = 7;
                 }
+                else if(cibler.pouvoir == 8)
+                {
+                    choixMonstre = 6;
+                }
+                else
+                {
+                    choixMonstre = 5;
+                }
+                flagAction = 6;
+                
             break;
-            
-            //pouvoir de déplacement de requin
-            case 8: 
-                if(cible.type==0)
-                {
-                    deplacer = new monstres("Requin", 2, 5, cible.x, cible.y);
-                    cible.monstres.add(deplacer);
-                    for (monstres Requin : pouvoirJoueur.monstres) {
-                        if(Requin.type==0)
-                        {
-                            pouvoirJoueur.monstres.remove(Requin);
-                        }
-                        
-                    }
-                    return true;
-                }
-            break;
-            
-            //pouvoir de déplacement de la baleine
-            case 9:
-                if(cible.type==0)
-                {
-                    deplacer = new monstres("Baleine", 3, 6, cible.x, cible.y);
-                    cible.monstres.add(deplacer);
-                    for (monstres Baleine : pouvoirJoueur.monstres) {
-                        if(Baleine.type==1)
-                        {
-                            pouvoirJoueur.monstres.remove(Baleine);
-                        }
-                        
-                    }
-                    return true;
-                }
-            break;                              
         }
-        return false;
     }
     
     public boolean pouvoirDefense(tuiles pouvoirJoueur, tuiles cible, joueurs j)

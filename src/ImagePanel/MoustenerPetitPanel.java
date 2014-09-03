@@ -42,56 +42,70 @@ public class MoustenerPetitPanel extends MouseAdapter
             return;
         }
         
-        if (partieEnCours.flagAction==2) {
+        if (partieEnCours.flagAction==2 || partieEnCours.flagAction==7 || partieEnCours.flagAction==8) {
         
             boolean flagDeplacementbateau = true;
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
-            
-            //test pour l'explorateur
-            if (this.selctionPanel.numeroUnite==joueur.couleur) {
-                partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
-                partieEnCours.flagDeplacement=1;
-                partieEnCours.flagAction=3;
-                partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                partieEnCours.panelRefresh = selctionPanel;
-                // je l'ai changé de place!! partieEnCours.panelRefresh.numeroUnite = 4;
-                
-                messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
-            }
-            else if ((this.selctionPanel.numeroPetitPanel==6)&&(selctionPanel.conteneur.terrain.bateaux.size()!=0)) {
-                if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
-                    if(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4 && selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
+            boolean flag7 = true;
+            if(partieEnCours.flagAction==7)
+            {
+                if(this.selctionPanel.numeroUnite==joueur.couleur)
+                {
+                    if(selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel).nageur == false)
                     {
-                             flagDeplacementbateau = false;
-                                for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
-                                    if(explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)
-                                    {
-                                        flagDeplacementbateau = true;
-                                    }
-                                }   
+                        flag7 = false;
                     }
-                    if(flagDeplacementbateau)
-                    {
-                        messageJoueur("Vous ppouvez déplacer ce bateau");
-                        partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
-                        partieEnCours.flagDeplacement=1;
-                        partieEnCours.flagAction=3;
-                        partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                        partieEnCours.panelRefresh = selctionPanel;
+                }
+            }
+            //test pour l'explorateur
+            if(flag7 == true)
+            {
+                if (this.selctionPanel.numeroUnite==joueur.couleur) {
+                    partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
+                    partieEnCours.flagDeplacement=1;
+                    partieEnCours.flagAction=3;
+                    partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                    partieEnCours.panelRefresh = selctionPanel;
+                    // je l'ai changé de place!! partieEnCours.panelRefresh.numeroUnite = 4;
 
-                        messageJoueur("bateau séléctionné, selectionné maintenant une case de destination");
+                    messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
+                }
+                else if (this.selctionPanel.numeroPetitPanel==6) {
+                    if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
+                        if(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4 && selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
+                        {
+                                 flagDeplacementbateau = false;
+                                    for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
+                                        if(explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)
+                                        {
+                                            flagDeplacementbateau = true;
+                                        }
+                                    }   
+                        }
+                        if(flagDeplacementbateau)
+                        {
+                            messageJoueur("Vous ppouvez déplacer ce bateau");
+                            partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
+                            partieEnCours.flagDeplacement=1;
+                            partieEnCours.flagAction=3;
+                            partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                            partieEnCours.panelRefresh = selctionPanel;
+
+                            messageJoueur("bateau séléctionné, selectionné maintenant une case de destination");
+                        }
+                        else
+                        {
+                            messageJoueur("Vous n'etes pas propriétaire de ce bateau");
+                        }
                     }
                     else
                     {
                         messageJoueur("Vous n'etes pas propriétaire de ce bateau");
                     }
-                }
-                else
-                {
-                    messageJoueur("Vous n'etes pas propriétaire de ce bateau");
-                }
                 
+                }
             }
+            
             else
             {
               messageJoueur("vous ne pouvez pas sélectionner cette unité"+selctionPanel.numeroUnite);
@@ -112,10 +126,10 @@ public class MoustenerPetitPanel extends MouseAdapter
                         }
                     }
                 }
-                partieEnCours.flagAction=6;                
-                partieEnCours.panelRefresh.numeroUnite = 4;
+                partieEnCours.flagAction=6;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 partieEnCours.panelRefresh = selctionPanel;
+                partieEnCours.panelRefresh.numeroUnite = 4;
                 messageJoueur("monstre séléctionné, selectionné maintenant une case de destination");
             }
         }
