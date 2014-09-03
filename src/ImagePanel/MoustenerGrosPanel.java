@@ -287,6 +287,9 @@ public class MoustenerGrosPanel extends MouseAdapter
             try {               
                 if (partieEnCours.retirerTuile(placement)) { 
                     placement.type = 0;
+                    for (explorateurs exploNaufragé : placement.explorateurs) {
+                        exploNaufragé.nageur=true;
+                    }
                     partieEnCours.flagAction=5;
                     try {
                         selctionPanel.refreshImage();
