@@ -329,9 +329,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                             //on remet le flag déplacement à 0
                             partieEnCours.flagDeplacement=0;
 
-                            //on repasse flag action à 5 pour réactiver les clics sur les petitsPanels
-                            partieEnCours.flagAction=5;
-                           
+                                                
                             //on modifie le déplacement
                             partieEnCours.deplacementMonstre++;
                             
@@ -347,6 +345,13 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 //selctionPanel.refreshGrosPanel();
                             } catch (IOException ex) {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            
+                            partieEnCours.origineExplorateur= selctionPanel;
+                            for (int i = 3; i < 6; i++) {
+                                if (selctionPanel.affichageUnite.get(i).numeroUnite==partieEnCours.monstreDeplace.type) {
+                                    partieEnCours.panelRefresh = selctionPanel.affichageUnite.get(i);
+                                }
                             }
                             
                             messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);

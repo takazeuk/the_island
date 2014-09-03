@@ -58,7 +58,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                 
                 messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
             }
-            else if (this.selctionPanel.numeroPetitPanel==6) {
+            else if ((this.selctionPanel.numeroPetitPanel==6)&&(selctionPanel.conteneur.terrain.bateaux.size()!=0)) {
                 if ((selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==partieEnCours.participant.get(partieEnCours.tourJoueur).couleur)||(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4)) {
                     if(selctionPanel.conteneur.terrain.bateaux.get(0).proprietaire==4 && selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
                     {
@@ -112,10 +112,10 @@ public class MoustenerPetitPanel extends MouseAdapter
                         }
                     }
                 }
-                partieEnCours.flagAction=6;
+                partieEnCours.flagAction=6;                
+                partieEnCours.panelRefresh.numeroUnite = 4;
                 partieEnCours.origineExplorateur= selctionPanel.conteneur;
                 partieEnCours.panelRefresh = selctionPanel;
-                partieEnCours.panelRefresh.numeroUnite = 4;
                 messageJoueur("monstre séléctionné, selectionné maintenant une case de destination");
             }
         }
