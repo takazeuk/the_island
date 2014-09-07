@@ -356,64 +356,71 @@ public class partie {
                 }
             }
             else if(ile.y==4){
-               if ((ile.x==7)||(ile.x==9)) {
-                   randomMap(ile);
-               }
-               else if (ile.x==5) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==6)||(ile.x==8)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=5)&&(ile.x<=9))
+                {
+                   randomMap(ile); 
+                }
             }
             else if(ile.y==5){
-               if ((ile.x==4)||(ile.x==7)||(ile.x==8)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==5)||(ile.x==6)||(ile.x==9)||(ile.x==10)||(ile.x==11)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=4)&&(ile.x<=11))
+                {
+                   randomMap(ile); 
+                }
             }
             else if(ile.y==6){
-               if ((ile.x==5)||(ile.x==10)||(ile.x==11)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==6)||(ile.x==7)||(ile.x==9)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=5)&&(ile.x<=7))
+                {
+                   randomMap(ile); 
+                }
+                if((ile.x>=9)&&(ile.x<=11))
+                {
+                   randomMap(ile); 
+                }
             }
             else if(ile.y==7){
-               if ((ile.x==5)||(ile.x==9)||(ile.x==12)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==6)||(ile.x==7)||(ile.x==8)||(ile.x==10)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==11)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=5)&&(ile.x<=12))
+                {
+                   randomMap(ile); 
+                }
             }
             else if(ile.y==8){
-               if ((ile.x==9)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==7)||(ile.x==11)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==8)||(ile.x==10)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=7)&&(ile.x<=11))
+                {
+                   randomMap(ile); 
+                }
             }
             else if(ile.y==9){
-               if ((ile.x==8)||(ile.x==11)) {
-                   randomMap(ile);
-               }
-               else if ((ile.x==9)||(ile.x==10)) {
-                   randomMap(ile);
-               }
+                if((ile.x>=8)&&(ile.x<=11))
+                {
+                   randomMap(ile); 
+                }
             }
         }
-  
+        
+         //partie test pour les cases adjacentessssssssssssssssssssss
+        for (tuiles ile : carte) {
+            if (ile.y==3) {
+                if((ile.x==5)||(ile.x==6))
+                {
+                    ile.type = 3;
+                }
+            }
+            if (ile.y==4) {
+                if((ile.x==5)||(ile.x==7))
+                {
+                    ile.type = 3;
+                }
+                if(ile.x==6)
+                {
+                    ile.type = 2;
+                }
+            }
+            if (ile.y == 5) {
+                if ((ile.x == 6) || (ile.x == 7)) {
+                    ile.type = 3;
+                }
+            }
+        }     
     }   
     
     public void randomMap(tuiles aChanger){
@@ -995,28 +1002,44 @@ public class partie {
             }
             
         }
+        messageJoueur("encore du sable "+encoreDuSable );
         
         if(encoreDuSable == true)
         {
             for (tuiles tuile : this.carte) {
                 if(tuile.type==1)
                 {
-                    if(tuile.panelLien.tuileAdjacenteEau(tuile) == true)
+                    for(Component lesGros: legros.getComponents())
                     {
-                        uneTuileEauAdjacente = true;
-                    }  
-                }
+                        if(lesGros instanceof GrosPanel)
+                        {
+                            GrosPanel rechercher = (GrosPanel) lesGros;
+                            if(rechercher.tuileAdjacenteEau(tuile))
+                            {
+                                uneTuileEauAdjacente = true;
+                            }
+                        }
+                    }
             
+                }
             }
+                        messageJoueur("uneTuileEauAdjacente "+uneTuileEauAdjacente );
         }
         else
         {
             for (tuiles tuile : this.carte) {
                 if(tuile.type==2)
                 {
-                    if(tuile.panelLien.tuileAdjacenteEau(tuile) == true)
+                    for(Component lesGros: legros.getComponents())
                     {
-                        uneTuileEauAdjacente = true;
+                        if(lesGros instanceof GrosPanel)
+                        {
+                            GrosPanel rechercher = (GrosPanel) lesGros;
+                            if(rechercher.tuileAdjacenteEau(tuile))
+                            {
+                                uneTuileEauAdjacente = true;
+                            }
+                        }
                     }
                 }
             
@@ -1024,6 +1047,8 @@ public class partie {
         }
         return uneTuileEauAdjacente;
     }
+    
+    
     public boolean retirerTuile(tuiles cible) throws IOException
     {
         boolean eauAdjacente =false;

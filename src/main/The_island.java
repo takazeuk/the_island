@@ -111,30 +111,8 @@ public class The_island {
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
         
-        /*
-        //partie déplacement des explorateurs/bateaux
-        messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");   
-        while(partie.flagDeplacement!=1){
-            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
-        }
-        messageJoueur("selectionnez maintenant une case de destination");
-        //penser à remettre nb-1 dans le get!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        while(partie.participant.get(0).deplacement!=0){
-            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
-        }
         
-        //partie de lancé de dés
-        partie.flagAction=5;
-        partie.deeCreature();
-        messageJoueur("vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)); 
-        messageJoueur("phase de monstre: "+partie.participant.get(partie.tourJoueur).nom+" selectionner un monstre correspondant au lancé de dé");   
-        while(partie.flagDeplacement!=1){
-            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
-        }
-        messageJoueur("selectionnez maintenant une case de destination");
-        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
-            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
-        }*/
+        
         
         while (partie.partieTermine==0) {
             
@@ -145,6 +123,7 @@ public class The_island {
             messageJoueur("vous avez effectué tout vos déplacements");
             messageJoueur("vous devez retirer une tuile terrain");
             //on met le flagAction sur 4 pour passer à la phase retirer tuile terrain
+                
             partie.flagAction = 4;
             
             
@@ -184,3 +163,31 @@ public class The_island {
         }
     }   
 }
+
+
+
+
+/*
+        //partie déplacement des explorateurs/bateaux
+        messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");   
+        while(partie.flagDeplacement!=1){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
+        messageJoueur("selectionnez maintenant une case de destination");
+        //penser à remettre nb-1 dans le get!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while(partie.participant.get(0).deplacement!=0){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
+        
+        //partie de lancé de dés
+        partie.flagAction=5;
+        partie.deeCreature();
+        messageJoueur("vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)); 
+        messageJoueur("phase de monstre: "+partie.participant.get(partie.tourJoueur).nom+" selectionner un monstre correspondant au lancé de dé");   
+        while(partie.flagDeplacement!=1){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }
+        messageJoueur("selectionnez maintenant une case de destination");
+        while(partie.participant.get(nb-1).bateauxDeploiement!=0){
+            //on bloque le code tant que le joueur n'a pas sélectionné une tuile
+        }*/
