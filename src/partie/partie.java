@@ -1,5 +1,6 @@
 package partie;
 
+import ImagePanel.Arrive;
 import ImagePanel.GrosPanel;
 import ImagePanel.ImagePanel;
 import ImagePanel.PetitPanel;
@@ -99,6 +100,22 @@ public class partie {
         int cordy;
         
         legros.setLayout(null);
+        legros.setPreferredSize(new Dimension(1600,1300));
+        // Créer les quatre iles d'arrive
+        Arrive un = new Arrive();
+        Arrive deux  = new Arrive();
+        Arrive trois = new Arrive();
+        Arrive quatre = new Arrive();
+        //les inserer dans le Panel "legros" qui englobe tout
+        legros.add(un);
+        legros.add(deux);
+        legros.add(trois);
+        legros.add(quatre);
+        // Leur donner la location
+        un.setLocation(110, 110);
+        deux.setLocation(1434, 130);
+        trois.setLocation(130,1110);
+        quatre.setLocation(1464, 1122);
         //transformer en boucle for
         while (compt!=13) {            
             switch(compt)
@@ -235,7 +252,6 @@ public class partie {
         //miseEnPlaceDesPetitPanel();
         Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         
-        legros.setPreferredSize(new Dimension(1600,1300));
         Scroll.setBounds(largeur/8, hauteur/8, 6*largeur/8, 6*hauteur/8);
         
         //legros.setBounds(0, 0, largeur, hauteur);
