@@ -5,6 +5,7 @@ import ImagePanel.ImagePanel;
 import ImagePanel.PetitPanel;
 import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
+import UI.carteEnMain;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -34,8 +35,11 @@ public class partie {
     public Vector<GrosPanel> imageTuile;
     //vector pour stocker les tuiles et permettre de construire le plateau
     public Vector<tuiles> tuileConstruction= new Vector<tuiles>();
-    
+    //interface principale
     public Int mine;
+    //interface pour les cartes
+    public carteEnMain carteMain;
+    
     public JScrollPane Scroll;
     //nous permet de passer au joueur suivant
     public int tourJoueur=0;
@@ -81,7 +85,8 @@ public class partie {
     //fonction pour créer le plateau de jeu avec les tuiles
     public void creationPlateau() throws IOException
     {
-        mine = new Int();
+        mine = new Int(this);
+        carteMain= new carteEnMain(this);
         mine.setLayout(null);
         
         //construction de la carte
@@ -975,6 +980,10 @@ public class partie {
         }
     }
     
+    
+    
+    
+    
     public boolean retirerTuile(tuiles cible) throws IOException
     {
         boolean eauAdjacente =false;
@@ -1002,8 +1011,7 @@ public class partie {
                 {
                     eauAdjacente = true;
                 }
-            }
-            
+            }    
         }
         
         if(eauAdjacente)
