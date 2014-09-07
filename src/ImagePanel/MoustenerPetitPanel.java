@@ -101,6 +101,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                         }
                         if(flagDeplacementexplo==true)
                         {
+                            
                             // sert a connaitre l'indice du tableau
                             int k = 0;
                             indiceExplo = new Object[compteur];

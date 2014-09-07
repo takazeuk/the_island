@@ -600,40 +600,46 @@ public class partie {
         if(flagAction==4)
         {
             j.cartesEnMain.add(cibler);
+            // frame qui affiche la carte piocher
         }
-        switch(cibler.pouvoir)
+        else
         {
-            //pouvoir des déplacements dauphins
-            case 5:
-                flagAction = 7;
-                
-            break;
-            
-            //pouvoir des déplacement bateaux
-            case 6:
-                
-                flagAction = 8;
-                
-            break;
-            
-            //pouvoir des déplacements de serpent de mer, requin et baleine
-            case 7: case 8: case 9:
-                ModePouvoir = true;
-                if(cibler.pouvoir == 7)
-                {
-                    choixMonstre = 7;
-                }
-                else if(cibler.pouvoir == 8)
-                {
-                    choixMonstre = 6;
-                }
-                else
-                {
-                    choixMonstre = 5;
-                }
-                flagAction = 6;
-                
-            break;
+            // Demander au joueur s'il veut jouer une carte en main si oui alors switch sinon passer à l'etape suivante
+            // afficher dans un frame les cartes avec images du joueur et puis faire un return du type de pouvoir de la tuile choisi
+            switch(cibler.pouvoir)
+            {
+                //pouvoir des déplacements dauphins
+                case 5:
+                    flagAction = 7;
+
+                break;
+
+                //pouvoir des déplacement bateaux
+                case 6:
+
+                    flagAction = 8;
+
+                break;
+
+                //pouvoir des déplacements de serpent de mer, requin et baleine
+                case 7: case 8: case 9:
+                    ModePouvoir = true;
+                    if(cibler.pouvoir == 7)
+                    {
+                        choixMonstre = 7;
+                    }
+                    else if(cibler.pouvoir == 8)
+                    {
+                        choixMonstre = 6;
+                    }
+                    else
+                    {
+                        choixMonstre = 5;
+                    }
+                    flagAction = 6;
+
+                break;
+            }
         }
     }
     
