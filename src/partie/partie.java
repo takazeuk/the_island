@@ -112,7 +112,7 @@ public class partie {
                         {
                             cordy = j+8;
                         }
-                        tuiles terrain= new tuiles(cordy, compt, 0, 0);
+                        tuiles terrain= new tuiles(cordy, compt, 0, 0,"");
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
                         terrain.panelLien= lenouv;
@@ -143,7 +143,7 @@ public class partie {
                         {
                             cordy = j+6;
                         }
-                        tuiles terrain= new tuiles(cordy, compt, 0, 0);
+                        tuiles terrain= new tuiles(cordy, compt, 0, 0,"");
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
                         terrain.panelLien= lenouv;
@@ -179,7 +179,7 @@ public class partie {
                         {
                             cordy = j+5;
                         }
-                        tuiles terrain= new tuiles(cordy, compt, 0, 0);
+                        tuiles terrain= new tuiles(cordy, compt, 0, 0,"");
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
                         terrain.panelLien= lenouv;
@@ -202,7 +202,7 @@ public class partie {
                             cordy = j+3;
                         }
                         
-                        tuiles terrain= new tuiles(cordy, compt, 0, 0);
+                        tuiles terrain= new tuiles(cordy, compt, 0, 0,"");
                         carte.add(terrain);
                         GrosPanel lenouv = new GrosPanel(terrain, this);
                         terrain.panelLien= lenouv;
@@ -1214,22 +1214,69 @@ public class partie {
         int pouvoirSable[]= {0,0,0,1,1,1,2,5,5,5,6,6,7,8,9,10};
         for(int valeurPouvoir: pouvoirSable)
         {
-           tuiles tuile= new tuiles(0,0,1,valeurPouvoir);
+           tuiles tuile= new tuiles(0,0,1,valeurPouvoir,"");
            tuileConstruction.add(tuile);
         }
         
         int pouvoirForet[]= {0,0,1,1,2,2,2,3,3,5,7,8,9,10,11,11};
         for(int valeurPouvoir: pouvoirForet)
         {
-           tuiles tuile= new tuiles(0,0,2,valeurPouvoir);
+           tuiles tuile= new tuiles(0,0,2,valeurPouvoir,"");
            tuileConstruction.add(tuile);
         }
         
         int pouvoirMontagne[]= {0,3,3,3,3,4,10,11};
         for(int valeurPouvoir: pouvoirMontagne)
         {
-           tuiles tuile= new tuiles(0,0,3,valeurPouvoir);
+           tuiles tuile= new tuiles(0,0,3,valeurPouvoir,"");
            tuileConstruction.add(tuile);
+        }
+        
+        descriptionTuiles();
+    }
+    
+    public void descriptionTuiles(){
+        
+        for (tuiles terrain : this.carte) {
+            switch(terrain.pouvoir)
+            {
+                case 0:
+                    terrain.descriptionPouvoir = "Un pion Requin est placé sur la case de mer qu’occupait la tuile de Terrain. Tout Nageur occupant cette case de mer est retiré du jeu.";
+                break;
+                case 1:
+                    terrain.descriptionPouvoir = "Un pion Baleine est placé sur la case de mer qu’occupait la tuile de Terrain. Si un bateau, sur lequel se trouve des explorateurs, se trouve sur cette case, le bateau est détruit.";
+                break;
+                case 2:
+                    terrain.descriptionPouvoir = "Un Bateau est placé sur la case de mer qu’occupait la tuile de Terrain.";
+                break;
+                case 3:
+                    terrain.descriptionPouvoir = "Tourbillon : retire du jeu toute les unités de la case de mer qu’occupait la tuile de Terrain et de toutes les cases mer adjacentes.";
+                break;
+                case 4:
+                    terrain.descriptionPouvoir = "Éruption volcanique: fin de la partie!!!!! nous allons calculer les points pour connaitre le vainqueur";
+                break;
+                case 5:
+                    terrain.descriptionPouvoir = "Un dauphin vient en aide à l’un de vos Nageurs  ! Déplacez un de vos Nageurs de 1 à 3 cases de mer";
+                break;
+                case 6:
+                    terrain.descriptionPouvoir = "Les vents vous sont favorables ! Déplacez un des Bateaux que vous contrôlez de 1 à 3 cases de mer.";
+                break;
+                case 7:
+                    terrain.descriptionPouvoir = "Déplacez le Serpent de mer de votre choix déjà présent sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
+                break;
+                case 8:
+                    terrain.descriptionPouvoir = "Déplacez le Requin de votre choix déjà présent sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
+                break;
+                case 9:
+                    terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
+                break;
+                /*case 10:
+                    terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
+                break;
+                case 11:
+                    terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
+                break;*/                   
+            }
         }
     }
     

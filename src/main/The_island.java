@@ -96,6 +96,9 @@ public class The_island {
             i++;
         }
         
+        // test d'ajout d'une tuile
+            tuiles tuile= new tuiles(0,0,1,6, "Les vents vous sont favorables ! Déplacez un des Bateaux que vous contrôlez de 1 à 3 cases de mer.");
+            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile);
         
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
@@ -127,6 +130,7 @@ public class The_island {
             partie.flagAction = 4;
             
             
+            /*
             while(partie.flagAction == 4)
             {
                 
@@ -159,7 +163,7 @@ public class The_island {
               partie.tourJoueur++;  
             }
             
-            partie.flagAction = 2;
+            partie.flagAction = 2;*/
         }
     }   
 }

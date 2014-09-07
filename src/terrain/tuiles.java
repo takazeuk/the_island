@@ -26,8 +26,9 @@ public class tuiles {
     public Vector<bateaux> bateaux;
     public Vector<monstres> monstres;
     public GrosPanel panelLien;
+    public String descriptionPouvoir;
 
-    public tuiles(int x, int y, int type, int pouvoir) {
+    public tuiles(int x, int y, int type, int pouvoir, String desc) {
         this.x = x;
         this.y = y;
         this.type = type;
@@ -35,6 +36,7 @@ public class tuiles {
         this.explorateurs= new Vector<explorateurs>();
         this.bateaux= new Vector<bateaux>();
         this.monstres= new Vector<monstres>();
+        this.descriptionPouvoir = desc;
     }
 
    public static void action()

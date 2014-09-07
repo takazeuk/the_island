@@ -91,7 +91,7 @@ public class Int extends JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        this.PartieEnCours.carteMain.placementTuile();
         this.PartieEnCours.carteMain.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
