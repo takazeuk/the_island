@@ -114,37 +114,43 @@ public class MoustenerGrosPanel extends MouseAdapter
                         //on regarde s'il n'y a pas déjà un autre bateau
                         
                                 if (placement.bateaux.size()==0) {
-                            //on ajoute le bateau au vecteur
-                                placement.bateaux.add(partieEnCours.bateauDeplace);
-                                partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
-                                try {
-                                    partieEnCours.affichageUniteTuile(placement);
-                                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
-                                    //partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
-                                } 
-                                catch (IOException ex) {
-                                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                                }
+                                    //on ajoute le bateau au vecteur
+                                    placement.bateaux.add(partieEnCours.bateauDeplace);
+                                    partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.bateauDeplace);
+                                    try {
+                                        partieEnCours.affichageUniteTuile(placement);
+                                        partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                                        //partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
 
-                                //on donnes les coordonnées x y de la tuile de destination à l'explorateur
-                                partieEnCours.bateauDeplace.x= placement.x;
-                                partieEnCours.bateauDeplace.y= placement.y;
-                                for (explorateurs equipage : partieEnCours.bateauDeplace.marins) {
-                                     equipage.x = placement.x;
-                                     equipage.y = placement.y;
-                                }
-                                //on remet le flag déplacement à 0
-                                partieEnCours.flagDeplacement=0;
+                                    //on donnes les coordonnées x y de la tuile de destination à l'explorateur
+                                    partieEnCours.bateauDeplace.x = placement.x;
+                                    partieEnCours.bateauDeplace.y = placement.y;
+                                    for (explorateurs equipage : partieEnCours.bateauDeplace.marins) {
+                                        equipage.x = placement.x;
+                                        equipage.y = placement.y;
+                                    }
+                                    //on remet le flag déplacement à 0
+                                    partieEnCours.flagDeplacement = 0;
 
-                                //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
-                                if(partieEnCours.phaseDeJeu == 3)
-                                {
-                                    partieEnCours.flagAction=2;
-                                }
+                                    //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
+                                    if (partieEnCours.phaseDeJeu == 3) {
+                                        partieEnCours.flagAction = 2;
+                                    }
 
-                                partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
-                                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
-                                messageJoueur("le bateau a été déplacé"+partieEnCours.flagAction); 
+                                    partieEnCours.origineExplorateur.terrain.bateaux.remove(partieEnCours.exploDeplace);
+                                    //on vérifie si on est dans un déplacement bonus explo bateau donné avec une carte, si c'est le cas on décrémente de 1 le compteur prévu pour ce cas.
+                                    
+                                    if (partieEnCours.phaseDeJeu == 2) {
+                                        partieEnCours.deplacmentExploBateau--;
+                                    } 
+                                    //sinon on décrémente le compteur des déplacements classiques.
+                                    else {
+                                        partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                    }
+                                    messageJoueur("le bateau a été déplacé" + partieEnCours.flagAction); 
                                 }
                                 else
                                 {
@@ -205,7 +211,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                             partieEnCours.panelRefresh = selctionPanel.affichageUnite.get(i);
                                         }
                                     }
-                                    partieEnCours.deplacment = 3;
+                                    partieEnCours.deplacmentMonstre = 3;
                                 }
                                 
                             }
@@ -403,11 +409,11 @@ public class MoustenerGrosPanel extends MouseAdapter
 
 
                                 //on modifie le déplacement
-                                partieEnCours.deplacment++;
+                                partieEnCours.deplacmentMonstre++;
 
                                 //on fait la fonction attaque
                                 if(partieEnCours.monstreDeplace.attaque(placement)){
-                                    partieEnCours.deplacment= partieEnCours.monstreDeplace.deplacement;
+                                    partieEnCours.deplacmentMonstre= partieEnCours.monstreDeplace.deplacement;
                                 }
 
                                 //on refresh les images de la case

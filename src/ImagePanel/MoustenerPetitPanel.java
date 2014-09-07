@@ -58,7 +58,6 @@ public class MoustenerPetitPanel extends MouseAdapter
             partieEnCours.phaseDeJeu = 0;
             if(partieEnCours.flagAction==8)
             {
-                messageJoueur("je change la phase de jeu pour le déplacement bateau avec carte");
                 partieEnCours.phaseDeJeu = 2;
             }
             if(partieEnCours.flagAction==2)
@@ -208,7 +207,7 @@ public class MoustenerPetitPanel extends MouseAdapter
     
     //permet de ne pas prendre en compte le petitPanel quand le joueur doit cliquer sur le grosPanel
     private boolean grospanelDoitGereEvent() {
-        if ((partieEnCours.flagAction != 2)&&(partieEnCours.flagAction != 5)) {
+        if ((partieEnCours.flagAction != 2)&&(partieEnCours.flagAction != 5)&&(partieEnCours.flagAction != 7)&&(partieEnCours.flagAction != 8)) {
             return true;
         }
         return false;

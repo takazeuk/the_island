@@ -133,13 +133,14 @@ public class The_island {
                 int value = MessageBox.Interaction.demandeChoixJoueur("phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main");
                 if (value == JOptionPane.YES_OPTION)
                 {
-                    messageJoueur("je rentre dans la zone bloquer pour les cartes");
-                    while(partie.mine.finMvt == false)
+                    while((partie.deplacmentExploBateau>0)&&(partie.mine.finMvt == false))
                     {
                         
                     }
                 }
             }
+            // on remet à 3 les bonus déplacements donné par les cartes pour un bateau ou un nageur
+            partie.deplacmentExploBateau = 3;
             //on remet finMvt à false pour la prochaine carte joué par un joueur
             partie.mine.finMvt = false;
             //on met flagAction à 2 pour permettre les déplacements
@@ -164,7 +165,7 @@ public class The_island {
             //partie de lancé de dés pour définir quel monstre on va déplacer
             partie.deeCreature();
             messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
-            while ((partie.monstreDeplace==null)||(partie.deplacment!=partie.monstreDeplace.deplacement)){
+            while ((partie.monstreDeplace==null)||(partie.deplacmentMonstre!=partie.monstreDeplace.deplacement)){
                 //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
             }
             messageJoueur("vous ne pouvez plus déplacer votre monstre");
@@ -178,7 +179,7 @@ public class The_island {
             }
             partie.participant.get(partie.tourJoueur).deplacement=3;
             partie.flagDeplacement=0;
-            partie.deplacment=0;
+            partie.deplacmentMonstre=0;
             
             //on passe au joueur suivant
             if (partie.tourJoueur==partie.participant.size()-1) {
