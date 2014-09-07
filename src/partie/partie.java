@@ -33,6 +33,7 @@ public class partie {
     public Vector<tuiles> carte;
     public Vector<unites> population;
     public Vector<GrosPanel> imageTuile;
+    public Vector<explorateurs> survivants;
     //vector pour stocker les tuiles et permettre de construire le plateau
     public Vector<tuiles> tuileConstruction= new Vector<tuiles>();
     //interface principale
@@ -73,11 +74,13 @@ public class partie {
     public int flag7;
     // permet de savoir si le joueur veut descendre une xplo du bateau
     public boolean DescendreMarin =  false;
+    
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
         this.population= new Vector<unites>();
         this.imageTuile= new Vector<GrosPanel>();
+        this.survivants = new Vector<explorateurs>();
     }
     
     Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -586,7 +589,7 @@ public class partie {
             case 4: //fin du jeu à faire plus tard
                 //on compte les points pour chacun des Joueurs
                 for (joueurs challenger : participant) {
-                    finDePartie(challenger);
+                    calculPointJoueur(challenger);
                 }
             break;                              
         }
@@ -780,18 +783,29 @@ public class partie {
         }
     }
     
-    public void finDePartie(joueurs joueurPoint)
+    public void calculPointJoueur(joueurs joueurPoint)
     {
         //fin de partie, on va compter les rescapé en les stockant dans un vecteur et enuiste on compte les point
-        Vector<explorateurs> survivants= new Vector<explorateurs>();
-        
         for (explorateurs valeurPion : survivants) {           
-            if (joueurPoint.membres.contains(valeurPion)) {
+            if (valeurPion.proprietaire == joueurPoint.couleur) {
                 joueurPoint.pointVictoire= joueurPoint.pointVictoire + valeurPion.points;
             }
         }
         
     }
+    
+    public joueurs vainqueur()
+    {
+        int i = 0;
+        for(int j = 1  ; j < this.participant.size(); j++)
+        {
+            if (this.participant.get(i).pointVictoire < this.participant.get(j).pointVictoire) {
+                i = j;
+            }
+        }
+        return this.participant.get(i);
+    }
+
 
     /*public boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
            
