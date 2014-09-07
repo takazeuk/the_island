@@ -58,20 +58,22 @@ public class carteEnMain extends javax.swing.JFrame {
             {
                 Carte1.add(nouveau);
             }
-            /*else if(j==1)
+            else if(i==1)
             {
                 Carte2.add(nouveau);
             }
-            else if(j==2)
+            else if(i==2)
             {
                 Carte3.add(nouveau);
             }
             else
             {
                 Carte4.add(nouveau);
-            }*/
+            }
             nouveau.setBounds(5, 5, 187, 129);
             nouveau.setVisible(true);
+            
+            i++;
         }        
     }
     
@@ -90,18 +92,15 @@ public class carteEnMain extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         descriptionCarte1 = new javax.swing.JTextArea();
         Carte2 = new javax.swing.JPanel();
-        valideCarte2 = new javax.swing.JButton();
-        imageCarte2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        descriptionCarte2 = new javax.swing.JTextArea();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        descriptionCarte5 = new javax.swing.JTextArea();
+        valideCarte5 = new javax.swing.JButton();
         Carte3 = new javax.swing.JPanel();
         valideCarte3 = new javax.swing.JButton();
-        imageCarte3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         descriptionCarte3 = new javax.swing.JTextArea();
         Carte4 = new javax.swing.JPanel();
         valideCarte4 = new javax.swing.JButton();
-        imageCarte4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         descriptionCarte4 = new javax.swing.JTextArea();
 
@@ -129,12 +128,10 @@ public class carteEnMain extends javax.swing.JFrame {
             Carte1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(valideCarte1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(Carte1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valideCarte1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
         Carte1Layout.setVerticalGroup(
             Carte1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,59 +145,41 @@ public class carteEnMain extends javax.swing.JFrame {
 
         Carte2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        valideCarte2.setText("Valider");
-        valideCarte2.setName("0"); // NOI18N
-        valideCarte2.setOpaque(false);
-        valideCarte2.addActionListener(new java.awt.event.ActionListener() {
+        descriptionCarte5.setEditable(false);
+        descriptionCarte5.setColumns(20);
+        descriptionCarte5.setRows(5);
+        jScrollPane5.setViewportView(descriptionCarte5);
+
+        valideCarte5.setText("Valider");
+        valideCarte5.setName("0"); // NOI18N
+        valideCarte5.setOpaque(false);
+        valideCarte5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valideCarte2valideCarteActionPerformed(evt);
+                valideCarte5valideCarteActionPerformed(evt);
             }
         });
-
-        imageCarte2.setBorder(new javax.swing.border.MatteBorder(null));
-        imageCarte2.setName("0"); // NOI18N
-
-        javax.swing.GroupLayout imageCarte2Layout = new javax.swing.GroupLayout(imageCarte2);
-        imageCarte2.setLayout(imageCarte2Layout);
-        imageCarte2Layout.setHorizontalGroup(
-            imageCarte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
-        imageCarte2Layout.setVerticalGroup(
-            imageCarte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
-        );
-
-        descriptionCarte2.setEditable(false);
-        descriptionCarte2.setColumns(20);
-        descriptionCarte2.setRows(5);
-        jScrollPane2.setViewportView(descriptionCarte2);
 
         javax.swing.GroupLayout Carte2Layout = new javax.swing.GroupLayout(Carte2);
         Carte2.setLayout(Carte2Layout);
         Carte2Layout.setHorizontalGroup(
             Carte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Carte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Carte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2)
-                        .addComponent(imageCarte2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Carte2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(valideCarte2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(valideCarte5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         Carte2Layout.setVerticalGroup(
             Carte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Carte2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageCarte2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(valideCarte2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(valideCarte5)
+                .addContainerGap())
         );
 
         Carte3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -214,20 +193,6 @@ public class carteEnMain extends javax.swing.JFrame {
             }
         });
 
-        imageCarte3.setBorder(new javax.swing.border.MatteBorder(null));
-        imageCarte3.setName("0"); // NOI18N
-
-        javax.swing.GroupLayout imageCarte3Layout = new javax.swing.GroupLayout(imageCarte3);
-        imageCarte3.setLayout(imageCarte3Layout);
-        imageCarte3Layout.setHorizontalGroup(
-            imageCarte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
-        imageCarte3Layout.setVerticalGroup(
-            imageCarte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
-        );
-
         descriptionCarte3.setEditable(false);
         descriptionCarte3.setColumns(20);
         descriptionCarte3.setRows(5);
@@ -237,23 +202,17 @@ public class carteEnMain extends javax.swing.JFrame {
         Carte3.setLayout(Carte3Layout);
         Carte3Layout.setHorizontalGroup(
             Carte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Carte3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Carte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Carte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane3)
-                        .addComponent(imageCarte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Carte3Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(valideCarte3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte3Layout.createSequentialGroup()
+                .addContainerGap(26, Short.MAX_VALUE)
+                .addGroup(Carte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(valideCarte3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
         Carte3Layout.setVerticalGroup(
             Carte3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageCarte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(146, 146, 146)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(valideCarte3)
@@ -271,20 +230,6 @@ public class carteEnMain extends javax.swing.JFrame {
             }
         });
 
-        imageCarte4.setBorder(new javax.swing.border.MatteBorder(null));
-        imageCarte4.setName("0"); // NOI18N
-
-        javax.swing.GroupLayout imageCarte4Layout = new javax.swing.GroupLayout(imageCarte4);
-        imageCarte4.setLayout(imageCarte4Layout);
-        imageCarte4Layout.setHorizontalGroup(
-            imageCarte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 185, Short.MAX_VALUE)
-        );
-        imageCarte4Layout.setVerticalGroup(
-            imageCarte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 127, Short.MAX_VALUE)
-        );
-
         descriptionCarte4.setEditable(false);
         descriptionCarte4.setColumns(20);
         descriptionCarte4.setRows(5);
@@ -295,22 +240,18 @@ public class carteEnMain extends javax.swing.JFrame {
         Carte4Layout.setHorizontalGroup(
             Carte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Carte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Carte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane4)
-                        .addComponent(imageCarte4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Carte4Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(valideCarte4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(valideCarte4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         Carte4Layout.setVerticalGroup(
             Carte4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imageCarte4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(146, 146, 146)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(valideCarte4)
@@ -322,10 +263,10 @@ public class carteEnMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Carte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Carte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Carte3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Carte2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -339,11 +280,11 @@ public class carteEnMain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Carte1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Carte2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Carte4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Carte3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                    .addComponent(Carte3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Carte4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         pack();
@@ -353,10 +294,6 @@ public class carteEnMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_valideCarteActionPerformed
 
-    private void valideCarte2valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte2valideCarteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valideCarte2valideCarteActionPerformed
-
     private void valideCarte3valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte3valideCarteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valideCarte3valideCarteActionPerformed
@@ -364,6 +301,10 @@ public class carteEnMain extends javax.swing.JFrame {
     private void valideCarte4valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte4valideCarteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_valideCarte4valideCarteActionPerformed
+
+    private void valideCarte5valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte5valideCarteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_valideCarte5valideCarteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,19 +348,16 @@ public class carteEnMain extends javax.swing.JFrame {
     private javax.swing.JPanel Carte3;
     private javax.swing.JPanel Carte4;
     private javax.swing.JTextArea descriptionCarte1;
-    private javax.swing.JTextArea descriptionCarte2;
     private javax.swing.JTextArea descriptionCarte3;
     private javax.swing.JTextArea descriptionCarte4;
-    private javax.swing.JPanel imageCarte2;
-    private javax.swing.JPanel imageCarte3;
-    private javax.swing.JPanel imageCarte4;
+    private javax.swing.JTextArea descriptionCarte5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton valideCarte1;
-    private javax.swing.JButton valideCarte2;
     private javax.swing.JButton valideCarte3;
     private javax.swing.JButton valideCarte4;
+    private javax.swing.JButton valideCarte5;
     // End of variables declaration//GEN-END:variables
 }
