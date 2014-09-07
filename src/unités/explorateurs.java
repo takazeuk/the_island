@@ -21,5 +21,7 @@ public class explorateurs extends unites {
         this.proprietaire= joueur;
         boolean nageur = false;
     }
+    
+    
        
 }

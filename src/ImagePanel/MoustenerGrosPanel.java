@@ -100,7 +100,12 @@ public class MoustenerGrosPanel extends MouseAdapter
             }
             if (partieEnCours.flagAction==3) {
                 System.out.println("je rentre dans la phase 3");
-                
+                // Si c'est un explo du bateau qui est deplace alors on change le numero du panelrefresh ppour qu'il ne passe âs dans le if ou il est egale a 6
+                if(partieEnCours.DescendreMarin == true)
+                {
+                    messageJoueur("Je suis dans le mode descendre marin");
+                    partieEnCours.panelRefresh.numeroPetitPanel=1;
+                }
                 //on fait le test du cas où ce serait un bateau qui doit être déplacé
                 if (partieEnCours.panelRefresh.numeroPetitPanel==6) {
                     //on regarde si la case est adjacente
@@ -163,6 +168,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                 //si ce n'est pas un bateau , c'est un explorateur
                 else
                 {
+                    
                      //on regarde si la case est adjacente
                     boolean testDeplacement=partieEnCours.exploDeplace.deplacement(placement);
                     if((partieEnCours.exploDeplace.x == selctionPanel.k) && (partieEnCours.exploDeplace.y == selctionPanel.j))
@@ -315,6 +321,15 @@ public class MoustenerGrosPanel extends MouseAdapter
                             {
                                messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 3 explorateurs sur cette case"); 
                             }
+                            // mettre le boolean a false pour dire que c le bateau qui est deplacé
+                            if(partieEnCours.DescendreMarin == true)
+                            {
+                                partieEnCours.origineExplorateur.terrain.bateaux.get(0).marins.remove(partieEnCours.exploDeplace);
+                                partieEnCours.DescendreMarin = false;
+                                partieEnCours.panelRefresh.numeroPetitPanel=6;
+
+                            }
+                            
                         }
                         
                     }

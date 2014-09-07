@@ -9,7 +9,9 @@ package MessageBox;
 import java.awt.Component;
 import java.util.Vector;
 import javax.swing.Icon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import unités.explorateurs;
 /**
  *
  * @author Jonathan
@@ -19,15 +21,15 @@ public class Interaction {
         JOptionPane.showMessageDialog(null, s);
     }
 
-    public static int demandeChoix(String s, Object[] tab) {
+    public static int demandeChoix(String s, String l, Object[] tab) {
         return (int) JOptionPane.showInputDialog(
                 null,
                 s,
-                "titre",
-                JOptionPane.OK_OPTION,
+                l,
+                JOptionPane.QUESTION_MESSAGE,
                 null,
                 tab,
-                tab[tab.length-1]
+                tab[0]
         );
     }
     
@@ -36,8 +38,8 @@ public class Interaction {
         return (int) JOptionPane.showConfirmDialog(null, s, "Monter?", JOptionPane.YES_NO_OPTION);
     }
 
-    public static int demandeChoix(String s, Vector v) {
-        return demandeChoix(s, v.toArray());
+    public static int demandeChoix(String s, String l, Vector v) {
+        return demandeChoix(s, l, v.toArray());
     }
 
     public static int demandeChoix(String s) {
@@ -52,5 +54,7 @@ public class Interaction {
         JOptionPane.showMessageDialog(null, s);
     }
     
+    
+
     
 }

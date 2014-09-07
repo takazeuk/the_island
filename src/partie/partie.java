@@ -71,6 +71,8 @@ public class partie {
     public boolean ModePouvoir = false;
     //savoir dans quel partie du clic on se situe
     public int flag7;
+    // permet de savoir si le joueur veut descendre une xplo du bateau
+    public boolean DescendreMarin =  false;
     public partie(int nombreJoueur) throws IOException {
         this.participant= new Vector<joueurs>();
         this.carte= new Vector<tuiles>();
