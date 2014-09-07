@@ -59,7 +59,9 @@ public class partie {
     //choix du monstre à déplacer
     public int choixMonstre;
     //nous permet de connaitre le nombre de déplacement fait par le monstre
-    public int deplacment=0;
+    public int deplacmentMonstre=0;
+    //nous permet de faire les deplacements de carte pour bateau et marin avec le bonus de 3 déplacements
+    public int deplacmentExploBateau=3;
     //flag pour savoir si la partie est terminée
     public int partieTermine=0;
     //GrosPanel contenant tout le plateau
@@ -397,7 +399,13 @@ public class partie {
                    randomMap(ile); 
                 }
             }
-        }    
+        } 
+        
+            for (tuiles terrain : this.carte) {
+            if (terrain.type == 1) {
+                terrain.pouvoir = 6;
+            }           
+        }
     }   
     
     public void randomMap(tuiles aChanger){
@@ -613,6 +621,7 @@ public class partie {
                     flagAction = 5;
 
                 break;
+                                 
             }
         }
     }
