@@ -984,6 +984,46 @@ public class partie {
     
     
     
+    public boolean balayageTuile()
+    {
+        boolean encoreDuSable = false;
+        boolean uneTuileEauAdjacente = false;
+        for (tuiles tuile : this.carte) {
+            if(tuile.type==1)
+            {
+                encoreDuSable = true;
+            }
+            
+        }
+        
+        if(encoreDuSable == true)
+        {
+            for (tuiles tuile : this.carte) {
+                if(tuile.type==1)
+                {
+                    if(tuile.panelLien.tuileAdjacenteEau(tuile) == true)
+                    {
+                        uneTuileEauAdjacente = true;
+                    }  
+                }
+            
+            }
+        }
+        else
+        {
+            for (tuiles tuile : this.carte) {
+                if(tuile.type==2)
+                {
+                    if(tuile.panelLien.tuileAdjacenteEau(tuile) == true)
+                    {
+                        uneTuileEauAdjacente = true;
+                    }
+                }
+            
+            }
+        }
+        return uneTuileEauAdjacente;
+    }
     public boolean retirerTuile(tuiles cible) throws IOException
     {
         boolean eauAdjacente =false;
@@ -1011,49 +1051,95 @@ public class partie {
                 {
                     eauAdjacente = true;
                 }
-            }    
+            }
+            
         }
-        
-        if(eauAdjacente)
+        // regarder s'il y a une tuile qui est adjacente à l'eau
+        if(balayageTuile()== true)
         {
-            if(encoreDuSable)
+            messageJoueur("ne pas accepter les tuiles sans eau adjacente");
+            // si la tuile selectionner est adjacente a l'eau alors OK
+            if(eauAdjacente)
             {
-                if(cible.type!=1)
+                if(encoreDuSable)
                 {
-                    messageJoueur("vous devez d'abord retirer les cases sable");
+                    if(cible.type!=1)
+                    {
+                        messageJoueur("vous devez d'abord retirer les cases sable");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
+                }
+                else if (encoreDesForet)
+                {
+                    if(cible.type!=2)
+                    {
+                        messageJoueur("vous devez d'abord retirer les cases forêts");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
                 }
                 else
                 {
-                   return true; 
+                    if(cible.type!=3)
+                    {
+                        messageJoueur("vous ne pouvez pas retirer une case d'eau");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
                 }
             }
-            else if (encoreDesForet)
-            {
-                if(cible.type!=2)
-                {
-                    messageJoueur("vous devez d'abord retirer les cases forêts");
-                }
-                else
-                {
-                   return true; 
-                }
-            }
+            // pas OK
             else
             {
-                if(cible.type!=3)
+                messageJoueur("vous ne pouvez pas cliquer sur cette case car il n'y a pas de case d'eau adjacente");
+            }
+        }
+        // si il n' y a plus de case adjacente a l'eau
+        else
+        {
+            messageJoueur("accepter les tuiles sans eau adjacente");
+            if(encoreDuSable)
                 {
-                    messageJoueur("vous ne pouvez pas retirer une case d'eau");
+                    if(cible.type!=1)
+                    {
+                        messageJoueur("vous devez d'abord retirer les cases sable");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
+                }
+                else if (encoreDesForet)
+                {
+                    if(cible.type!=2)
+                    {
+                        messageJoueur("vous devez d'abord retirer les cases forêts");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
                 }
                 else
                 {
-                   return true; 
+                    if(cible.type!=3)
+                    {
+                        messageJoueur("vous ne pouvez pas retirer une case d'eau");
+                    }
+                    else
+                    {
+                       return true; 
+                    }
                 }
-            }
         }
-        else
-        {
-            messageJoueur("vous ne pouvez pas cliquer sur cette case car il n'y a pas de case d'eau adjacente");
-        }
+        
         return false;
     }
     
