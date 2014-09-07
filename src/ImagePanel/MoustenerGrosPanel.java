@@ -8,7 +8,7 @@ package ImagePanel;
 
 import MessageBox.Interaction;
 import static MessageBox.Interaction.messageJoueur;
-import static MessageBox.Interaction.monterSurBateau;
+import static MessageBox.Interaction.demandeChoixJoueur;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -137,7 +137,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 partieEnCours.flagDeplacement=0;
 
                                 //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
-                                if(partieEnCours.flag7 == 3)
+                                if(partieEnCours.phaseDeJeu == 3)
                                 {
                                     partieEnCours.flagAction=2;
                                 }
@@ -151,7 +151,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                    messageJoueur("vous ne pouvez pas faire ce déplacement, il y a déjà 1 bateau sur cette case"); 
                                 }
                                 // permet de ne plus pouvoir deplacer les autres unites mis a part celle que  l'on a choisi via la carte joué
-                                if(partieEnCours.flag7!=3)
+                                if(partieEnCours.phaseDeJeu!=3)
                                 {
                                     partieEnCours.origineExplorateur= selctionPanel;
                                     partieEnCours.panelRefresh = selctionPanel.affichageUnite.get(6);
@@ -190,7 +190,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 {
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                                 }
-                                if(partieEnCours.flag7==3)
+                                if(partieEnCours.phaseDeJeu==3)
                                 {
                                     partieEnCours.flagAction=2;
                                     partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
@@ -198,7 +198,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 
                                 selctionPanel.gestionDesProprioBateau();
                                 partieEnCours.origineExplorateur= selctionPanel;
-                                if(partieEnCours.flag7!=3)
+                                if(partieEnCours.phaseDeJeu!=3)
                                 {
                                     for (int i = 0; i < 3; i++) {
                                         if (selctionPanel.affichageUnite.get(i).numeroUnite==partieEnCours.exploDeplace.proprietaire) {
@@ -215,7 +215,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                         if((partieEnCours.exploDeplace.nageur==true) && (placement.type!=0))
                         {
                             messageJoueur("Votre pion est un nageur donc vous ne pouvez plus retourner sur une case terrain");
-                            if(partieEnCours.flag7==3)
+                            if(partieEnCours.phaseDeJeu==3)
                             {
                                 partieEnCours.flagAction=2;
                             }
@@ -242,7 +242,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 if((placement.bateaux.size()==1) && (partieEnCours.exploDeplace.nageur==false))
                                 {
                                     String a = "Voulez-vous monter sur le bateau ?";
-                                    int value = monterSurBateau(a);
+                                    int value = demandeChoixJoueur(a);
                                     if(value == JOptionPane.YES_OPTION)
                                     {
                                         placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
@@ -289,7 +289,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 partieEnCours.flagDeplacement=0;
 
                                 //on repasse flag action à 2 pour réactiver les clics sur les petitsPanels !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! repasser en 2
-                                if(partieEnCours.flag7 ==3) // ssi on est dans la gestion des deplacement normale et non d'une carte
+                                if(partieEnCours.phaseDeJeu ==3) // ssi on est dans la gestion des deplacement normale et non d'une carte
                                 {
                                     partieEnCours.flagAction=2;
                                 }
@@ -305,7 +305,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                                 }
                                 
-                                if(partieEnCours.flag7!=3) // permet de ne selectionner que la meme unite a chaque fois
+                                if(partieEnCours.phaseDeJeu!=3) // permet de ne selectionner que la meme unite a chaque fois
                                 {
                                     for (int i = 0; i < 3; i++) {
                                         if (selctionPanel.affichageUnite.get(i).numeroUnite==partieEnCours.exploDeplace.proprietaire) {
@@ -348,7 +348,6 @@ public class MoustenerGrosPanel extends MouseAdapter
                     for (explorateurs exploNaufragé : placement.explorateurs) {
                         exploNaufragé.nageur=true;
                     }
-                    //partieEnCours.flagAction=5; A remettre apres que les tests soit termineer
                     try {
                         selctionPanel.refreshImage();
                     } catch (IOException ex) {
@@ -361,7 +360,8 @@ public class MoustenerGrosPanel extends MouseAdapter
                     else if (placement.pouvoir<10)
                     {
                         partieEnCours.pouvoirEnMainActiver(partieEnCours.participant.get(partieEnCours.tourJoueur) ,placement);
-                    }                 
+                    }
+                    partieEnCours.flagAction=5;
                 }               
             } catch (IOException ex) {
                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -457,7 +457,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 //selctionPanel.refreshGrosPanel();
                             } catch (IOException ex) {
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
-                            } 
+                            }
+                            partieEnCours.monstreDeplace = null;
+                            messageJoueur("monstre déplacé, cliquez sur le bouton fin mouvement carte");                            
                         }
                     }
                     

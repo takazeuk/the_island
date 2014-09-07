@@ -78,6 +78,7 @@ public class The_island {
         //on met en place les monstres de départ
         partie.miseEnPlaceMonstre();
         
+        /*
         //phase de test à enlever
         monstres plateaumonstres9= new monstres("requin", 2, 5, 4, 1);
         monstres plateaumonstres10= new monstres("baleine", 3, 6, 4, 1);
@@ -89,13 +90,16 @@ public class The_island {
         partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres10);
         partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres11);
         //
-             
+        */
+        
+        /*
         int i=0;
         for (tuiles tuile : partie.carte) {
             System.out.println("case n"+i+" x= " +tuile.x+" y= "+tuile.y+" type= "+tuile.type+"" );
             i++;
-        }
+        }*/
         
+        /*
         // test d'ajout d'une tuile
             tuiles tuile= new tuiles(0,0,1,6, "toto");
             tuiles tuile1= new tuiles(0,0,1,7, "tata");
@@ -104,7 +108,7 @@ public class The_island {
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile);
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile1);
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile2);
-            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);
+            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);*/
                   
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
@@ -120,11 +124,27 @@ public class The_island {
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
-        
-        
-        
-        
-        while (partie.partieTermine==0) {
+               
+        while (partie.partieTermine == 0) {
+            
+            messageJoueur(""+partie.participant.get(partie.tourJoueur));
+            messageJoueur(""+partie.participant.get(partie.tourJoueur).cartesEnMain.size());
+            if ((partie.participant.get(partie.tourJoueur).cartesEnMain != null)&&(partie.participant.get(partie.tourJoueur).cartesEnMain.size() > 0 )) {
+                int value = MessageBox.Interaction.demandeChoixJoueur("phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main");
+                if (value == JOptionPane.YES_OPTION)
+                {
+                    messageJoueur("je rentre dans la zone bloquer pour les cartes");
+                    while(partie.mine.finMvt == false)
+                    {
+                        
+                    }
+                }
+            }
+            //on remet finMvt à false pour la prochaine carte joué par un joueur
+            partie.mine.finMvt = false;
+            //on met flagAction à 2 pour permettre les déplacements
+            partie.flagAction = 2;
+            
             
             messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui est controler par personne");
             while (partie.participant.get(partie.tourJoueur).deplacement!=0) {                
@@ -133,16 +153,15 @@ public class The_island {
             messageJoueur("vous avez effectué tout vos déplacements");
             messageJoueur("vous devez retirer une tuile terrain");
             //on met le flagAction sur 4 pour passer à la phase retirer tuile terrain
-                
+              
+            //phase où on retire une tuile
             partie.flagAction = 4;
-            
-            
-            /*
             while(partie.flagAction == 4)
             {
                 
             }
-            //partie de lancé de dés pour définir le monstre
+            
+            //partie de lancé de dés pour définir quel monstre on va déplacer
             partie.deeCreature();
             messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
             while ((partie.monstreDeplace==null)||(partie.deplacment!=partie.monstreDeplace.deplacement)){
@@ -163,6 +182,7 @@ public class The_island {
             
             //on passe au joueur suivant
             if (partie.tourJoueur==partie.participant.size()-1) {
+                
                 partie.tourJoueur=0;
             }
             else
@@ -170,7 +190,7 @@ public class The_island {
               partie.tourJoueur++;  
             }
             
-            partie.flagAction = 2;*/
+            partie.flagAction = 2;
         }
     }   
 }

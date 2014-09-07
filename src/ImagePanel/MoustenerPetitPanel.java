@@ -45,7 +45,8 @@ public class MoustenerPetitPanel extends MouseAdapter
             return;
         }
         
-        if (partieEnCours.flagAction==2 || partieEnCours.flagAction==7 || partieEnCours.flagAction==8) {
+        if ((partieEnCours.flagAction == 2) || (partieEnCours.flagAction == 7) || (partieEnCours.flagAction==8)) {
+            messageJoueur("zone déplacement, dauphins bateau");
             boolean flagDeplacementexplo = false;
             boolean flagDeplacementbateau = true;
             Object []indiceExplo= new Object [1];
@@ -54,29 +55,32 @@ public class MoustenerPetitPanel extends MouseAdapter
             
             joueurs joueur= partieEnCours.participant.get(partieEnCours.tourJoueur);
             
-            partieEnCours.flag7 = 0;
+            partieEnCours.phaseDeJeu = 0;
             if(partieEnCours.flagAction==8)
             {
-                partieEnCours.flag7 = 2;
+                messageJoueur("je change la phase de jeu pour le déplacement bateau avec carte");
+                partieEnCours.phaseDeJeu = 2;
             }
             if(partieEnCours.flagAction==2)
             {
-                partieEnCours.flag7 = 3;
+                partieEnCours.phaseDeJeu = 3;
             }
             if(partieEnCours.flagAction==7)
             {
+                messageJoueur("je change la phase de jeu pour dauphins");
                 if(this.selctionPanel.numeroUnite==joueur.couleur)
                 {
-                    if(selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel).nageur == false)
+                    if(selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel).nageur == true)
                     {
-                        partieEnCours.flag7 = 1;
+                        partieEnCours.phaseDeJeu = 1;
                     }
                 }
             }
             //test pour l'explorateur
-            if(partieEnCours.flag7 == 1 || partieEnCours.flag7 == 3)
+            if((partieEnCours.phaseDeJeu == 1) || (partieEnCours.phaseDeJeu == 3)||(partieEnCours.phaseDeJeu == 2))
             {
                 int value = JOptionPane.NO_OPTION;
+                //on vérifie que l'unité sélectionné appartient au joueur
                 if (this.selctionPanel.numeroUnite==joueur.couleur) {
                     partieEnCours.exploDeplace= selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel);
                     partieEnCours.flagDeplacement=1;
@@ -88,8 +92,10 @@ public class MoustenerPetitPanel extends MouseAdapter
                     messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
                 }
                 // Si on est dans le cas ou le joueur peut deplacer un bateau
-                else if (this.selctionPanel.numeroPetitPanel==6 && (partieEnCours.flag7==3 || partieEnCours.flag7 == 2)) {
-                    if(selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)
+                else if (this.selctionPanel.numeroPetitPanel==6 && (partieEnCours.phaseDeJeu==3 || partieEnCours.phaseDeJeu == 2)) {
+                    messageJoueur("je rentre dans la phase de déplacement pour bateau avec carte");
+                    //on vérifie qu'il y a des marins sur le bateau
+                    if((selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)&&(partieEnCours.phaseDeJeu != 2))
                     {
                         messageJoueur(" on est en train de debuguer!!!!!!!!!!!");
                         for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
@@ -114,7 +120,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                                 }
                             }
                             // demander au joueur s'il veut deplacer un explo
-                             value  = Interaction.monterSurBateau("Voulez-vous déplacer un de vos explorateurs ?");
+                             value  = Interaction.demandeChoixJoueur("Voulez-vous déplacer un de vos explorateurs ?");
                         }
                         
                     }

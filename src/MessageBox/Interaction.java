@@ -33,9 +33,9 @@ public class Interaction {
         );
     }
     
-    public static int monterSurBateau(String s)
+    public static int demandeChoixJoueur(String s)
     {
-        return (int) JOptionPane.showConfirmDialog(null, s, "Monter?", JOptionPane.YES_NO_OPTION);
+        return (int) JOptionPane.showConfirmDialog(null, s, "Oui ou Non... faite votre choix", JOptionPane.YES_NO_OPTION);
     }
 
     public static int demandeChoix(String s, String l, Vector v) {

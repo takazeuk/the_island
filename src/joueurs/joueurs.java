@@ -28,7 +28,7 @@ public class joueurs {
         this.nom = nom;
         this.couleur = couleur;
         // ne pas oublier de remettre le nombre de deplacement à 3
-        this.deplacement=5;
+        this.deplacement=3;
         this.cartesEnMain= new Vector<tuiles>();
         this.membres= new Vector<explorateurs>();
         this.membresDeploiement= new Vector<explorateurs>();

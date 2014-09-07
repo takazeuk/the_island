@@ -69,7 +69,7 @@ public class partie {
     // Savoir si on est dans l'utilisation des cartes en main
     public boolean ModePouvoir = false;
     //savoir dans quel partie du clic on se situe
-    public int flag7;
+    public int phaseDeJeu;
     // permet de savoir si le joueur veut descendre une xplo du bateau
     public boolean DescendreMarin =  false;
     
@@ -397,32 +397,7 @@ public class partie {
                    randomMap(ile); 
                 }
             }
-        }
-        
-         //partie test pour les cases adjacentessssssssssssssssssssss
-        for (tuiles ile : carte) {
-            if (ile.y==3) {
-                if((ile.x==5)||(ile.x==6))
-                {
-                    ile.type = 3;
-                }
-            }
-            if (ile.y==4) {
-                if((ile.x==5)||(ile.x==7))
-                {
-                    ile.type = 3;
-                }
-                if(ile.x==6)
-                {
-                    ile.type = 2;
-                }
-            }
-            if (ile.y == 5) {
-                if ((ile.x == 6) || (ile.x == 7)) {
-                    ile.type = 3;
-                }
-            }
-        }     
+        }    
     }   
     
     public void randomMap(tuiles aChanger){
@@ -601,19 +576,21 @@ public class partie {
         }
         else
         {
+            messageJoueur("je rentre dans les pouvoirs yata");
             // Demander au joueur s'il veut jouer une carte en main si oui alors switch sinon passer à l'etape suivante
             // afficher dans un frame les cartes avec images du joueur et puis faire un return du type de pouvoir de la tuile choisi
             switch(cibler.pouvoir)
             {
                 //pouvoir des déplacements dauphins
                 case 5:
+                    messageJoueur("je rentre dans les dauphins");
                     flagAction = 7;
 
                 break;
 
                 //pouvoir des déplacement bateaux
                 case 6:
-
+                    messageJoueur("je rentre dans les bateaux");
                     flagAction = 8;
 
                 break;
@@ -1267,12 +1244,12 @@ public class partie {
                 case 9:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
                 break;
-                /*case 10:
+                case 10:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
                 break;
                 case 11:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
-                break;*/                   
+                break;                   
             }
         }
     }
