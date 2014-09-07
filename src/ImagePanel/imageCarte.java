@@ -31,25 +31,23 @@ public class imageCarte extends JPanel{
      public void paintComponent(Graphics g) 
     {
         try {
-            switch(carteTuile.type)
+            switch(carteTuile.pouvoir)
             {
                 case 5:
-
-                image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
-
-                    break;
+                    image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+                break;
                 case 6:
                     image = ImageIO.read(getClass().getResource("/images/Barque.png"));
-                    break;
+                break;
                 case 7:
                     image = ImageIO.read(getClass().getResource("/images/Requin.png"));
-                    break;
+                break;
                 case 8:
                     image = ImageIO.read(getClass().getResource("/images/Baleine.png"));
-                    break;
+                break;
                 case 9:
                     image = ImageIO.read(getClass().getResource("/images/SerpentDeMer.png"));
-                    break;
+                break;
             }
         } catch (IOException ex) {
             Logger.getLogger(imageCarte.class.getName()).log(Level.SEVERE, null, ex);
