@@ -89,7 +89,7 @@ public class The_island {
         partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres10);
         partie.ajoutMonstresTuile(partie.carte.get(10), plateaumonstres11);
         //
-        
+             
         int i=0;
         for (tuiles tuile : partie.carte) {
             System.out.println("case n"+i+" x= " +tuile.x+" y= "+tuile.y+" type= "+tuile.type+"" );
@@ -97,12 +97,19 @@ public class The_island {
         }
         
         // test d'ajout d'une tuile
-            tuiles tuile= new tuiles(0,0,1,6, "Les vents vous sont favorables ! Déplacez un des Bateaux que vous contrôlez de 1 à 3 cases de mer.");
+            tuiles tuile= new tuiles(0,0,1,6, "toto");
+            tuiles tuile1= new tuiles(0,0,1,7, "tata");
+            tuiles tuile2= new tuiles(0,0,1,8, "titi");
+            tuiles tuile3= new tuiles(0,0,1,9, "tete");
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile);
-        
+            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile1);
+            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile2);
+            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);
+                  
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
-        messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur");       
+        messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur"); 
+        messageJoueur(""+partie.flagAction);
         while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
             //on bloque le code tant que tous les pions n'ont pas été placés.
         }

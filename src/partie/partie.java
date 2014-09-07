@@ -37,9 +37,7 @@ public class partie {
     //vector pour stocker les tuiles et permettre de construire le plateau
     public Vector<tuiles> tuileConstruction= new Vector<tuiles>();
     //interface principale
-    public Int mine;
-    //interface pour les cartes
-    public carteEnMain carteMain;
+    public Int mine;  
     
     public JScrollPane Scroll;
     //nous permet de passer au joueur suivant
@@ -91,7 +89,6 @@ public class partie {
     public void creationPlateau() throws IOException
     {
         mine = new Int(this);
-        carteMain= new carteEnMain(this);
         mine.setLayout(null);
         
         //construction de la carte
@@ -630,13 +627,13 @@ public class partie {
                     }
                     else if(cibler.pouvoir == 8)
                     {
-                        choixMonstre = 6;
+                        choixMonstre = 5;
                     }
                     else
                     {
-                        choixMonstre = 5;
+                        choixMonstre = 6;
                     }
-                    flagAction = 6;
+                    flagAction = 5;
 
                 break;
             }

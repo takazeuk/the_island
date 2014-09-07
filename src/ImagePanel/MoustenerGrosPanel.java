@@ -354,7 +354,14 @@ public class MoustenerGrosPanel extends MouseAdapter
                     } catch (IOException ex) {
                         Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    partieEnCours.pouvoirImmediat(placement);
+                    
+                    if (placement.pouvoir<5) {
+                        partieEnCours.pouvoirImmediat(placement);
+                    }
+                    else if (placement.pouvoir<10)
+                    {
+                        partieEnCours.pouvoirEnMainActiver(partieEnCours.participant.get(partieEnCours.tourJoueur) ,placement);
+                    }                 
                 }               
             } catch (IOException ex) {
                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);

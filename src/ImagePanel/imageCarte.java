@@ -40,13 +40,13 @@ public class imageCarte extends JPanel{
                     image = ImageIO.read(getClass().getResource("/images/Barque.png"));
                 break;
                 case 7:
-                    image = ImageIO.read(getClass().getResource("/images/Requin.png"));
+                    image = ImageIO.read(getClass().getResource("/images/SerpentDeMer.png"));
                 break;
                 case 8:
-                    image = ImageIO.read(getClass().getResource("/images/Baleine.png"));
+                    image = ImageIO.read(getClass().getResource("/images/Requin.png"));
                 break;
                 case 9:
-                    image = ImageIO.read(getClass().getResource("/images/SerpentDeMer.png"));
+                    image = ImageIO.read(getClass().getResource("/images/Baleine.png"));
                 break;
             }
         } catch (IOException ex) {

@@ -7,9 +7,11 @@
 package UI;
 
 import ImagePanel.imageCarte;
+import com.sun.media.jfxmediaimpl.NativeMediaPlayer;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Vector;
 import javafx.scene.layout.Border;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -35,8 +37,8 @@ public class carteEnMain extends javax.swing.JFrame {
         initComponents();
         partieEnCours=p;
         tableauImage = new imageCarte[4];
-        tableauTexte = new JTextArea[]{descriptionCarte1};
-        tableauBouton = new JButton[]{valideCarte1};
+        tableauTexte = new JTextArea[]{descriptionCarte1,descriptionCarte2,descriptionCarte3,descriptionCarte4};
+        tableauBouton = new JButton[]{valideCarte1,valideCarte2,valideCarte3,valideCarte4};
         
         //je permet au zone de texte d'aller à la ligne
         for (JTextArea description : tableauTexte) {
@@ -93,8 +95,8 @@ public class carteEnMain extends javax.swing.JFrame {
         descriptionCarte1 = new javax.swing.JTextArea();
         Carte2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        descriptionCarte5 = new javax.swing.JTextArea();
-        valideCarte5 = new javax.swing.JButton();
+        descriptionCarte2 = new javax.swing.JTextArea();
+        valideCarte2 = new javax.swing.JButton();
         Carte3 = new javax.swing.JPanel();
         valideCarte3 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -145,17 +147,17 @@ public class carteEnMain extends javax.swing.JFrame {
 
         Carte2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        descriptionCarte5.setEditable(false);
-        descriptionCarte5.setColumns(20);
-        descriptionCarte5.setRows(5);
-        jScrollPane5.setViewportView(descriptionCarte5);
+        descriptionCarte2.setEditable(false);
+        descriptionCarte2.setColumns(20);
+        descriptionCarte2.setRows(5);
+        jScrollPane5.setViewportView(descriptionCarte2);
 
-        valideCarte5.setText("Valider");
-        valideCarte5.setName("0"); // NOI18N
-        valideCarte5.setOpaque(false);
-        valideCarte5.addActionListener(new java.awt.event.ActionListener() {
+        valideCarte2.setText("Valider");
+        valideCarte2.setName("0"); // NOI18N
+        valideCarte2.setOpaque(false);
+        valideCarte2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valideCarte5valideCarteActionPerformed(evt);
+                valideCarteActionPerformed(evt);
             }
         });
 
@@ -165,7 +167,7 @@ public class carteEnMain extends javax.swing.JFrame {
             Carte2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Carte2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(valideCarte5, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(valideCarte2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Carte2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -178,7 +180,7 @@ public class carteEnMain extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(valideCarte5)
+                .addComponent(valideCarte2)
                 .addContainerGap())
         );
 
@@ -189,7 +191,7 @@ public class carteEnMain extends javax.swing.JFrame {
         valideCarte3.setOpaque(false);
         valideCarte3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valideCarte3valideCarteActionPerformed(evt);
+                valideCarteActionPerformed(evt);
             }
         });
 
@@ -226,7 +228,7 @@ public class carteEnMain extends javax.swing.JFrame {
         valideCarte4.setOpaque(false);
         valideCarte4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                valideCarte4valideCarteActionPerformed(evt);
+                valideCarteActionPerformed(evt);
             }
         });
 
@@ -291,20 +293,23 @@ public class carteEnMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarteActionPerformed
-        // TODO add your handling code here:
+        JButton sender = (JButton) evt.getSource();
+        tuiles choisi;
+        int choix = 0;
+        int carte = 0;
+        for (JButton boutonCarte : tableauBouton) {
+            if (boutonCarte == sender) {
+                carte = choix;
+                choisi = partieEnCours.participant.get(partieEnCours.tourJoueur).cartesEnMain.get(carte);
+                MessageBox.Interaction.messageJoueur(""+choisi.pouvoir);
+                partieEnCours.pouvoirEnMainActiver(partieEnCours.participant.get(partieEnCours.tourJoueur), choisi);
+            }
+            choix ++;
+        }
+        partieEnCours.participant.get(partieEnCours.tourJoueur).cartesEnMain.remove(carte);
+        this.setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_valideCarteActionPerformed
-
-    private void valideCarte3valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte3valideCarteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valideCarte3valideCarteActionPerformed
-
-    private void valideCarte4valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte4valideCarteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valideCarte4valideCarteActionPerformed
-
-    private void valideCarte5valideCarteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_valideCarte5valideCarteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_valideCarte5valideCarteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -348,16 +353,16 @@ public class carteEnMain extends javax.swing.JFrame {
     private javax.swing.JPanel Carte3;
     private javax.swing.JPanel Carte4;
     private javax.swing.JTextArea descriptionCarte1;
+    private javax.swing.JTextArea descriptionCarte2;
     private javax.swing.JTextArea descriptionCarte3;
     private javax.swing.JTextArea descriptionCarte4;
-    private javax.swing.JTextArea descriptionCarte5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JButton valideCarte1;
+    private javax.swing.JButton valideCarte2;
     private javax.swing.JButton valideCarte3;
     private javax.swing.JButton valideCarte4;
-    private javax.swing.JButton valideCarte5;
     // End of variables declaration//GEN-END:variables
 }
