@@ -566,11 +566,14 @@ public class partie {
             case 3: //tourbillon fini
                 pouvoirTourbillon(pouvoirJoueur);
             break;
-            case 4: //fin du jeu à faire plus tard
+            case 4: //fin du jeu
                 //on compte les points pour chacun des Joueurs
                 for (joueurs challenger : participant) {
                     calculPointJoueur(challenger);
+                    
                 }
+                vainqueur();
+                partieTermine = 1;
             break;                              
         }
     }
@@ -779,7 +782,7 @@ public class partie {
         
     }
     
-    public joueurs vainqueur()
+    public void vainqueur()
     {
         int i = 0;
         for(int j = 1  ; j < this.participant.size(); j++)
@@ -788,8 +791,9 @@ public class partie {
                 i = j;
             }
         }
-        return this.participant.get(i);
-    }
+        messageJoueur(" Bravo "+this.participant.get(i)+", vous avez remporté la partie");
+        messageJoueur("La partie est terminée...");
+    } 
   
     //on procède à l'affichage des unités sur la tuile indiquée
     public void affichageUniteTuile(tuiles cible) throws IOException{
