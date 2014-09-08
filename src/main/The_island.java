@@ -257,7 +257,7 @@ public class The_island {
                     partie.tourJoueur++;
                 }               
 
-                //partie.flagAction = 2;
+                partie.flagAction = 10;
             }   
         }
     }
