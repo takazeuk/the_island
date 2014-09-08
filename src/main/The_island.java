@@ -141,14 +141,13 @@ public class The_island {
                
         while (partie.partieTermine == 0) {
             
-            
-            partie.mine.getjTextArea1().setBackground(partie.participant.get(partie.tourJoueur).couleurduJoueur);
-            
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
             }
+            
+            partie.mine.getjTextArea1().setBackground(partie.participant.get(partie.tourJoueur).couleurduJoueur);
             
             if ((partie.participant.get(partie.tourJoueur).cartesEnMain != null)&&(partie.participant.get(partie.tourJoueur).cartesEnMain.size() > 0 )) {
                 s = "phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main";
