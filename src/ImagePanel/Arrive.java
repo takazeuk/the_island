@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import partie.partie;
 
 /**
  *
@@ -18,12 +19,20 @@ import javax.swing.JPanel;
  */
 public class Arrive extends JPanel{
     BufferedImage m;
-    public Arrive() throws IOException
+    int emplacement;
+    public MoustenerArrive clicArrive;
+    partie partieEnCours;
+    public Arrive(int e, partie p) throws IOException
     {
+        //
+        partieEnCours = p;
+        emplacement = e;
         this.setLayout(null);
         this.setOpaque(false);
         this.setSize(56, 48);
         m = ImageIO.read(getClass().getResource("/images/Houses.png"));
+        clicArrive = new MoustenerArrive(this, partieEnCours);
+        this.addMouseListener(clicArrive);
     }
     
     public void paintComponent(Graphics g)

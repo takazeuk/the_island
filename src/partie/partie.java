@@ -419,7 +419,7 @@ public class partie {
         
             for (tuiles terrain : this.carte) {
             if (terrain.type == 1) {
-                terrain.pouvoir = 6;
+                terrain.pouvoir = 5;
             }           
         }
     }   

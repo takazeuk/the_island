@@ -201,7 +201,13 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     partieEnCours.flagAction=2;
                                     partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
                                 }
-                                
+                                 //on vérifie si on est dans un déplacement bonus explo bateau donné avec une carte, si c'est le cas on décrémente de 1 le compteur prévu pour ce cas.
+                                if (partieEnCours.phaseDeJeu == 1) {
+                                    //on définit la nouvelle case d'origine comme étant celle ou l'unité vient d'arriver
+                                    partieEnCours.origineExplorateur= selctionPanel;
+                                    partieEnCours.deplacmentExploBateau--;
+                                } 
+
                                 selctionPanel.gestionDesProprioBateau();
                                 partieEnCours.origineExplorateur= selctionPanel;
                                 if(partieEnCours.phaseDeJeu!=3)
@@ -319,7 +325,17 @@ public class MoustenerGrosPanel extends MouseAdapter
                                         }
                                     }
                                 }
-                                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                 //on vérifie si on est dans un déplacement bonus explo bateau donné avec une carte, si c'est le cas on décrémente de 1 le compteur prévu pour ce cas.
+                                if (partieEnCours.phaseDeJeu == 1) {
+                                    //on définit la nouvelle case d'origine comme étant celle ou l'unité vient d'arriver
+                                    partieEnCours.origineExplorateur= selctionPanel;
+                                    messageJoueur("partieEnCours.deplacmentExploBateau"+partieEnCours.deplacmentExploBateau--);
+                                    partieEnCours.deplacmentExploBateau--;
+                                }
+                                else
+                                {
+                                    partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                                }
                                 messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction);
                                 
                             }
