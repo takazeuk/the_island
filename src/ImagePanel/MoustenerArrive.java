@@ -9,6 +9,9 @@ package ImagePanel;
 import MessageBox.Interaction;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import partie.partie;
 
 /**
@@ -65,7 +68,19 @@ public class MoustenerArrive extends MouseAdapter{
                 Interaction.messageJoueur("Votre explorateur est sauvé");
                 partieEnCours.survivants.add(partieEnCours.exploDeplace);
                 partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
-                // ne pas oublier de gerer le deplacement
+                partieEnCours.exploDeplace = null;
+                try {
+                    partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                    //partieEnCours.affichageBateaux(placement, partieEnCours.bateauDeplace);
+                } catch (IOException ex) {
+                    Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                // décrémenter le déplacement du joueur de 1
+                partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
+                if(partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement!=0)
+                {
+                    partieEnCours.flagAction = 2;
+                }
             }
             else
             {
