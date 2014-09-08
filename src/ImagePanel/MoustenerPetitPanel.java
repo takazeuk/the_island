@@ -38,13 +38,12 @@ public class MoustenerPetitPanel extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        //on s'en servait pour faire des tests importants. Cela a été l'un de nos plus grand compagnon, on a pas pu se résoudre à l'effacer du code
-        /*System.out.println("grospanelDoitGererEvent  ="+grospanelDoitGereEvent());
+        //System.out.println("grospanelDoitGererEvent  ="+grospanelDoitGereEvent());
         if (grospanelDoitGereEvent()) {
             System.out.println("je rentre dans grospanelDoitGererEvent ");
             selctionPanel.conteneur.clicDuPanel.mouseClicked(e);
             return;
-        }*/
+        }
         
         if ((partieEnCours.flagAction == 2) || (partieEnCours.flagAction == 7) || (partieEnCours.flagAction==8)) {
             boolean flagDeplacementexplo = false;
