@@ -175,7 +175,7 @@ public class MoustenerPetitPanel extends MouseAdapter
             
             else
             {
-              messageJoueur("vous ne pouvez pas sélectionner cette unité"+selctionPanel.numeroUnite);
+              messageJoueur("vous ne pouvez pas sélectionner cette unité");
             }        
         }
         
