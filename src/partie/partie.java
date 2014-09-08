@@ -617,66 +617,7 @@ public class partie {
             }
         }
     }
-    
-    public boolean pouvoirDefense(tuiles pouvoirJoueur, tuiles cible, joueurs j)
-    {
-        boolean flag = false;
-        
-        switch(pouvoirJoueur.pouvoir)
-        {
-            //pouvoir de protection contre les requins
-            case 10:
-                
-                for(explorateurs pions: cible.explorateurs)
-                {
-                    if(pions.proprietaire == j.couleur)
-                    {
-                        flag = true;
-                    }
-                }
-                
-                if(flag)
-                {
-                    for(monstres creature: cible.monstres)
-                    {
-                        if(creature.deplacement==2)
-                        {
-                            cible.monstres.remove(creature);
-                            return true;
-                        }
-                    }
-                }
-                
-            break;
-            
-            //pouvoir de protection contre les baleines
-            case 11:
-                
-                for(bateaux barques: cible.bateaux)
-                {
-                    if(barques.proprietaire == j.couleur)
-                    {
-                        flag = true;
-                    }
-                }
-                
-                if(flag)
-                {
-                    for(monstres creature: cible.monstres)
-                    {
-                        if(creature.deplacement==2)
-                        {
-                            cible.monstres.remove(creature);
-                            return true;
-                        }
-                    }
-                }
-            break;
-        }
-        // jo the best
-        return false;
-    }
-          
+             
     //lance de dée de la créature: permet de choisir une créature qui pourra être déplacé
     public void deeCreature()
     {
@@ -997,21 +938,21 @@ public class partie {
     public  void creationTuiles()
     {
         
-        int pouvoirSable[]= {0,0,0,1,1,1,2,5,5,5,6,6,7,8,9,10};
+        int pouvoirSable[]= {0,0,0,1,1,1,2,2,5,5,5,6,6,7,8,9};
         for(int valeurPouvoir: pouvoirSable)
         {
            tuiles tuile= new tuiles(0,0,1,valeurPouvoir,"");
            tuileConstruction.add(tuile);
         }
         
-        int pouvoirForet[]= {0,0,1,1,2,2,2,3,3,5,7,8,9,10,11,11};
+        int pouvoirForet[]= {0,0,0,1,1,1,2,2,2,3,3,5,5,7,8,9};
         for(int valeurPouvoir: pouvoirForet)
         {
            tuiles tuile= new tuiles(0,0,2,valeurPouvoir,"");
            tuileConstruction.add(tuile);
         }
         
-        int pouvoirMontagne[]= {0,3,3,3,3,4,10,11};
+        int pouvoirMontagne[]= {0,1,2,3,3,3,3,4};
         for(int valeurPouvoir: pouvoirMontagne)
         {
            tuiles tuile= new tuiles(0,0,3,valeurPouvoir,"");
@@ -1055,13 +996,7 @@ public class partie {
                 break;
                 case 9:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
-                break;
-                /*case 10:
-                    terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
-                break;
-                case 11:
-                    terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
-                break;*/                   
+                break;                 
             }
         }
     }
