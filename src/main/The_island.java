@@ -163,7 +163,7 @@ public class The_island {
                 partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 if (value == JOptionPane.YES_OPTION)
                 {
-                    messageJoueur("si vous changez d'avis, cliquer sur le bouton cartes en main");
+                    messageJoueur("si vous changez d'avis, cliquer sur le bouton Fin mouvement de carte");
                     //on active les deux boutons utilisés pour les cartes
                     partie.mine.activeBouton(true);
                     while((partie.deplacmentExploBateau>0)&&(partie.mine.finMvt == false))

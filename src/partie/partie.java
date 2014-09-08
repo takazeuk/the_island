@@ -346,15 +346,6 @@ public class partie {
         } 
         
         descriptionTuiles();
-        
-            for (tuiles terrain : this.carte) {
-                /*if (terrain.type == 1) {
-                    terrain.pouvoir = 7;
-                }*/
-                if (terrain.type == 2) {
-                    terrain.pouvoir = 4;
-                }
-            }
     }   
     
     //fonction Random pour la création de l'île
@@ -379,7 +370,7 @@ public class partie {
                   survivant= new explorateurs(1, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
-              /*case 3: case 4:
+              case 3: case 4:
                   survivant= new explorateurs(2, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
               break;
@@ -398,7 +389,7 @@ public class partie {
               case 9:
                   survivant= new explorateurs(6, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
-              break;*/   
+              break;   
             }  
         }
         joueurCree.membresDeploiement=joueurCree.membres;
@@ -596,10 +587,18 @@ public class partie {
             {
                 //pouvoir des déplacements dauphins
                 case 5:
+                    messageJoueur("sélectionnez l'explorateur à déplacer, et vous ne pourrez déplacer que celui là. "
+                            + "Vous n'avez pas besoin de cliquer dessus à chaque fois, "
+                            + "cliquez une fois et cliquez sur la tuile où vous souhaitez aller jusqu'à épuisement des déplacements"
+                            + "si vous n'avez pas de nageur tant pis pour vous, la carte est perdu, cliquez sur Fin de mouvement de carte");
                     flagAction = 7;
                 break;
                 //pouvoir des déplacement bateaux
                 case 6:
+                    messageJoueur("sélectionnez le bateau à déplacer, et vous ne pourrez déplacer que celui là. "
+                            + "Vous n'avez pas besoin de cliquer dessus à chaque fois, "
+                            + "cliquez une fois et cliquez sur la tuile où vous souhaitez aller jusqu'à épuisement des déplacements"
+                            + "si vous n'avez pas de nageur tant pis pour vous, la carte est perdu, cliquez sur Fin de mouvement de carte");
                     flagAction = 8;
                 break;
                 //pouvoir des déplacements de serpent de mer, requin et baleine
@@ -626,7 +625,7 @@ public class partie {
     //lance de dée de la créature: permet de choisir une créature qui pourra être déplacé
     public void deeCreature()
     {
-        int valeurMin=7;
+        int valeurMin=5;
         int valeurMax= 7;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt((valeurMax)+1 - valeurMin);// Remettre +1 a 
