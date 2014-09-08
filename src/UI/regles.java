@@ -44,6 +44,8 @@ public class regles extends javax.swing.JFrame {
         jTextArea5 = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTextArea6 = new javax.swing.JTextArea();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +96,14 @@ public class regles extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jTextArea6);
 
         jTabbedPane1.addTab("Village", jScrollPane6);
+
+        jTextArea7.setColumns(20);
+        jTextArea7.setLineWrap(true);
+        jTextArea7.setRows(5);
+        jTextArea7.setText("Fin du Jeu\n\nSous une des tuiles Montagne se trouve un volcan. Dès qu’un joueur révèle cette tuile, une éruption volcaniquedétruit ce qui reste de l’île ainsi que les Explorateurs qui n’ont pas\nencore débarqué sur les îles sûres.\n\nLa partie est terminée");
+        jScrollPane7.setViewportView(jTextArea7);
+
+        jTabbedPane1.addTab("Fin Du Jeu", jScrollPane7);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -151,6 +161,7 @@ public class regles extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
@@ -158,5 +169,6 @@ public class regles extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
     // End of variables declaration//GEN-END:variables
 }
