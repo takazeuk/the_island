@@ -329,8 +329,10 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 if (partieEnCours.phaseDeJeu == 1) {
                                     //on définit la nouvelle case d'origine comme étant celle ou l'unité vient d'arriver
                                     partieEnCours.origineExplorateur= selctionPanel;
-                                    messageJoueur("partieEnCours.deplacmentExploBateau"+partieEnCours.deplacmentExploBateau--);
+                                    messageJoueur("je suis dans explo déplace partieEnCours.deplacmentExploBateau AVANT"+partieEnCours.deplacmentExploBateau);
+                                    
                                     partieEnCours.deplacmentExploBateau--;
+                                    messageJoueur("je suis dans explo déplace partieEnCours.deplacmentExploBateau APRES"+partieEnCours.deplacmentExploBateau);
                                 }
                                 else
                                 {
