@@ -116,7 +116,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                                 if (explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur) {
                                     
                                     // mettre le numero d'indice du vecteur marins dans le tableau d'indice
-                                    indiceExplo[k] = selctionPanel.conteneur.terrain.bateaux.get(0).marins.indexOf(explo);
+                                    indiceExplo[k] = selctionPanel.conteneur.terrain.bateaux.get(0).marins.indexOf(explo)+1;
                                     k++;
                                 }
                             }
@@ -130,7 +130,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                     {
                         partieEnCours.DescendreMarin = true;
                         //recupere l'indice du vecteur bateau choisi par le joueur
-                        int indiceVecteurbateau = Interaction.demandeChoix("quel explorateur retirer-vous ?", "", indiceExplo);
+                        int indiceVecteurbateau = Interaction.demandeChoix("quel explorateur retirer-vous ?", "", indiceExplo)-1;
                         partieEnCours.exploDeplace = selctionPanel.conteneur.terrain.bateaux.get(0).marins.get(indiceVecteurbateau);
                         partieEnCours.flagDeplacement=1;
                         partieEnCours.flagAction=3;
