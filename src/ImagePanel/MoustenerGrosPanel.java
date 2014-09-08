@@ -66,7 +66,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     
                     if (partieEnCours.participant.get(partieEnCours.tourJoueur).membresDeploiement.size()!=0) {
-                       messageJoueur(partieEnCours.flagAction+""+partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un explorateur");
+                       messageJoueur(partieEnCours.participant.get(partieEnCours.tourJoueur).nom+" , c'est à vous de placer un explorateur");
                     }
                     else
                     {
@@ -151,7 +151,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     }
                                     //on vérifie s'il n'y pas des monstres qui peuvent attaquer sur la case où vient d'arriver l'explorateur
                                     attaqueAutoMonstre(placement);
-                                    messageJoueur("le bateau a été déplacé" + partieEnCours.flagAction); 
+                                    messageJoueur("le bateau a été déplacé"); 
                                 }
                                 else
                                 {
@@ -366,7 +366,7 @@ public class MoustenerGrosPanel extends MouseAdapter
             }
             
             if (partieEnCours.flagAction == 4) {
-                messageJoueur(""+placement.pouvoir);
+                //messageJoueur(""+placement.pouvoir);
             try {               
                 if (partieEnCours.retirerTuile(placement)) { 
                     placement.type = 0;
