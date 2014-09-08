@@ -401,11 +401,14 @@ public class partie {
         
         descriptionTuiles();
         
-            /*for (tuiles terrain : this.carte) {
-            if (terrain.type == 1) {
-                terrain.pouvoir = 5;
-            }           
-            }*/
+            for (tuiles terrain : this.carte) {
+                if (terrain.type == 1) {
+                    terrain.pouvoir = 6;
+                }
+                if (terrain.type == 2) {
+                    terrain.pouvoir = 4;
+                }
+            }
     }   
     
     public void randomMap(tuiles aChanger){
@@ -749,7 +752,7 @@ public class partie {
     //lance de dée de la créature
     public void deeCreature()
     {
-        int valeurMin=5;
+        int valeurMin=7;
         int valeurMax= 7;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt((valeurMax)+1 - valeurMin);// Remettre +1 a 
