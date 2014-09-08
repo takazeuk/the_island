@@ -150,6 +150,8 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     else {
                                         partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
                                     }
+                                    //on vérifie s'il n'y pas des monstres qui peuvent attaquer sur la case où vient d'arriver l'explorateur
+                                    attaqueAutoMonstre(placement);
                                     messageJoueur("le bateau a été déplacé" + partieEnCours.flagAction); 
                                 }
                                 else
@@ -338,6 +340,8 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 {
                                     partieEnCours.participant.get(partieEnCours.tourJoueur).deplacement--;
                                 }
+                                //on vérifie s'il n'y pas des monstres qui peuvent attaquer sur la case où vient d'arriver l'explorateur
+                                attaqueAutoMonstre(placement);
                                 messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction);
                                 
                             }
@@ -489,5 +493,25 @@ public class MoustenerGrosPanel extends MouseAdapter
                     
                 }
             }
-    }		
+    }
+    
+    //fonction qui permet aux monstres d'attaquer si un explo ou un bateau se déplace sur une case occupé par un monstre
+    public void attaqueAutoMonstre(tuiles arrive)
+    {
+        if (arrive.monstres != null) {
+           for (monstres present : arrive.monstres) {
+               //on attaque les explorateurs arrivés sur la case
+               if(present.attaque(arrive)){
+
+                   //on refresh les images de la case
+                   try {
+                       partieEnCours.affichageUniteTuile(arrive);
+                       //selctionPanel.refreshGrosPanel();
+                   } catch (IOException ex) {
+                       Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                   }
+               }
+           } 
+        }  
+    }
 }

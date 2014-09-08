@@ -100,19 +100,19 @@ public class The_island {
             i++;
         }*/
         
-        /*
+        
         // test d'ajout d'une tuile
-            tuiles tuile= new tuiles(0,0,1,6, "toto");
-            tuiles tuile1= new tuiles(0,0,1,7, "tata");
-            tuiles tuile2= new tuiles(0,0,1,8, "titi");
-            tuiles tuile3= new tuiles(0,0,1,9, "tete");
-            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile);
-            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile1);
-            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile2);
-            partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);*/
+            //tuiles tuile= new tuiles(0,0,1,6, "toto");
+            //tuiles tuile1= new tuiles(0,0,1,7, "tata");
+            //tuiles tuile2= new tuiles(0,0,1,8, "titi");
+            //tuiles tuile3= new tuiles(0,0,1,9, "tete");
+            //partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile);
+            //partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile1);
+            //partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile2);
+            //partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);*/
         
         //on désactive les deux boutons de cartes pour le moment
-        partie.mine.activeBouton(true);
+        partie.mine.activeBouton(false);
         
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
