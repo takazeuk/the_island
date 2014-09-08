@@ -184,11 +184,6 @@ public class The_island {
             partie.flagAction = 2;
             
             //on passe à la phase de déplacement
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
-            }
             s = "phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" , selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui n'est controlé par aucun joueur";
             messageJoueur(s);
             partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
@@ -197,11 +192,6 @@ public class The_island {
             }
             s = "vous avez effectué tous vos déplacements";
             messageJoueur(s);
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
-            }
             partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
             //on passe à la phase où l'on retire une tuile
             s = "vous devez retirer une tuile terrain: retirez une tuile adjacente à l'eau en commencant par les tuiles sables, puis forêt et enfin montagne."
@@ -213,12 +203,6 @@ public class The_island {
             while(partie.flagAction == 4)
             {
                 
-            }
-            
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
             }
             
             //on vérifie si la partie n'est pas terminée. Le volcan est un tuilePouvoir a effet immédiat, on n'aura donc pas besoin de déplacer les monstres
@@ -253,11 +237,6 @@ public class The_island {
                     //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
                 }
                 
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
-                }
                 s = "vous avez effectué tous les déplacements de votre monstre";
                 
                 if (monstrePresent) {
@@ -276,13 +255,7 @@ public class The_island {
                 }
                 else {
                     partie.tourJoueur++;
-                }
-                
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                }               
 
                 //partie.flagAction = 2;
             }   
