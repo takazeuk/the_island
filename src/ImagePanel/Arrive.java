@@ -24,6 +24,7 @@ public class Arrive extends JPanel{
     partie partieEnCours;
     public Arrive(int e, partie p) throws IOException
     {
+        //
         partieEnCours = p;
         emplacement = e;
         this.setLayout(null);
