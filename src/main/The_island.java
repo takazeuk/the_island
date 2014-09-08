@@ -256,7 +256,8 @@ public class The_island {
                 else {
                     partie.tourJoueur++;
                 }               
-
+                
+                //on met une valeur de flagAction qui ne permet aucun déplacement
                 partie.flagAction = 10;
             }   
         }

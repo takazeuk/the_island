@@ -362,7 +362,7 @@ public class partie {
     {
         explorateurs survivant;
         
-        for(int compt=0; compt<3; compt++)
+        for(int compt=0; compt<10; compt++)
         {
             switch(compt)
             {
