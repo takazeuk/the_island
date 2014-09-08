@@ -172,19 +172,34 @@ public class The_island {
             
             //partie de lancé de dés pour définir quel monstre on va déplacer
             partie.deeCreature();
-            messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
-            while ((partie.monstreDeplace==null)||(partie.deplacmentMonstre!=partie.monstreDeplace.deplacement)){
-                //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
-            }
-            messageJoueur("vous ne pouvez plus déplacer votre monstre");
-            
-            //on remet à zéro les capacités de déplacement
+            boolean monstrePresent = false;
             monstres monstre;
             for (unites unitetotale : partie.population) {
                 if(unitetotale instanceof monstres){
-                    monstre= (monstres) unitetotale;
+                   monstre= (monstres) unitetotale;
+                    if(monstre.type == partie.choixMonstre) {
+                        monstrePresent = true;
+                    }
                 }
             }
+            
+            if (monstrePresent) {
+               messageJoueur(partie.participant.get(partie.tourJoueur).nom+"vous pouvez déplacer un monstre de type: "+partie.typeMonstre(partie.choixMonstre)+"selectionner un monstre correspondant"); 
+            }
+            else
+            {
+                messageJoueur(partie.participant.get(partie.tourJoueur).nom+", le monstre tiré au sort est de type: "+partie.typeMonstre(partie.choixMonstre)+". Mais il n'y en a pas sur la carte, nous allons donc passé à la prochaine phase de jeu");
+            }
+             
+            while (((partie.monstreDeplace==null)||(partie.deplacmentMonstre!=partie.monstreDeplace.deplacement))&&(monstrePresent == true)){
+                //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
+            }
+            
+            if (monstrePresent) {
+                messageJoueur("vous ne pouvez plus déplacer votre monstre");
+            } 
+            
+            //on remet à zéro les capacités de déplacement
             partie.participant.get(partie.tourJoueur).deplacement=3;
             partie.flagDeplacement=0;
             partie.deplacmentMonstre=0;

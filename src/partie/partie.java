@@ -753,7 +753,7 @@ public class partie {
         choixMonstre= valeur;
     }
     
-    //on affiche le descriptif d'un monstre en fonction du type de ce dernier
+    //on affiche le descriptif d'un monstre en fonction du type de ce dernier (utilisé pour indiquer le monstre séléctionné lors du lancé de dé)
     public String typeMonstre(int type){
         if (type==5) {
             return "Requin";
