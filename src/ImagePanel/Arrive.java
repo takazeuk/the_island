@@ -40,3 +40,4 @@ public class Arrive extends JPanel{
         g.drawImage(m, 0, 0, 56, 48, null);
     }
 }
+
