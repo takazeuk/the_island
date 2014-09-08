@@ -34,6 +34,6 @@ public class joueurs {
         this.membresDeploiement= new Vector<explorateurs>();
         this.pointVictoire=0;
     }
-    
+    //
     //test jo  
 }
