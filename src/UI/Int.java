@@ -26,6 +26,19 @@ public class Int extends JFrame {
         this.PartieEnCours=p;
         initComponents();
     }
+    
+    public void activeBouton(boolean choix)
+    {
+        if (choix) {
+            jButton1.setEnabled(true);
+            finMouvement.setEnabled(true); 
+        }
+        else
+        {
+            jButton1.setEnabled(false);
+            finMouvement.setEnabled(false);
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

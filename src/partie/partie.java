@@ -39,7 +39,7 @@ public class partie {
     public Vector<tuiles> tuileConstruction= new Vector<tuiles>();
     //interface principale
     public Int mine;  
-    
+    //interface de scrooling
     public JScrollPane Scroll;
     //nous permet de passer au joueur suivant
     public int tourJoueur=0;
@@ -417,11 +417,13 @@ public class partie {
             }
         } 
         
-            for (tuiles terrain : this.carte) {
+        descriptionTuiles();
+        
+            /*for (tuiles terrain : this.carte) {
             if (terrain.type == 1) {
                 terrain.pouvoir = 5;
             }           
-        }
+        }*/
     }   
     
     public void randomMap(tuiles aChanger){
@@ -1230,8 +1232,7 @@ public class partie {
            tuiles tuile= new tuiles(0,0,3,valeurPouvoir,"");
            tuileConstruction.add(tuile);
         }
-        
-        descriptionTuiles();
+
     }
     
     public void descriptionTuiles(){

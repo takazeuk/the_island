@@ -10,6 +10,7 @@ import ImagePanel.GrosPanel;
 import MessageBox.Interaction;
 import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
+import UI.carteEnMain;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
@@ -109,7 +110,10 @@ public class The_island {
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile1);
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile2);
             partie.participant.get(partie.tourJoueur).cartesEnMain.add(tuile3);*/
-                  
+        
+        //on désactive les deux boutons de cartes pour le moment
+        partie.mine.activeBouton(true);
+        
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur"); 
@@ -133,12 +137,16 @@ public class The_island {
                 int value = MessageBox.Interaction.demandeChoixJoueur("phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main");
                 if (value == JOptionPane.YES_OPTION)
                 {
+                    //on active les deux boutons utilisés pour les cartes
+                    partie.mine.activeBouton(true);
                     while((partie.deplacmentExploBateau>0)&&(partie.mine.finMvt == false))
                     {
                         
                     }
                 }
             }
+            //on désactive les deux boutons
+            partie.mine.activeBouton(false);
             // on remet à 3 les bonus déplacements donné par les cartes pour un bateau ou un nageur
             partie.deplacmentExploBateau = 3;
             //on remet finMvt à false pour la prochaine carte joué par un joueur

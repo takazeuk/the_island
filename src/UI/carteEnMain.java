@@ -14,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.util.Vector;
 import javafx.scene.layout.Border;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.MatteBorder;
@@ -35,6 +36,7 @@ public class carteEnMain extends javax.swing.JFrame {
      */
     public carteEnMain(partie p) {
         initComponents();
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         partieEnCours=p;
         tableauImage = new imageCarte[4];
         tableauTexte = new JTextArea[]{descriptionCarte1,descriptionCarte2,descriptionCarte3,descriptionCarte4};
