@@ -405,7 +405,7 @@ public class partie {
             if (terrain.type == 1) {
                 terrain.pouvoir = 5;
             }           
-        }*/
+            }*/
     }   
     
     public void randomMap(tuiles aChanger){
