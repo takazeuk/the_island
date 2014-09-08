@@ -37,6 +37,11 @@ public class Interaction {
     {
         return (int) JOptionPane.showConfirmDialog(null, s, "Oui ou Non... faite votre choix", JOptionPane.YES_NO_OPTION);
     }
+    
+    public static void introduction(String s)
+    {
+        JOptionPane.showMessageDialog(null, s, "survivrez vous", JOptionPane.INFORMATION_MESSAGE);
+    }   
 
     public static int demandeChoix(String s, String l, Vector v) {
         return demandeChoix(s, l, v.toArray());
