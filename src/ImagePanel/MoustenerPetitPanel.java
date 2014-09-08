@@ -131,15 +131,12 @@ public class MoustenerPetitPanel extends MouseAdapter
                         partieEnCours.DescendreMarin = true;
                         //recupere l'indice du vecteur bateau choisi par le joueur
                         int indiceVecteurbateau = Interaction.demandeChoix("quel explorateur retirer-vous ?", "", indiceExplo);
-                        if(indiceVecteurbateau == JOptionPane.OK_OPTION)
-                        {
-                            partieEnCours.exploDeplace = selctionPanel.conteneur.terrain.bateaux.get(0).marins.get(indiceVecteurbateau);
-                            partieEnCours.flagDeplacement=1;
-                            partieEnCours.flagAction=3;
-                            partieEnCours.origineExplorateur= selctionPanel.conteneur;
-                            partieEnCours.panelRefresh = selctionPanel;
-                            messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
-                        }
+                        partieEnCours.exploDeplace = selctionPanel.conteneur.terrain.bateaux.get(0).marins.get(indiceVecteurbateau);
+                        partieEnCours.flagDeplacement=1;
+                        partieEnCours.flagAction=3;
+                        partieEnCours.origineExplorateur= selctionPanel.conteneur;
+                        partieEnCours.panelRefresh = selctionPanel;
+                        messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
                     }
                     //sinon
                     else

@@ -11,9 +11,12 @@ import MessageBox.Interaction;
 import static MessageBox.Interaction.messageJoueur;
 import UI.Int;
 import UI.carteEnMain;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import joueurs.joueurs;
 import partie.partie;
@@ -41,6 +44,8 @@ public class The_island {
     
     public static void lancementPartie() throws IOException
     {
+        
+        String Newligne=System.getProperty("line.separator"); 
         int nb;
         String nom;
          
@@ -75,7 +80,10 @@ public class The_island {
                 
         //on crée le plateau de jeu
         partie.creationPlateau();
-        
+        // Autoriser le retour à la ligne
+        partie.mine.getjTextArea1().setLineWrap(true);
+        // Interdir l'ecriture sur le textArea
+        partie.mine.getjTextArea1().setEditable(false);
         //on met en place les monstres de départ
         partie.miseEnPlaceMonstre();
                      
@@ -97,22 +105,36 @@ public class The_island {
                 + "Pour ce faire, ammenez vos explorateurs jusqu'au villages dans les 4 coins du plateau autour de l'île.\n"
                 + "Bonne chance!");
         //partie déploiement des pions par les joueurs
-        messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
+        String s = "Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île";
+        messageJoueur(s);
+        partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+""+s+Newligne);
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur"); 
         while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
             //on bloque le code tant que tous les pions n'ont pas été placés.
         }
         
         //partie déploiement des bateaux par les joueurs
-        messageJoueur("phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux");
+        s = "phase de déploiement des explorateurs terminée, nous allons passé à la phase de déploiement des bateaux";
+        messageJoueur(s);
+        partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+""+s+Newligne);
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un bateau sur une case d'eau non occupée et voisine à une case terrain sur l'île principale");
+        
         while(partie.participant.get(nb-1).bateauxDeploiement!=0){
             //on bloque le code tant que tous les bateaux n'ont pas été placés.
         }
                
         while (partie.partieTermine == 0) {
+            
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(The_island.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             if ((partie.participant.get(partie.tourJoueur).cartesEnMain != null)&&(partie.participant.get(partie.tourJoueur).cartesEnMain.size() > 0 )) {
-                int value = MessageBox.Interaction.demandeChoixJoueur("phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main");
+                s = "phase de tuile pouvoir: vous pouvez sélectionner une tuile à jouer dans la fenêtre carte en cliquant sur le bouton cartes en main";
+                int value = MessageBox.Interaction.demandeChoixJoueur(s);
+                partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 if (value == JOptionPane.YES_OPTION)
                 {
                     //on active les deux boutons utilisés pour les cartes
@@ -123,6 +145,7 @@ public class The_island {
                     }
                 }
             }
+            
             //on désactive les deux boutons de cartes
             partie.mine.activeBouton(false);
             // on remet à 3 les bonus déplacements donné par les cartes pour un bateau ou un nageur
@@ -131,18 +154,21 @@ public class The_island {
             partie.mine.finMvt = false;
             //on met flagAction à 2 pour permettre les déplacements
             partie.flagAction = 2;
-            
             //on passe à la phase de déplacement
-            messageJoueur("phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" , selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui n'est controlé par aucun joueur");
+            s = "phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" , selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui n'est controlé par aucun joueur";
+            messageJoueur(s);
+            partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
             while (partie.participant.get(partie.tourJoueur).deplacement!=0) {                
                 //on bloque le joueur tant qu'il n'a pas fait tout ses déplacements
             }
-            messageJoueur("vous avez effectué tous vos déplacements");
-            
+            s = "vous avez effectué tous vos déplacements";
+            messageJoueur(s);
+            partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
             //on passe à la phase où l'on retire une tuile
-            messageJoueur("vous devez retirer une tuile terrain: retirez une tuile adjacente à l'eau en commencant par les tuiles sables, puis forêt et enfin montagne."
-                           + " Si les dernières tuiles d'un types ne sont pas adjacentes à l'eau, vous pouvez les retirer");
-            
+            s = "vous devez retirer une tuile terrain: retirez une tuile adjacente à l'eau en commencant par les tuiles sables, puis forêt et enfin montagne."
+                           + " Si les dernières tuiles d'un types ne sont pas adjacentes à l'eau, vous pouvez les retirer";
+            messageJoueur(s);
+            partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
             //on met le flagAction sur 4 pour passer à la phase retirer tuile terrain
             partie.flagAction = 4;
             while(partie.flagAction == 4)
@@ -168,20 +194,25 @@ public class The_island {
                 }
 
                 if (monstrePresent) {
+                    s = "Vous pouvez déplacer un monstre de type: " + partie.typeMonstre(partie.choixMonstre) + " , seléctionnez un monstre correspondant";
                     messageJoueur(partie.participant.get(partie.tourJoueur).nom + " , vous pouvez déplacer un monstre de type: " + partie.typeMonstre(partie.choixMonstre) + " , seléctionnez un monstre correspondant");
+                    partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 } 
                 else {
+                    s = "Le monstre tiré au sort est de type: " + partie.typeMonstre(partie.choixMonstre) + ". Mais il n'y en a pas sur la carte, nous allons donc passé à la prochaine phase de jeu";
                     messageJoueur(partie.participant.get(partie.tourJoueur).nom + ", le monstre tiré au sort est de type: " + partie.typeMonstre(partie.choixMonstre) + ". Mais il n'y en a pas sur la carte, nous allons donc passé à la prochaine phase de jeu");
+                    partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 }
 
                 while (((partie.monstreDeplace == null) || (partie.deplacmentMonstre != partie.monstreDeplace.deplacement)) && (monstrePresent == true)) {
                     //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
                 }
-
+                s = "vous avez effectué tous les déplacements de votre monstre";
+                
                 if (monstrePresent) {
-                    messageJoueur("vous avez effectué tous les déplacements de votre monstre");
+                    messageJoueur(s);
                 }
-
+                partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 //on remet à zéro les capacités de déplacement
                 partie.participant.get(partie.tourJoueur).deplacement = 3;
                 partie.flagDeplacement = 0;
