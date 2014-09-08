@@ -6,6 +6,7 @@
 
 package joueurs;
 
+import java.awt.Color;
 import java.util.Vector;
 import terrain.tuiles;
 import unités.explorateurs;
@@ -24,7 +25,8 @@ public class joueurs {
     public int explorateursSauve;
     public int bateauxDeploiement=2;
     public int pointVictoire;
-
+    public Color couleurduJoueur;
+    
     public joueurs(String nom, int couleur) {
         this.nom = nom;
         this.couleur = couleur;

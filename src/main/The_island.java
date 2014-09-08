@@ -76,6 +76,22 @@ public class The_island {
             joueurs participant= new joueurs(nom, i);
             partie.participant.add(participant);
             partie.creationExplorateur(participant);
+            if(i==0)
+            {
+                participant.couleurduJoueur = Color.RED;
+            }
+            else if (i==1)
+            {
+                participant.couleurduJoueur = Color.GREEN;
+            }
+            else if (i==2)
+            {
+                participant.couleurduJoueur = Color.PINK;
+            }
+            else
+            {
+                participant.couleurduJoueur = Color.YELLOW;
+            }
         }
                 
         //on crée le plateau de jeu
@@ -124,6 +140,9 @@ public class The_island {
         }
                
         while (partie.partieTermine == 0) {
+            
+            
+            partie.mine.getjTextArea1().setBackground(partie.participant.get(partie.tourJoueur).couleurduJoueur);
             
             try {
                 Thread.sleep(1000);
