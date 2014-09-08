@@ -529,10 +529,12 @@ public class partie {
             case 0: case 1: //requin et baleine
                 if (pouvoirJoueur.pouvoir==0) {
                     apparition= new monstres("Requin",2,5,pouvoirJoueur.x,pouvoirJoueur.y);
+                    messageJoueur("Un requin apparait sur la tuile terrain que vous avez retiré");
                 }
                 else
                 {
-                   apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y); 
+                   apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y);
+                   messageJoueur("Une Baleine apparait sur la tuile que vous avez retiré");
                 }         
                 
                 pouvoirJoueur.monstres.add(apparition);
@@ -547,8 +549,6 @@ public class partie {
                         chercher = (GrosPanel) lesGros;                       
                         if((chercher.k == pouvoirJoueur.x) && (chercher.j == pouvoirJoueur.y))
                         {
-                            messageJoueur(chercher.k +"   "+pouvoirJoueur.x+"    "+ "       "+chercher.j+"     "+pouvoirJoueur.y);
-                            messageJoueur("j'utilise la fonction aucunExplorateur et refresh image");
                             chercher.AucunExplorateur();
                             chercher.refreshImage();
                         }
@@ -557,13 +557,17 @@ public class partie {
             break;
             case 2: //nouveau bateau
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
+                messageJoueur("Un Bateau apparait sur la tuile que vous avez retiré");
                 pouvoirJoueur.bateaux.add(newbateau);
                 affichageUniteTuile(pouvoirJoueur);
             break;
             case 3: //tourbillon
+                messageJoueur("Tourbillon!!! l'ensemble des explorateurs sur cette tuile "
+                            + "et sur les tuiles adjacente de type Eau sont engloutis");
                 pouvoirTourbillon(pouvoirJoueur);
             break;
             case 4: //fin du jeu. Elle déclenche le volcan qui met fin à la partie
+                 messageJoueur("Volcan!!! c'est la fin, les jeux sont faits ");
                 //on compte les points pour chacun des Joueurs
                 for (joueurs challenger : participant) {
                     calculPointJoueur(challenger);

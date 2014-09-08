@@ -61,6 +61,7 @@ public class Int extends JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        regles = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -86,6 +87,14 @@ public class Int extends JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jMenu1.setText("Menu");
+
+        regles.setText("Règles");
+        regles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reglesActionPerformed(evt);
+            }
+        });
+        jMenu1.add(regles);
 
         jMenuItem2.setText("Quitter");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +152,11 @@ public class Int extends JFrame {
         this.dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void reglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reglesActionPerformed
+       regles affichageRegle = new regles();
+       affichageRegle.setVisible(true);
+    }//GEN-LAST:event_reglesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -182,6 +196,7 @@ public class Int extends JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JMenuItem regles;
     // End of variables declaration//GEN-END:variables
     public JTextArea getjTextArea1()
     {

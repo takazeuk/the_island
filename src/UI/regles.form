@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jTabbedPane1" alignment="0" pref="1007" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jTabbedPane1" alignment="0" pref="542" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Phase Tuile Terrain">
+                <Property name="tabTitle" type="java.lang.String" value="Phase Tuile Terrain"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea1">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Phase Tuile Terrain&#xa;&#xa;-Une et une seule fois par tour, vous pouvez jouer une tuile de Pouvoir que vous avez obtenue lors d&#x2019;un tour pr&#xe9;c&#xe9;dent.&#xa;&#xa;-Si vous ne souhaitez pas jouer de tuile Pouvoir, vous pouvez passer cette &#xe9;tape en indiquant &#xab; non &#xbb; lors du Message de cette phase.&#xa;&#xa;-Pour jouer une tuile Pouvoir, il suffit de cliquer sur Carte(s) en main et de s&#xe9;lectionner le pouvoir. Suivez les instructions qui sont &#xe9;crit sous la carte pour appliquer le pouvoir.&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="D&#xe9;placement">
+                <Property name="tabTitle" type="java.lang.String" value="D&#xe9;placement"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea2">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="D&#xe9;placez vos pions Explorateur et/ou Bateau&#xa;&#xa;Vous pouvez d&#xe9;placer n&#x2019;importe quelle combinaison de pions Explorateur et/ou Bateau. Vous avez droit &#xe0; trois cases de d&#xe9;placement au total, sur terre ou sur mer. Par exemple, vous pouvez d&#xe9;placer deux pions Explorateur d&#x2019;une case pour les faire entrer dans un Bateau, puis d&#xe9;placer le Bateau en question d&#x2019;une case. Le but consiste &#xe0; faire entrer vos Explorateurs dans des Bateaux et &#xe0; les emmener vers les &#xee;les voisines. &#xa;&#xa;Pour faire un d&#xe9;placement cliquer sur l&#x2019;unit&#xe9; que vous voulez d&#xe9;placer. Vous aurez un message vous confirmant qu&#x2019;elle est bien s&#xe9;lectionn&#xe9;e. Cliquer ensuite sur une case adjacente &#xe0; cette unit&#xe9;.&#xa;&#xa;ATTENTION : lorsqu&#x2019;un explorateur passe sur une tuile d&#x2019;eau, il ne peut plus retourner sur une tuile terre, de l&#x2019;ile principale, il devient un nageur et ne plus se d&#xe9;placer que sur des cases de type eau.&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Retirer tuile">
+                <Property name="tabTitle" type="java.lang.String" value="Retirer tuile"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea3">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Retirez une tuile de Terrain&#xa;&#xa;Vous devez retirer une tuile de Terrain de l&#x2019;&#xee;le. Tout Explorateur qui y &#xe9;tait plac&#xe9; se retrouve dans la case mer qu&#x2019;elle occupait auparavant, et devient un Nageur. &#xa;&#xa;Vous devez respecter deux conditions lorsque vous retirez une tuile de Terrain. Tout d&#x2019;abord, vous devez choisir une tuile adjacente &#xe0; au moins une case de mer (m&#xea;me s&#x2019;il s&#x2019;agit d&#x2019;une case o&#xf9; se trouvait une autre tuile de Terrain auparavant).&#xa;&#xa;Deuxi&#xe8;mement, toutes les tuiles Plage doivent &#xea;tre retir&#xe9;es en premier, puis les tuiles For&#xea;t, et finalement les tuiles Montagne. En effet, les Terrains plus proches du niveau de la mer sombrent en premier. Au cas o&#xf9; une tuile Plage serait entour&#xe9;e de tuiles For&#xea;t et/ou Montagne, retirez la en tant que derni&#xe8;re tuile Plage (m&#xea;me si elle n&#x2019;est pas adjacente &#xe0; une case de mer). Il en va de m&#xea;me pour une &#xe9;ventuelle tuile For&#xea;t entour&#xe9;e de Montagnes.&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane4">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Monstres">
+                <Property name="tabTitle" type="java.lang.String" value="Monstres"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea4">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Monstres&#xa;&#xa;Vous pouvez d&#xe9;placer d&#x2019;une ou plusieurs cases de mer une Cr&#xe9;ature (Serpent de mer, Requin ou Baleine) correspondant au r&#xe9;sultat du d&#xe9; et d&#xe9;j&#xe0; pr&#xe9;sente sur le plateau de jeu.&#xa;&#xa;Serpent de mer&#xa;Si le r&#xe9;sultat du jet de d&#xe9; est un Serpent de mer, d&#xe9;placez l&#x2019;une de ces cr&#xe9;atures d&#x2019;une case de mer. Si le Serpent de mer arrive dans une case de mer occup&#xe9;e par un Bateau contenant des passagers, retirez celui-ci et ses occupants du jeu. Retirez &#xe9;galement tous les Nageurs occupant la case de mer. S&#x2019;il s&#x2019;agit d&#x2019;un Bateau vide, il reste en place&#xa;Requin&#xa;Si le r&#xe9;sultat du jet de d&#xe9; est un Requin, d&#xe9;placez l&#x2019;une de ces cr&#xe9;atures d&#x2019;une ou deux cases de mer. Si le Requin entre sur une case de mer occup&#xe9;e par un ou plusieurs Nageurs, le mouvement du Requin s&#x2019;ach&#xe8;ve. Retirez tous les Nageurs de la case de mer o&#xf9; le Requin s&#x2019;est arr&#xea;t&#xe9;. Si la case o&#xf9; il se trouve contient un Bateau, le Requin ne l&#x2019;affecte pas.&#xa;&#xa;Baleine&#xa;Si le r&#xe9;sultat du jet de d&#xe9; est une Baleine, d&#xe9;placez l&#x2019;une de ces cr&#xe9;atures d&#x2019;une &#xe0; trois cases de mer. Si la Baleine entre sur une case de mer occup&#xe9;e par un Bateau contenant un ou plusieurs passagers, son mouvement s&#x2019;ach&#xe8;ve : le Bateau est retir&#xe9; du jeu et ses occupants deviennent des Nageurs. Si la case de mer contient &#xe9;galement un Requin, les Nageurs sont retir&#xe9;s du jeu. Une Baleine n&#x2019;affecte ni les Nageurs ni le Bateau vide situ&#xe9;s dans la m&#xea;me case de mer qu&#x2019;elle.&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Explorateurs">
+                <Property name="tabTitle" type="java.lang.String" value="Explorateurs"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea5">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Les Explorateurs sur terre&#xa;&#xa;&#x2022; Vous pouvez d&#xe9;placer un pion Explorateur depuis une tuile de Terrain vers une tuile de Terrain adjacente, m&#xea;me si cette derni&#xe8;re est d&#xe9;j&#xe0; occup&#xe9;e par un ou plusieurs pions Explorateur. ATTENTION : il ne peut y avoir que 3 explorateurs par cases&#xa;&#xa;&#x2022; Vous pouvez d&#xe9;placer un pion Explorateur depuis une tuile de Terrain vers un Bateau plac&#xe9; sur une case de mer adjacente.&#xa;&#xa;&#x2022; Vous pouvez d&#xe9;placer un pion Explorateur dans un Bateau d&#xe9;j&#xe0; occup&#xe9; par des Explorateurs d&#x2019;une autre couleur (mais pas plus de 3 personnes par bateau).&#xa;&#xa;&#x2022; Vous ne pouvez pas d&#xe9;placer les pions Explorateur d&#x2019;un autre joueur.&#xa;&#xa;&#x2022; Une fois qu&#x2019;un pion Explorateur quitte l&#x2019;&#xee;le (en montant sur un Bateau ou en devenant un Nageur), il ne peut plus retourner sur une tuile de Terrain&#xa;&#xa;Les Explorateurs dans l&#x2019;eau (Les Nageurs)&#xa;&#xa;Les pions Explorateur deviennent des Nageurs lorsqu&#x2019;ils se d&#xe9;placent dans une case mer &#xe0; partir d&#x2019;une tuile de Terrain adjacente, ou quand ils vont sur un bateau.&#xa;&#xa;Vous ne pouvez d&#xe9;placer un Nageur sur un Bateau que s&#x2019;ils occupent tous deux la m&#xea;me case de mer ou s&#x2019;il monte dedans depuis la rive.&#xa;&#xa;Une case de mer peut accueillir plusieurs Nageurs (3 maximums)&#xa;&#xa;Si vous d&#xe9;placez un Nageur dans une case de mer contenant un Serpent de mer ou un Requin, le Nageur est imm&#xe9;diatement retir&#xe9; du jeu. &#xa;&#xa;Les Bateaux&#xa;&#xa;Quand un Bateau est vide, n&#x2019;importe quel joueur peut le d&#xe9;placer d&#x2019;une case de mer &#xe0; l&#x2019;autre comme il le d&#xe9;sire (&#xe0; raison d&#x2019;un d&#xe9;placement par case).&#xa;&#xa;Une case de mer ne peut contenir qu&#x2019;un seul Bateau &#xe0; la fois.&#xa;&#xa;Chaque Bateau peut transporter jusqu&#x2019;&#xe0; trois pions Explorateur au maximum (quelles que soient leurs couleurs).&#xa;&#xa;Quand un Bateau contient des Explorateurs appartenant &#xe0; plusieurs joueurs, c&#x2019;est celui qui a le plus d&#x2019;Explorateurs &#xe0; bord qui le contr&#xf4;le. Quand vous contr&#xf4;lez un Bateau, vous seul pouvez le d&#xe9;placer.&#xa;&#xa;Quand plusieurs joueurs ont le m&#xea;me nombre d&#x2019;Explorateurs dans un Bateau, chaque joueur contr&#xf4;le le Bateau.&#xa;&#xa;Si vous d&#xe9;placez un Bateau contenant un ou plusieurs Explorateurs dans une case de mer contenant un Serpent de mer ou une Baleine, le Bateau est imm&#xe9;diatement retir&#xe9; du jeu, et ses occupants deviennent des Nageurs (n&#x2019;oubliez pas que si la case mer contient un Requin ou un Serpent de mer, ces Nageurs sont retir&#xe9;s du jeu).&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Village">
+                <Property name="tabTitle" type="java.lang.String" value="Village"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="jTextArea6">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="lineWrap" type="boolean" value="true"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="text" type="java.lang.String" value="Atteindre le Village&#xa;&#xa;Les Explorateurs peuvent d&#xe9;barquer d&#x2019;un Bateau plac&#xe9; sur une des deux cases de mer adjacentes &#xe0; l&#x2019;une des &#xee;les s&#xfb;res. Chaque pion Explorateur qui sort du Bateau pour entrer sur l&#x2019;&#xee;le co&#xfb;te un d&#xe9;placement. Le Bateau reste sur la m&#xea;me case de mer jusqu&#x2019;&#xe0; ce qu&#x2019;on le d&#xe9;place &#xe0; nouveau.&#xa;&#xa;Un nageur peut aussi atteindre l&#x2019;un des villages &#xe0; la nage, celui lui coutera &#xe9;galement un d&#xe9;placement et il doit aussi passer par une des deux cases adjacentes&#xa;Vos Explorateurs peuvent d&#xe9;barquer sur n&#x2019;importe quelle &#xee;le s&#xfb;re, pas seulement sur celle qui se trouve devant vous.&#xa;"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
