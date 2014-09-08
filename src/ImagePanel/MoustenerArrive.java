@@ -33,16 +33,15 @@ public class MoustenerArrive extends MouseAdapter{
         
         if(partieEnCours.flagAction == 3)
         {
-            Interaction.messageJoueur("je clique sur le village");
+            //Interaction.messageJoueur("je clique sur le village");
             // Regarder les x et y de la tuile d'origine
             int x = partieEnCours.origineExplorateur.terrain.x;
             int y = partieEnCours.origineExplorateur.terrain.y;
             if((partieEnCours.panelRefresh.numeroUnite>=0 && partieEnCours.panelRefresh.numeroUnite<4) || partieEnCours.DescendreMarin == true)
             {
-                Interaction.messageJoueur("J'ai clqiué sur un petitPanel");
+                //Interaction.messageJoueur("J'ai clqiué sur un petitPanel");
                 if(((x==1)&&(y==1))||((x == 1)&&(y==2)))
                 {
-                    
                     if(panelArrive.emplacement==1)
                     {
                         autoriser = true;
