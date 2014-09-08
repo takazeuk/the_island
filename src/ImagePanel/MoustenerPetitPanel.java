@@ -38,15 +38,15 @@ public class MoustenerPetitPanel extends MouseAdapter
     @Override
     public void mouseClicked(MouseEvent e) 
     {
-        System.out.println("grospanelDoitGererEvent  ="+grospanelDoitGereEvent());
+        //on s'en servait pour faire des tests importants. Cela a été l'un de nos plus grand compagnon, on a pas pu se résoudre à l'effacer du code
+        /*System.out.println("grospanelDoitGererEvent  ="+grospanelDoitGereEvent());
         if (grospanelDoitGereEvent()) {
             System.out.println("je rentre dans grospanelDoitGererEvent ");
             selctionPanel.conteneur.clicDuPanel.mouseClicked(e);
             return;
-        }
+        }*/
         
         if ((partieEnCours.flagAction == 2) || (partieEnCours.flagAction == 7) || (partieEnCours.flagAction==8)) {
-            messageJoueur("zone déplacement, dauphins bateau");
             boolean flagDeplacementexplo = false;
             boolean flagDeplacementbateau = true;
             Object []indiceExplo= new Object [1];
@@ -66,7 +66,6 @@ public class MoustenerPetitPanel extends MouseAdapter
             }
             if(partieEnCours.flagAction==7)
             {
-                messageJoueur("je change la phase de jeu pour dauphins");
                 if(this.selctionPanel.numeroUnite==joueur.couleur)
                 {
                     if(selctionPanel.conteneur.terrain.explorateurs.get(selctionPanel.numeroPetitPanel).nageur == true)
@@ -88,17 +87,14 @@ public class MoustenerPetitPanel extends MouseAdapter
                     partieEnCours.panelRefresh = selctionPanel;
                     // je l'ai changé de place!! partieEnCours.panelRefresh.numeroUnite = 4;
 
-                    messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
+                    messageJoueur("explorateur séléctionné, sélectionnez maintenant une case de destination");
                 }
                 // Si on est dans le cas ou le joueur peut deplacer un bateau
                 else if (this.selctionPanel.numeroPetitPanel==6 && (partieEnCours.phaseDeJeu==3 || partieEnCours.phaseDeJeu == 2)) {
-                    messageJoueur("je rentre dans la phase de déplacement pour bateau avec carte");
                     //on vérifie qu'il y a des marins sur le bateau
 
                     if((selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)&&(partieEnCours.phaseDeJeu != 2))
                     {
-                        
-                        messageJoueur("nombre marins dans bateau "+selctionPanel.conteneur.terrain.bateaux.get(0).marins.size());
                         for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
                             if (explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur) {
                                 flagDeplacementexplo = true;
@@ -136,7 +132,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                         partieEnCours.flagAction=3;
                         partieEnCours.origineExplorateur= selctionPanel.conteneur;
                         partieEnCours.panelRefresh = selctionPanel;
-                        messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
+                        messageJoueur("explorateur séléctionné, selectionnez maintenant une case de destination");
                     }
                     //sinon
                     else
@@ -158,7 +154,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                             }
                             if(flagDeplacementbateau)
                             {
-                                messageJoueur("Vous ppouvez déplacer ce bateau");
+                                messageJoueur("Vous pouvez déplacer ce bateau");
                                 partieEnCours.bateauDeplace= selctionPanel.conteneur.terrain.bateaux.get(0);
                                 partieEnCours.flagDeplacement=1;
                                 partieEnCours.flagAction=3;
@@ -169,7 +165,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                             }
                             else
                             {
-                                messageJoueur("Vous n'etes pas propriétaire de ce bateau");
+                                messageJoueur("Vous n'êtes pas propriétaire de ce bateau");
                             }
                         }
                     }

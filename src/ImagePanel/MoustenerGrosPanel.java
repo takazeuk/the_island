@@ -99,11 +99,9 @@ public class MoustenerGrosPanel extends MouseAdapter
                 }
             }
             if (partieEnCours.flagAction==3) {
-                System.out.println("je rentre dans la phase 3");
                 // Si c'est un explo du bateau qui est deplace alors on change le numero du panelrefresh ppour qu'il ne passe âs dans le if ou il est egale a 6
                 if(partieEnCours.DescendreMarin == true)
                 {
-                    messageJoueur("Je suis dans le mode descendre marin");
                     partieEnCours.panelRefresh.numeroPetitPanel=1;
                     
                 }
@@ -171,7 +169,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     else
                     {
-                        messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
+                        messageJoueur("vous ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
                     }       
                 }
                 //si ce n'est pas un bateau , c'est un explorateur
@@ -187,7 +185,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                             if(((selctionPanel.terrain.bateaux.get(0).marins.size()+selctionPanel.terrain.explorateurs.size())<3) && (selctionPanel.terrain.bateaux.get(0).marins.size()<3))
                             {
                                 placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
-                                messageJoueur("L'explorateur est bien monter sur le bateau");
+                                messageJoueur("L'explorateur est bien monté sur le bateau");
                                 partieEnCours.origineExplorateur.terrain.explorateurs.remove(partieEnCours.exploDeplace);
                                 //partieEnCours.panelRefresh.numeroUnite = 4;
                                 try 
@@ -261,7 +259,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     if(value == JOptionPane.YES_OPTION)
                                     {
                                         placement.bateaux.get(0).marins.add(partieEnCours.exploDeplace);
-                                        messageJoueur("L'explorateur est bien monter sur le bateau");
+                                        messageJoueur("L'explorateur est bien monté sur le bateau");
                                         placement.explorateurs.remove(partieEnCours.exploDeplace);
                                         selctionPanel.gestionDesProprioBateau();
                                     }
@@ -332,10 +330,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 if (partieEnCours.phaseDeJeu == 1) {
                                     //on définit la nouvelle case d'origine comme étant celle ou l'unité vient d'arriver
                                     partieEnCours.origineExplorateur= selctionPanel;
-                                    messageJoueur("je suis dans explo déplace partieEnCours.deplacmentExploBateau AVANT"+partieEnCours.deplacmentExploBateau);
-                                    
                                     partieEnCours.deplacmentExploBateau--;
-                                    messageJoueur("je suis dans explo déplace partieEnCours.deplacmentExploBateau APRES"+partieEnCours.deplacmentExploBateau);
                                 }
                                 else
                                 {
@@ -343,7 +338,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 }
                                 //on vérifie s'il n'y pas des monstres qui peuvent attaquer sur la case où vient d'arriver l'explorateur
                                 attaqueAutoMonstre(placement);
-                                messageJoueur("votre explorateur a été déplacé"+partieEnCours.flagAction);
+                                messageJoueur("votre explorateur a été déplacé");
                                 
                             }
                             else
@@ -416,7 +411,6 @@ public class MoustenerGrosPanel extends MouseAdapter
                             if (flag==0) {
                                 placement.monstres.add(partieEnCours.monstreDeplace);
                                 partieEnCours.origineExplorateur.terrain.monstres.remove(partieEnCours.monstreDeplace);
-                                messageJoueur("tableau monstre: t"+partieEnCours.origineExplorateur.terrain.monstres.size());
                                 /*try {
                                     partieEnCours.affichageUniteTuile(placement);
                                     //partieEnCours.affichageMonstre(placement, partieEnCours.monstreDeplace);
@@ -456,7 +450,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                     }
                                 }
 
-                                messageJoueur("votre monstre a été déplacé "+partieEnCours.monstreDeplace.deplacement);
+                                messageJoueur("votre monstre a été déplacé ");
 
                                 /*try 
                                 {
@@ -489,6 +483,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                                 Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             partieEnCours.monstreDeplace = null;
+                            partieEnCours.ModePouvoir = false;
                             messageJoueur("monstre déplacé, cliquez sur le bouton fin mouvement carte");                            
                         }
                     }

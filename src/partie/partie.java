@@ -349,7 +349,7 @@ public class partie {
         
             for (tuiles terrain : this.carte) {
                 /*if (terrain.type == 1) {
-                    terrain.pouvoir = 9;
+                    terrain.pouvoir = 7;
                 }*/
                 if (terrain.type == 2) {
                     terrain.pouvoir = 4;
