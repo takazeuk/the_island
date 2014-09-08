@@ -163,6 +163,7 @@ public class The_island {
                 partie.mine.getjTextArea1().setText(partie.mine.getjTextArea1().getText()+partie.participant.get(partie.tourJoueur).nom+"   "+s+Newligne);
                 if (value == JOptionPane.YES_OPTION)
                 {
+                    messageJoueur("si vous changez d'avis, cliquer sur le bouton cartes en main");
                     //on active les deux boutons utilisés pour les cartes
                     partie.mine.activeBouton(true);
                     while((partie.deplacmentExploBateau>0)&&(partie.mine.finMvt == false))
@@ -171,7 +172,8 @@ public class The_island {
                     }
                 }
             }
-            
+            //on remet le mode pouvoir à false
+            partie.ModePouvoir = false;
             //on désactive les deux boutons de cartes
             partie.mine.activeBouton(false);
             // on remet à 3 les bonus déplacements donné par les cartes pour un bateau ou un nageur
@@ -180,6 +182,7 @@ public class The_island {
             partie.mine.finMvt = false;
             //on met flagAction à 2 pour permettre les déplacements
             partie.flagAction = 2;
+            
             //on passe à la phase de déplacement
             s = "phase de deplacement: "+partie.participant.get(partie.tourJoueur).nom+" , selectionnez une unité à déplacer (un de vos explorateurs ou un bateau que vous controlez ou qui n'est controlé par aucun joueur";
             messageJoueur(s);
@@ -233,6 +236,7 @@ public class The_island {
                 while (((partie.monstreDeplace == null) || (partie.deplacmentMonstre != partie.monstreDeplace.deplacement)) && (monstrePresent == true)) {
                     //on bloque le joueur tant qu'il n'a pas fait tout les déplacements du monstres
                 }
+                
                 s = "vous avez effectué tous les déplacements de votre monstre";
                 
                 if (monstrePresent) {
@@ -251,9 +255,9 @@ public class The_island {
                 }
                 else {
                     partie.tourJoueur++;
-                }
+                }               
 
-                partie.flagAction = 2;
+                //partie.flagAction = 2;
             }   
         }
     }
