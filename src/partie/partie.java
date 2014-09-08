@@ -584,12 +584,12 @@ public class partie {
     {   
         if(flagAction==4)
         {
+            messageJoueur("Vous avez reçu une carte, vous pourrez l'utiliser lors de la pahse d'utilisation des pouvoirs ");
             j.cartesEnMain.add(cibler);
             // frame qui affiche la carte piocher
         }
         else
         {
-            messageJoueur("Vous avez reçu une carte, vous pourrez l'utiliser lors de la pahse d'utilisation des pouvoirs ");
             // Demander au joueur s'il veut jouer une carte en main si oui alors switch sinon passer à l'etape suivante
             // afficher dans un frame les cartes avec images du joueur et puis faire un return du type de pouvoir de la tuile choisi
             switch(cibler.pouvoir)
