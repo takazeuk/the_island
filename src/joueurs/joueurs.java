@@ -21,6 +21,7 @@ public class joueurs {
     public Vector<tuiles> cartesEnMain;
     public Vector<explorateurs> membres;
     public Vector<explorateurs> membresDeploiement;
+    public int explorateursSauve;
     public int bateauxDeploiement=2;
     public int pointVictoire;
 
@@ -28,11 +29,12 @@ public class joueurs {
         this.nom = nom;
         this.couleur = couleur;
         // ne pas oublier de remettre le nombre de deplacement à 3
-        this.deplacement=3;
-        this.cartesEnMain= new Vector<tuiles>();
-        this.membres= new Vector<explorateurs>();
-        this.membresDeploiement= new Vector<explorateurs>();
-        this.pointVictoire=0;
+        this.deplacement = 3;
+        this.cartesEnMain = new Vector<tuiles>();
+        this.membres = new Vector<explorateurs>();
+        this.membresDeploiement = new Vector<explorateurs>();
+        this.pointVictoire = 0;
+        this.explorateursSauve = 0;
     }
     //
     //test jo  
