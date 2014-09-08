@@ -35,8 +35,12 @@ public class The_island {
     public int choixCreature=0;
     
     public static void main(String[] args) throws IOException {
+        lancementPartie();
         
-        
+    }
+    
+    public static void lancementPartie() throws IOException
+    {
         //Scanner clavier= new Scanner(System.in);
         int nb;
         String nom;
@@ -215,7 +219,7 @@ public class The_island {
                 partie.flagAction = 2;
             }   
         }
-    }   
+    }
 }
 
 

@@ -401,14 +401,14 @@ public class partie {
         
         descriptionTuiles();
         
-            for (tuiles terrain : this.carte) {
+            /*for (tuiles terrain : this.carte) {
                 if (terrain.type == 1) {
                     terrain.pouvoir = 6;
                 }
                 if (terrain.type == 2) {
                     terrain.pouvoir = 4;
                 }
-            }
+            }*/
     }   
     
     public void randomMap(tuiles aChanger){
