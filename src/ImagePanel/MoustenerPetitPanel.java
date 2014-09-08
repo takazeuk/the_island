@@ -94,9 +94,11 @@ public class MoustenerPetitPanel extends MouseAdapter
                 else if (this.selctionPanel.numeroPetitPanel==6 && (partieEnCours.phaseDeJeu==3 || partieEnCours.phaseDeJeu == 2)) {
                     messageJoueur("je rentre dans la phase de déplacement pour bateau avec carte");
                     //on vérifie qu'il y a des marins sur le bateau
+
                     if((selctionPanel.conteneur.terrain.bateaux.get(0).marins.size()>0)&&(partieEnCours.phaseDeJeu != 2))
                     {
-                        messageJoueur(" on est en train de debuguer!!!!!!!!!!!");
+                        
+                        messageJoueur("nombre marins dans bateau "+selctionPanel.conteneur.terrain.bateaux.get(0).marins.size());
                         for (explorateurs explo : selctionPanel.conteneur.terrain.bateaux.get(0).marins) {
                             if (explo.proprietaire == partieEnCours.participant.get(partieEnCours.tourJoueur).couleur) {
                                 flagDeplacementexplo = true;
@@ -134,6 +136,7 @@ public class MoustenerPetitPanel extends MouseAdapter
                         partieEnCours.flagAction=3;
                         partieEnCours.origineExplorateur= selctionPanel.conteneur;
                         partieEnCours.panelRefresh = selctionPanel;
+                        
                         messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
                     }
                     //sinon
