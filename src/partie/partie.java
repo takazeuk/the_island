@@ -345,25 +345,7 @@ public class partie {
                        
                 }
             }
-            
-        
-        /*Component c = legros.getComponent(3);
-        System.out.println(" "+c.getClass().getName());
-        GrosPanel g = (GrosPanel) c;
-        System.out.println(" "+g.affichageUnite);
-        /*GrosPanel truc = (GrosPanel)legros;
-        if(truc instanceof GrosPanel)
-        {
-            truc =(GrosPanel) legros.getComponent(3);
-        }
-        System.out.println(""+truc.affichageUnite);*/
-        /*for (PetitPanel trucbis : g.affichageUnite) {
-            
-            System.out.println(" "+trucbis.numeroUnite);
-        }/**/
-    
-
-    
+              
     //création de l'ile
     public void creationIle()
     {
@@ -582,7 +564,7 @@ public class partie {
                 //affichageBateaux(pouvoirJoueur, newbateau);
             break;
             case 3: //tourbillon fini
-                pouvoir4DeLaTuile(pouvoirJoueur);
+                pouvoirTourbillon(pouvoirJoueur);
             break;
             case 4: //fin du jeu à faire plus tard
                 //on compte les points pour chacun des Joueurs
@@ -760,23 +742,18 @@ public class partie {
         }         
         return false;
     }
-       
-    //phase de déplacement des unités
-    /*public void deplacementUnite(joueurs tourJoueur)
-    {
-        
-    }*/
-    
+           
     //lance de dée de la créature
     public void deeCreature()
     {
-        int valeurMin=7;
+        int valeurMin=5;
         int valeurMax= 7;
         Random r = new Random();
         int valeur = valeurMin + r.nextInt((valeurMax)+1 - valeurMin);// Remettre +1 a 
         choixMonstre= valeur;
     }
     
+    //on affiche le descriptif d'un monstre en fonction du type de ce dernier
     public String typeMonstre(int type){
         if (type==5) {
             return "Requin";
@@ -790,6 +767,7 @@ public class partie {
         }
     }
     
+    //on calcule les points par joueur en fonction des explorateurs qu'il a pu ramené sur une des iles sures.
     public void calculPointJoueur(joueurs joueurPoint)
     {
         //fin de partie, on va compter les rescapé en les stockant dans un vecteur et enuiste on compte les point
@@ -812,36 +790,8 @@ public class partie {
         }
         return this.participant.get(i);
     }
-
-
-    /*public boolean affichageExplorateurs(tuiles cible, explorateurs uniteDeplacer) throws IOException {
-           
-        for (Component temp  : legros.getComponents()) {
-            
-            if(temp instanceof GrosPanel)
-            {
-                
-                GrosPanel territoire = (GrosPanel) temp;
-                
-                if (territoire.terrain==cible) {
-                    
-                    for (int i = 0; i < 3; i++) {
-                        
-                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
-                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
-                            
-                            territoire.affichageUnite.get(i).numeroUnite= uniteDeplacer.proprietaire;
-                            territoire.affichageUnite.get(i).choixImageExplorateur();
-                            return true;
-                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }*/
-    
+  
+    //on procède à l'affichage des unités sur la tuile indiquée
     public void affichageUniteTuile(tuiles cible) throws IOException{
         
         for (int i = 0; i < 3; i++) {
@@ -865,28 +815,6 @@ public class partie {
             } 
             cible.panelLien.affichageUnite.get(i+3).choixImageMonstre();
         }
-        /*int i=3;
-        if (cible.monstres.size()!=0) {
-            
-            for (monstres monstre : cible.monstres) {
-                if (cible.monstres.get(i-3)!=null) {
-                   cible.panelLien.affichageUnite.get(i).numeroUnite=monstre.type;                  
-                }
-                else
-                {
-                  cible.panelLien.affichageUnite.get(i).numeroUnite=4;
-                }
-                cible.panelLien.affichageUnite.get(i).choixImageMonstre();
-                i++;
-            }
-        }
-        else
-        {
-            for (int j = 3 ; j < 6 ; j++) {
-                cible.panelLien.affichageUnite.get(j).numeroUnite=4;
-                cible.panelLien.affichageUnite.get(j).choixImageMonstre();       
-            }
-        }*/
         
         if (cible.bateaux.size()!=0) {
             cible.panelLien.affichageUnite.get(6).choixImageBateau();
@@ -897,56 +825,8 @@ public class partie {
         }
                 
     }
-        
-    /*public boolean affichageMonstre(tuiles cible, monstres monstreDeplacer) throws IOException{
-        
-        for (Component temp  : legros.getComponents()) {
-            
-            if(temp instanceof GrosPanel)
-            {
-                
-                GrosPanel territoire = (GrosPanel) temp;
-                
-                if (territoire.terrain==cible) {
-                    
-                    for (int i = 3; i < 6; i++) {
-                        
-                        //on cherche dans les petitspanels celui qui n'est pas occupé par un pion explorateur, 4 voulant dire qu'il n'y a personne
-                        if (territoire.affichageUnite.get(i).numeroUnite==4) {
-                            
-                            territoire.affichageUnite.get(i).numeroUnite= monstreDeplacer.type;
-                            territoire.affichageUnite.get(i).choixImageMonstre();
-                            return true;
-                         //il faut mettre une fonction qui retire de l'ancien petit pannel le numero du joueur qui déplace l'unité pour enlever le pion de son ancienne position   
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    public boolean affichageBateaux(tuiles cible, bateaux bateauDeplacer ) throws IOException{
-        
-        for (Component temp  : legros.getComponents()) {
-            
-            if(temp instanceof GrosPanel)
-            {
-                
-                GrosPanel territoire = (GrosPanel) temp;
-                
-                if (territoire.terrain==cible) {
-                                                                    
-                    territoire.affichageUnite.get(6).choixImageBateau();
-                    return true;                        
-                }               
-            }           
-        }
-        return false;
-    }*/
-
-    
-    
+          
+    //
     public boolean autoriserDeplacementPouvoirTuile(tuiles depart, tuiles arrive)
     {
         if(depart.x==arrive.x)
@@ -982,7 +862,8 @@ public class partie {
         return false;
     }
     
-    public void pouvoir4DeLaTuile(tuiles pouvoirJoueur) throws IOException
+    //pouvoir du tourbillon
+    public void pouvoirTourbillon(tuiles pouvoirJoueur) throws IOException
     {
         GrosPanel lePanel;
         for (Component laTuile : legros.getComponents()) {
@@ -1010,10 +891,7 @@ public class partie {
         }
     }
     
-    
-    
-    
-    
+    //on fait un balayage des tuiles encore présente, on vérifie les types, et on vérifie si elles ont des tuiles d'eau adjacente. Fonction importante pour retirer tuile, car si pas de tuile d'eau adjacente, il faut autoriser le joueur à retirer une tuile du type en cours
     public boolean balayageTuile()
     {
         boolean encoreDuSable = false;
@@ -1071,7 +949,7 @@ public class partie {
         return uneTuileEauAdjacente;
     }
     
-    
+    // on retire une tuile de l'ile et on procède au vérification pour voir si la tuile sélectionné peut être retiré
     public boolean retirerTuile(tuiles cible) throws IOException
     {
         boolean eauAdjacente =false;
@@ -1191,6 +1069,7 @@ public class partie {
         return false;
     }
     
+    //on refresh les images sur les tuiles
     public void refreshTuile (tuiles cible) throws IOException
     {
         GrosPanel chercher;
@@ -1209,6 +1088,7 @@ public class partie {
         }
     }
     
+    //on prépare les tuiles pour l'ile
     public  void creationTuiles()
     {
         
@@ -1235,6 +1115,7 @@ public class partie {
 
     }
     
+    //fonction pour donner le descriptif des tuiles en fonction de leurs pouvoirs
     public void descriptionTuiles(){
         
         for (tuiles terrain : this.carte) {
@@ -1279,8 +1160,6 @@ public class partie {
             }
         }
     }
-    
-    
-           
+               
 }
 
