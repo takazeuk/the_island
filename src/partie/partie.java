@@ -505,9 +505,9 @@ public class partie {
     {
         //mise en place des premiers monstres du début de partie
         monstres plateaumonstres1= new monstres("Serpent de mer", 1, 7, 1, 1);
-        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 7, 9, 2);
-        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 7, 5, 6);
-        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 7, 10, 10);
+        monstres plateaumonstres2= new monstres("Serpent de mer", 1, 7, 11, 2);
+        monstres plateaumonstres3= new monstres("Serpent de mer", 1, 7, 8, 6);
+        monstres plateaumonstres4= new monstres("Serpent de mer", 1, 7, 5, 10);
         monstres plateaumonstres5= new monstres("Serpent de mer", 1, 7, 15, 11);
         
         //ajout des monstres au vecteur unité de partie
@@ -794,7 +794,7 @@ public class partie {
                 i = j;
             }
         }
-        messageJoueur(" Bravo "+this.participant.get(i)+", vous avez remporté la partie");
+        messageJoueur(" Bravo "+this.participant.get(i).nom+", vous avez remporté la partie avec "+this.participant.get(i).pointVictoire+" points");
         messageJoueur("La partie est terminée...");
     } 
   
