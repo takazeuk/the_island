@@ -367,7 +367,7 @@ public class MoustenerGrosPanel extends MouseAdapter
             
             if (partieEnCours.flagAction == 4) {
                 //messageJoueur(""+placement.pouvoir);
-                //
+                
             try {               
                 if (partieEnCours.retirerTuile(placement)) { 
                     placement.type = 0;
