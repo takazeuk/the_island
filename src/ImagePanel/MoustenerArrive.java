@@ -95,6 +95,7 @@ public class MoustenerArrive extends MouseAdapter{
                         } catch (IOException ex) {
                             Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        partieEnCours.origineExplorateur.gestionDesProprioBateau();
 
                     }
                     partieEnCours.exploDeplace = null;
