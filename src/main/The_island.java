@@ -46,23 +46,31 @@ public class The_island {
     {
         
         String Newligne=System.getProperty("line.separator"); 
-        int nb;
+        int nb = 3;
         String nom;
-         
+        boolean b = false;
         //lancement de la partie avec la demande du nombre de joueur. On vérifie que le nombre de joueur ne dépasse pas 4
         do
         {
-            nb = Interaction.demandeChoix("Bienvenue dans The Island, Combien d'aventuriers seront dans la partie ? (4 maximums)");
-            if(nb > 4)
-            {
-                Interaction.affiche("nombre de joueurs trop grand");
+            try{
+		nb = Integer.parseInt(""+Interaction.demandeChoix("Bienvenue dans The Island, Combien d'aventuriers seront dans la partie ? (4 maximums)"));
+                if(nb > 4)
+                {
+                    Interaction.affiche("nombre de joueurs trop grand");
+                }
+                else if(nb<2)
+                {
+                    Interaction.affiche("nombre de joueurs trop petit");
+                }
+                b = true;
+            }catch ( NumberFormatException e ){
+                Interaction.affiche("Le nombre de joueur doit etre un entier");
             }
-            else if(nb<2)
-            {
-                Interaction.affiche("nombre de joueurs trop petit");
-            }
+
+            
+            
         }
-        while(nb > 4||nb<2);
+        while((nb > 4||nb<2) || b == false);
         
         //on crée la classe partie pour accèder à nos fonctions de jeu
         partie partie = new partie(nb);
