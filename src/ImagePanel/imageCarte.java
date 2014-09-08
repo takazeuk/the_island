@@ -34,19 +34,19 @@ public class imageCarte extends JPanel{
             switch(carteTuile.pouvoir)
             {
                 case 5:
-                    image = ImageIO.read(getClass().getResource("/images/unitesTuile/Perso-Rouge.png"));
+                    image = ImageIO.read(getClass().getResource("/images/cartes/CarteDauphin.png"));
                 break;
                 case 6:
                     image = ImageIO.read(getClass().getResource("/images/cartes/CarteBarque.png"));
                 break;
                 case 7:
-                    image = ImageIO.read(getClass().getResource("/images/unitesTuile/SerpentDeMer.png"));
+                    image = ImageIO.read(getClass().getResource("/images/cartes/CarteHydre.png"));
                 break;
                 case 8:
-                    image = ImageIO.read(getClass().getResource("/images/unitesTuile/Requin.png"));
+                    image = ImageIO.read(getClass().getResource("/images/cartes/CarteRequin.png"));
                 break;
                 case 9:
-                    image = ImageIO.read(getClass().getResource("/images/unitesTuile/Baleine.png"));
+                    image = ImageIO.read(getClass().getResource("/images/cartes/CarteBaleine.png"));
                 break;
             }
         } catch (IOException ex) {

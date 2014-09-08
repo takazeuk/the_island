@@ -349,7 +349,7 @@ public class partie {
         
             for (tuiles terrain : this.carte) {
                 /*if (terrain.type == 1) {
-                    terrain.pouvoir = 6;
+                    terrain.pouvoir = 9;
                 }*/
                 if (terrain.type == 2) {
                     terrain.pouvoir = 4;
@@ -589,6 +589,7 @@ public class partie {
         }
         else
         {
+            messageJoueur("Vous avez reçu une carte, vous pourrez l'utiliser lors de la pahse d'utilisation des pouvoirs ");
             // Demander au joueur s'il veut jouer une carte en main si oui alors switch sinon passer à l'etape suivante
             // afficher dans un frame les cartes avec images du joueur et puis faire un return du type de pouvoir de la tuile choisi
             switch(cibler.pouvoir)
@@ -1031,7 +1032,7 @@ public class partie {
         }
         for(int j = 1  ; j < this.participant.size(); j++)
         {
-            messageJoueur(this.participant.get(i).nom+", vous avez sauvé "+this.participant.get(i).explorateursSauve+" explorateurs pour un total de "+this.participant.get(i).pointVictoire+" points");
+            messageJoueur(this.participant.get(j).nom+", vous avez sauvé "+this.participant.get(j).explorateursSauve+" explorateurs pour un total de "+this.participant.get(j).pointVictoire+" points");
         }
         messageJoueur(" Bravo "+this.participant.get(i).nom+", vous avez remporté la partie avec "+this.participant.get(i).pointVictoire+" points");
         messageJoueur("La partie est terminée...");
