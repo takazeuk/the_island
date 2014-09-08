@@ -116,7 +116,7 @@ public class partie {
         deux.setLocation(1434, 130);
         trois.setLocation(130,1110);
         quatre.setLocation(1464, 1122);
-        //transformer en boucle for
+
         while (compt!=13) {            
             switch(compt)
             {
@@ -138,9 +138,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        lenouv.setLocation((400) +j*120,50+compt*90);
-                        //lenouv.setBounds((largeur/2 - 210) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
-                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);                       
+                        lenouv.setLocation((400) +j*120,50+compt*90);                    
                     }
                 break;
                 case 1: case 3: case 9: case 11:
@@ -169,10 +167,7 @@ public class partie {
                         lenouv.setSize(120, 120);
                         lenouv.setVisible(true);
                         legros.add(lenouv);
-                        //mine.getContentPane().add(lenouv);
                         lenouv.setLocation((220) +j*120,50+compt*90);
-                        //lenouv.setBounds((largeur/2 - 300) +j*80, (hauteur/2 -(285+(65/2)))+compt*65, 80, 80);
-                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
                 case 2: case 4: case 6: case 8: case 10:
@@ -206,7 +201,6 @@ public class partie {
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         lenouv.setLocation((160)+j*120,50+compt*90);
-                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
                 break;
                 case 5: case 7:
@@ -229,7 +223,6 @@ public class partie {
                         lenouv.setVisible(true);
                         legros.add(lenouv);
                         lenouv.setLocation((100) +j*120,50+compt*90);
-                        //System.out.println("x="+ lenouv.terrain.x+ "y= "+ lenouv.terrain.y);
                     }
             }
             compt++;
@@ -244,109 +237,62 @@ public class partie {
                 }
             }           
         }
-       
-        /*Scroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        Scroll.add(legros);
-        Scroll.setMinimumSize(new Dimension(200, 200));
-        Scroll.setVisible(true);*/
-        //miseEnPlaceDesPetitPanel();
-        Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        
+        //on crée l'interface avec la scrollBarre et on lui envoi le panel contenant le plateau
+        Scroll = new JScrollPane(legros, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);        
         Scroll.setBounds(largeur/8, hauteur/8, 6*largeur/8, 6*hauteur/8);
-        
-        //legros.setBounds(0, 0, largeur, hauteur);
-        
         mine.getContentPane().add(Scroll);
-       // mine.getContentPane().add(Scroll);
         legros.setVisible(true);
         mine.setSize(largeur, hauteur);
         mine.setVisible(true);
     }
-    public void miseEnPlaceDesPetitPanel(GrosPanel tuile) throws IOException
-    {
+    
+    //on crée les PetitPanel qui seront les emplacements pours les unités
+    public void miseEnPlaceDesPetitPanel(GrosPanel tuile) throws IOException {
         int longueur = 30;
         int hauteur = 30;
-        
-        /*for (Component LesPanels : legros.getComponents()) 
-        {
-            System.out.println("1er for"+LesPanels.getClass().getName());
-            if(LesPanels instanceof GrosPanel)
-            {
-                System.out.println("le premier if du premier for");
-                GrosPanel panel = (GrosPanel) LesPanels;*/
-                for (int i = 0; i < 7; i++) 
-                {
-                    PetitPanel unite;
-                    if(i==0)
-                    {
-                       unite = new PetitPanel(0, tuile, this);
-                       // unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(22, 15, 30, 30);
-                        //unite.setLocation(20, 10);
-                         
-                    }
-                    else if(i==1)
-                    {
-                       unite = new PetitPanel(1, tuile, this);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(7, 45, hauteur, longueur);
-                        //unite.setLocation(5, 45);
-                        
-                    }
-                    else if(i==2)
-                    {
-                        unite = new PetitPanel(2, tuile, this);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(22, 77, hauteur, longueur);
-                        //unite.setLocation(15, 75);
-                        
-                    }
-                    else if(i==3)
-                    {
-                        unite = new PetitPanel(3, tuile, this);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(70, 80, hauteur, longueur);
-                        //unite.setLocation(75, 75);
-                        
-                    }
-                    else if(i==4)
-                    {
-                        unite = new PetitPanel(4, tuile, this);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(90, 45, hauteur, longueur);
-                        //unite.setLocation(85, 45);
-                                            }
-                    else if(i==5)
-                    {
-                        unite = new PetitPanel(5, tuile, this);
-                        //unite.setSize(15, 15);
-                        tuile.add(unite);
-                        unite.setBounds(70, 10, hauteur, longueur);
-                        //unite.setLocation(75, 15);
-                        
-                    }
-                    else
-                    {
-                        //unite.setSize(10, 10);
-                        //unite.setLocation(45, 45);
-                        unite = new PetitPanel(6, tuile, this);
-                        tuile.add(unite);
-                        unite.setBounds(47, 45, hauteur, longueur);
-                        //unite.setBounds(60, 60, 10, 10);
-                        
-                        
-                    }
-                    tuile.affichageUnite.add(unite);
-                       
-                }
+
+        for (int i = 0; i < 7; i++) {
+            PetitPanel unite;
+            if (i == 0) {
+                unite = new PetitPanel(0, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(22, 15, 30, 30);
+            } 
+            else if (i == 1) {
+                unite = new PetitPanel(1, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(7, 45, hauteur, longueur);
+            } 
+            else if (i == 2) {
+                unite = new PetitPanel(2, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(22, 77, hauteur, longueur);
+            } 
+            else if (i == 3) {
+                unite = new PetitPanel(3, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(70, 80, hauteur, longueur);
             }
+            else if (i == 4) {
+                unite = new PetitPanel(4, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(90, 45, hauteur, longueur);
+            } 
+            else if (i == 5) {
+                unite = new PetitPanel(5, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(70, 10, hauteur, longueur);
+            } 
+            else {
+                unite = new PetitPanel(6, tuile, this);
+                tuile.add(unite);
+                unite.setBounds(47, 45, hauteur, longueur);
+            }
+            tuile.affichageUnite.add(unite);
+        }
+    }
               
-    //création de l'ile
+    //création de l'ile avec une mise en place aléatoire des tuiles de l'ile
     public void creationIle()
     {
         creationTuiles();
@@ -411,53 +357,13 @@ public class partie {
             }*/
     }   
     
+    //fonction Random pour la création de l'île
     public void randomMap(tuiles aChanger){
       Random r= new Random();
       int randomTuile= r.nextInt((int)tuileConstruction.size());
       aChanger.type=tuileConstruction.get(randomTuile).type;
       aChanger.pouvoir= tuileConstruction.get(randomTuile).pouvoir;
       tuileConstruction.remove(tuileConstruction.get(randomTuile));  
-    }
-    
-    public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer) throws IOException{
-        
-        if (cible.explorateurs.size()!=3) {
-            
-            //affichageExplorateurs(cible, uniteDeplacer);
-            cible.explorateurs.add(uniteDeplacer);
-            affichageUniteTuile(cible);
-            return true;
-        }
-        return false;
-        //messagebox de refus du déplacement
-    }
-    
-    public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer) throws IOException{
-        
-        if (cible.monstres.size()<3) {
-            for (monstres monstrePresent : cible.monstres) {
-                if (monstreDeplacer.type==monstrePresent.type) {
-                    return false;
-                }
-            }
-            
-            //affichageMonstre(cible, monstreDeplacer);
-            cible.monstres.add(monstreDeplacer);
-            affichageUniteTuile(cible);
-            return true;
-        }
-        return false;
-        //messagebox de refus du déplacement     
-    }
-    
-    public boolean ajoutBateauTuile(tuiles cible, bateaux bateauDeplacer) throws IOException{
-        if (cible.bateaux.size()==1) {
-            return false;
-            //messagebox de refus du déplacement
-        }
-        cible.bateaux.add(bateauDeplacer);
-        affichageUniteTuile(cible);
-        return true;
     }
     
     //création des explorateurs
@@ -492,15 +398,13 @@ public class partie {
               case 9:
                   survivant= new explorateurs(6, 0, 0, joueurCree.couleur);
                   joueurCree.membres.add(survivant);
-              break;*/
-                  
-                  
+              break;*/   
             }  
         }
         joueurCree.membresDeploiement=joueurCree.membres;
     }
     
-    //creation des premeirs monstres sur le plateau
+    //creation des premiers monstres sur le plateau
     public void miseEnPlaceMonstre() throws IOException
     {
         //mise en place des premiers monstres du début de partie
@@ -524,25 +428,118 @@ public class partie {
         this.ajoutMonstresTuile(this.carte.get(125), plateaumonstres5);
     }
     
+        //phase de deploiementExplorateurs des explorateurs des joueurs
+    public boolean deploiementExplorateurs(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi) throws IOException
+    {
+        if ((choisi.type==0)||(choisi.explorateurs.size()>0)) {
+            if(choisi.type==0){
+                messageJoueur("Vous ne pouvez pas mettre un explorateur sur une case d'eau lors de la phase de déploiement");
+            }
+            else{               
+                messageJoueur("Vous ne pouvez pas mettre un pion sur cette case car il y a déjà un explorateur");
+            }
+            return false;
+        }
+        else
+        {
+            choisi.explorateurs.add(pionschoisi);
+            pionschoisi.x=choisi.x;
+            pionschoisi.y=choisi.y;
+            this.affichageUniteTuile(choisi);
+            return true;
+        }
+    }
+    
+     //phase de deploiementExplorateurs des explorateurs des bateaux
+    public boolean deploiementBateaux(tuiles choisi) throws IOException
+    {
+        tuiles adjacente;
+        int FlagType=0;
+        for (tuiles tuilesCarte : carte) {
+            //on regarde s'il y a une tuile adjecente de terre autour de l'endroit où on veut mettre le bateau
+           if (((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y+1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y+1))) {
+               adjacente= tuilesCarte;
+               if (adjacente.type!=0) {
+                   FlagType=1;
+               }
+           }
+                if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)&&(choisi.monstres.size()==0)) {
+                    bateaux bateauxPlacement= new bateaux(choisi.x,choisi.y);
+                    choisi.bateaux.add(bateauxPlacement);
+                    for (Component temp  : legros.getComponents()) {
+            
+                        if(temp instanceof GrosPanel)
+                        {               
+                            GrosPanel territoire = (GrosPanel) temp;
+                            if (territoire.terrain==choisi) {
+                                this.affichageUniteTuile(choisi);
+                            }
+                        }
+                    }
+                    return true;
+                }
+                FlagType=0;
+        }         
+        return false;
+    }
+    
+    //fonction appeler quand les joueurs déplace leurs explorateurs
+    public boolean ajoutEplorateursTuile(tuiles cible, explorateurs uniteDeplacer) throws IOException{
+        
+        if (cible.explorateurs.size()!=3) {
+            cible.explorateurs.add(uniteDeplacer);
+            affichageUniteTuile(cible);
+            return true;
+        }
+        return false;
+    }
+    
+    //fonction appeler quand un monstre se déplace
+    public boolean ajoutMonstresTuile(tuiles cible, monstres monstreDeplacer) throws IOException{
+        
+        if (cible.monstres.size()<3) {
+            for (monstres monstrePresent : cible.monstres) {
+                if (monstreDeplacer.type==monstrePresent.type) {
+                    return false;
+                }
+            }
+            cible.monstres.add(monstreDeplacer);
+            affichageUniteTuile(cible);
+            return true;
+        }
+        return false;
+    }
+    
+    //fonction appeler quand un bateau est déplacé
+    public boolean ajoutBateauTuile(tuiles cible, bateaux bateauDeplacer) throws IOException{
+        if (cible.bateaux.size()==1) {
+            return false;
+        }
+        cible.bateaux.add(bateauDeplacer);
+        affichageUniteTuile(cible);
+        return true;
+    }
+    
+   //fonction pour les pouvoirs immédiats: ceux qui s'execture dès que la tuile est retirée du jeu
     public void pouvoirImmediat(tuiles pouvoirJoueur) throws IOException
     {
         monstres apparition;
         switch(pouvoirJoueur.pouvoir)
         {
-            case 0: case 1:
+            case 0: case 1: //requin et baleine
                 if (pouvoirJoueur.pouvoir==0) {
                     apparition= new monstres("Requin",2,5,pouvoirJoueur.x,pouvoirJoueur.y);
                 }
                 else
                 {
                    apparition= new monstres("Baleine",3,6,pouvoirJoueur.x,pouvoirJoueur.y); 
-                }               
-                pouvoirJoueur.monstres.add(apparition);
-                affichageUniteTuile(pouvoirJoueur);
-                //affichageMonstre(pouvoirJoueur, apparition);
+                }         
                 
+                pouvoirJoueur.monstres.add(apparition);
+                affichageUniteTuile(pouvoirJoueur);               
                 apparition.attaque(pouvoirJoueur);
                 GrosPanel chercher;
+                
                 for (Component lesGros: legros.getComponents())
                 {
                     if(lesGros instanceof GrosPanel)
@@ -556,20 +553,17 @@ public class partie {
                             chercher.refreshImage();
                         }
                     }
-
                 }
-                
             break;
-            case 2:
+            case 2: //nouveau bateau
                 bateaux newbateau = new bateaux(pouvoirJoueur.x,pouvoirJoueur.y);
                 pouvoirJoueur.bateaux.add(newbateau);
                 affichageUniteTuile(pouvoirJoueur);
-                //affichageBateaux(pouvoirJoueur, newbateau);
             break;
-            case 3: //tourbillon fini
+            case 3: //tourbillon
                 pouvoirTourbillon(pouvoirJoueur);
             break;
-            case 4: //fin du jeu
+            case 4: //fin du jeu. Elle déclenche le volcan qui met fin à la partie
                 //on compte les points pour chacun des Joueurs
                 for (joueurs challenger : participant) {
                     calculPointJoueur(challenger);
@@ -581,6 +575,7 @@ public class partie {
         }
     }
     
+    //pouvoir que l'on peut conserver
     public void pouvoirEnMainActiver(joueurs j, tuiles cibler)
     {   
         if(flagAction==4)
@@ -590,25 +585,18 @@ public class partie {
         }
         else
         {
-            messageJoueur("je rentre dans les pouvoirs yata");
             // Demander au joueur s'il veut jouer une carte en main si oui alors switch sinon passer à l'etape suivante
             // afficher dans un frame les cartes avec images du joueur et puis faire un return du type de pouvoir de la tuile choisi
             switch(cibler.pouvoir)
             {
                 //pouvoir des déplacements dauphins
                 case 5:
-                    messageJoueur("je rentre dans les dauphins");
                     flagAction = 7;
-
                 break;
-
                 //pouvoir des déplacement bateaux
                 case 6:
-                    messageJoueur("je rentre dans les bateaux");
                     flagAction = 8;
-
                 break;
-
                 //pouvoir des déplacements de serpent de mer, requin et baleine
                 case 7: case 8: case 9:
                     ModePouvoir = true;
@@ -625,9 +613,7 @@ public class partie {
                         choixMonstre = 6;
                     }
                     flagAction = 5;
-
-                break;
-                                 
+                break;                                 
             }
         }
     }
@@ -690,66 +676,8 @@ public class partie {
         // jo the best
         return false;
     }
-    
-    //phase de deploiementExplorateurs des explorateurs des joueurs
-    public boolean deploiementExplorateurs(joueurs tourJoueur, explorateurs pionschoisi, tuiles choisi) throws IOException
-    {
-        if ((choisi.type==0)||(choisi.explorateurs.size()>0)) {
-            if(choisi.type==0){
-                messageJoueur("Vous ne pouvez pas mettre un explorateur sur une case d'eau lors de la phase de déploiement");
-            }
-            else{               
-                messageJoueur(choisi.explorateurs.size()+"Vous ne pouvez pas mettre un pion sur cette case car il y a déjà un explorateur");
-            }
-            return false;
-        }
-        else
-        {
-            //il faudra 
-            choisi.explorateurs.add(pionschoisi);
-            pionschoisi.x=choisi.x;
-            pionschoisi.y=choisi.y;
-            this.affichageUniteTuile(choisi);
-            //choisi.panelLien.refreshGrosPanel();
-            //affichageExplorateurs(choisi, pionschoisi);
-            return true;
-        }
-    }
-    
-    public boolean deploiementBateaux(tuiles choisi) throws IOException
-    {
-        tuiles adjacente;
-        int FlagType=0;
-        for (tuiles tuilesCarte : carte) {
-            //on regarde s'il y a une tuile adjecente de terre autour de l'endroit où on veut mettre le bateau
-           if (((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x)&&(tuilesCarte.y==choisi.y+1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y))||((tuilesCarte.x==choisi.x-1)&&(tuilesCarte.y==choisi.y-1))||((tuilesCarte.x==choisi.x+1)&&(tuilesCarte.y==choisi.y+1))) {
-               adjacente= tuilesCarte;
-               if (adjacente.type!=0) {
-                   FlagType=1;
-               }
-           }
-                if ((choisi.type==0)&&(choisi.bateaux.isEmpty())&&(FlagType==1)&&(choisi.monstres.size()==0)) {
-                    bateaux bateauxPlacement= new bateaux(choisi.x,choisi.y);
-                    choisi.bateaux.add(bateauxPlacement);
-                    for (Component temp  : legros.getComponents()) {
-            
-                        if(temp instanceof GrosPanel)
-                        {               
-                            GrosPanel territoire = (GrosPanel) temp;
-                            if (territoire.terrain==choisi) {
-                                this.affichageUniteTuile(choisi);
-                                //territoire.affichageUnite.get(6).choixImageBateau();
-                            }
-                        }
-                    }
-                    return true;
-                }
-                FlagType=0;
-        }         
-        return false;
-    }
-           
-    //lance de dée de la créature
+          
+    //lance de dée de la créature: permet de choisir une créature qui pourra être déplacé
     public void deeCreature()
     {
         int valeurMin=7;
@@ -773,32 +701,7 @@ public class partie {
         }
     }
     
-    //on calcule les points par joueur en fonction des explorateurs qu'il a pu ramené sur une des iles sures.
-    public void calculPointJoueur(joueurs joueurPoint)
-    {
-        //fin de partie, on va compter les rescapé en les stockant dans un vecteur et enuiste on compte les point
-        for (explorateurs valeurPion : survivants) {           
-            if (valeurPion.proprietaire == joueurPoint.couleur) {
-                joueurPoint.pointVictoire= joueurPoint.pointVictoire + valeurPion.points;
-            }
-        }
-        
-    }
-    
-    public void vainqueur()
-    {
-        int i = 0;
-        for(int j = 1  ; j < this.participant.size(); j++)
-        {
-            if (this.participant.get(i).pointVictoire < this.participant.get(j).pointVictoire) {
-                i = j;
-            }
-        }
-        messageJoueur(" Bravo "+this.participant.get(i).nom+", vous avez remporté la partie avec "+this.participant.get(i).pointVictoire+" points");
-        messageJoueur("La partie est terminée...");
-    } 
-  
-    //on procède à l'affichage des unités sur la tuile indiquée
+ //on procède à l'affichage des unités sur la tuile indiquée
     public void affichageUniteTuile(tuiles cible) throws IOException{
         
         for (int i = 0; i < 3; i++) {
@@ -833,7 +736,7 @@ public class partie {
                 
     }
           
-    //
+    //on vérifie si le déplacement spéciale, procuré par la tuile, est possible, sur la tuile choisi par le joueur
     public boolean autoriserDeplacementPouvoirTuile(tuiles depart, tuiles arrive)
     {
         if(depart.x==arrive.x)
@@ -869,7 +772,7 @@ public class partie {
         return false;
     }
     
-    //pouvoir du tourbillon
+    //pouvoir du tourbillon. Elimine toute unités se trouvant sur la tuile adjacente d'apparition du tourbillon, si elles sont de type eau
     public void pouvoirTourbillon(tuiles pouvoirJoueur) throws IOException
     {
         GrosPanel lePanel;
@@ -898,7 +801,8 @@ public class partie {
         }
     }
     
-    //on fait un balayage des tuiles encore présente, on vérifie les types, et on vérifie si elles ont des tuiles d'eau adjacente. Fonction importante pour retirer tuile, car si pas de tuile d'eau adjacente, il faut autoriser le joueur à retirer une tuile du type en cours
+    //on fait un balayage des tuiles encore présente, on vérifie les types, et on vérifie si elles ont des tuiles d'eau adjacente. 
+    //Fonction importante pour retirer tuile, car si pas de tuile d'eau adjacente, il faut autoriser le joueur à retirer une tuile du type en cours
     public boolean balayageTuile()
     {
         boolean encoreDuSable = false;
@@ -910,7 +814,6 @@ public class partie {
             }
             
         }
-        messageJoueur("encore du sable "+encoreDuSable );
         
         if(encoreDuSable == true)
         {
@@ -931,7 +834,6 @@ public class partie {
             
                 }
             }
-                        messageJoueur("uneTuileEauAdjacente "+uneTuileEauAdjacente );
         }
         else
         {
@@ -990,7 +892,6 @@ public class partie {
         // regarder s'il y a une tuile qui est adjacente à l'eau
         if(balayageTuile()== true)
         {
-            messageJoueur("ne pas accepter les tuiles sans eau adjacente");
             // si la tuile selectionner est adjacente a l'eau alors OK
             if(eauAdjacente)
             {
@@ -1037,7 +938,6 @@ public class partie {
         // si il n' y a plus de case adjacente a l'eau
         else
         {
-            messageJoueur("accepter les tuiles sans eau adjacente");
             if(encoreDuSable)
                 {
                     if(cible.type!=1)
@@ -1071,8 +971,7 @@ public class partie {
                        return true; 
                     }
                 }
-        }
-        
+        }        
         return false;
     }
     
@@ -1090,8 +989,7 @@ public class partie {
                     chercher.refreshImage();
                     
                 }
-            }
-            
+            }            
         }
     }
     
@@ -1158,14 +1056,46 @@ public class partie {
                 case 9:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
                 break;
-                case 10:
+                /*case 10:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
                 break;
                 case 11:
                     terrain.descriptionPouvoir = "Déplacez la Baleine de votre choix déjà présente sur le plateau de jeu sur n’importe quelle case de mer inoccupée.";
-                break;                   
+                break;*/                   
             }
         }
+    }
+    
+    //fonction appelé par la carte volcan: calculPointJoueur et vainqueur
+    //on calcule les points par joueur en fonction des explorateurs qu'il a pu ramené sur une des iles sures.
+    public void calculPointJoueur(joueurs joueurPoint)
+    {
+        //fin de partie, on va compter les rescapés en les stockant dans un vecteur. On comptera ensuite les points
+        for (explorateurs valeurPion : survivants) {           
+            if (valeurPion.proprietaire == joueurPoint.couleur) {
+                joueurPoint.explorateursSauve++;
+                joueurPoint.pointVictoire= joueurPoint.pointVictoire + valeurPion.points;
+            }
+        }
+        
+    }
+    
+    //on définit qui est le vainqueur
+    public void vainqueur()
+    {
+        int i = 0;
+        for(int j = 1  ; j < this.participant.size(); j++)
+        {
+            if (this.participant.get(i).pointVictoire < this.participant.get(j).pointVictoire) {
+                i = j;
+            }
+        }
+        for(int j = 1  ; j < this.participant.size(); j++)
+        {
+            messageJoueur(this.participant.get(i).nom+", vous avez sauvé "+this.participant.get(i).explorateursSauve+" explorateurs pour un total de "+this.participant.get(i).pointVictoire+" points");
+        }
+        messageJoueur(" Bravo "+this.participant.get(i).nom+", vous avez remporté la partie avec "+this.participant.get(i).pointVictoire+" points");
+        messageJoueur("La partie est terminée...");
     }
                
 }
