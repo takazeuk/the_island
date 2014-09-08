@@ -102,10 +102,10 @@ public class partie {
         legros.setLayout(null);
         legros.setPreferredSize(new Dimension(1600,1300));
         // Créer les quatre iles d'arrive
-        Arrive un = new Arrive();
-        Arrive deux  = new Arrive();
-        Arrive trois = new Arrive();
-        Arrive quatre = new Arrive();
+        Arrive un = new Arrive(1, this);
+        Arrive deux  = new Arrive(2, this);
+        Arrive trois = new Arrive(3, this);
+        Arrive quatre = new Arrive(4, this);
         //les inserer dans le Panel "legros" qui englobe tout
         legros.add(un);
         legros.add(deux);
