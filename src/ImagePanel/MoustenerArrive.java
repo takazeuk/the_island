@@ -88,6 +88,13 @@ public class MoustenerArrive extends MouseAdapter{
                         partieEnCours.origineExplorateur.terrain.bateaux.get(0).marins.remove(partieEnCours.exploDeplace);
                         partieEnCours.DescendreMarin = false;
                         partieEnCours.panelRefresh.numeroPetitPanel = 6;
+                        
+                        try {
+                            partieEnCours.affichageUniteTuile(partieEnCours.origineExplorateur.terrain);
+                            //partieEnCours.panelRefresh.refreshexplorateurs();
+                        } catch (IOException ex) {
+                            Logger.getLogger(MoustenerGrosPanel.class.getName()).log(Level.SEVERE, null, ex);
+                        }
 
                     }
                     partieEnCours.exploDeplace = null;
