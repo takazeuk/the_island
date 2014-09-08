@@ -99,7 +99,6 @@ public class The_island {
         //partie déploiement des pions par les joueurs
         messageJoueur("Phase de déploiement, tous les joueurs vont placer leurs explorateurs sur l'île");
         messageJoueur(partie.participant.get(0).nom+" , vous êtes le premier joueur, vous devez placer un pion sur l'ile, sur une case non occupée par un autre joueur"); 
-        messageJoueur(""+partie.flagAction);
         while(partie.participant.get(nb-1).membresDeploiement.size()!=0){
             //on bloque le code tant que tous les pions n'ont pas été placés.
         }
