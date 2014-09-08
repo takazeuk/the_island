@@ -136,7 +136,6 @@ public class MoustenerPetitPanel extends MouseAdapter
                         partieEnCours.flagAction=3;
                         partieEnCours.origineExplorateur= selctionPanel.conteneur;
                         partieEnCours.panelRefresh = selctionPanel;
-                        
                         messageJoueur("explorateur séléctionné selectionnez maintenant une case de destination");
                     }
                     //sinon
