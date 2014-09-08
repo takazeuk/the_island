@@ -48,19 +48,19 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==0)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rouge.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Perso-Rouge.png"));
           }               
           else if(this.numeroUnite==1)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Vert.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Perso-Vert.png"));
           }
           else if(this.numeroUnite==2)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Rose.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Perso-Rose.png"));
           }
           else if(this.numeroUnite==3)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Perso-Jaune.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Perso-Jaune.png"));
           }
           else
           {
@@ -73,15 +73,15 @@ public class PetitPanel extends JPanel{
     {          
           if(this.numeroUnite==5)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Requin.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Requin.png"));
           }               
           else if(this.numeroUnite==6)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/Baleine.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Baleine.png"));
           }
           else if(this.numeroUnite==7)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/SerpentDeMer.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/SerpentDeMer.png"));
           }
           else
           {
@@ -93,7 +93,7 @@ public class PetitPanel extends JPanel{
     public void choixImageBateau() throws IOException
     {          
       
-        m_image = ImageIO.read(getClass().getResource("/images/Barque.png"));
+        m_image = ImageIO.read(getClass().getResource("/images/unitesTuile/Barque.png"));
     
         repaint();
     }
@@ -120,7 +120,7 @@ public class PetitPanel extends JPanel{
                     if(marins.proprietaire==0)
                     {
                         try {
-                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Rouge.png"));
+                            m_image = ImageIO.read(getClass().getResource("/images/marinBateau/Marin-Rouge.png"));
                         } catch (IOException ex) {
                             Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -128,7 +128,7 @@ public class PetitPanel extends JPanel{
                     else if(marins.proprietaire==1)
                     {
                        try {
-                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Vert.png"));
+                            m_image = ImageIO.read(getClass().getResource("/images/marinBateau/Marin-Vert.png"));
                         } catch (IOException ex) {
                             Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
                         } 
@@ -136,7 +136,7 @@ public class PetitPanel extends JPanel{
                     else if(marins.proprietaire==2)
                     {
                         try {
-                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Rose.png"));
+                            m_image = ImageIO.read(getClass().getResource("/images/marinBateau/Marin-Rose.png"));
                         } catch (IOException ex) {
                             Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -144,7 +144,7 @@ public class PetitPanel extends JPanel{
                     else if(marins.proprietaire==3)
                     {
                         try {
-                            m_image = ImageIO.read(getClass().getResource("/images/Marin-Jaune.png"));
+                            m_image = ImageIO.read(getClass().getResource("/images/marinBateau/Marin-Jaune.png"));
                         } catch (IOException ex) {
                             Logger.getLogger(PetitPanel.class.getName()).log(Level.SEVERE, null, ex);
                         }

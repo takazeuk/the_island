@@ -30,7 +30,7 @@ public class Arrive extends JPanel{
         this.setLayout(null);
         this.setOpaque(false);
         this.setSize(56, 48);
-        m = ImageIO.read(getClass().getResource("/images/Houses.png"));
+        m = ImageIO.read(getClass().getResource("/images/unitesTuile/Houses.png"));
         clicArrive = new MoustenerArrive(this, partieEnCours);
         this.addMouseListener(clicArrive);
     }

@@ -64,22 +64,22 @@ public class GrosPanel extends JPanel{
           
           if(terrain.type==0)
           {
-            m_image = ImageIO.read(getClass().getResource("/images/Eau-vide.png"));
+            m_image = ImageIO.read(getClass().getResource("/images/tuiles/Eau-vide.png"));
             b = true;
           }               
           else if(terrain.type==1)
           {
-              m_image = ImageIO.read(getClass().getResource("/images/sable.png"));
+              m_image = ImageIO.read(getClass().getResource("/images/tuiles/sable.png"));
               b = false;
           }
           else if(terrain.type==2)
           {
-             m_image = ImageIO.read(getClass().getResource("/images/foret.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/tuiles/foret.png"));
              b = false;
           }
           else
           {
-             m_image = ImageIO.read(getClass().getResource("/images/montagne.png"));
+             m_image = ImageIO.read(getClass().getResource("/images/tuiles/montagne.png"));
              b = false;
           }
           repaint();
@@ -92,7 +92,7 @@ public class GrosPanel extends JPanel{
     
     public void refreshImage() throws IOException
     {
-        this.m_image = ImageIO.read(getClass().getResource("/images/Eau-vide.png"));
+        this.m_image = ImageIO.read(getClass().getResource("/images/tuiles/Eau-vide.png"));
         repaint();
     }
     
