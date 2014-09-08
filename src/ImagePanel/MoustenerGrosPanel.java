@@ -360,7 +360,7 @@ public class MoustenerGrosPanel extends MouseAdapter
                     }
                     else
                     {
-                        messageJoueur("vouse ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
+                        messageJoueur("vous ne pouvez pas vous déplacer sur cette case, elle n'est pas adjacente"); 
                     }
                 }               
             }

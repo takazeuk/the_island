@@ -211,16 +211,16 @@ public class The_island {
                 //partie de lancé de dés pour définir quel monstre on va déplacer
                 partie.deeCreature();
                 boolean monstrePresent = false;
-                monstres monstre;
                 //on vérifie si le type de monstre obtenu en random est présent sur le plateau
-                for (unites unitetotale : partie.population) {
-                    if (unitetotale instanceof monstres) {
-                        monstre = (monstres) unitetotale;
-                        if (monstre.type == partie.choixMonstre) {
+                for (tuiles tuile : partie.carte) {
+                    for (monstres monstre  : tuile.monstres) {
+                        if (monstre.type == partie.choixMonstre)
+                        {
                             monstrePresent = true;
                         }
                     }
                 }
+
 
                 if (monstrePresent) {
                     s = "Vous pouvez déplacer un monstre de type: " + partie.typeMonstre(partie.choixMonstre) + " , seléctionnez un monstre correspondant";
@@ -257,7 +257,7 @@ public class The_island {
                     partie.tourJoueur++;
                 }               
                 
-                //on met une valeur de flagAction qui ne permet aucun déplacement
+                //on met une valeur de flagAction qui ne permet
                 partie.flagAction = 10;
             }   
         }
